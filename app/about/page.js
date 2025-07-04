@@ -29,6 +29,76 @@ export default function About() {
         </div>
       </section>
 
+      {/* Our Story Section */}
+      <section className="w-full py-20 px-4 md:px-0 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Story</h2>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+              The journey that brought us here and the passion that drives us forward
+            </p>
+          </div>
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            {/* Left: Image */}
+            <div className="flex-1">
+              <img 
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" 
+                alt="Our Story - Team collaboration" 
+                className="w-full h-[400px] object-cover rounded-2xl shadow-lg"
+              />
+            </div>
+            {/* Right: Content */}
+            <div className="flex-1">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">From Vision to Reality</h3>
+              <p className="text-lg text-gray-700 mb-6">
+                Stem Orbit began as a simple idea in 2019 - what if we could make STEM education not just accessible, but truly exciting for every child? Our founders, educators and technologists themselves, saw a gap between traditional classroom learning and the dynamic, hands-on experiences that truly inspire young minds.
+              </p>
+              <p className="text-lg text-gray-700 mb-6">
+                What started as a small after-school program has grown into a comprehensive learning ecosystem. We've witnessed countless moments of discovery - from the first time a student programs a robot to move, to the excitement of seeing their 3D designs come to life, to the wonder in their eyes when they understand how AI works.
+              </p>
+              <p className="text-lg text-gray-700">
+                Today, we're proud to have touched the lives of thousands of students across multiple countries, but our story is far from over. Every day brings new challenges, new technologies, and new opportunities to inspire the next generation of innovators.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Mission Section */}
+      <section className="w-full py-20 px-4 md:px-0 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Mission</h2>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+              Empowering the next generation through innovative STEM education
+            </p>
+          </div>
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
+            {/* Right: Image */}
+            <div className="flex-1">
+              <img 
+                src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" 
+                alt="Our Mission - Students learning STEM" 
+                className="w-full h-[400px] object-cover rounded-2xl shadow-lg"
+              />
+            </div>
+            {/* Left: Content */}
+            <div className="flex-1">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Building Tomorrow's Innovators</h3>
+              <p className="text-lg text-gray-700 mb-6">
+                Our mission is clear: to democratize STEM education and make it accessible, engaging, and impactful for every child, regardless of their background or location. We believe that the skills learned through STEM - critical thinking, problem-solving, creativity, and collaboration - are essential for success in the 21st century.
+              </p>
+              <p className="text-lg text-gray-700 mb-6">
+                Through our innovative labs, hands-on projects, and expert-led programs, we're not just teaching students about science and technology - we're helping them develop the mindset and skills they need to become the problem-solvers, inventors, and leaders of tomorrow.
+              </p>
+              <p className="text-lg text-gray-700">
+                We envision a world where every child has the opportunity to discover their potential in STEM fields, where curiosity is celebrated, and where innovation knows no bounds. This is the future we're building, one student at a time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Labs Section */}
       <section className="w-full py-20 px-4 md:px-0 bg-white">
         <div className="max-w-5xl mx-auto text-center mb-12">
