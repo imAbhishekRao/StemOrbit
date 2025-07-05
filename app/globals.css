@@ -190,3 +190,12 @@ h1, h2, h3, h4, h5, h6 {
 .animate-slide-infinite {
   animation: slide-infinite 30s linear infinite;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
