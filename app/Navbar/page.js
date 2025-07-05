@@ -8,10 +8,10 @@ export default function Navbar() {
       <div className="flex-1 flex justify-center">
         <DynamicNavImage />
       </div>
-      <ul className="flex gap-6 text-sm font-medium items-center">
+      <ul className="flex gap-6 text-sm font-medium">
         <li><a href="#" className="hover:underline">Home</a></li>
         <li><a href="/about" className="hover:underline">About Us</a></li>
-        <li><a href="#" className="hover:underline">Contact</a></li>
+        <li><a href="/contact" className="hover:underline">Contact Us</a></li>
       </ul>
     </nav>
   );
