@@ -12,6 +12,7 @@ export default function Navbar() {
         <li><a href="#" className="hover:underline">Home</a></li>
         <li><a href="/about" className="hover:underline">About Us</a></li>
         <li><a href="/contact" className="hover:underline">Contact Us</a></li>
+        <li><a href="/careers" className="hover:underline">Careers</a></li>
       </ul>
     </nav>
   );
