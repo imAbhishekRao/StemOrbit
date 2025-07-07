@@ -60,7 +60,7 @@ function DynamicNavImage() {
       
       {/* Rotating Image - fades in when scrolling */}
       <img
-        src="/rotating.svg"
+        src="/favicon.svg"
         alt="Rotating Floating"
         style={{
           width: 80,
