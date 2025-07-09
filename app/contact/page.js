@@ -28,11 +28,11 @@ export default function Contact() {
   const faqsData = {
     principals: [
       {
-        q: "What does STEM Orbit offer for schools?",
+        q: "What does STEMOrbit offer for schools?",
         a: "We provide complete lab setup solutions for ATL, STEM, and Robotics Labs — including furniture, electronic kits, 3D printers, tools, and more. Alongside that, we offer curriculum-based training for students and teachers and full support for competitions and exhibitions."
       },
       {
-        q: "Can STEM Orbit help us set up an ATL/Robotics/STEM lab from scratch?",
+        q: "Can STEMOrbit help us set up an ATL/Robotics/STEM lab from scratch?",
         a: "Yes. We offer turnkey lab solutions, which means we handle everything — from designing the layout and providing furniture to installing hardware and software, ensuring your school is ready to deliver hands-on learning."
       },
       {
@@ -64,13 +64,13 @@ export default function Contact() {
         a: "Typically, it takes 7–14 working days to fully complete the lab setup depending on the scope. This includes installation, testing, and orientation."
       },
       {
-        q: "How can our school get started with STEM Orbit?",
+        q: "How can our school get started with STEMOrbit?",
         a: "Simply reach out to us through our Contact page, WhatsApp, or Email. Our team will guide you through the assessment, proposal, and setup process."
       },
     ],
     students: [
       {
-        q: "What kind of training batches are available for students at STEM Orbit?",
+        q: "What kind of training batches are available for students at STEMOrbit?",
         a: "We offer two batches for students from Grade 1 to 12:\n\nRegular Batch\n\nWeekend Batch\nBoth are available for:\n\nJunior Students (Grade 1 to 5)\n\nSenior Students (Grade 6 to 12)\nEach batch is designed with age-appropriate learning, practical activities, and project-based exploration."
       },
       {
@@ -112,8 +112,8 @@ export default function Contact() {
     ],
     parents: [
       {
-        q: "How will STEM Orbit benefit my child?",
-        a: "STEM Orbit nurtures your child's curiosity and creativity by offering hands-on learning in science, technology, robotics, and 3D design. Our programs help students develop problem-solving skills, confidence, and innovation mindset — all essential for future careers."
+        q: "How will STEMOrbit benefit my child?",
+        a: "STEMOrbit nurtures your child's curiosity and creativity by offering hands-on learning in science, technology, robotics, and 3D design. Our programs help students develop problem-solving skills, confidence, and innovation mindset — all essential for future careers."
       },
       {
         q: "Is the program safe and age-appropriate?",
@@ -125,14 +125,14 @@ export default function Contact() {
       },
       {
         q: "Will this affect my child's school studies?",
-        a: "Not at all. Our Regular and Weekend Batches are designed to complement school learning, not compete with it. In fact, many students find that STEM Orbit helps them better understand their school subjects through real-life application."
+        a: "Not at all. Our Regular and Weekend Batches are designed to complement school learning, not compete with it. In fact, many students find that STEMOrbit helps them better understand their school subjects through real-life application."
       },
       {
         q: "What if my child has no prior experience with robotics or coding?",
         a: "No prior experience is needed! Our programs are designed for all levels — beginners to advanced learners. We start with the basics and gradually move toward more complex concepts, ensuring every child feels confident and included."
       },
       {
-        q: "Can my child participate in science fairs or competitions through STEM Orbit?",
+        q: "Can my child participate in science fairs or competitions through STEMOrbit?",
         a: "Yes. We offer complete support for projects and competitions. If your child is passionate about innovation, we guide them from idea to execution — including mentoring for exhibitions and national-level contests."
       },
       {
@@ -194,7 +194,7 @@ export default function Contact() {
             <div className="flex-1 flex flex-col justify-center md:pr-8 mb-8 md:mb-0">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Contact Us</h1>
             <p className="text-lg text-gray-700 mb-6 max-w-xl">
-              Have a question, want to collaborate, or just want to say hello? Reach out to the Stem Orbit team and we'll get back to you as soon as possible!
+              Have a question, want to collaborate, or just want to say hello? Reach out to the STEMOrbit team and we'll get back to you as soon as possible!
             </p>
             <div className="mb-4">
               <div className="font-semibold text-gray-900">Address:</div>
@@ -242,26 +242,26 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-gray-700 font-medium mb-2" htmlFor="name">Name</label>
-                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200" type="text" id="name" name="name" placeholder="Your Name" />
+                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500" type="text" id="name" name="name" placeholder="Your Name" />
                 </div>
                 <div>
                   <label className="block text-gray-700 font-medium mb-2" htmlFor="city">City</label>
-                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200" type="text" id="city" name="city" placeholder="Your City" />
+                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500" type="text" id="city" name="city" placeholder="Your City" />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-gray-700 font-medium mb-2" htmlFor="mobile">Mobile Number</label>
-                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200" type="tel" id="mobile" name="mobile" placeholder="Your Mobile Number" pattern="[0-9]{10}" maxLength="15" />
+                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500" type="tel" id="mobile" name="mobile" placeholder="Your Mobile Number" pattern="[0-9]{10}" maxLength="15" />
                 </div>
                 <div>
                   <label className="block text-gray-700 font-medium mb-2" htmlFor="email">Email</label>
-                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200" type="email" id="email" name="email" placeholder="you@email.com" />
+                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500" type="email" id="email" name="email" placeholder="you@email.com" />
                 </div>
               </div>
               <div>
                 <label className="block text-gray-700 font-medium mb-2" htmlFor="message">Message</label>
-                <textarea className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200" id="message" name="message" rows={5} placeholder="How can we help you?" />
+                <textarea className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500" id="message" name="message" rows={5} placeholder="How can we help you?" />
               </div>
               <button type="submit" className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg">Send Message</button>
             </form>

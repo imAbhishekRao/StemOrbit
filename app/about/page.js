@@ -5,22 +5,21 @@ export default function About() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="w-full py-24 md:py-32 px-6 sm:px-8 lg:px-12 bg-white">
+      <section className="w-full py-24 md:py-32 px-6 sm:px-8 lg:px-12 bg-white relative">
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center md:items-stretch gap-12 md:gap-0">
           {/* Left: Text */}
           <div className="flex-1 flex flex-col justify-center md:pr-16">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-2">Hey!</h2>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              We're <span className="text-[#33aade]">Stem Orbit</span> <span className="text-2xl align-middle">🚀</span>
+            <h1 className="text-4xl md:text-5xl text-gray-900 mb-4 text-center">
+              Hey! We&apos;re <span className="text-[#33aade]">STEMOrbit</span> <span className="text-2xl align-middle">🚀</span>
             </h1>
-            <p className="text-lg text-gray-700 mb-6 max-w-xl text-justify">
+            <p className="text-lg text-gray-700 mb-6 max-w-2xl text-justify mx-auto">
               We're a passionate team dedicated to empowering young minds through STEM education. Our mission is to inspire curiosity, creativity, and innovation by providing hands-on learning experiences in science, technology, engineering, and mathematics.
             </p>
-            <p className="text-lg text-gray-700 mb-6 max-w-xl text-justify">
-              At Stem Orbit, we believe every child deserves the opportunity to explore and excel in STEM fields. Our programs, labs, and solutions are designed to make learning fun, accessible, and impactful for students everywhere.
+            <p className="text-lg text-gray-700 mb-6 max-w-2xl text-justify mx-auto">
+              At STEMOrbit, we believe every child deserves the opportunity to explore and excel in STEM fields. Our programs, labs, and solutions are designed to make learning fun, accessible, and impactful for students everywhere.
             </p>
-            <p className="text-base text-gray-600 max-w-xl text-justify">
-              Read on to learn more about our journey, our vision, and the people who make Stem Orbit a hub for future innovators.
+            <p className="text-base text-gray-600 mb-6 max-w-2xl text-justify mx-auto">
+              Read on to learn more about our journey, our vision, and the people who make STEMOrbit a hub for future innovators.
             </p>
           </div>
           {/* Right: Image Placeholder */}
@@ -30,18 +29,23 @@ export default function About() {
             </div>
           </div>
         </div>
+        {/* Blue Star Doodle - right side */}
+        <img src="https://buffer.com/static/about/webp/blue-star-doodle.webp" alt="Blue Star Doodle" className="w-16 md:w-20 lg:w-24 h-auto absolute right-0 md:right-10 top-10 md:top-16 z-10" style={{pointerEvents: 'none'}} />
       </section>
 
       {/* Our Story Section */}
-      <section className="w-full py-16 md:py-20 px-6 sm:px-8 lg:px-12 bg-gray-50">
+      <section className="w-full py-16 md:py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
+          <div className="relative mb-10 md:mb-16">
+            {/* Heading and subtitle */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4 text-center">
               Our <span className="text-[#33aade]">Story</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto text-justify">
+            <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto text-center">
               The journey that brought us here and the passion that drives us forward
             </p>
+            {/* Absolutely positioned arrow */}
+            <img src="https://buffer.com/static/about/webp/first-pink-down-arrow-doodle.webp" alt="Down arrow" className="w-16 md:w-20 lg:w-24 h-auto absolute left-0 md:left-10 top-full -mt-6 z-10" style={{pointerEvents: 'none'}} />
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-16">
             {/* Left: Image */}
@@ -56,7 +60,7 @@ export default function About() {
             <div className="flex-1 w-full max-w-xl">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 md:mb-6">From Vision to Reality</h3>
               <p className="text-base sm:text-lg text-gray-700 mb-4 md:mb-6 text-justify">
-                Stem Orbit began as a simple idea in 2019 - what if we could make STEM education not just accessible, but truly exciting for every child? Our founders, educators and technologists themselves, saw a gap between traditional classroom learning and the dynamic, hands-on experiences that truly inspire young minds.
+                STEMOrbit began as a simple idea in 2019 - what if we could make STEM education not just accessible, but truly exciting for every child? Our founders, educators and technologists themselves, saw a gap between traditional classroom learning and the dynamic, hands-on experiences that truly inspire young minds.
               </p>
               <p className="text-base sm:text-lg text-gray-700 mb-4 md:mb-6 text-justify">
                 What started as a small after-school program has grown into a comprehensive learning ecosystem. We've witnessed countless moments of discovery - from the first time a student programs a robot to move, to the excitement of seeing their 3D designs come to life, to the wonder in their eyes when they understand how AI works.
@@ -72,13 +76,14 @@ export default function About() {
       {/* Our Mission Section */}
       <section className="w-full py-16 md:py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
+          <div className="relative mb-10 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4 text-center">
               Our <span className="text-pink-500">Mission</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto text-justify">
+            <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto text-center">
               Empowering the next generation through innovative STEM education
             </p>
+            <img src="https://buffer.com/static/about/webp/orange-blue-doodle.webp" alt="Mission Doodle" className="w-16 md:w-20 lg:w-24 h-auto absolute right-0 md:right-10 top-full -mt-6 z-10" style={{pointerEvents: 'none'}} />
           </div>
           <div className="flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-12 lg:gap-16">
             {/* Right: Image */}
@@ -108,30 +113,34 @@ export default function About() {
 
       {/* Labs Section */}
       <section className="w-full py-16 md:py-20 px-6 sm:px-8 lg:px-12 bg-white">
-        <div className="max-w-[1200px] mx-auto text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
+        <div className="relative max-w-[1200px] mx-auto text-center mb-8 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4 text-center">
             Our Innovative Learning <span className="text-[#33aade]">Labs</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto text-justify">
-            At Stem Orbit, we offer a range of specialized labs designed to spark curiosity and foster hands-on learning. Each lab is tailored to provide students with real-world skills and creative opportunities in the fields of technology, engineering, and design.
+          <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto text-center">
+            At STEMOrbit, we offer a range of specialized labs designed to spark curiosity and foster hands-on learning. Each lab is tailored to provide students with real-world skills and creative opportunities in the fields of technology, engineering, and design.
           </p>
+          <img src="https://buffer.com/static/about/webp/yellow-star-doodle.webp" alt="Labs Doodle Left" className="w-16 md:w-20 lg:w-24 h-auto absolute left-0 md:left-10 bottom-0 translate-y-1/2 z-10" style={{pointerEvents: 'none'}} />
         </div>
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="rounded-2xl bg-blue-100 p-6 md:p-8 shadow-sm flex flex-col items-start">
-            <div className="text-lg md:text-2xl font-bold text-blue-700 mb-2">AI LABS</div>
-            <div className="text-gray-600 text-sm md:text-base text-justify">Explore the world of Artificial Intelligence with hands-on projects and interactive learning modules.</div>
-          </div>
-          <div className="rounded-2xl bg-pink-100 p-6 md:p-8 shadow-sm flex flex-col items-start">
-            <div className="text-lg md:text-2xl font-bold text-pink-700 mb-2">ROBOTICS LABS</div>
-            <div className="text-gray-600 text-sm md:text-base text-justify">Build, program, and experiment with robots to develop problem-solving and engineering skills.</div>
-          </div>
-          <div className="rounded-2xl bg-purple-100 p-6 md:p-8 shadow-sm flex flex-col items-start">
-            <div className="text-lg md:text-2xl font-bold text-purple-700 mb-2">STEM LABS</div>
-            <div className="text-gray-600 text-sm md:text-base text-justify">Engage in a variety of STEM activities that encourage innovation and scientific thinking.</div>
-          </div>
-          <div className="rounded-2xl bg-green-100 p-6 md:p-8 shadow-sm flex flex-col items-start">
-            <div className="text-lg md:text-2xl font-bold text-green-700 mb-2">3D DESIGN</div>
-            <div className="text-gray-600 text-sm md:text-base text-justify">Unleash creativity with 3D modeling and design, bringing ideas to life through digital creation.</div>
+        <div className="relative max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="rounded-2xl bg-blue-100 p-6 md:p-8 shadow-sm flex flex-col items-start">
+              <div className="text-lg md:text-2xl font-bold text-blue-700 mb-2">AI LABS</div>
+              <div className="text-gray-600 text-sm md:text-base text-justify">Explore the world of Artificial Intelligence with hands-on projects and interactive learning modules.</div>
+            </div>
+            <div className="rounded-2xl bg-pink-100 p-6 md:p-8 shadow-sm flex flex-col items-start">
+              <div className="text-lg md:text-2xl font-bold text-pink-700 mb-2">ROBOTICS LABS</div>
+              <div className="text-gray-600 text-sm md:text-base text-justify">Build, program, and experiment with robots to develop problem-solving and engineering skills.</div>
+            </div>
+            <div className="rounded-2xl bg-purple-100 p-6 md:p-8 shadow-sm flex flex-col items-start">
+              <div className="text-lg md:text-2xl font-bold text-purple-700 mb-2">STEM LABS</div>
+              <div className="text-gray-600 text-sm md:text-base text-justify">Engage in a variety of STEM activities that encourage innovation and scientific thinking.</div>
+            </div>
+            <div className="rounded-2xl bg-green-100 p-6 md:p-8 shadow-sm flex flex-col items-start relative">
+              <div className="text-lg md:text-2xl font-bold text-green-700 mb-2">3D DESIGN</div>
+              <div className="text-gray-600 text-sm md:text-base text-justify">Unleash creativity with 3D modeling and design, bringing ideas to life through digital creation.</div>
+              <img src="https://buffer.com/static/about/webp/yellow-star-doodle.webp" alt="Labs Doodle Below 3D Design" className="w-16 md:w-20 lg:w-24 h-auto absolute right-0 -bottom-8 translate-y-1/2 z-10" style={{pointerEvents: 'none'}} />
+            </div>
           </div>
         </div>
       </section>
@@ -146,13 +155,13 @@ export default function About() {
             <div className="flex min-w-[600px] sm:min-w-[900px] md:min-w-full gap-6 md:gap-12 pb-6 md:pb-8 relative">
               {/* Timeline items */}
               {[
-                { year: 2019, month: 'March', color: 'bg-blue-100 text-blue-700', title: 'Stem Orbit Founded', desc: 'Stem Orbit was founded with a vision to make STEM education accessible to all.' },
+                { year: 2019, month: 'March', color: 'bg-blue-100 text-blue-700', title: 'STEMOrbit Founded', desc: 'STEMOrbit was founded with a vision to make STEM education accessible to all.' },
                 { year: 2020, month: 'July', color: 'bg-green-100 text-green-700', title: 'First AI Lab', desc: 'Launched our first AI Lab, introducing students to artificial intelligence.' },
                 { year: 2021, month: 'January', color: 'bg-pink-100 text-pink-700', title: 'Robotics Expansion', desc: 'Expanded our curriculum to include hands-on robotics labs.' },
                 { year: 2022, month: 'September', color: 'bg-purple-100 text-purple-700', title: 'STEM Labs Growth', desc: 'Opened new STEM labs in multiple cities, reaching more students.' },
                 { year: 2023, month: 'May', color: 'bg-yellow-100 text-yellow-700', title: '3D Design Launch', desc: 'Introduced 3D Design programs, empowering creativity and innovation.' },
                 { year: 2024, month: 'April', color: 'bg-blue-100 text-blue-700', title: 'Online Platform', desc: 'Launched our online learning platform for remote STEM education.' },
-                { year: 2025, month: 'June', color: 'bg-green-100 text-green-700', title: 'Global Impact', desc: 'Stem Orbit reaches students in over 20 countries worldwide.' },
+                { year: 2025, month: 'June', color: 'bg-green-100 text-green-700', title: 'Global Impact', desc: 'STEMOrbit reaches students in over 20 countries worldwide.' },
               ].map((item, idx) => (
                 <div key={item.year} className="flex flex-col items-center min-w-[180px] relative z-10">
                   <div className="text-xl font-bold mb-2 text-gray-900">{item.year}</div>

@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   return (
     <nav className="w-full flex items-center justify-between py-4 px-6 bg-white border-b border-gray-200 sticky top-0 z-50 text-black">
-      <div className="font-bold text-lg tracking-tight">Stemorbit</div>
+      <div className="font-bold text-lg tracking-tight">STEMOrbit</div>
       <div className="flex-1 flex justify-center">
         <DynamicNavImage />
       </div>
       <ul className="flex gap-6 text-sm font-medium">
-        <li><a href="#" className="hover:underline">Home</a></li>
+        <li><a href="/" className="hover:underline">Home</a></li>
         <li><a href="/about" className="hover:underline">About Us</a></li>
         <li><a href="/contact" className="hover:underline">Contact Us</a></li>
         <li><a href="/careers" className="hover:underline">Careers</a></li>
@@ -48,7 +48,7 @@ function DynamicNavImage() {
       {/* Logo - fades out when scrolling */}
       <img
         src="/logo.svg"
-        alt="Stem Orbit Logo"
+                      alt="STEMOrbit Logo"
         style={{
           width: 80,
           height: 80,

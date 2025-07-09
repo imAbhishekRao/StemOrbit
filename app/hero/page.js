@@ -9,10 +9,10 @@ export default function Hero() {
   const [displayText, setDisplayText] = useState("");
   
   const solutions = [
-    "STEM Solutions",
-    "AI Labs Solutions", 
-    "Robotics Labs Solutions",
-    "3D Labs Solutions"
+    "STEM Labs",
+    "AI Labs", 
+    "Robotics Labs ",
+    "3D Printing Labs"
   ];
 
   useEffect(() => {
