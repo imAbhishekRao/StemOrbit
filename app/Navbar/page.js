@@ -10,6 +10,7 @@ export default function Navbar() {
       </div>
       <ul className="flex gap-6 text-sm font-medium">
         <li><a href="/" className="hover:underline">Home</a></li>
+        <li><a href="/robotics-labs" className="hover:underline">Robotics Labs</a></li>
         <li><a href="/about" className="hover:underline">About Us</a></li>
         <li><a href="/contact" className="hover:underline">Contact Us</a></li>
         <li><a href="/careers" className="hover:underline">Careers</a></li>
