@@ -11,6 +11,7 @@ export default function Navbar() {
       <ul className="flex gap-6 text-sm font-medium">
         <li><a href="/" className="hover:underline">Home</a></li>
         <li><a href="/robotics-labs" className="hover:underline">Robotics Labs</a></li>
+        <li><a href="/our-lab-offerings" className="hover:underline">Our Lab Offerings</a></li>
         <li><a href="/stem-labs" className="hover:underline">STEM Labs</a></li>
         <li><a href="/gallery" className="hover:underline">Gallery</a></li>
         <li><a href="/about" className="hover:underline">About Us</a></li>

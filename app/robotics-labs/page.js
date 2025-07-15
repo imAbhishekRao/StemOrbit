@@ -26,10 +26,49 @@ function useSectionAnimation(ref, animationFn, deps = []) {
 export default function RoboticsLabs() {
   const [activeTab, setActiveTab] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [counts, setCounts] = useState({ schools: 0, students: 0, teachers: 0, curriculum: 0 });
+  const [hasCounted, setHasCounted] = useState(false);
+  const statsRef = useRef(null);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  // Animated counting for stats (only once when in view)
+  useEffect(() => {
+    if (!statsRef.current || hasCounted) return;
+    let triggered = false;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !triggered) {
+          triggered = true;
+          setHasCounted(true);
+          // Animate numbers using GSAP
+          gsap.to(counts, {
+            schools: 50,
+            students: 10000,
+            teachers: 100,
+            curriculum: 1,
+            duration: 2,
+            ease: "power3.out",
+            onUpdate: function () {
+              setCounts({
+                schools: Math.round(this.targets()[0].schools),
+                students: Math.round(this.targets()[0].students),
+                teachers: Math.round(this.targets()[0].teachers),
+                curriculum: Math.round(this.targets()[0].curriculum)
+              });
+            }
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(statsRef.current);
+    return () => observer.disconnect();
+    // eslint-disable-next-line
+  }, [statsRef, hasCounted]);
 
   const tabs = [
     { name: "Primary", level: "Grades 3-5" },
@@ -207,7 +246,7 @@ export default function RoboticsLabs() {
                   Robotics Labs for Schools
                 </span>
               </h1>
-              <p className={`text-xl lg:text-2xl text-gray-600 max-w-2xl mb-8 transition-all duration-1000 delay-200 ${
+              <p className={`text-base lg:text-lg text-gray-600 max-w-2xl mb-8 transition-all duration-1000 delay-200 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
                 Empower your students with hands-on robotics labs designed for schools. We partner with educators to create inspiring STEM environments that fit your curriculum and goals.
@@ -259,23 +298,23 @@ export default function RoboticsLabs() {
           </div>
 
           {/* Stats */}
-          <div className={`grid grid-cols-1 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-16 transition-all duration-1000 delay-600 ${
+          <div ref={statsRef} className={`grid grid-cols-1 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-16 transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            <div className="text-center p-6 bg-white rounded-2xl shadow-soft hover-lift">
-              <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>
+            <div className="text-center p-6 bg-gradient-to-br from-blue-100 to-blue-300 rounded-2xl shadow-soft hover-lift">
+              <div className="text-3xl font-bold text-blue-700 mb-2">{counts.schools}+ </div>
               <div className="text-sm text-gray-600">Schools Equipped</div>
             </div>
-            <div className="text-center p-6 bg-white rounded-2xl shadow-soft hover-lift">
-              <div className="text-3xl font-bold text-purple-600 mb-2">10,000+</div>
+            <div className="text-center p-6 bg-gradient-to-br from-purple-100 to-purple-300 rounded-2xl shadow-soft hover-lift">
+              <div className="text-3xl font-bold text-purple-700 mb-2">{counts.students.toLocaleString()}+ </div>
               <div className="text-sm text-gray-600">Students Impacted</div>
             </div>
-            <div className="text-center p-6 bg-white rounded-2xl shadow-soft hover-lift">
-              <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
+            <div className="text-center p-6 bg-gradient-to-br from-green-100 to-green-300 rounded-2xl shadow-soft hover-lift">
+              <div className="text-3xl font-bold text-green-700 mb-2">{counts.teachers}% </div>
               <div className="text-sm text-gray-600">Teacher Satisfaction</div>
             </div>
-            <div className="text-center p-6 bg-white rounded-2xl shadow-soft hover-lift">
-              <div className="text-3xl font-bold text-orange-600 mb-2">A+</div>
+            <div className="text-center p-6 bg-gradient-to-br from-orange-100 to-orange-300 rounded-2xl shadow-soft hover-lift">
+              <div className="text-3xl font-bold text-orange-700 mb-2">A{counts.curriculum === 1 ? '+' : ''}</div>
               <div className="text-sm text-gray-600">Curriculum Alignment</div>
             </div>
           </div>
