@@ -123,7 +123,7 @@ export default function Careers() {
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">Open Positions</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {jobs.map((job, idx) => (
-              <div key={job.title} className="bg-gray-50 rounded-xl shadow p-6 flex flex-col">
+              <div key={job.title} className="bg-gray-50 rounded-xl shadow p-6 flex flex-col transition-transform duration-200 border border-transparent hover:scale-105 hover:shadow-2xl hover:border-blue-300 cursor-pointer">
                 <h3 className="text-xl font-semibold text-[#33aade] mb-2">{job.title}</h3>
                 <p className="text-gray-700 mb-4">{job.short}</p>
                 <span className="text-sm text-gray-500 mb-2">Location: {job.location}</span>

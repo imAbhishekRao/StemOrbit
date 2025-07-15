@@ -201,6 +201,20 @@ h1, h2, h3, h4, h5, h6 {
   display: none; /* Chrome, Safari, Opera */
 }
 
+/* Ambient zoom animation for robotics lab image */
+@keyframes ambientZoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-ambient-zoom {
+  animation: ambientZoom 4s ease-in-out infinite;
+}
+
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }

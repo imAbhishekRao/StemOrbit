@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { useRef, useCallback } from "react";
 import gsap from "gsap";
 
 function useSectionAnimation(ref, animationFn, deps = []) {
@@ -114,6 +113,7 @@ export default function RoboticsLabs() {
   const programsRef = useRef(null);
   const testimonialsRef = useRef(null);
   const ctaRef = useRef(null);
+  const galleryRef = useRef(null);
 
   // Hero animation
   useSectionAnimation(heroRef, () => {
@@ -144,6 +144,24 @@ export default function RoboticsLabs() {
       stepCardRefs.current,
       { opacity: 0, y: 60 },
       { opacity: 1, y: 0, duration: 1, ease: "power3.out", stagger: 0.2, delay: 0.4 }
+    );
+    // Start ambient zoom animation for the image
+    gsap.to(imageRef.current, {
+      scale: 1.05,
+      duration: 2,
+      ease: "power2.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: 1
+    });
+  }, []);
+
+  // Gallery animation
+  useSectionAnimation(galleryRef, () => {
+    gsap.fromTo(
+      galleryRef.current.querySelectorAll(".gallery-image"),
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power3.out" }
     );
   }, []);
 
@@ -179,33 +197,69 @@ export default function RoboticsLabs() {
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 px-4 md:px-0 bg-gradient-to-br from-blue-50 via-white to-purple-50" ref={heroRef}>
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className={`text-4xl lg:text-6xl font-bold text-gray-900 mb-6 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
-                Robotics Labs for Schools
-              </span>
-            </h1>
-            <p className={`text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              Empower your students with hands-on robotics labs designed for schools. We partner with educators to create inspiring STEM environments that fit your curriculum and goals.
-            </p>
-            <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-400 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
-                Request a School Demo
-              </button>
-              <button className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold text-lg rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 hover:shadow-lg">
-                Download Brochure
-              </button>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Left: Text Content */}
+            <div className="flex-1 text-left">
+              <h1 className={`text-4xl lg:text-6xl font-bold text-gray-900 mb-6 transition-all duration-1000 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                  Robotics Labs for Schools
+                </span>
+              </h1>
+              <p className={`text-xl lg:text-2xl text-gray-600 max-w-2xl mb-8 transition-all duration-1000 delay-200 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                Empower your students with hands-on robotics labs designed for schools. We partner with educators to create inspiring STEM environments that fit your curriculum and goals.
+              </p>
+              <div className={`flex flex-col sm:flex-row gap-4 mb-8 transition-all duration-1000 delay-400 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                  Request a School Demo
+                </button>
+                <button className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold text-lg rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 hover:shadow-lg">
+                  Download Brochure
+                </button>
+              </div>
+            </div>
+            
+            {/* Right: Robot Image */}
+            <div className="flex-1 flex justify-center">
+              <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+                {/* Floating geometric shapes */}
+                <div className="absolute top-4 left-4 w-8 h-8 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
+                <div className="absolute top-8 right-8 w-6 h-6 bg-purple-400 rounded-full animate-bounce opacity-60" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute bottom-8 left-8 w-4 h-4 bg-pink-400 rounded-full animate-ping opacity-60" style={{animationDelay: '1s'}}></div>
+                <div className="absolute bottom-4 right-4 w-6 h-6 bg-green-400 rounded-full animate-pulse opacity-60" style={{animationDelay: '1.5s'}}></div>
+                
+                {/* Rotating rings */}
+                <div className="absolute inset-0 border-4 border-blue-200 rounded-full animate-spin" style={{animationDuration: '20s'}}></div>
+                <div className="absolute inset-4 border-4 border-purple-200 rounded-full animate-spin" style={{animationDuration: '15s', animationDirection: 'reverse'}}></div>
+                
+                {/* Main robot container */}
+                <div className="absolute inset-8 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full animate-pulse"></div>
+                <div className="absolute inset-12 bg-white rounded-full flex items-center justify-center">
+                  <div className="text-8xl lg:text-9xl animate-bounce">🤖</div>
+                </div>
+                
+                {/* Floating particles */}
+                <div className="absolute top-2 left-1/2 w-2 h-2 bg-blue-500 rounded-full animate-ping" style={{animationDelay: '0.2s'}}></div>
+                <div className="absolute bottom-2 left-1/2 w-2 h-2 bg-purple-500 rounded-full animate-ping" style={{animationDelay: '0.8s'}}></div>
+                <div className="absolute left-2 top-1/2 w-2 h-2 bg-pink-500 rounded-full animate-ping" style={{animationDelay: '1.2s'}}></div>
+                <div className="absolute right-2 top-1/2 w-2 h-2 bg-green-500 rounded-full animate-ping" style={{animationDelay: '1.6s'}}></div>
+                
+                {/* Circuit-like lines */}
+                <div className="absolute top-0 left-1/2 w-0.5 h-8 bg-gradient-to-b from-blue-400 to-transparent animate-pulse"></div>
+                <div className="absolute bottom-0 left-1/2 w-0.5 h-8 bg-gradient-to-b from-transparent to-purple-400 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute left-0 top-1/2 w-8 h-0.5 bg-gradient-to-r from-pink-400 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
+                <div className="absolute right-0 top-1/2 w-8 h-0.5 bg-gradient-to-r from-transparent to-green-400 animate-pulse" style={{animationDelay: '1.5s'}}></div>
+              </div>
             </div>
           </div>
 
           {/* Stats */}
-          <div className={`grid grid-cols-1 md:grid-cols-4 gap-8 max-w-4xl mx-auto transition-all duration-1000 delay-600 ${
+          <div className={`grid grid-cols-1 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-16 transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             <div className="text-center p-6 bg-white rounded-2xl shadow-soft hover-lift">
@@ -326,7 +380,7 @@ export default function RoboticsLabs() {
       </section>
 
       {/* Our Robotics Lab Gallery Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50" ref={galleryRef}>
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-10 text-center">Our Robotics Lab Gallery</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -339,7 +393,7 @@ export default function RoboticsLabs() {
               "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80",
               "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80"
             ].map((src, idx) => (
-              <div key={idx} className="overflow-hidden rounded-2xl group">
+              <div key={idx} className="gallery-image overflow-hidden rounded-2xl group">
                 <img
                   src={src}
                   alt={`Robotics Lab Gallery ${idx + 1}`}
