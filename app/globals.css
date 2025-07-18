@@ -288,3 +288,51 @@ button, .font-comicneue {
 .animate-childish-bounce {
   animation: childish-bounce 2.5s infinite cubic-bezier(0.4,0,0.2,1);
 }
+
+/* --- TechnologiesSection custom card hover effect --- */
+.tech-card {
+  transition: background 0.4s cubic-bezier(0.4,0,0.2,1),
+    box-shadow 0.3s cubic-bezier(0.4,0,0.2,1),
+    transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  will-change: background, box-shadow, transform;
+  position: relative;
+  z-index: 1;
+}
+.tech-card:hover {
+  background: linear-gradient(135deg, #38bdf8 60%, #7dd3fc 100%);
+  box-shadow: 0 8px 32px 0 rgba(56,189,248,0.25), 0 1.5px 8px 0 rgba(56,189,248,0.10);
+  transform: translateY(-8px) scale(1.045) rotate(-1deg);
+}
+.tech-card:hover .tech-card-bubbles {
+  opacity: 1;
+}
+.tech-card-bubbles {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.tech-card-bubbles::before, .tech-card-bubbles::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  filter: blur(1.5px);
+  animation: tech-bubble-float 1.6s ease-in-out infinite;
+  z-index: 2;
+}
+.tech-card-bubbles::before {
+  width: 22px; height: 22px;
+  left: 18%; bottom: 18%;
+  animation-delay: 0.1s;
+}
+.tech-card-bubbles::after {
+  width: 14px; height: 14px;
+  left: 65%; bottom: 12%;
+  animation-delay: 0.5s;
+}
+@keyframes tech-bubble-float {
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  60% { opacity: 1; }
+  100% { transform: translateY(-38px) scale(1.15); opacity: 0; }
+}
+/* --- End TechnologiesSection custom card hover effect --- */

@@ -2,15 +2,9 @@ import Image from "next/image";
 
 // Vibrant card backgrounds (mix of light and dark)
 const cardColors = [
-  { bg: "#FFB347", hover: "#FFA500", text: "#222" }, // orange, light
-  { bg: "#FF6961", hover: "#FF4C4C", text: "#fff" }, // red, dark
-  { bg: "#77DD77", hover: "#4CAF50", text: "#222" }, // green, light
-  { bg: "#AEC6CF", hover: "#7BAFD4", text: "#222" }, // blue-gray, light
-  { bg: "#F49AC2", hover: "#E75480", text: "#fff" }, // pink, dark
-  { bg: "#FFD700", hover: "#FFC300", text: "#222" }, // yellow, light
-  { bg: "#B39EB5", hover: "#8D6E97", text: "#fff" }, // purple, dark
-  { bg: "#FFB7B2", hover: "#FF7F7F", text: "#222" }, // peach, light
-  { bg: "#779ECB", hover: "#4682B4", text: "#fff" }, // blue, dark
+  { bg: "#60a5fa", hover: "#3b82f6", text: "#fff" }, // blue
+  { bg: "#f472b6", hover: "#ec4899", text: "#fff" }, // pink
+  { bg: "#fcb703", hover: "#d97706", text: "#fff" }, // yellow
 ];
 
 const offerings = [

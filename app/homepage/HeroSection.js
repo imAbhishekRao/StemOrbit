@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 md:px-12 py-12 md:py-24 gap-8 md:gap-0 min-h-[70vh]">
+    <section className="relative w-full flex flex-col md:flex-row items-center justify-between min-h-[70vh] bg-white px-4 md:px-8">
       {/* Decorative Drone SVG Top Left */}
       <div className="hidden md:block absolute top-12 left-12 z-10 animate-ambient-float">
         <svg width="80" height="60" viewBox="0 0 100 100" fill="#ec4899" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +42,7 @@ export default function HeroSection() {
         <p className="text-base md:text-lg text-gray-700 mb-6 max-w-xl font-quicksand">
           At STEM Orbit, we spark curiosity and empower young minds through hands-on STEM learning. Our programs blend creativity, collaboration, and real-world problem-solving—preparing students for a future driven by innovation and technology.
         </p>
-        <button className="px-8 py-3 bg-pink-600 text-white font-semibold text-lg rounded-full shadow-soft hover:bg-pink-700 transition-all duration-300 font-fredoka">
+        <button className="px-8 py-3 bg-pink-600 text-white font-semibold text-lg rounded-full shadow-soft hover:bg-sky-500 transition-all duration-300 font-fredoka">
           Read More
         </button>
         {/* Decorative Boy Image */}

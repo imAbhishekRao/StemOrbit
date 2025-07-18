@@ -129,7 +129,7 @@ export default function Careers() {
                 <span className="text-sm text-gray-500 mb-2">Location: {job.location}</span>
                 <span className="text-sm text-gray-500 mb-2">Experience: {job.experience.replace(/(\d+\+?)/g, (m) => `<span class="font-poppins">${m}</span>`)}</span>
                 <span className="text-sm text-gray-500 mb-4">Type: {job.type}</span>
-                <button type="button" onClick={() => handleExplore(idx)} className="mt-auto py-2 px-4 bg-[#33aade] text-white rounded-lg font-semibold hover:bg-pink-500 transition">Explore</button>
+                <button type="button" onClick={() => handleExplore(idx)} className="mt-auto py-2 px-4 bg-[#33aade] text-white rounded-lg font-semibold hover:bg-sky-500 transition">Explore</button>
               </div>
             ))}
           </div>

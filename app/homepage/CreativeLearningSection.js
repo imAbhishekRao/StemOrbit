@@ -24,7 +24,7 @@ export default function CreativeLearningSection() {
         <p className="text-lg text-gray-500 mb-8 font-quicksand">
           Morbi mauris augue, pulvinar quis luctus eget, pretium sed massa. Phasellus gravida lacus quis eros lobortis, nec dapibus quam gravida. Duis sed augue vitae felis pellentesque varius nec quis nunc.
         </p>
-        <button className="px-10 py-4 bg-pink-600 text-white font-semibold text-lg rounded-full shadow-soft hover:bg-pink-700 transition-all duration-300 font-fredoka">
+        <button className="px-10 py-4 bg-pink-600 text-white font-semibold text-lg rounded-full shadow-soft hover:bg-sky-500 transition-all duration-300 font-fredoka">
           Creative Works
         </button>
       </div>
