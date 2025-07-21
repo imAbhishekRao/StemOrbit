@@ -2,7 +2,7 @@ const technologies = [
   {
     name: "Advance Robotics",
     icon: (
-      <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="28" fill="#38bdf8"/><path d="M18 38v-8a6 6 0 016-6h8a6 6 0 016 6v8" stroke="#fff" strokeWidth="2"/><circle cx="28" cy="24" r="4" fill="#fff"/><circle cx="22" cy="40" r="2" fill="#fff"/><circle cx="34" cy="40" r="2" fill="#fff"/></svg>
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M18 38v-8a6 6 0 016-6h8a6 6 0 016 6v8" stroke="#fff" strokeWidth="2"/><circle cx="28" cy="24" r="4" fill="#fff"/><circle cx="22" cy="40" r="2" fill="#fff"/><circle cx="34" cy="40" r="2" fill="#fff"/></svg>
     ),
   },
   {
@@ -103,9 +103,10 @@ export default function TechnologiesSection() {
                 style={{ borderRadius: 'inherit' }}
               />
             </div>
-            <div className="flex flex-col items-center justify-end flex-1 pb-4 pt-8 w-full z-10 relative">
-              <h3 className="text-lg font-bold font-bubblegum text-white text-center drop-shadow-lg">{tech.name}</h3>
-              <svg height="8" width="60" className="mt-2"><path d="M5 5 Q30 15 55 5" stroke="#fff" strokeWidth="2" fill="none"/></svg>
+            <div className="flex flex-col items-center justify-end flex-1 pb-0 pt-4 w-full z-10 relative">
+              <div className="absolute left-0 right-0 bottom-0 w-full h-12 z-0 pointer-events-none select-none bg-pink-400 rounded-t-3xl" />
+              <h3 className="text-lg font-bold font-bubblegum text-white text-center drop-shadow-lg relative z-10">{tech.name}</h3>
+              <svg height="16" width="90" className="relative z-10 mb-1 -mt-2"><path d="M10 10 Q45 0 80 10" stroke="#fff" strokeWidth="3" fill="none"/></svg>
               </div>
           </div>
           );
