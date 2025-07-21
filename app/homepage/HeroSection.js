@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full flex flex-col md:flex-row items-center justify-between min-h-[70vh] bg-white px-4 md:px-8">
+    <section className="relative w-full flex flex-col md:flex-row items-center justify-between min-h-[400px] md:min-h-[500px] bg-white px-4 md:px-8">
       {/* Decorative Drone SVG Top Left */}
       <div className="hidden md:block absolute top-12 left-12 z-10 animate-ambient-float">
         <svg width="80" height="60" viewBox="0 0 100 100" fill="#ec4899" xmlns="http://www.w3.org/2000/svg">
@@ -23,8 +23,8 @@ export default function HeroSection() {
         <svg viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute w-[370px] h-[300px] md:w-[420px] md:h-[340px] -left-4 md:left-0 z-0">
           <path d="M60 60 Q210 0 360 60 Q420 170 360 280 Q210 340 60 280 Q0 170 60 60Z" fill="#FFA726"/>
         </svg>
-        <div className="relative w-[320px] h-[240px] md:w-[370px] md:h-[270px] rounded-[60%_40%_40%_60%/60%_40%_60%_40%] overflow-hidden shadow-strong z-10">
-          <Image src="/about-img.webp" alt="Kids learning STEM" fill className="object-cover animate-ambient-zoom" priority />
+        <div className="relative w-[350px] md:w-[400px] h-[420px] md:h-[520px] rounded-[50%_60%_40%_70%/60%_40%_70%_50%] overflow-hidden shadow-strong z-10">
+          <Image src="/WhatsApp Image 2025-07-17 at 10.51.25 (1).jpeg" alt="About Us" fill className="object-cover animate-ambient-zoom" priority />
         </div>
         {/* Decorative Dot */}
         <div className="absolute top-2 left-1/2 w-8 h-8 bg-orange-300 rounded-full z-20" />

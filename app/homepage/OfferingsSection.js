@@ -4,7 +4,7 @@ import Image from "next/image";
 const cardColors = [
   { bg: "#60a5fa", hover: "#3b82f6", text: "#fff" }, // blue
   { bg: "#f472b6", hover: "#ec4899", text: "#fff" }, // pink
-  { bg: "#fcb703", hover: "#d97706", text: "#fff" }, // yellow
+  { bg: "#ffa726", hover: "#d97706", text: "#fff" }, // yellow
 ];
 
 const offerings = [
@@ -57,8 +57,8 @@ const offerings = [
     img: "/about-img.webp",
   },
   {
-    title: "Custom STEM Solutions",
-    desc: "Tailored programs and support to meet your school’s unique STEM needs.",
+    title: "Workshops",
+    desc: "Hands-on STEM workshops designed to spark creativity and practical skills in students and teachers alike.",
     svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
     img: "/about-img.webp",
   },
@@ -67,13 +67,22 @@ const offerings = [
 export default function OfferingsSection() {
   return (
     <section className="w-full flex flex-col items-center justify-center py-16 bg-[#FFF7F0] relative">
+      <h2 className="text-4xl md:text-5xl font-comicneue font-extrabold text-pink-600 mb-10 drop-shadow-lg text-center">Our Offerings</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl w-full px-4">
         {offerings.map((item, idx) => {
-          const color = cardColors[idx % cardColors.length];
+          // Calculate row and col for 3-column layout
+          const row = Math.floor(idx / 3);
+          const col = idx % 3;
+          // Alternate color order by row
+          let colorIdx;
+          if (row % 3 === 0) colorIdx = col; // blue, pink, yellow
+          else if (row % 3 === 1) colorIdx = (col + 1) % 3; // pink, yellow, blue
+          else colorIdx = (col + 2) % 3; // yellow, blue, pink
+          const color = cardColors[colorIdx];
           return (
             <div
               key={item.title}
-              className={`group rounded-[2.5rem] shadow-strong p-6 flex flex-row items-center transition-all duration-300 cursor-pointer relative overflow-hidden min-h-[220px] border-2 border-pink-100 hover:border-pink-300 animate-childish-bounce`}
+              className={`group rounded-[2.5rem] shadow-strong p-6 flex flex-row items-center transition-all duration-300 cursor-pointer relative overflow-hidden min-h-[220px] border-2 border-pink-100 hover:border-pink-300 transform hover:rotate-2 hover:scale-105`}
               style={{ background: color.bg }}
             >
               {/* Left: Blob Image */}
@@ -88,11 +97,13 @@ export default function OfferingsSection() {
               {/* Right: Content */}
               <div className="flex-1 z-20">
                 <h3
-                  className={`text-lg font-bold mb-2 font-bubblegum transition-colors duration-300`}
+                  className={`text-xl font-extrabold mb-2 font-fredoka transition-colors duration-300`}
                   style={{ color: color.text }}
                 >
                   {item.title}
                 </h3>
+                {/* User-uploaded wave SVG beneath heading */}
+                <img src="/wave.svg" alt="wave" className="mb-2 w-20 h-auto" aria-hidden="true" />
                 <p
                   className={`mb-4 font-quicksand transition-colors duration-300`}
                   style={{ color: color.text }}
@@ -109,12 +120,28 @@ export default function OfferingsSection() {
                     className={`block h-1 w-10 rounded-full mt-1 transition-colors duration-300`}
                     style={{ background: color.text }}
                   />
+                  <img src="/highlight.svg" alt="highlight" className="w-8 h-auto ml-1" aria-hidden="true" />
                 </a>
               </div>
-              {/* SVG appears only on hover, bottom right, original color */}
-              <div className="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <Image src={item.svg} alt="Card SVG" width={48} height={48} className="drop-shadow-lg" />
-              </div>
+              {/* Choose SVG based on card title/content */}
+              {(() => {
+                const title = item.title.toLowerCase();
+                let svg = item.svg;
+                if (title.includes('robotic') || title.includes('robotics')) svg = '/drone-svgrepo-com.svg';
+                else if (title.includes('3d')) svg = '/reshot-icon-3d-technology-X8JNDUBMQC.svg';
+                else if (title.includes('web') || title.includes('app') || title.includes('coding')) svg = '/reshot-icon-web-design-ZD36AXCWJB.svg';
+                else if (title.includes('cmos') || title.includes('stem class') || title.includes('school')) svg = '/reshot-icon-cmos-T2BZYAXHGV.svg';
+                else if (title.includes('virtual') || title.includes('vr')) svg = '/vr-svgrepo-com.svg';
+                else if (title.includes('smartwatch')) svg = '/smartwatch-svgrepo-com (1).svg';
+                else if (title.includes('window')) svg = '/window.svg';
+                else if (title.includes('globe') || title.includes('global')) svg = '/globe.svg';
+                // Add more mappings as needed
+                return (
+                  <div className="absolute bottom-4 left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <Image src={svg} alt="Card SVG" width={80} height={80} className="drop-shadow-lg" />
+                  </div>
+                );
+              })()}
               {/* Hover overlay for color change */}
               <div
                 className="absolute inset-0 rounded-[2.5rem] pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:scale-105"
