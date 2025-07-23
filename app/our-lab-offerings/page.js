@@ -291,7 +291,8 @@ export default function OurLabOfferings() {
       </section>
       {/* Plethora of Activities Section */}
       <section className="w-full flex flex-col items-center justify-center py-16 px-2 bg-white">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-700 mb-10 text-center drop-shadow-lg">Plethora of Activities</h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-700 mb-2 text-center drop-shadow-lg">Plethora of Activities</h2>
+        <p className="text-lg text-gray-600 mb-8 text-center max-w-2xl">Fun activities blended with learning!</p>
         <div className="w-full max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="row-span-2 col-span-2 md:row-span-2 md:col-span-2 flex items-center justify-center">
             <img src="/about-img.webp" alt="About" className="rounded-2xl object-cover w-full h-64 md:h-80 shadow-lg" />
