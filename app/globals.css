@@ -4,6 +4,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+/* Add a utility class for Bubblegum Sans if needed */
+.bubblegum-sans {
+  font-family: 'Bubblegum Sans', cursive;
+}
 
 :root {
   --background: #ffffff;

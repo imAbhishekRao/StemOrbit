@@ -140,38 +140,99 @@ export default function OurLabOfferings() {
         <p className="text-lg md:text-xl text-gray-700 mb-8 font-normal text-center max-w-2xl mx-auto">
           — tailor every module to spark student interest, align with your school’s academic vision, and fit seamlessly within your annual budget.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-4 w-full max-w-4xl">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-4 w-full max-w-6xl">
           {/* Robotics */}
-          <div className="relative flex flex-col items-center bg-blue-400 rounded-2xl pt-14 pb-6 px-4 min-w-[180px] w-full">
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2">
-              <Image src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=facearea&w=96&h=96" width={96} height={96} alt="Robotics" className="rounded-full border-4 border-white" />
+          <div className="flex flex-col items-center relative min-w-[270px] w-full h-[420px]">
+            {/* Heading above card, overlapping */}
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-20 px-4 py-2 bg-white rounded-2xl shadow-lg border border-blue-100 flex items-center justify-center" style={{minWidth: '140px'}}>
+              <h3 className="text-xl font-bold text-blue-700 text-center whitespace-nowrap">Robotics Lab</h3>
             </div>
-            <h3 className="text-lg font-bold text-white mt-2 mb-2 text-center">Robotics</h3>
-            <p className="text-white text-sm text-center">Build, code, and bring robots to life with hands-on kits and challenges.</p>
+            <div className="flex flex-col justify-between bg-blue-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
+              <div className="flex justify-center items-center mb-4 -mt-4">
+                <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
+                  <Image src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=facearea&w=176&h=176" width={176} height={176} alt="Robotics" className="object-cover w-full h-full" />
+                </div>
+              </div>
+              <ul className="mb-4 space-y-2">
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Hands-on Robot Kits</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Coding & Programming</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Teamwork Challenges</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Real-World Problem </li>
+              </ul>
+              <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-blue-500 text-white font-bold text-base shadow hover:bg-blue-600 mt-auto mb-4 transition-all tracking-wide">
+                <span className="">EXPLORE</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </button>
+            </div>
           </div>
           {/* AI Labs */}
-          <div className="relative flex flex-col items-center bg-purple-400 rounded-2xl pt-14 pb-6 px-4 min-w-[180px] w-full">
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2">
-              <Image src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=96&h=96" width={96} height={96} alt="AI Labs" className="rounded-full border-4 border-white" />
+          <div className="flex flex-col items-center relative min-w-[270px] w-full h-[420px]">
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-20 px-4 py-2 bg-white rounded-2xl shadow-lg border border-purple-100 flex items-center justify-center" style={{minWidth: '140px'}}>
+              <h3 className="text-xl font-bold text-purple-700 text-center whitespace-nowrap">AI LAB</h3>
             </div>
-            <h3 className="text-lg font-bold text-white mt-2 mb-2 text-center">AI Labs</h3>
-            <p className="text-white text-sm text-center">Explore artificial intelligence, machine learning, and smart tech projects.</p>
+            <div className="flex flex-col justify-between bg-purple-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
+              <div className="flex justify-center items-center mb-4 -mt-4">
+                <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
+                  <Image src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=176&h=176" width={176} height={176} alt="AI Labs" className="object-cover w-full h-full" />
+                </div>
+              </div>
+              <ul className="mb-4 space-y-2">
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> AI & Machine Learning</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Smart Tech Projects</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Creative Problem Solving</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Future-Ready Skills</li>
+              </ul>
+              <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-purple-500 text-white font-bold text-base shadow hover:bg-purple-600 mt-auto mb-4 transition-all tracking-wide">
+                <span className="">EXPLORE</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </button>
+            </div>
           </div>
           {/* STEM Labs */}
-          <div className="relative flex flex-col items-center bg-green-400 rounded-2xl pt-14 pb-6 px-4 min-w-[180px] w-full">
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2">
-              <Image src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=facearea&w=96&h=96" width={96} height={96} alt="STEM Labs" className="rounded-full border-4 border-white" />
+          <div className="flex flex-col items-center relative min-w-[270px] w-full h-[420px]">
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-20 px-4 py-2 bg-white rounded-2xl shadow-lg border border-green-100 flex items-center justify-center" style={{minWidth: '140px'}}>
+              <h3 className="text-xl font-bold text-green-700 text-center whitespace-nowrap">STEM LAB</h3>
             </div>
-            <h3 className="text-lg font-bold text-white mt-2 mb-2 text-center">STEM Labs</h3>
-            <p className="text-white text-sm text-center">Hands-on science, technology, engineering, and math experiments for all ages.</p>
+            <div className="flex flex-col justify-between bg-green-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
+              <div className="flex justify-center items-center mb-4 -mt-4">
+                <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
+                  <Image src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=facearea&w=176&h=176" width={176} height={176} alt="STEM Labs" className="object-cover w-full h-full" />
+                </div>
+              </div>
+              <ul className="mb-4 space-y-2">
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Interactive Experiments</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Engineering Challenges</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Math in Action</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Science Discovery</li>
+              </ul>
+              <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-green-500 text-white font-bold text-base shadow hover:bg-green-600 mt-auto mb-4 transition-all tracking-wide">
+                <span className="">EXPLORE</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </button>
+            </div>
           </div>
           {/* 3D Design & Printing */}
-          <div className="relative flex flex-col items-center bg-pink-400 rounded-2xl pt-14 pb-6 px-4 min-w-[180px] w-full">
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2">
-              <Image src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=facearea&w=96&h=96" width={96} height={96} alt="3D Design & Printing" className="rounded-full border-4 border-white" />
+          <div className="flex flex-col items-center relative min-w-[270px] w-full h-[420px]">
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-20 px-4 py-2 bg-white rounded-2xl shadow-lg border border-pink-100 flex items-center justify-center" style={{minWidth: '140px'}}>
+              <h3 className="text-xl font-bold text-pink-700 text-center whitespace-nowrap">3D LAB</h3>
             </div>
-            <h3 className="text-lg font-bold text-white mt-2 mb-2 text-center">3D Design & Printing</h3>
-            <p className="text-white text-sm text-center">Create, design, and print 3D models to turn imagination into reality.</p>
+            <div className="flex flex-col justify-between bg-yellow-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
+              <div className="flex justify-center items-center mb-4 -mt-4">
+                <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
+                  <Image src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=facearea&w=176&h=176" width={176} height={176} alt="3D Design & Printing" className="object-cover w-full h-full" />
+                </div>
+              </div>
+              <ul className="mb-4 space-y-2">
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> 3D Modeling Skills</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Creative Prototyping</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Real-World Innovation</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Bring Ideas to Life</li>
+              </ul>
+              <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-pink-500 text-white font-bold text-base shadow hover:bg-pink-600 mt-auto mb-4 transition-all tracking-wide">
+                <span className="">EXPLORE</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -188,10 +249,10 @@ export default function OurLabOfferings() {
         {/* Content Row */}
         <div className="relative z-10 flex-1 flex flex-col items-start max-w-xl">
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
-            Lab experiences, where young minds rise <span className="text-yellow-400">ignite curiosity</span>
+            Empowering Educators: Teacher Training & Support
           </h2>
           <p className="text-lg text-gray-700 mb-6">
-            Our lab offerings provide hands-on, project-based learning in robotics, AI, STEM, and 3D design. Students collaborate, experiment, and innovate in a safe, inspiring environment designed to spark lifelong passion for science and technology.
+            Our teacher training and support program equips educators with the skills, confidence, and resources to deliver engaging, hands-on STEM learning experiences. We believe empowered teachers ignite curiosity and inspire lifelong learning in every student.
           </p>
           <div className="flex flex-col gap-5 w-full">
             <div className="flex items-start gap-4">
@@ -199,8 +260,8 @@ export default function OurLabOfferings() {
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
               </span>
               <div>
-                <div className="font-bold text-lg text-gray-900">Expert-Led Workshops</div>
-                <div className="text-gray-600 text-base">All labs are guided by passionate educators and industry professionals.</div>
+                <div className="font-bold text-lg text-gray-900">Comprehensive Training</div>
+                <div className="text-gray-600 text-base">Hands-on, practical workshops ensure teachers master STEM tools, curriculum, and classroom strategies.</div>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -208,8 +269,17 @@ export default function OurLabOfferings() {
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
               </span>
               <div>
-                <div className="font-bold text-lg text-gray-900">Real-World Skills</div>
-                <div className="text-gray-600 text-base">Students gain practical experience with the latest technology and tools.</div>
+                <div className="font-bold text-lg text-gray-900">Ongoing Support</div>
+                <div className="text-gray-600 text-base">Continuous mentoring, resources, and troubleshooting help teachers stay confident and effective all year.</div>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="flex-shrink-0 w-10 h-10 bg-green-400 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+              </span>
+              <div>
+                <div className="font-bold text-lg text-gray-900">Empowering Educators</div>
+                <div className="text-gray-600 text-base">We foster a community of passionate teachers who inspire students and drive innovation in STEM education.</div>
               </div>
             </div>
           </div>
@@ -219,10 +289,85 @@ export default function OurLabOfferings() {
           <Image src="/about-img.webp" alt="Lab Experience" width={600} height={600} className="w-full h-auto max-h-[420px] object-contain" />
         </div>
       </section>
+      {/* Plethora of Activities Section */}
+      <section className="w-full flex flex-col items-center justify-center py-16 px-2 bg-white">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-700 mb-10 text-center drop-shadow-lg">Plethora of Activities</h2>
+        <div className="w-full max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="row-span-2 col-span-2 md:row-span-2 md:col-span-2 flex items-center justify-center">
+            <img src="/about-img.webp" alt="About" className="rounded-2xl object-cover w-full h-64 md:h-80 shadow-lg" />
+          </div>
+          <img src="/vr.avif" alt="VR" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/ai.webp" alt="AI" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/iot.webp" alt="IoT" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/app.jpg" alt="App" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/students.svg" alt="Students" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md bg-white p-4" />
+          <img src="/3d-printing-history-featured.webp" alt="3D Printing" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/cybersec.jpg" alt="Cybersecurity" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+        </div>
+      </section>
       {/* Placeholder for rest of content */}
       <div className="w-full max-w-4xl mx-auto text-center bg-white rounded-2xl p-8 mt-12 md:mt-16">
         <p className="text-gray-500 text-lg">(Lab offerings content coming soon...)</p>
       </div>
+      {/* Our Course Offerings Section (moved to bottom) */}
+      <section className="w-full flex flex-col items-center justify-center py-12 px-2 bg-white">
+        <div className="relative w-full flex flex-col items-center mb-8">
+          {/* Decorative Wave SVG behind heading (100vw) */}
+          <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 my-12" style={{width: '100vw', height: '100px', pointerEvents: 'none'}} viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 40 Q 360 10 720 40 T 1440 40 Q 1080 90 720 60 T 0 60 Q 360 10 0 40 Z" fill="#f9a8d4" fillOpacity="0.5"/>
+            <path d="M0 60 Q 360 30 720 60 T 1440 60 Q 1080 100 720 70 T 0 70 Q 360 30 0 60 Z" fill="#38bdf8" fillOpacity="0.3"/>
+          </svg>
+          <h2 className="relative z-10 text-3xl md:text-4xl font-extrabold text-pink-700 font-[Comic Sans MS,cursive,sans-serif] text-center drop-shadow-lg">Our Course Offerings</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mt-15">
+          {/* Card 1 - Sky Blue */}
+          <div className="flex flex-col items-center bg-sky-300 rounded-3xl shadow-xl p-8 border-4 border-white hover:scale-105 transition-transform duration-300">
+            <div className="mb-2 text-2xl">🎨</div>
+            <h3 className="text-2xl font-bold text-sky-800 mb-2">Creative Crafters</h3>
+            <div className="text-4xl font-extrabold text-sky-700 mb-1">₹999</div>
+            <div className="text-sky-900 mb-4">per month</div>
+            <div className="text-base text-sky-900 mb-4 text-center">Unleash your imagination with hands-on art, design, and DIY science fun!</div>
+            <ul className="text-left text-sm text-sky-900 mb-6 space-y-2 font-['Bubblegum Sans',cursive]">
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Messy Science Experiments</li>
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>DIY Art Bots</li>
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Weekly Craft Challenges</li>
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>All materials included</li>
+            </ul>
+            <button className="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-xl shadow-md transition">Get started</button>
+          </div>
+          {/* Card 2 - Pink (Most Popular) */}
+          <div className="relative flex flex-col items-center bg-pink-400 rounded-3xl shadow-2xl p-10 border-4 border-pink-600 scale-105 z-10">
+            <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-pink-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg animate-bounce">Most Popular</span>
+            <div className="mb-2 text-2xl">🤖</div>
+            <h3 className="text-2xl font-bold text-white mb-2">Robo Rockstars</h3>
+            <div className="text-4xl font-extrabold text-white mb-1">₹1499</div>
+            <div className="text-pink-100 mb-4">per month</div>
+            <div className="text-base text-pink-50 mb-4 text-center">Build, code, and battle robots in a playful, team-based adventure!</div>
+            <ul className="text-left text-sm text-pink-50 mb-6 space-y-2 font-['Bubblegum Sans',cursive]">
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Robot Building Kits</li>
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Coding for Kids</li>
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Friendly Robot Battles</li>
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Trophies & Prizes</li>
+            </ul>
+            <button className="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-xl shadow-md transition">Get started</button>
+          </div>
+          {/* Card 3 - Yellow */}
+          <div className="flex flex-col items-center bg-yellow-300 rounded-3xl shadow-xl p-8 border-4 border-white hover:scale-105 transition-transform duration-300">
+            <div className="mb-2 text-2xl">🧪</div>
+            <h3 className="text-2xl font-bold text-yellow-800 mb-2">Science Sleuths</h3>
+            <div className="text-4xl font-extrabold text-yellow-700 mb-1">₹1299</div>
+            <div className="text-yellow-900 mb-4">per month</div>
+            <div className="text-base text-yellow-900 mb-4 text-center">Solve mysteries with chemistry, physics, and wild hands-on experiments!</div>
+            <ul className="text-left text-sm text-yellow-900 mb-6 space-y-2 font-['Bubblegum Sans',cursive]">
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Detective Science Labs</li>
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Explosive Experiments</li>
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Puzzle Challenges</li>
+              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Take-home Kits</li>
+            </ul>
+            <button className="w-full bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-bold py-2 px-4 rounded-xl shadow-md transition">Get started</button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
