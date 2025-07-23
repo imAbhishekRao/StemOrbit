@@ -306,10 +306,7 @@ export default function OurLabOfferings() {
           <img src="/cybersec.jpg" alt="Cybersecurity" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
         </div>
       </section>
-      {/* Placeholder for rest of content */}
-      <div className="w-full max-w-4xl mx-auto text-center bg-white rounded-2xl p-8 mt-12 md:mt-16">
-        <p className="text-gray-500 text-lg">(Lab offerings content coming soon...)</p>
-      </div>
+     
       {/* Our Course Offerings Section (moved to bottom) */}
       <section className="w-full flex flex-col items-center justify-center py-12 px-2 bg-white">
         <div className="relative w-full flex flex-col items-center mb-8">
