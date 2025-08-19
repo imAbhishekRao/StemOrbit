@@ -2,24 +2,19 @@ import Image from "next/image";
 
 const achievements = [
   {
-    img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
-    title: "Robotics Competition Winner",
-    desc: "Aryan won 1st place in the National Robotics Challenge 2024.",
+    img: "/achievement1.jpg",
+    title: "Project Showcase Winner",
+    desc: "Our students presented an innovative STEM project and won accolades.",
   },
   {
-    img: "/about-img.webp",
-    title: "Science Fair Champion",
-    desc: "Priya's project on renewable energy was awarded Best Innovation.",
+    img: "/Achievement2.jpg",
+    title: "National Science Award",
+    desc: "Recognized for outstanding performance in a national science competition.",
   },
   {
-    img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
-    title: "Math Olympiad Star",
-    desc: "Yuvin scored in the top 1% in the International Math Olympiad.",
-  },
-  {
-    img: "/WhatsApp Image 2025-07-17 at 10.51.25 (1).jpeg",
-    title: "Coding Prodigy",
-    desc: "Sneha built an AI chatbot for her school project.",
+    img: "/achievement3.jpeg",
+    title: "Tech Fest Champions",
+    desc: "Secured first place in the inter-school tech fest for creative solutions.",
   },
   {
     img: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80",

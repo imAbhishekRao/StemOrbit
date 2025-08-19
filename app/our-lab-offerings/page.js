@@ -286,7 +286,7 @@ export default function OurLabOfferings() {
         </div>
         {/* Right: Full image, object-contain, never cropped */}
         <div className="relative z-10 flex-1 flex justify-center items-center w-full h-full mt-8 md:mt-16">
-          <Image src="/about-img.webp" alt="Lab Experience" width={600} height={600} className="w-full h-auto max-h-[420px] object-contain" />
+          <Image src="/TeacherTraining.jpg" alt="Lab Experience" width={600} height={600} className="w-full h-auto max-h-[420px] object-contain" />
         </div>
       </section>
       {/* Plethora of Activities Section */}
