@@ -19,7 +19,21 @@ export default function Navbar() {
           <div className="hidden md:block">
             <div className="ml-8 flex items-center space-x-6 bubblegum-sans">
   <a href="/" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-medium transition-colors rounded-md">Home</a>
-  <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-medium transition-colors rounded-md">Our Lab Offerings</a>
+  <div className="relative group">
+    <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-medium transition-colors rounded-md flex items-center gap-1">
+      <span>Our Offerings</span>
+      <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </a>
+    {/* Dropdown */}
+    <div className="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+      <a href="/courses" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base">Our Courses</a>
+      <a href="/our-lab-offerings" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base">Our Lab Offerings</a>
+      <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base">Option 3</a>
+      <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base">Option 4</a>
+    </div>
+  </div>
   <a href="/gallery" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-medium transition-colors rounded-md">Gallery</a>
   <a href="/about" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-medium transition-colors rounded-md">About Us</a>
   <a href="/contact" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-medium transition-colors rounded-md">Contact Us</a>
@@ -70,7 +84,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-2 border-t border-pink-200 bg-white bg-opacity-90 rounded-b-3xl bubblegum-sans">
   <a href="/" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-medium transition-all duration-300 rounded-xl shadow-pink-100 hover:shadow-pink-300 hover:-translate-y-1 bubblegum-sans">Home</a>
-  <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-medium transition-all duration-300 rounded-xl shadow-blue-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Our Lab Offerings</a>
+  <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-medium transition-all duration-300 rounded-xl shadow-blue-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Our Offerings</a>
   <a href="/gallery" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-medium transition-all duration-300 rounded-xl shadow-purple-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Gallery</a>
   <a href="/about" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-medium transition-all duration-300 rounded-xl shadow-yellow-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">About Us</a>
   <a href="/contact" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-medium transition-all duration-300 rounded-xl shadow-green-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Contact Us</a>

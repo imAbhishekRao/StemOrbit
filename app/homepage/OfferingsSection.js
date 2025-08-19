@@ -62,6 +62,24 @@ const offerings = [
     svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
     img: "/about-img.webp",
   },
+  {
+    title: "STEM Kits",
+    desc: "Hands-on STEM workshops designed to spark creativity and practical skills in students and teachers alike.",
+    svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
+    img: "/about-img.webp",
+  },
+  {
+    title: "STEM courses/ STEM Programmes",
+    desc: "Hands-on STEM workshops designed to spark creativity and practical skills in students and teachers alike.",
+    svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
+    img: "/about-img.webp",
+  },
+  {
+    title: "3d Printing Services",
+    desc: "Hands-on STEM workshops designed to spark creativity and practical skills in students and teachers alike.",
+    svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
+    img: "/about-img.webp",
+  },
 ];
 
 export default function OfferingsSection() {

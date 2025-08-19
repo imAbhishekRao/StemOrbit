@@ -23,7 +23,6 @@ const achievementImages = [
 
 export default function AchievementsSection() {
   const scrollRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
   const [hoveredIdx, setHoveredIdx] = useState(null);
 
   useEffect(() => {
@@ -33,7 +32,8 @@ export default function AchievementsSection() {
     let scrollAmount = scrollContainer.scrollLeft;
     const speed = 1;
     function animate() {
-      if (!isPaused) {
+      // Pause only when any card is hovered
+      if (hoveredIdx === null) {
         scrollAmount += speed;
         if (scrollAmount >= scrollContainer.scrollWidth / 2) {
           scrollAmount = 0;
@@ -44,7 +44,7 @@ export default function AchievementsSection() {
     }
     animate();
     return () => cancelAnimationFrame(animationFrame);
-  }, [isPaused]);
+  }, [hoveredIdx]);
 
   // Duplicate images for infinite effect
   const imagesToRender = [...achievementImages, ...achievementImages];
@@ -58,8 +58,6 @@ export default function AchievementsSection() {
         ref={scrollRef}
         className="w-screen overflow-x-auto whitespace-nowrap scrollbar-hide relative flex items-center"
         style={{ scrollBehavior: "smooth", maxWidth: '100vw', height: '340px' }}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
       >
         <div className="flex items-center" style={{ width: `${imagesToRender.length * 520}px`, height: '340px' }}>
           {imagesToRender.map((img, idx) => (
@@ -102,7 +100,7 @@ export default function AchievementsSection() {
                 </div>
                 {/* Back */}
                 <div
-                  className="absolute w-full h-full flex flex-col items-center justify-center bg-pink-700 text-white backface-hidden"
+                  className="absolute w-full h-full flex flex-col items-center justify-center bg-[#2aaadf] text-white backface-hidden"
                   style={{
                     zIndex: 3,
                     borderRadius: 'inherit',
@@ -118,6 +116,10 @@ export default function AchievementsSection() {
                   <div className="flex flex-col items-center justify-center w-full h-full px-4">
                     <h3 className="text-2xl font-bold mb-2 font-fredoka text-center" style={{wordBreak: 'break-word', whiteSpace: 'normal'}}>{img.title}</h3>
                     <p className="text-lg font-quicksand text-center" style={{wordBreak: 'break-word', whiteSpace: 'normal'}}>{img.desc}</p>
+                    <p className="mt-3 text-base font-quicksand flex items-center gap-2 text-white/90">
+                      <span role="img" aria-label="location">📌</span>
+                      <span>Saint Soldier's School, Jalandhar</span>
+                    </p>
                   </div>
                 </div>
               </div>
