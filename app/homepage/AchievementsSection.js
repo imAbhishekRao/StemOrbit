@@ -1,29 +1,72 @@
 import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 
 // List of achievement images and info
 const achievementImages = [
   {
-    src: "/achievement1.jpg",
-    title: "Project Showcase Winner",
-    desc: "Our students presented an innovative STEM project and won accolades.",
+    src: "/WhatsApp Image 2025-08-21 at 10.41.29.jpeg",
+    title: "Student Achievement 1",
+    desc: "Celebrating our students' recent accomplishments.",
   },
   {
-    src: "/Achievement2.jpg",
-    title: "National Science Award",
-    desc: "Recognized for outstanding performance in a national science competition.",
+    src: "/WhatsApp Image 2025-08-20 at 12.16.01 (1).jpeg",
+    title: "Student Achievement 2",
+    desc: "Celebrating our students' recent accomplishments.",
   },
   {
-    src: "/achievement3.jpeg",
-    title: "Tech Fest Champions",
-    desc: "Secured first place in the inter-school tech fest for creative solutions.",
+    src: "/WhatsApp Image 2025-08-20 at 12.19.28 (2).jpeg",
+    title: "Student Achievement 3",
+    desc: "Celebrating our students' recent accomplishments.",
   },
-  // Add more images here if needed
+  {
+    src: "/WhatsApp Image 2025-08-20 at 12.23.01.jpeg",
+    title: "Student Achievement 4",
+    desc: "Celebrating our students' recent accomplishments.",
+  },
+  {
+    src: "/WhatsApp Image 2025-08-20 at 12.28.30.jpeg",
+    title: "Student Achievement 5",
+    desc: "Celebrating our students' recent accomplishments.",
+  },
+  {
+    src: "/WhatsApp Image 2025-08-20 at 12.32.03.jpeg",
+    title: "Student Achievement 6",
+    desc: "Celebrating our students' recent accomplishments.",
+  },
+  {
+    src: "/WhatsApp Image 2025-08-20 at 12.39.14.jpeg",
+    title: "Student Achievement 7",
+    desc: "Celebrating our students' recent accomplishments.",
+  },
+  {
+    src: "/WhatsApp Image 2025-08-20 at 12.45.21.jpeg",
+    title: "Student Achievement 8",
+    desc: "Celebrating our students' recent accomplishments.",
+  },
+  {
+    src: "/WhatsApp Image 2025-08-20 at 13.00.37.jpeg",
+    title: "Student Achievement 9",
+    desc: "Celebrating our students' recent accomplishments.",
+  },
+  {
+    src: "/WhatsApp Image 2025-08-20 at 13.04.03.jpeg",
+    title: "Student Achievement 10",
+    desc: "Celebrating our students' recent accomplishments.",
+  },
+  {
+    src: "/WhatsApp Image 2025-08-20 at 13.08.17.jpeg",
+    title: "Student Achievement 11",
+    desc: "Celebrating our students' recent accomplishments.",
+  },
+  {
+    src: "/WhatsApp Image 2025-08-20 at 13.08.17 (1).jpeg",
+    title: "Student Achievement 12",
+    desc: "Celebrating our students' recent accomplishments.",
+  },
 ];
 
 export default function AchievementsSection() {
   const scrollRef = useRef(null);
-  const [hoveredIdx, setHoveredIdx] = useState(null);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -32,19 +75,16 @@ export default function AchievementsSection() {
     let scrollAmount = scrollContainer.scrollLeft;
     const speed = 1;
     function animate() {
-      // Pause only when any card is hovered
-      if (hoveredIdx === null) {
-        scrollAmount += speed;
-        if (scrollAmount >= scrollContainer.scrollWidth / 2) {
-          scrollAmount = 0;
-        }
-        scrollContainer.scrollLeft = scrollAmount;
+      scrollAmount += speed;
+      if (scrollAmount >= scrollContainer.scrollWidth / 2) {
+        scrollAmount = 0;
       }
+      scrollContainer.scrollLeft = scrollAmount;
       animationFrame = requestAnimationFrame(animate);
     }
     animate();
     return () => cancelAnimationFrame(animationFrame);
-  }, [hoveredIdx]);
+  }, []);
 
   // Duplicate images for infinite effect
   const imagesToRender = [...achievementImages, ...achievementImages];
@@ -64,64 +104,19 @@ export default function AchievementsSection() {
             <div
               key={idx}
               className="inline-block px-4 max-w-[500px]"
-              style={{ width: '500px', height: '340px', perspective: '1200px', maxWidth: '500px' }}
-              onMouseEnter={() => setHoveredIdx(idx)}
-              onMouseLeave={() => setHoveredIdx(null)}
+              style={{ width: '500px', height: '340px', maxWidth: '500px' }}
             >
-              <div
-                className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] rounded-3xl shadow-2xl`}
-                style={{ overflow: 'hidden', borderRadius: '1.5rem' }}
-              >
-                {/* Front */}
-                <div
-                  className="absolute w-full h-full backface-hidden"
-                  style={{
-                    zIndex: 2,
-                    borderRadius: 'inherit',
-                    overflow: 'hidden',
-                    left: 0,
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    transition: 'transform 0.5s',
-                    transform: hoveredIdx === idx ? 'rotateY(180deg)' : 'none',
-                  }}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.title}
-                    width={500}
-                    height={340}
-                    className="object-cover w-full h-full"
-                    draggable={false}
-                    priority={idx < 3}
-                    sizes="500px"
-                  />
-                </div>
-                {/* Back */}
-                <div
-                  className="absolute w-full h-full flex flex-col items-center justify-center bg-[#2aaadf] text-white backface-hidden"
-                  style={{
-                    zIndex: 3,
-                    borderRadius: 'inherit',
-                    overflow: 'hidden',
-                    left: 0,
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    transition: 'transform 0.5s',
-                    transform: hoveredIdx === idx ? 'none' : 'rotateY(180deg)',
-                  }}
-                >
-                  <div className="flex flex-col items-center justify-center w-full h-full px-4">
-                    <h3 className="text-2xl font-bold mb-2 font-fredoka text-center" style={{wordBreak: 'break-word', whiteSpace: 'normal'}}>{img.title}</h3>
-                    <p className="text-lg font-quicksand text-center" style={{wordBreak: 'break-word', whiteSpace: 'normal'}}>{img.desc}</p>
-                    <p className="mt-3 text-base font-quicksand flex items-center gap-2 text-white/90">
-                      <span role="img" aria-label="location">📌</span>
-                      <span>Saint Soldier's School, Jalandhar</span>
-                    </p>
-                  </div>
-                </div>
+              <div className="relative w-full h-full shadow-lg rounded-xl overflow-hidden flex items-center justify-center bg-white ring-1 ring-pink-100/60">
+                <Image
+                  src={img.src}
+                  alt={img.title}
+                  width={500}
+                  height={340}
+                  className="object-cover w-full h-full"
+                  draggable={false}
+                  priority={idx < 3}
+                  sizes="500px"
+                />
               </div>
             </div>
           ))}
@@ -130,8 +125,6 @@ export default function AchievementsSection() {
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        .backface-hidden { backface-visibility: hidden; }
-        .rotate-y-180 { transform: rotateY(180deg); }
       `}</style>
     </section>
   );

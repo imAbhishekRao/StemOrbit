@@ -3,6 +3,31 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 
+// Testimonial data
+const testimonials = [
+  {
+    name: "Alexander Miller",
+    role: "Parent",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    rating: 5,
+    quote: "Flexible Classes refers to the process of acquiring knowledge or skills through the use of digital technologies and the internet. Flexible Classes refers to the process flexible Classes refers to the process.",
+  },
+  {
+    name: "Priya Sharma",
+    role: "Teacher",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    rating: 4.5,
+    quote: "The STEM labs have transformed our classroom experience. Students are more engaged and excited to learn!",
+  },
+  {
+    name: "Rahul Verma",
+    role: "Student",
+    avatar: "https://randomuser.me/api/portraits/men/65.jpg",
+    rating: 5,
+    quote: "I love building robots and working on AI projects. The labs make learning so much fun!",
+  },
+]; 
+
 export default function OurLabOfferings() {
   // Animated counting for achievements
   const [counts, setCounts] = useState({ schools: 0, students: 0, teachers: 0, curriculum: 0 });
@@ -45,6 +70,7 @@ export default function OurLabOfferings() {
     observer.observe(achievementsRef.current);
     return () => observer.disconnect();
   }, [achievementsRef, hasCounted]);
+
 
   // Testimonial carousel state
   const [testimonialIdx, setTestimonialIdx] = useState(0);
@@ -307,90 +333,33 @@ export default function OurLabOfferings() {
         </div>
       </section>
      
-      {/* Our Course Offerings Section (moved to bottom) */}
-      <section className="w-full flex flex-col items-center justify-center py-12 px-2 bg-white">
-        <div className="relative w-full flex flex-col items-center mb-8">
-          {/* Decorative Wave SVG behind heading (100vw) */}
-          <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 my-12" style={{width: '100vw', height: '100px', pointerEvents: 'none'}} viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 40 Q 360 10 720 40 T 1440 40 Q 1080 90 720 60 T 0 60 Q 360 10 0 40 Z" fill="#f9a8d4" fillOpacity="0.5"/>
-            <path d="M0 60 Q 360 30 720 60 T 1440 60 Q 1080 100 720 70 T 0 70 Q 360 30 0 60 Z" fill="#38bdf8" fillOpacity="0.3"/>
-          </svg>
-          <h2 className="relative z-10 text-3xl md:text-4xl font-extrabold text-pink-700 font-[Comic Sans MS,cursive,sans-serif] text-center drop-shadow-lg">Our Course Offerings</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mt-15">
-          {/* Card 1 - Sky Blue */}
-          <div className="flex flex-col items-center bg-sky-300 rounded-3xl shadow-xl p-8 border-4 border-white hover:scale-105 transition-transform duration-300">
-            <div className="mb-2 text-2xl">🎨</div>
-            <h3 className="text-2xl font-bold text-sky-800 mb-2">Creative Crafters</h3>
-            <div className="text-4xl font-extrabold text-sky-700 mb-1">₹999</div>
-            <div className="text-sky-900 mb-4">per month</div>
-            <div className="text-base text-sky-900 mb-4 text-center">Unleash your imagination with hands-on art, design, and DIY science fun!</div>
-            <ul className="text-left text-sm text-sky-900 mb-6 space-y-2 font-['Bubblegum Sans',cursive]">
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Messy Science Experiments</li>
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>DIY Art Bots</li>
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Weekly Craft Challenges</li>
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>All materials included</li>
-            </ul>
-            <button className="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-xl shadow-md transition">Get started</button>
+      
+      {/* Testimonial Carousel Section */}
+      <section className="w-full flex flex-col items-center justify-center py-12 px-2 bg-gradient-to-br from-pink-100 to-pink-200">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-pink-700 mb-6 font-[Comic Sans MS,cursive,sans-serif] text-center">What People Say</h2>
+        <div className="relative w-full max-w-2xl mx-auto bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center">
+          <button onClick={prevTestimonial} className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-pink-200 hover:bg-pink-300 text-pink-700 rounded-full p-2 shadow transition-all">
+            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <div className="flex flex-col items-center">
+            <img src={testimonial.avatar} alt={testimonial.name} className="w-20 h-20 rounded-full mb-4 border-4 border-pink-200 shadow" />
+            <h3 className="text-xl font-bold text-pink-700 mb-1">{testimonial.name}</h3>
+            <span className="text-pink-500 text-sm mb-2">{testimonial.role}</span>
+            <div className="flex items-center mb-3">
+              {[...Array(Math.floor(testimonial.rating))].map((_, i) => (
+                <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.922-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.176 0l-3.388 2.46c-.784.57-1.838-.196-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118l-3.388-2.46c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
+              ))}
+              {testimonial.rating % 1 !== 0 && (
+                <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><defs><linearGradient id="half"><stop offset="50%" stopColor="#FFD700"/><stop offset="50%" stopColor="#E5E7EB"/></linearGradient></defs><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.922-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.176 0l-3.388 2.46c-.784.57-1.838-.196-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118l-3.388-2.46c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z" fill="url(#half)"/></svg>
+              )}
+            </div>
+            <blockquote className="text-lg text-gray-700 italic text-center max-w-xl mx-auto mb-4">"{testimonial.quote}"</blockquote>
           </div>
-          {/* Card 2 - Pink (Most Popular) */}
-          <div className="relative flex flex-col items-center bg-pink-400 rounded-3xl shadow-2xl p-10 border-4 border-pink-600 scale-105 z-10">
-            <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-pink-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg animate-bounce">Most Popular</span>
-            <div className="mb-2 text-2xl">🤖</div>
-            <h3 className="text-2xl font-bold text-white mb-2">Robo Rockstars</h3>
-            <div className="text-4xl font-extrabold text-white mb-1">₹1499</div>
-            <div className="text-pink-100 mb-4">per month</div>
-            <div className="text-base text-pink-50 mb-4 text-center">Build, code, and battle robots in a playful, team-based adventure!</div>
-            <ul className="text-left text-sm text-pink-50 mb-6 space-y-2 font-['Bubblegum Sans',cursive]">
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Robot Building Kits</li>
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Coding for Kids</li>
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Friendly Robot Battles</li>
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Trophies & Prizes</li>
-            </ul>
-            <button className="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-xl shadow-md transition">Get started</button>
-          </div>
-          {/* Card 3 - Yellow */}
-          <div className="flex flex-col items-center bg-yellow-300 rounded-3xl shadow-xl p-8 border-4 border-white hover:scale-105 transition-transform duration-300">
-            <div className="mb-2 text-2xl">🧪</div>
-            <h3 className="text-2xl font-bold text-yellow-800 mb-2">Science Sleuths</h3>
-            <div className="text-4xl font-extrabold text-yellow-700 mb-1">₹1299</div>
-            <div className="text-yellow-900 mb-4">per month</div>
-            <div className="text-base text-yellow-900 mb-4 text-center">Solve mysteries with chemistry, physics, and wild hands-on experiments!</div>
-            <ul className="text-left text-sm text-yellow-900 mb-6 space-y-2 font-['Bubblegum Sans',cursive]">
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Detective Science Labs</li>
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Explosive Experiments</li>
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Puzzle Challenges</li>
-              <li className="flex items-center gap-2"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>Take-home Kits</li>
-            </ul>
-            <button className="w-full bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-bold py-2 px-4 rounded-xl shadow-md transition">Get started</button>
-          </div>
+          <button onClick={nextTestimonial} className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-pink-200 hover:bg-pink-300 text-pink-700 rounded-full p-2 shadow transition-all">
+            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
         </div>
       </section>
     </div>
   );
 }
-
-// Testimonial data
-const testimonials = [
-  {
-    name: "Alexander Miller",
-    role: "Parent",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    rating: 5,
-    quote: "Flexible Classes refers to the process of acquiring knowledge or skills through the use of digital technologies and the internet. Flexible Classes refers to the process flexible Classes refers to the process.",
-  },
-  {
-    name: "Priya Sharma",
-    role: "Teacher",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-    rating: 4.5,
-    quote: "The STEM labs have transformed our classroom experience. Students are more engaged and excited to learn!",
-  },
-  {
-    name: "Rahul Verma",
-    role: "Student",
-    avatar: "https://randomuser.me/api/portraits/men/65.jpg",
-    rating: 5,
-    quote: "I love building robots and working on AI projects. The labs make learning so much fun!",
-  },
-]; 
