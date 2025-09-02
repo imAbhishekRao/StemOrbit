@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ParallaxScrollSecond } from "@/components/ui/parallax-scroll-2";
+import { ParallaxScrollSecond } from "../../components/ui/parallax-scroll-2";
 
 const parallaxData = [
   {

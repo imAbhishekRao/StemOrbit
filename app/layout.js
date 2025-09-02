@@ -2,6 +2,7 @@ import { Rubik, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navbar/page";
 import Footer from "./Footer/page";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -24,12 +25,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${rubik.variable} ${poppins.variable} font-sans antialiased`}
+        className={`${rubik.variable} ${poppins.variable} antialiased`}
         style={{ fontFamily: 'var(--font-rubik), sans-serif' }}
       >
         <Navbar />
-        {children}
+        <main>
+          {children}
+        </main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

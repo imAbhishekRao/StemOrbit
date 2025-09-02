@@ -185,6 +185,14 @@ export default function StemLabs() {
                   Download Brochure
                 </button>
               </div>
+              {/* Get in Touch Button */}
+              <div className={`mb-8 transition-all duration-1000 delay-600 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <button className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-lg rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                  Get in Touch
+                </button>
+              </div>
             </div>
             {/* Right: STEM Image/Emoji */}
             <div className="flex-1 flex justify-center">

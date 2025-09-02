@@ -21,6 +21,12 @@ export default function About() {
             <p className="text-base text-gray-600 mb-6 max-w-2xl text-justify mx-auto">
               Read on to learn more about our journey, our vision, and the people who make STEMOrbit a hub for future innovators.
             </p>
+            {/* Get in Touch Button */}
+            <div className="flex justify-center mb-6">
+              <button className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-lg rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                Get in Touch
+              </button>
+            </div>
           </div>
           {/* Right: Image Placeholder */}
           <div className="flex-1 flex items-center justify-center">

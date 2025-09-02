@@ -1,5 +1,5 @@
 'use client';
-import HeroSection from "./HeroSection";
+import BannerSlideshow from "../../components/BannerSlideshow";
 import OfferingsSection from "./OfferingsSection";
 import TechnologiesSection from "./TechnologiesSection";
 import Image from "next/image";
@@ -10,7 +10,7 @@ import UpcomingEventsSection from "./UpcomingEventsSection";
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
+      <BannerSlideshow />
       <AchievementsSection />
       <UpcomingEventsSection />
       <OfferingsSection />

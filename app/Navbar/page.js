@@ -1,3 +1,4 @@
+
 "use client";
 import { useEffect, useState } from "react";
 
@@ -14,11 +15,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`w-full fixed top-0 z-50 transition-colors duration-300 py-4 ${
-        scrolled ? "bg-white/95 border-b border-gray-200 backdrop-blur" : "bg-transparent border-b-0"
-      }`}
+      className="w-full fixed top-0 z-50 transition-colors duration-300 bg-white border-b border-gray-200"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
           <div className="flex items-center">
@@ -31,6 +30,8 @@ export default function Navbar() {
           <div className="hidden md:block">
             <div className="ml-8 flex items-center space-x-6 bubblegum-sans">
               <a href="/" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Home</a>
+              <a href="/about" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">About Us</a>
+              <a href="/courses" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Courses</a>
               <div className="relative group">
                 <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none flex items-center gap-1">
                   <span>Our Offerings</span>
@@ -40,16 +41,14 @@ export default function Navbar() {
                 </a>
                 {/* Dropdown */}
                 <div className="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-none shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <a href="/courses" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base font-bold rounded-none">Courses</a>
+                  <a href="/kits" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base font-bold rounded-none">Kits</a>
                   <a href="/our-lab-offerings" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base font-bold rounded-none">Our Lab Offerings</a>
-                  <a href="/hop-and-learn" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base font-bold rounded-none">HOP and Learn</a>
-                  <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base font-bold rounded-none">Option 4</a>
+                  <a href="/stem-labs" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base font-bold rounded-none">STEM Labs</a>
+                  <a href="/robotics-labs" className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-500 text-base font-bold rounded-none">Robotics Labs</a>
                 </div>
               </div>
               <a href="/gallery" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Gallery</a>
-              <a href="/about" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">About Us</a>
               <a href="/contact" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Contact Us</a>
-              <a href="/careers" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Careers</a>
             </div>
           </div>
 
@@ -83,12 +82,17 @@ export default function Navbar() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-2 border-t border-pink-200 bg-white bg-opacity-90 rounded-b-none bubblegum-sans">
   <a href="/" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-pink-100 hover:shadow-pink-300 hover:-translate-y-1 bubblegum-sans">Home</a>
-  <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-blue-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Our Offerings</a>
-  <a href="/hop-and-learn" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-pink-100 hover:shadow-pink-300 hover:-translate-y-1 bubblegum-sans ml-4">- HOP and Learn</a>
-  <a href="/gallery" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-purple-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Gallery</a>
   <a href="/about" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-yellow-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">About Us</a>
-  <a href="/contact" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-green-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Contact Us</a>
-  <a href="/careers" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-orange-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Careers</a>
+  <a href="/courses" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-blue-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Courses</a>
+  <div className="space-y-1">
+    <div className="text-gray-700 px-4 py-2 text-lg font-bold bubblegum-sans">Our Offerings</div>
+    <a href="/kits" className="text-gray-700 hover:text-pink-500 block px-8 py-2 text-base font-bold transition-all duration-300 rounded-none shadow-blue-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">- Kits</a>
+    <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 block px-8 py-2 text-base font-bold transition-all duration-300 rounded-none shadow-purple-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">- Our Lab Offerings</a>
+    <a href="/stem-labs" className="text-gray-700 hover:text-pink-500 block px-8 py-2 text-base font-bold transition-all duration-300 rounded-none shadow-green-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">- STEM Labs</a>
+    <a href="/robotics-labs" className="text-gray-700 hover:text-pink-500 block px-8 py-2 text-base font-bold transition-all duration-300 rounded-none shadow-orange-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">- Robotics Labs</a>
+  </div>
+  <a href="/gallery" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-green-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Gallery</a>
+  <a href="/contact" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-orange-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Contact Us</a>
   {/* Mobile Actions */}
   <div className="border-t border-pink-200 pt-3 mt-3">
     <div className="flex items-center justify-between px-3 py-2">
@@ -132,18 +136,19 @@ function DynamicNavImage() {
   }, []);
 
   return (
-    <div className="relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+    <div className="relative w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-22 lg:h-22 xl:w-24 xl:h-24">
       {/* Default Logo (visible at top of page) */}
       <img
         src="/logo.svg"
         alt="STEMOrbit Logo"
         style={{
-          width: 56,
-          height: 56,
+          width: "100%",
+          height: "100%",
           opacity: showRotating ? 0 : 1,
           transform: showRotating ? "scale(0.9) rotate(-8deg)" : "scale(1) rotate(0deg)",
           transition: "opacity 300ms ease, transform 300ms ease",
-          position: "absolute"
+          position: "absolute",
+          objectFit: "contain"
         }}
       />
 
@@ -152,12 +157,15 @@ function DynamicNavImage() {
         src="/favicon.svg"
         alt="Rotating Icon"
         style={{
-          width: 56,
-          height: 56,
+          width: "60%",
+          height: "60%",
           opacity: showRotating ? 1 : 0,
           transform: `scale(${showRotating ? 1 : 0.9}) rotate(${rotation}deg)`,
           transition: "opacity 300ms ease, transform 300ms ease",
-          position: "absolute"
+          position: "absolute",
+          objectFit: "contain",
+          top: "20%",
+          left: "20%"
         }}
       />
     </div>

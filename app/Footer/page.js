@@ -56,10 +56,10 @@ export default function Footer() {
           {/* Logo & About */}
           <div className="flex-1 min-w-[220px] flex flex-col items-center md:items-start gap-4">
             <div className="flex items-center gap-2">
-              <img src="/logo.svg" alt="Kids Logo" width={64} height={64} />
-              <span className="text-2xl font-fredoka tracking-wide">KIDS</span>
+              <img src="/logo.svg" alt="STEMOrbit Logo" width={64} height={64} />
+              <span className="text-2xl font-fredoka tracking-wide">STEMOrbit</span>
             </div>
-            <p className="text-white/90 text-center md:text-left max-w-xs font-fredoka text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, elusm</p>
+            <p className="text-white/90 text-center md:text-left max-w-xs font-fredoka text-base">Empowering Young Minds with STEM Solutions</p>
             <div className="flex gap-3 mt-2">
               {socialDemo.map((s, i) => (
                 <a key={i} href={s.href} className="hover:scale-125 transition-transform text-2xl">
@@ -71,18 +71,19 @@ export default function Footer() {
           {/* Pages Links */}
           <div className="flex-1 min-w-[180px] flex flex-col gap-2 items-center md:items-start">
             <span className="text-lg font-bold font-fredoka mb-2">Pages</span>
-            <a href="#" className="hover:underline font-fredoka">About Ninos</a>
-            <a href="#" className="hover:underline font-fredoka">Our Team</a>
-            <a href="#" className="hover:underline font-fredoka">News Feed</a>
-            <a href="#" className="hover:underline font-fredoka">Infrastructure</a>
+            <a href="/about" className="hover:underline font-fredoka">About Us</a>
+            <a href="/courses" className="hover:underline font-fredoka">Courses</a>
+            <a href="/our-lab-offerings" className="hover:underline font-fredoka">Our Offerings</a>
+            <a href="/gallery" className="hover:underline font-fredoka">Gallery</a>
+            <a href="/careers" className="hover:underline font-fredoka">Careers</a>
           </div>
           {/* Help Links */}
           <div className="flex-1 min-w-[180px] flex flex-col gap-2 items-center md:items-start">
             <span className="text-lg font-bold font-fredoka mb-2">Help</span>
-            <a href="#" className="hover:underline font-fredoka">Start a Return</a>
-            <a href="#" className="hover:underline font-fredoka">Shipping & Return Policy</a>
+            <a href="/contact" className="hover:underline font-fredoka">Contact Us</a>
             <a href="#" className="hover:underline font-fredoka">FAQ</a>
-            <a href="#" className="hover:underline font-fredoka">Contact Us</a>
+            <a href="#" className="hover:underline font-fredoka">Support</a>
+            <a href="#" className="hover:underline font-fredoka">Privacy Policy</a>
           </div>
           {/* Gallery */}
           <div className="flex-1 min-w-[220px] flex flex-col items-center md:items-start">
@@ -95,7 +96,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-white/20 pt-6 mt-8">
-          <div className="text-sm text-white/80 font-fredoka">Copyright © {new Date().getFullYear()} Kids by Wedesigntech. All Rights Reserved.</div>
+          <div className="text-sm text-white/80 font-fredoka">Copyright © {new Date().getFullYear()} STEMOrbit. All Rights Reserved.</div>
           <div className="flex items-center gap-2 mt-2 md:mt-0">
             {paymentDemo.map((p, i) => (
               <span key={i} className="inline-block text-2xl align-middle">
