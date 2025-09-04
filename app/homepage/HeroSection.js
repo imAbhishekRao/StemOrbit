@@ -23,7 +23,7 @@ export default function HeroSection() {
   }, [images.length]);
 
   return (
-    <section className="relative w-full h-[calc(100vh-4rem)] sm:h-[calc(100vh-4.5rem)] md:h-[calc(100vh-5rem)] lg:h-[calc(100vh-5.5rem)] xl:h-[calc(100vh-6rem)] bg-white overflow-hidden mt-16 sm:mt-18 md:mt-20 lg:mt-22 xl:mt-24">
+    <section className="relative w-full h-[calc(100vh-6rem)] sm:h-[calc(100vh-6.5rem)] md:h-[calc(100vh-7rem)] lg:h-[calc(100vh-7.5rem)] xl:h-[calc(100vh-8rem)] bg-white overflow-hidden mt-24 sm:mt-26 md:mt-28 lg:mt-30 xl:mt-32">
       {/* Image Carousel */}
       <div className="relative w-full h-full">
         {images.map((image, index) => (
