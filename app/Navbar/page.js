@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <>
       {/* Top Strip */}
-      <div className={`w-full fixed top-0 z-50 bg-pink-500 text-white transition-all duration-300 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+      <div className={`w-full fixed top-0 z-50 bg-pink-400 text-white transition-all duration-300 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">
           <div className="flex items-center justify-between py-2 text-sm">
             {/* Left Side - Contact Info */}
