@@ -46,6 +46,8 @@ export default function Navbar() {
                 <a href="/contact" className="hover:text-pink-200 transition-colors">Contact Us</a>
                 <div className="w-px h-4 bg-white opacity-50"></div>
                 <a href="/about" className="hover:text-pink-200 transition-colors">About Us</a>
+                <div className="w-px h-4 bg-white opacity-50"></div>
+                <a href="/gallery" className="hover:text-pink-200 transition-colors">Gallery</a>
               </div>
               <div className="w-px h-4 bg-white opacity-50"></div>
               <button className="bg-white text-pink-500 hover:bg-pink-50 px-4 py-1 rounded text-sm font-medium transition-colors">
@@ -78,12 +80,16 @@ export default function Navbar() {
               <a href="/courses" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Courses</a>
               <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">For School</a>
               <a href="/kits" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Kits</a>
-              <a href="/gallery" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Gallery</a>
+              <a href="/3d-printing" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">3D Printing</a>
+              <a href="/summercamp" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Summercamp</a>
             </div>
           </div>
 
-          {/* Cart Button */}
-          <div className="hidden md:block">
+          {/* Right Side Actions */}
+          <div className="hidden md:flex items-center space-x-4">
+            <button className="bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              Get Demo
+            </button>
             <button className="text-gray-700 hover:text-pink-500 transition-all duration-300 p-2 bg-white bg-opacity-80 rounded-lg shadow hover:shadow-pink-200 hover:-translate-y-1">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5.5M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6" />
@@ -118,9 +124,15 @@ export default function Navbar() {
   <a href="/courses" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-blue-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Courses</a>
   <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-purple-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">For School</a>
   <a href="/kits" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-green-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Kits</a>
-  <a href="/gallery" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-orange-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Gallery</a>
+  <a href="/3d-printing" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-orange-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">3D Printing</a>
+  <a href="/summercamp" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-red-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Summercamp</a>
   {/* Mobile Actions */}
   <div className="border-t border-pink-200 pt-3 mt-3">
+    <div className="px-4 py-3">
+      <button className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 px-6 py-3 rounded-lg text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-3">
+        Get Demo
+      </button>
+    </div>
     <div className="flex items-center justify-between px-3 py-2">
       <span className="text-gray-700 text-lg font-medium bubblegum-sans">🙋‍♂️ Ask Us</span>
       <div className="flex space-x-3">

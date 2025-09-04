@@ -51,7 +51,7 @@ export default function Footer() {
         />
       </div>
       {/* Footer Content */}
-      <footer className="relative w-full bg-[#6EDADF] text-white pb-10 pt-16 -mt-2 z-0 shadow-[0_-8px_24px_rgba(0,0,0,0.04)]">
+      <footer className="relative w-full bg-black text-white pb-10 pt-16 -mt-2 z-0 shadow-[0_-8px_24px_rgba(0,0,0,0.04)]">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
           {/* Logo & About */}
           <div className="flex-1 min-w-[220px] flex flex-col items-center md:items-start gap-4">
