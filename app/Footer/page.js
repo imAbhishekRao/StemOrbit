@@ -46,7 +46,7 @@ export default function Footer() {
           src="/footer-clouds.svg"
           alt="Clouds"
           className="w-full block select-none pointer-events-none"
-          style={{ display: 'block', width: '100%', height: '180px', margin: 0, padding: 0, objectFit: 'cover', objectPosition: 'bottom' }}
+          style={{ display: 'block', width: '100%', height: '180px', margin: 0, padding: 0, objectFit: 'cover', objectPosition: 'bottom', filter: 'brightness(0)' }}
           draggable="false"
         />
       </div>
