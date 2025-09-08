@@ -16,7 +16,7 @@ const offerings = [
   },
   {
     title: "STEM/Atal Tinkering Lab Setup",
-    desc: "Complete support for setting up and running ATLs, driving innovation in schools.",
+    desc: "End-to-end support for establishing and operating ATLs, enhancing  learning in schools..",
     svg: "/reshot-icon-web-design-ZD36AXCWJB.svg",
     img: "/about-img.webp",
   },
@@ -40,7 +40,7 @@ const offerings = [
   },
   {
     title: "Skill Summer/Winter Camp",
-    desc: "Fun camps with workshops, projects, and team-building during school breaks.",
+    desc: "STEM-focused camps offering robotics sessions, projects, and real-world problem-solving..",
     svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
     img: "/about-img.webp",
   },
@@ -52,7 +52,7 @@ const offerings = [
   },
   {
     title: "Six-Week Internship Program",
-    desc: "Real-world engineering experience, mentorship, and hands-on projects.",
+    desc: "Real-world engineering experience, mentorship, and hands-on projects for gradutates and undergraduates.",
     svg: "/reshot-icon-web-design-ZD36AXCWJB.svg",
     img: "/about-img.webp",
   },
@@ -62,24 +62,25 @@ const offerings = [
     svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
     img: "/about-img.webp",
   },
-  {
-    title: "STEM Kits",
-    desc: "Hands-on STEM workshops designed to spark creativity and practical skills in students and teachers alike.",
-    svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
-    img: "/about-img.webp",
-  },
-  {
-    title: "STEM courses/ STEM Programmes",
-    desc: "Hands-on STEM workshops designed to spark creativity and practical skills in students and teachers alike.",
-    svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
-    img: "/about-img.webp",
-  },
-  {
-    title: "3d Printing Services",
-    desc: "Hands-on STEM workshops designed to spark creativity and practical skills in students and teachers alike.",
-    svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
-    img: "/about-img.webp",
-  },
+  
+    {
+      title: "STEM Kits",
+      desc: "DIY STEM kits with step-by-step guides that help students and teachers explore science, technology, engineering, and math in a practical way.",
+      svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
+      img: "/about-img.webp",
+    },
+    {
+      title: "STEM Courses / STEM Programmes",
+      desc: "Structured STEM courses and training programmes designed to build problem-solving, coding, and design-thinking skills for students and educators.",
+      svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
+      img: "/about-img.webp",
+    },
+    {
+      title: "3D Printing Services",
+      desc: "End-to-end 3D printing solutions including design, prototyping, and production support to bring creative ideas into real, tangible models.",
+      svg: "/reshot-icon-3d-technology-X8JNDUBMQC.svg",
+      img: "/about-img.webp",
+    },
 ];
 
 export default function OfferingsSection() {
