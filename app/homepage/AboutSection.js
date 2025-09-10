@@ -33,7 +33,7 @@ export default function AboutSection() {
       {/* Right: Text Content */}
       <div className="flex-1 flex flex-col items-center lg:items-start justify-center px-0 lg:pl-16 relative z-20 w-full lg:w-auto text-center lg:text-left">
         <div className="flex items-center gap-2 mb-3 sm:mb-4">
-          <svg width="24" height="24" sm:width="28" sm:height="28" fill="none" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 13.5l-10-5V17a2 2 0 002 2h16a2 2 0 002-2v-6.5l-10 5z" stroke="#888" strokeWidth="1.5"/></svg>
+          <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 13.5l-10-5V17a2 2 0 002 2h16a2 2 0 002-2v-6.5l-10 5z" stroke="#888" strokeWidth="1.5"/></svg>
           <span className="text-pink-600 font-bold text-base sm:text-lg font-bubblegum">About Us</span>
         </div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 sm:mb-6 leading-tight font-fredoka max-w-lg lg:max-w-none">
