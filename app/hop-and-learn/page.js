@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Navbar from '../Navbar/page';
 
 export default function HopAndLearnPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,10 +73,9 @@ export default function HopAndLearnPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 to-purple-50 relative">
-      <Navbar />
-      <div className="flex-1 pt-24">
+      <div className="flex-1">
         {/* Fixed Navigation Buttons */}
-        <div className="fixed top-24 left-0 right-0 bg-white/80 backdrop-blur-sm shadow-sm z-30">
+        <div className="fixed top-20 sm:top-24 md:top-28 lg:top-32 left-0 right-0 bg-white/80 backdrop-blur-sm shadow-sm z-30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex flex-wrap justify-center gap-3">
               {[
@@ -145,8 +143,8 @@ export default function HopAndLearnPage() {
           </svg>
         </button>
 
-        {/* Main content area with padding to account for fixed header and navigation */}
-        <div className="pt-24">
+        {/* Main content area with padding to account for fixed navigation buttons */}
+        <div className="pt-20">
 
         {/* Hero Section */}
         <section id="overview" className={`bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden pt-24 ${activeSection === 'overview' ? 'block' : 'hidden'}`}>

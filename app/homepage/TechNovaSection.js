@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function TechNovaSection() {
   return (
-    <section className="w-full py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 relative overflow-hidden">
+    <section className="w-full py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 relative overflow-hidden px-4 sm:px-6">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full animate-pulse"></div>
@@ -25,7 +25,7 @@ export default function TechNovaSection() {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
@@ -37,7 +37,7 @@ export default function TechNovaSection() {
             <span className="text-yellow-400 font-bold text-xl font-bubblegum tracking-wide">Flagship Event</span>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight font-fredoka">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 sm:mb-6 leading-tight font-fredoka">
             Tech<span className="bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">Nova</span>
           </h2>
           
@@ -52,7 +52,7 @@ export default function TechNovaSection() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mb-8 sm:mb-12 lg:mb-16">
           {/* Left: Content */}
           <div className="space-y-8">
             <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
@@ -169,28 +169,14 @@ export default function TechNovaSection() {
           >
             Register Your School
           </a>
-          <a 
-            href="https://technovafest.in/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-block px-10 py-4 border-2 border-white text-white font-bold text-lg rounded-full hover:bg-white hover:text-black transition-all duration-300 font-fredoka"
+          <button 
+            onClick={() => window.open('https://technovafest.in/', '_blank')}
+            className="inline-block px-10 py-4 bg-gradient-to-r from-yellow-400 to-pink-500 text-black font-bold text-lg rounded-full shadow-2xl hover:from-yellow-500 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 font-fredoka mr-4"
           >
             Visit TechNova 2.0
-          </a>
+          </button>
         </div>
         
-        {/* Event Website Link */}
-        <div className="text-center mt-8">
-          <p className="text-gray-300 font-quicksand mb-2">Official Event Website:</p>
-          <a 
-            href="https://technovafest.in/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-yellow-400 hover:text-yellow-300 font-bold text-xl underline transition-colors duration-300 font-fredoka"
-          >
-            technovafest.in
-          </a>
-        </div>
       </div>
 
       {/* Custom CSS for animations */}

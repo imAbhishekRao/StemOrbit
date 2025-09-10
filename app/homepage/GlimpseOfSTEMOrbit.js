@@ -2,11 +2,11 @@ import Image from "next/image";
 
 export default function GlimpseOfSTEMOrbit() {
   return (
-    <section className="w-full flex flex-col items-center justify-center py-16 bg-white relative">
-      <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-10 font-fredoka gradient-text" style={{background: 'linear-gradient(90deg, #38bdf8 0%, #f472b6 50%, #fbbf24 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}>
+    <section className="w-full flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 bg-white relative px-4 sm:px-6">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-6 sm:mb-8 lg:mb-10 font-fredoka gradient-text" style={{background: 'linear-gradient(90deg, #38bdf8 0%, #f472b6 50%, #fbbf24 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}>
         A Colorful Peek Into STEMOrbit Moments
       </h2>
-      <div className="flex flex-wrap justify-center gap-6 max-w-6xl w-full px-4">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-4 sm:gap-6 max-w-6xl w-full">
         {/* Large main image */}
         <div className="rounded-3xl overflow-hidden shadow-lg relative w-full h-60 md:h-80 max-w-xl">
           <Image src="/about-img.webp" alt="STEMOrbit Playground" fill className="object-cover" />

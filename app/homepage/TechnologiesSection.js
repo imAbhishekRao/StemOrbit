@@ -73,9 +73,9 @@ const techBgImages = [
 
 export default function TechnologiesSection() {
   return (
-    <section className="w-full flex flex-col items-center justify-center py-16 bg-[#FFF7F0] relative">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-pink-600 font-fredoka">Technologies We Are In</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl w-full px-4">
+    <section className="w-full flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 bg-[#FFF7F0] relative px-4 sm:px-6">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-8 lg:mb-10 text-pink-600 font-fredoka">Technologies We Are In</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-6xl w-full">
         {technologies.map((tech, idx) => {
           // Assign a unique color for each icon's main circle
           const circleColors = [
@@ -92,7 +92,7 @@ export default function TechnologiesSection() {
           return (
           <div
             key={tech.name}
-            className="tech-card group flex flex-col items-center justify-end aspect-square rounded-3xl relative overflow-hidden border-2 border-pink-100"
+            className="tech-card group flex flex-col items-center justify-end aspect-square rounded-2xl sm:rounded-3xl relative overflow-hidden border-2 border-pink-100"
             style={{ position: 'relative' }}
           >
             <div className="absolute inset-0 w-full h-full z-0">
@@ -104,9 +104,9 @@ export default function TechnologiesSection() {
               />
             </div>
             <div className="flex flex-col items-center justify-end flex-1 pb-0 pt-4 w-full z-10 relative">
-              <div className="absolute left-0 right-0 bottom-0 w-full h-12 z-0 pointer-events-none select-none bg-pink-400 rounded-t-3xl" />
-              <h3 className="text-lg font-bold font-bubblegum text-white text-center drop-shadow-lg relative z-10">{tech.name}</h3>
-              <svg height="16" width="90" className="relative z-10 mb-1 -mt-2"><path d="M10 10 Q45 0 80 10" stroke="#fff" strokeWidth="3" fill="none"/></svg>
+              <div className="absolute left-0 right-0 bottom-0 w-full h-10 sm:h-12 z-0 pointer-events-none select-none bg-pink-400 rounded-t-2xl sm:rounded-t-3xl" />
+              <h3 className="text-xs sm:text-sm lg:text-lg font-bold font-bubblegum text-white text-center drop-shadow-lg relative z-10 px-1 leading-tight">{tech.name}</h3>
+              <svg height="12" width="60" className="relative z-10 mb-1 -mt-1 sm:h-4 sm:w-20"><path d="M10 10 Q30 0 50 10" stroke="#fff" strokeWidth="2" fill="none"/></svg>
               </div>
           </div>
           );

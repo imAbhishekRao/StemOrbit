@@ -85,9 +85,9 @@ const offerings = [
 
 export default function OfferingsSection() {
   return (
-    <section className="w-full flex flex-col items-center justify-center py-16 bg-[#FFF7F0] relative">
-      <h2 className="text-4xl md:text-5xl font-comicneue font-extrabold text-pink-600 mb-10 drop-shadow-lg text-center">Our Offerings</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl w-full px-4">
+    <section className="w-full flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 bg-[#FFF7F0] relative px-4 sm:px-6">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-comicneue font-extrabold text-pink-600 mb-6 sm:mb-8 lg:mb-10 drop-shadow-lg text-center">Our Offerings</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-10 max-w-6xl w-full">
         {offerings.map((item, idx) => {
           // Calculate row and col for 3-column layout
           const row = Math.floor(idx / 3);
@@ -101,36 +101,36 @@ export default function OfferingsSection() {
           return (
             <div
               key={item.title}
-              className={`group rounded-[2.5rem] shadow-strong p-6 flex flex-row items-center transition-all duration-300 cursor-pointer relative overflow-hidden min-h-[220px] border-2 border-pink-100 hover:border-pink-300 transform hover:rotate-2 hover:scale-105`}
+              className={`group rounded-2xl sm:rounded-[2.5rem] shadow-strong p-4 sm:p-6 flex flex-col sm:flex-row items-center transition-all duration-300 cursor-pointer relative overflow-hidden min-h-[200px] sm:min-h-[220px] border-2 border-pink-100 hover:border-pink-300 transform hover:rotate-1 sm:hover:rotate-2 hover:scale-105`}
               style={{ background: color.bg }}
             >
               {/* Left: Blob Image */}
-              <div className="relative w-28 h-28 min-w-[7rem] mr-4 flex-shrink-0">
+              <div className="relative w-20 h-20 sm:w-28 sm:h-28 min-w-[5rem] sm:min-w-[7rem] mb-3 sm:mb-0 sm:mr-4 flex-shrink-0">
                 <svg viewBox="0 0 112 112" className="absolute w-full h-full z-0">
                   <path d="M28 28 Q56 0 84 28 Q112 56 84 84 Q56 112 28 84 Q0 56 28 28Z" fill="#FDE68A" />
                 </svg>
-                <div className="absolute w-24 h-24 left-2 top-2 rounded-full overflow-hidden z-10">
+                <div className="absolute w-16 h-16 sm:w-24 sm:h-24 left-2 top-2 rounded-full overflow-hidden z-10">
                   <Image src={item.img} alt={item.title} fill className="object-cover" />
                 </div>
               </div>
               {/* Right: Content */}
-              <div className="flex-1 z-20">
+              <div className="flex-1 z-20 text-center sm:text-left">
                 <h3
-                  className={`text-xl font-extrabold mb-2 font-fredoka transition-colors duration-300`}
+                  className={`text-lg sm:text-xl font-extrabold mb-2 font-fredoka transition-colors duration-300`}
                   style={{ color: color.text }}
                 >
                   {item.title}
                 </h3>
                 {/* User-uploaded wave SVG beneath heading */}
-                <img src="/wave.svg" alt="wave" className="mb-2 w-20 h-auto" aria-hidden="true" />
+                <img src="/wave.svg" alt="wave" className="mb-2 w-16 sm:w-20 h-auto mx-auto sm:mx-0" aria-hidden="true" />
                 <p
-                  className={`mb-4 font-quicksand transition-colors duration-300`}
+                  className={`mb-3 sm:mb-4 font-quicksand transition-colors duration-300 text-sm sm:text-base`}
                   style={{ color: color.text }}
                 >
                   {item.desc}
                 </p>
                 <a
-                  className={`text-base font-semibold transition-colors duration-300 flex items-center gap-2`}
+                  className={`text-sm sm:text-base font-semibold transition-colors duration-300 flex items-center gap-2 justify-center sm:justify-start`}
                   style={{ color: color.text }}
                   href="#"
                 >
@@ -139,7 +139,7 @@ export default function OfferingsSection() {
                     className={`block h-1 w-10 rounded-full mt-1 transition-colors duration-300`}
                     style={{ background: color.text }}
                   />
-                  <img src="/highlight.svg" alt="highlight" className="w-8 h-auto ml-1" aria-hidden="true" />
+                  <img src="/highlight.svg" alt="highlight" className="w-6 sm:w-8 h-auto ml-1" aria-hidden="true" />
                 </a>
               </div>
               {/* Choose SVG based on card title/content */}
@@ -156,8 +156,8 @@ export default function OfferingsSection() {
                 else if (title.includes('globe') || title.includes('global')) svg = '/globe.svg';
                 // Add more mappings as needed
                 return (
-                  <div className="absolute bottom-4 left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <Image src={svg} alt="Card SVG" width={80} height={80} className="drop-shadow-lg" />
+                  <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <Image src={svg} alt="Card SVG" width={60} height={60} className="sm:w-[80px] sm:h-[80px] drop-shadow-lg" />
                   </div>
                 );
               })()}

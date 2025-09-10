@@ -6,26 +6,71 @@ import { FaStar } from "react-icons/fa";
 // Testimonial data
 const testimonials = [
   {
-    name: "Alexander Miller",
-    role: "Parent",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    rating: 5,
-    quote: "Flexible Classes refers to the process of acquiring knowledge or skills through the use of digital technologies and the internet. Flexible Classes refers to the process flexible Classes refers to the process.",
+    name: "Ms. Heena",
+    subtitle: "Air Force School (12 Wing, Chandigarh)",
+    text: `"The educators are knowledgeable and very supportive. Got to learn a lot from you people. Thanks a lot to your whole team for providing such a platform where we can enhance our skills and also make our students know about different technologies."`,
+    img: "https://www.stemorbit.com/assets/images/testimonials/Heena.jpg",
+    badges: [
+      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
+      { icon: "/students.svg", text: "Educator" }
+    ],
+    color: "#0369A1" // deep blue
   },
   {
-    name: "Priya Sharma",
-    role: "Teacher",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-    rating: 4.5,
-    quote: "The STEM labs have transformed our classroom experience. Students are more engaged and excited to learn!",
+    name: "Mr. Gurjinder Singh",
+    subtitle: "JNV Patiala",
+    text: `"STEMORBIT have provided us with excellent technical knowledge and their trainer have also been very energetic and supportive. We would definitely recommend STEMORBIT to our known schools when ATL lab setup and services."`,
+    img: "https://www.stemorbit.com/assets/images/testimonials/Gurjinder.jpg",
+    badges: [
+      { icon: "/schools.svg", text: "JNV Patiala" },
+      { icon: "/students.svg", text: "ATL/Technology Coordinator" }
+    ],
+    color: "#5B21B6" // rich indigo
   },
   {
-    name: "Rahul Verma",
-    role: "Student",
-    avatar: "https://randomuser.me/api/portraits/men/65.jpg",
-    rating: 5,
-    quote: "I love building robots and working on AI projects. The labs make learning so much fun!",
+    name: "Mr. Sandeep",
+    subtitle: "JNV Amritsar",
+    text: `"STEMORBIT training triggers curiosity among students to identify real life problem and find their solutions. I thank STEMORBIT and their team for providing their services to our school. Best wishes to your company, I believe your company will grow and flourish wonderfully."`,
+    img: "https://www.stemorbit.com/assets/images/testimonials/Sandeep.jpg",
+    badges: [
+      { icon: "/schools.svg", text: "JNV Amritsar" },
+      { icon: "/students.svg", text: "Teacher / Mentor" }
+    ],
+    color: "#0F766E" // teal
   },
+  {
+    name: "Ms. Gunjan",
+    subtitle: "Air Force School (12 Wing, Chandigarh)",
+    text: `"I am fortunate enough to work and learn with the experienced, expertise and cooperative team of Stemorbit . I found this learning full of educative, inspirational with a lot of fun filled programs and amazing experiments here. Thanks a lot to the team Stemorbit."`,
+    img: "https://www.stemorbit.com/assets/images/testimonials/Gunjan.jpg",
+    badges: [
+      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
+      { icon: "/students.svg", text: "Science Faculty" }
+    ],
+    color: "#7C3AED" // violet
+  },
+  {
+    name: "Ms. Anita Kumari",
+    subtitle: "Air Force School (12 Wing, Chandigarh)",
+    text: `"Working with Stemorbit has been a joy. They are very detailed and organized. They make sure that the work is done correctly and in a timely manner. Their services have enabled us to reach an efficiency we hadn't previously experienced."`,
+    img: "https://www.stemorbit.com/assets/images/testimonials/Anita.jpg",
+    badges: [
+      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
+      { icon: "/students.svg", text: "Administrator" }
+    ],
+    color: "#BE185D" // rose
+  },
+  {
+    name: "Ms. Shweta Shahi",
+    subtitle: "Air Force School (12 Wing, Chandigarh)",
+    text: `"In the 21st century , Stemorbit has given an opportunity to step into a new outlook for the theories we have learnt. Dedicated staff with on time practical knowledge is been provided by the faculty members."`,
+    img: "https://www.stemorbit.com/assets/images/testimonials/Shweta.jpg",
+    badges: [
+      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
+      { icon: "/students.svg", text: "Faculty" }
+    ],
+    color: "#047857" // emerald
+  }
 ]; 
 
 export default function OurLabOfferings() {
@@ -73,10 +118,10 @@ export default function OurLabOfferings() {
 
 
   // Testimonial carousel state
-  const [testimonialIdx, setTestimonialIdx] = useState(0);
-  const testimonial = testimonials[testimonialIdx];
-  const nextTestimonial = () => setTestimonialIdx((testimonialIdx + 1) % testimonials.length);
-  const prevTestimonial = () => setTestimonialIdx((testimonialIdx - 1 + testimonials.length) % testimonials.length);
+  const [current, setCurrent] = useState(0);
+  const t = testimonials[current];
+  const next = () => setCurrent((c) => (c + 1) % testimonials.length);
+  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
 
   return (
     <div className="relative min-h-screen bg-white flex flex-col justify-start items-center">
@@ -176,7 +221,7 @@ export default function OurLabOfferings() {
             <div className="flex flex-col justify-between bg-blue-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
               <div className="flex justify-center items-center mb-4 -mt-4">
                 <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
-                  <Image src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=facearea&w=176&h=176" width={176} height={176} alt="Robotics" className="object-cover w-full h-full" />
+                  <Image src="/app.webp" width={176} height={176} alt="Robotics" className="object-cover w-full h-full" />
                 </div>
               </div>
               <ul className="mb-4 space-y-2">
@@ -199,7 +244,7 @@ export default function OurLabOfferings() {
             <div className="flex flex-col justify-between bg-purple-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
               <div className="flex justify-center items-center mb-4 -mt-4">
                 <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
-                  <Image src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=176&h=176" width={176} height={176} alt="AI Labs" className="object-cover w-full h-full" />
+                  <Image src="/ai.webp" width={176} height={176} alt="AI Labs" className="object-cover w-full h-full" />
                 </div>
               </div>
               <ul className="mb-4 space-y-2">
@@ -222,11 +267,11 @@ export default function OurLabOfferings() {
             <div className="flex flex-col justify-between bg-green-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
               <div className="flex justify-center items-center mb-4 -mt-4">
                 <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
-                  <Image src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=facearea&w=176&h=176" width={176} height={176} alt="STEM Labs" className="object-cover w-full h-full" />
+                  <Image src="/iot.webp" width={176} height={176} alt="STEM Labs" className="object-cover w-full h-full" />
                 </div>
               </div>
               <ul className="mb-4 space-y-2">
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Interactive Experiments</li>
+                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Tech Discovery</li>
                 <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Engineering Challenges</li>
                 <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Math in Action</li>
                 <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Science Discovery</li>
@@ -245,7 +290,7 @@ export default function OurLabOfferings() {
             <div className="flex flex-col justify-between bg-yellow-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
               <div className="flex justify-center items-center mb-4 -mt-4">
                 <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
-                  <Image src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=facearea&w=176&h=176" width={176} height={176} alt="3D Design & Printing" className="object-cover w-full h-full" />
+                  <Image src="/3d-printing-history-featured.webp" width={176} height={176} alt="3D Design & Printing" className="object-cover w-full h-full" />
                 </div>
               </div>
               <ul className="mb-4 space-y-2">
@@ -334,30 +379,53 @@ export default function OurLabOfferings() {
       </section>
      
       
-      {/* Testimonial Carousel Section */}
-      <section className="w-full flex flex-col items-center justify-center py-12 px-2 bg-gradient-to-br from-pink-100 to-pink-200">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-pink-700 mb-6 font-[Comic Sans MS,cursive,sans-serif] text-center">What People Say</h2>
-        <div className="relative w-full max-w-2xl mx-auto bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center">
-          <button onClick={prevTestimonial} className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-pink-200 hover:bg-pink-300 text-pink-700 rounded-full p-2 shadow transition-all">
-            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <div className="flex flex-col items-center">
-            <img src={testimonial.avatar} alt={testimonial.name} className="w-20 h-20 rounded-full mb-4 border-4 border-pink-200 shadow" />
-            <h3 className="text-xl font-bold text-pink-700 mb-1">{testimonial.name}</h3>
-            <span className="text-pink-500 text-sm mb-2">{testimonial.role}</span>
-            <div className="flex items-center mb-3">
-              {[...Array(Math.floor(testimonial.rating))].map((_, i) => (
-                <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.922-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.176 0l-3.388 2.46c-.784.57-1.838-.196-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118l-3.388-2.46c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z"/></svg>
-              ))}
-              {testimonial.rating % 1 !== 0 && (
-                <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><defs><linearGradient id="half"><stop offset="50%" stopColor="#FFD700"/><stop offset="50%" stopColor="#E5E7EB"/></linearGradient></defs><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.287 3.966c.3.922-.755 1.688-1.54 1.118l-3.388-2.46a1 1 0 00-1.176 0l-3.388 2.46c-.784.57-1.838-.196-1.54-1.118l1.287-3.966a1 1 0 00-.364-1.118l-3.388-2.46c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.967z" fill="url(#half)"/></svg>
-              )}
+      {/* Testimonials Section */}
+      <section className="w-full py-16 bg-[#fafafa] flex flex-col items-center justify-center">
+        {/* Heading with strawberry icon and playful text */}
+        <div className="flex flex-col items-center mb-8">
+          <span className="text-pink-500 font-bold text-lg font-bubblegum mb-2">Testimonials</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-center font-fredoka text-sky-500">Voices from Our Partner Schools</h2>
+        </div>
+        <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center">
+          {/* Card */}
+          <div className="relative rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center px-8 md:pl-40 py-12 w-full min-h-[340px] transition-colors duration-500" style={{ background: t.color }}>
+            {/* Overlapping circular image */}
+            <div className="absolute -top-20 left-1/2 md:left-12 -translate-x-1/2 md:translate-x-0 z-20">
+              <div className="w-40 h-40 rounded-full border-8 border-white overflow-hidden shadow-lg bg-white">
+                <Image src={t.img} alt={t.name} width={160} height={160} className="object-cover w-full h-full" />
+              </div>
             </div>
-            <blockquote className="text-lg text-gray-700 italic text-center max-w-xl mx-auto mb-4">"{testimonial.quote}"</blockquote>
+            {/* Content */}
+            <div className="flex-1 flex flex-col justify-center items-start mt-24 md:mt-0 md:ml-8">
+              <div className="flex flex-col items-start gap-1 mb-2">
+                <div className="flex items-center gap-3">
+                  <span className="text-white text-5xl leading-none">"</span>
+                  <div>
+                    <span className="text-white text-3xl md:text-4xl font-extrabold font-fredoka">{t.name}</span>
+                    <div className="text-white text-sm opacity-90 mt-1 font-medium">{t.subtitle}</div>
+                  </div>
+                </div>
+              </div>
+              <p className="text-white text-lg font-quicksand mb-8 max-w-3xl">
+                {t.text}
+              </p>
+              <div className="flex flex-wrap gap-6 mt-auto">
+                {t.badges.map((badge, i) => (
+                  <div key={i} className="flex items-center gap-2 bg-white/90 text-black font-bold rounded-xl px-4 py-2 text-base shadow">
+                    <img src={badge.icon} alt="badge" className="w-6 h-6" />
+                    <span>{badge.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Navigation buttons */}
+            <button onClick={prev} className="absolute -left-4 md:-left-8 top-1/2 -translate-y-1/2 bg-white text-pink-500 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-pink-100 active:scale-90 transition-all border-2 border-pink-200 z-20">
+              <img src="/arrow.svg" alt="Previous" className="w-7 h-7" />
+            </button>
+            <button onClick={next} className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 bg-white text-sky-500 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-sky-100 active:scale-90 transition-all border-2 border-sky-200 z-20">
+              <img src="/arrow.svg" alt="Next" className="w-7 h-7 rotate-180" />
+            </button>
           </div>
-          <button onClick={nextTestimonial} className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-pink-200 hover:bg-pink-300 text-pink-700 rounded-full p-2 shadow transition-all">
-            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
         </div>
       </section>
     </div>

@@ -7,20 +7,12 @@ const socialLinks = [
   { icon: "/logo.svg", alt: "Instagram", href: "#" },
 ];
 
-const galleryImages = [
-  "/achievement1.jpg",
-  "/Achievement2.jpg",
-  "/achievement3.jpeg",
-  "/about-img.webp",
-  "/app.jpg",
-  "/app.webp"
-];
 
-const paymentIcons = [
-  "/visa.svg",
-  "/mastercard.svg",
-  "/paypal.svg",
-  "/amex.svg"
+const socialIcons = [
+  "/facebook.svg",
+  "/instagram.svg", 
+  "/twitter.svg",
+  "/linkedin.svg"
 ];
 
 export default function Footer() {
@@ -31,11 +23,11 @@ export default function Footer() {
     { icon: "/logo.svg", alt: "LinkedIn", href: "#", fallback: "💼" },
     { icon: "/logo.svg", alt: "Instagram", href: "#", fallback: "📸" },
   ];
-  const paymentDemo = [
-    { icon: "/visa.svg", alt: "Visa", fallback: "💳" },
-    { icon: "/mastercard.svg", alt: "MasterCard", fallback: "💳" },
-    { icon: "/paypal.svg", alt: "Paypal", fallback: "💸" },
-    { icon: "/amex.svg", alt: "Amex", fallback: "💳" },
+  const socialIconsDemo = [
+    { icon: "/facebook.svg", alt: "Facebook", href: "https://facebook.com/stemorbit", fallback: "📘" },
+    { icon: "/instagram.svg", alt: "Instagram", href: "https://instagram.com/stemorbit", fallback: "📸" },
+    { icon: "/twitter.svg", alt: "Twitter", href: "https://twitter.com/stemorbit", fallback: "🐦" },
+    { icon: "/linkedin.svg", alt: "LinkedIn", href: "https://linkedin.com/company/stemorbit", fallback: "💼" },
   ];
 
   return (
@@ -59,52 +51,72 @@ export default function Footer() {
               <img src="/logo.svg" alt="STEMOrbit Logo" width={64} height={64} />
               <span className="text-2xl font-fredoka tracking-wide">STEMOrbit</span>
             </div>
-            <p className="text-white/90 text-center md:text-left max-w-xs font-fredoka text-base">Empowering Young Minds with STEM Solutions</p>
-            <div className="flex gap-3 mt-2">
-              {socialDemo.map((s, i) => (
-                <a key={i} href={s.href} className="hover:scale-125 transition-transform text-2xl">
-                  <img src={s.icon} alt={s.alt} width={28} height={28} />
-                </a>
-              ))}
-            </div>
+            <p className="text-white text-center md:text-left max-w-xs font-fredoka text-base">Empowering Young Minds with STEM Solutions</p>
           </div>
-          {/* Pages Links */}
+          {/* Quick Links */}
           <div className="flex-1 min-w-[180px] flex flex-col gap-2 items-center md:items-start">
-            <span className="text-lg font-bold font-fredoka mb-2">Pages</span>
-            <a href="/about" className="hover:underline font-fredoka">About Us</a>
-            <a href="/courses" className="hover:underline font-fredoka">Courses</a>
-            <a href="/our-lab-offerings" className="hover:underline font-fredoka">Our Offerings</a>
-            <a href="/gallery" className="hover:underline font-fredoka">Gallery</a>
-            <a href="/careers" className="hover:underline font-fredoka">Careers</a>
+            <span className="text-lg font-bold font-fredoka mb-2 text-white">Quick Links</span>
+            <a href="/whats-stem-lab" className="hover:underline font-fredoka text-white">What's STEM Lab</a>
+            <a href="/courses" className="hover:underline font-fredoka text-white">Courses</a>
+            <a href="/our-lab-offerings" className="hover:underline font-fredoka text-white">For School</a>
+            <a href="/kits" className="hover:underline font-fredoka text-white">Kits</a>
+            <a href="/3d-printing" className="hover:underline font-fredoka text-white">3D Printing</a>
+            <a href="/summercamp" className="hover:underline font-fredoka text-white">Summercamp</a>
           </div>
           {/* Help Links */}
           <div className="flex-1 min-w-[180px] flex flex-col gap-2 items-center md:items-start">
-            <span className="text-lg font-bold font-fredoka mb-2">Help</span>
-            <a href="/contact" className="hover:underline font-fredoka">Contact Us</a>
-            <a href="#" className="hover:underline font-fredoka">FAQ</a>
-            <a href="#" className="hover:underline font-fredoka">Support</a>
-            <a href="#" className="hover:underline font-fredoka">Privacy Policy</a>
+            <span className="text-lg font-bold font-fredoka mb-2 text-white">Help</span>
+            <a href="/contact" className="hover:underline font-fredoka text-white">Contact Us</a>
+            <a href="#" className="hover:underline font-fredoka text-white">FAQ</a>
+            <a href="#" className="hover:underline font-fredoka text-white">Support</a>
+            <a href="#" className="hover:underline font-fredoka text-white">Privacy Policy</a>
           </div>
-          {/* Gallery */}
-          <div className="flex-1 min-w-[220px] flex flex-col items-center md:items-start">
-            <span className="text-lg font-bold font-fredoka mb-2">Our Galleries</span>
-            <div className="grid grid-cols-3 gap-2 mt-2">
-              {galleryImages.map((img, i) => (
-                <img key={i} src={img} alt={`Gallery ${i+1}`} width={56} height={56} className="rounded-lg object-cover w-14 h-14" />
-              ))}
+          {/* Contact Info */}
+          <div className="flex-1 min-w-[220px] flex flex-col gap-2 items-center md:items-start">
+            <span className="text-lg font-bold font-fredoka mb-2 text-white">Contact Info</span>
+            <div className="flex items-start gap-2 text-white font-fredoka text-sm">
+              <svg className="w-4 h-4 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              <div>
+                <p>STEMOrbit Technologies</p>
+                <p>SCO-04, 1st Floor, Mehma Singh</p>
+                <p>Complex, Opp. Jal Vayu Towers, Gate 3</p>
+                <p>New Sunny Enclave, Kharar, Sector-125</p>
+                <p>(Mohali) Punjab - 140301</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 text-white font-fredoka text-sm">
+              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              <a href="tel:+917009594410" className="hover:underline">+91 7009594410</a>
+            </div>
+            <div className="flex items-center gap-2 text-white font-fredoka text-sm">
+              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+              <a href="mailto:info@stemorbit.com" className="hover:underline">info@stemorbit.com</a>
+            </div>
+            <div className="flex items-center gap-2 text-white font-fredoka text-sm">
+              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.736 6.979C9.208 6.193 9.696 6 10 6c.304 0 .792.193 1.264.979.457.76.736 1.775.736 3.021 0 1.246-.279 2.261-.736 3.021C10.792 13.807 10.304 14 10 14c-.304 0-.792-.193-1.264-.979C8.279 12.261 8 11.246 8 10c0-1.246.279-2.261.736-3.021zM10 12a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              <a href="https://www.stemorbit.com" target="_blank" rel="noopener noreferrer" className="hover:underline">www.stemorbit.com</a>
             </div>
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-white/20 pt-6 mt-8">
-          <div className="text-sm text-white/80 font-fredoka">Copyright © {new Date().getFullYear()} STEMOrbit. All Rights Reserved.</div>
-          <div className="flex items-center gap-2 mt-2 md:mt-0">
-            {paymentDemo.map((p, i) => (
-              <span key={i} className="inline-block text-2xl align-middle">
-                <img src={p.icon} alt={p.alt} width={38} height={24} />
-              </span>
+          <div className="text-sm text-white font-fredoka">Copyright © {new Date().getFullYear()} STEMOrbit. All Rights Reserved.</div>
+          <div className="flex items-center gap-4 mt-2 md:mt-0">
+            {socialIconsDemo.map((s, i) => (
+              <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" className="hover:scale-125 transition-transform">
+                <img src={s.icon} alt={s.alt} width={32} height={32} />
+              </a>
             ))}
           </div>
-          <div className="flex gap-4 text-xs text-white/80 font-fredoka">
+          <div className="flex gap-4 text-xs text-white font-fredoka">
             <a href="#" className="hover:underline">Privacy Policy</a>
             <a href="#" className="hover:underline">Terms</a>
             <a href="#" className="hover:underline">Conditions</a>

@@ -4,13 +4,13 @@ import Image from "next/image";
 
 export default function BeASTEMEducatorSection() {
   return (
-    <section className="w-full py-16 bg-gradient-to-br from-blue-50 to-pink-50 relative overflow-hidden">
+    <section className="w-full py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-blue-50 to-pink-50 relative overflow-hidden px-4 sm:px-6">
       {/* Decorative Background Elements */}
       <div className="absolute top-8 left-8 w-16 h-16 bg-pink-200 rounded-full opacity-30 animate-pulse"></div>
       <div className="absolute bottom-12 right-12 w-12 h-12 bg-blue-200 rounded-full opacity-40 animate-bounce"></div>
       <div className="absolute top-1/2 right-1/4 w-8 h-8 bg-orange-200 rounded-full opacity-25"></div>
       
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 sm:gap-12">
         {/* Left: Image */}
         <div className="flex-1 relative">
           <div className="relative w-full max-w-md mx-auto">
@@ -18,7 +18,7 @@ export default function BeASTEMEducatorSection() {
             <div className="absolute inset-0 bg-gradient-to-r from-pink-300 to-blue-300 rounded-full transform scale-110 opacity-20"></div>
             
             {/* Main image container */}
-            <div className="relative w-80 h-80 mx-auto rounded-full overflow-hidden shadow-2xl border-4 border-white">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 mx-auto rounded-full overflow-hidden shadow-2xl border-4 border-white">
               <Image 
                 src="/TeacherTraining.JPG" 
                 alt="STEM Educator Training" 
@@ -44,7 +44,7 @@ export default function BeASTEMEducatorSection() {
         </div>
 
         {/* Right: Content */}
-        <div className="flex-1 text-center md:text-left">
+        <div className="flex-1 text-center lg:text-left">
           <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="#ec4899">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
@@ -52,7 +52,7 @@ export default function BeASTEMEducatorSection() {
             <span className="text-pink-600 font-bold text-lg font-bubblegum">Join Our Mission</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight font-fredoka">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4 sm:mb-6 leading-tight font-fredoka">
             Be a <span className="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">STEM Educator</span>
           </h2>
           

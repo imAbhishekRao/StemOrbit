@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         style={{ fontFamily: 'var(--font-rubik), sans-serif' }}
       >
         <Navbar />
-        <main>
+        <main className="pt-20 sm:pt-24 md:pt-28 lg:pt-32">
           {children}
         </main>
         <Footer />
