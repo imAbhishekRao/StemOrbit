@@ -24,7 +24,7 @@ export default function Footer() {
     { icon: "/logo.svg", alt: "Instagram", href: "#", fallback: "📸" },
   ];
   const socialIconsDemo = [
-    { icon: "/facebook.svg", alt: "Facebook", href: "https://facebook.com/stemorbit", fallback: "📘" },
+    { icon: "/facebook.svg", alt: "Facebook", href: "https://www.facebook.com/StemOrbit0", fallback: "📘" },
     { icon: "/instagram.svg", alt: "Instagram", href: "https://instagram.com/stemorbit", fallback: "📸" },
     { icon: "/twitter.svg", alt: "Twitter", href: "https://twitter.com/stemorbit", fallback: "🐦" },
     { icon: "/linkedin.svg", alt: "LinkedIn", href: "https://linkedin.com/company/stemorbit", fallback: "💼" },

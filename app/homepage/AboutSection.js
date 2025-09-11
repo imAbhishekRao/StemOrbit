@@ -24,7 +24,7 @@ export default function AboutSection() {
           <path d="M60 60 Q210 0 360 60 Q420 170 360 280 Q210 340 60 280 Q0 170 60 60Z" fill="#FFA726"/>
         </svg>
         <div className="relative w-[260px] h-[320px] sm:w-[300px] sm:h-[380px] md:w-[350px] md:h-[420px] lg:w-[400px] lg:h-[520px] rounded-[50%_60%_40%_70%/60%_40%_70%_50%] overflow-hidden shadow-strong z-10">
-          <Image src="/WhatsApp Image 2025-07-17 at 10.51.25 (1).jpeg" alt="About Us" fill className="object-cover animate-ambient-zoom" priority />
+          <Image src="/about.jpg" alt="About Us" fill className="object-cover animate-ambient-zoom" priority />
         </div>
         {/* Decorative Dot */}
         <div className="absolute top-2 left-1/2 w-6 h-6 sm:w-8 sm:h-8 bg-orange-300 rounded-full z-20" />

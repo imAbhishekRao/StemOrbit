@@ -8,8 +8,8 @@ const testimonials = [
     text: `"The educators are knowledgeable and very supportive. Got to learn a lot from you people. Thanks a lot to your whole team for providing such a platform where we can enhance our skills and also make our students know about different technologies."`,
     img: "https://www.stemorbit.com/assets/images/testimonials/Heena.jpg",
     badges: [
-      { icon: "/school.svg", text: "Air Force School (12 Wing, Chandigarh)" },
-      { icon: "/teacher.svg", text: "Educator" }
+      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
+      { icon: "/students.svg", text: "Educator" }
     ],
     color: "#0369A1" // deep blue
   },
@@ -19,8 +19,8 @@ const testimonials = [
     text: `"STEMORBIT have provided us with excellent technical knowledge and their trainer have also been very energetic and supportive. We would definitely recommend STEMORBIT to our known schools when ATL lab setup and services."`,
     img: "https://www.stemorbit.com/assets/images/testimonials/Gurjinder.jpg",
     badges: [
-      { icon: "/school.svg", text: "JNV Patiala" },
-      { icon: "/teacher.svg", text: "ATL/Technology Coordinator" }
+      { icon: "/schools.svg", text: "JNV Patiala" },
+      { icon: "/students.svg", text: "ATL/Technology Coordinator" }
     ],
     color: "#5B21B6" // rich indigo
   },
@@ -30,8 +30,8 @@ const testimonials = [
     text: `"STEMORBIT training triggers curiosity among students to identify real life problem and find their solutions. I thank STEMORBIT and their team for providing their services to our school. Best wishes to your company, I believe your company will grow and flourish wonderfully."`,
     img: "https://www.stemorbit.com/assets/images/testimonials/Sandeep.jpg",
     badges: [
-      { icon: "/school.svg", text: "JNV Amritsar" },
-      { icon: "/teacher.svg", text: "Teacher / Mentor" }
+      { icon: "/schools.svg", text: "JNV Amritsar" },
+      { icon: "/students.svg", text: "Teacher / Mentor" }
     ],
     color: "#0F766E" // teal
   },
@@ -41,8 +41,8 @@ const testimonials = [
     text: `"I am fortunate enough to work and learn with the experienced, expertise and cooperative team of Stemorbit . I found this learning full of educative, inspirational with a lot of fun filled programs and amazing experiments here. Thanks a lot to the team Stemorbit."`,
     img: "https://www.stemorbit.com/assets/images/testimonials/Gunjan.jpg",
     badges: [
-      { icon: "/school.svg", text: "Air Force School (12 Wing, Chandigarh)" },
-      { icon: "/teacher.svg", text: "Science Faculty" }
+      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
+      { icon: "/students.svg", text: "Science Faculty" }
     ],
     color: "#7C3AED" // violet
   },
@@ -52,8 +52,8 @@ const testimonials = [
     text: `"Working with Stemorbit has been a joy. They are very detailed and organized. They make sure that the work is done correctly and in a timely manner. Their services have enabled us to reach an efficiency we hadn't previously experienced."`,
     img: "https://www.stemorbit.com/assets/images/testimonials/Anita.jpg",
     badges: [
-      { icon: "/school.svg", text: "Air Force School (12 Wing, Chandigarh)" },
-      { icon: "/teacher.svg", text: "Administrator" }
+      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
+      { icon: "/students.svg", text: "Administrator" }
     ],
     color: "#BE185D" // rose
   },
@@ -63,8 +63,8 @@ const testimonials = [
     text: `"In the 21st century , Stemorbit has given an opportunity to step into a new outlook for the theories we have learnt. Dedicated staff with on time practical knowledge is been provided by the faculty members."`,
     img: "https://www.stemorbit.com/assets/images/testimonials/Shweta.jpg",
     badges: [
-      { icon: "/school.svg", text: "Air Force School (12 Wing, Chandigarh)" },
-      { icon: "/teacher.svg", text: "Faculty" }
+      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
+      { icon: "/students.svg", text: "Faculty" }
     ],
     color: "#047857" // emerald
   }
