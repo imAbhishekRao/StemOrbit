@@ -13,10 +13,13 @@ export default function About() {
               Hey! We&apos;re <span className="text-[#33aade]">STEMOrbit</span> <span className="text-2xl align-middle">🚀</span>
             </h1>
             <p className="text-lg text-gray-700 mb-6 max-w-2xl text-justify mx-auto">
-              We're a passionate team dedicated to empowering young minds through STEM education. Our mission is to inspire curiosity, creativity, and innovation by providing hands-on learning experiences in science, technology, engineering, and mathematics.
+              At STEMOrbit, we empower students, support schools, and expand access to meaningful STEM education. Our mission is to ignite curiosity, creativity, and innovation by offering engaging, hands-on experiences in science, technology, engineering, and mathematics.
             </p>
             <p className="text-lg text-gray-700 mb-6 max-w-2xl text-justify mx-auto">
-              At STEMOrbit, we believe every child deserves the opportunity to explore and excel in STEM fields. Our programs, labs, and solutions are designed to make learning fun, accessible, and impactful for students everywhere.
+              We provide a diverse range of opportunities designed to meet different learning needs. For students, we offer courses, in-person classes, and online programs that make STEM practical, interactive, and inspiring. For schools and institutions, we deliver innovative labs, structured programs, and tailored solutions that strengthen curricula, enrich teaching, and build a strong culture of innovation.
+            </p>
+            <p className="text-lg text-gray-700 mb-6 max-w-2xl text-justify mx-auto">
+              Whether in classrooms, online platforms, or at our own learning centers, STEMOrbit is committed to making STEM education accessible, engaging, and impactful—preparing learners and schools alike for a future driven by science and technology.
             </p>
             <p className="text-base text-gray-600 mb-6 max-w-2xl text-justify mx-auto">
               Read on to learn more about our journey, our vision, and the people who make STEMOrbit a hub for future innovators.
