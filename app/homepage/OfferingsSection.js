@@ -8,7 +8,7 @@ export default function OfferingsSection() {
       <div className="w-full max-w-6xl mb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {/* For School - Blue */}
-          <div className="relative flex flex-col items-center bg-blue-500 rounded-3xl shadow-2xl p-8 border-4 border-blue-600 hover:scale-105 transition-transform duration-300">
+          <div className="relative flex flex-col items-center bg-blue-400 rounded-3xl shadow-2xl p-8 border-4 border-blue-500 hover:scale-105 transition-transform duration-300">
             <div className="mb-4 text-3xl">🏫</div>
             <h3 className="text-4xl font-bold text-white mb-6 text-center font-fredoka">For School</h3>
             <ul className="text-left text-sm text-blue-50 space-y-2 font-['Bubblegum Sans',cursive] w-full">
@@ -31,7 +31,7 @@ export default function OfferingsSection() {
           </div>
 
           {/* For Teachers - Pink */}
-          <div className="relative flex flex-col items-center bg-pink-500 rounded-3xl shadow-2xl p-8 border-4 border-pink-600 hover:scale-105 transition-transform duration-300">
+          <div className="relative flex flex-col items-center bg-pink-400 rounded-3xl shadow-2xl p-8 border-4 border-pink-500 hover:scale-105 transition-transform duration-300">
             <div className="mb-4 text-3xl">👩‍🏫</div>
             <h3 className="text-4xl font-bold text-white mb-6 text-center font-fredoka">For Teachers</h3>
             <ul className="text-left text-sm text-pink-50 space-y-2 font-['Bubblegum Sans',cursive] w-full">
@@ -54,7 +54,7 @@ export default function OfferingsSection() {
           </div>
 
           {/* For Students - Yellow */}
-          <div className="relative flex flex-col items-center bg-yellow-500 rounded-3xl shadow-2xl p-8 border-4 border-yellow-600 hover:scale-105 transition-transform duration-300">
+          <div className="relative flex flex-col items-center bg-yellow-400 rounded-3xl shadow-2xl p-8 border-4 border-yellow-500 hover:scale-105 transition-transform duration-300">
             <div className="mb-4 text-3xl">🎓</div>
             <h3 className="text-4xl font-bold text-white mb-6 text-center font-fredoka">For Students</h3>
             <ul className="text-left text-sm text-yellow-50 space-y-2 font-['Bubblegum Sans',cursive] w-full">
