@@ -32,9 +32,9 @@ const UpcomingEvents = () => {
           {/* Event Cards */}
           <div className="flex flex-col gap-3 sm:gap-4 lg:ml-4">
             {[
-              { date: "Aug 05, 2025", title: "AI Robot Workshop" },
-              { date: "Aug 12, 2025", title: "3D Printing Lab Day" },
-              { date: "Aug 19, 2025", title: "STEM Game Jam" },
+              { date: "Oct 27, 2025", title: "Teachers Training Workshop" },
+              { date: "Nov 03, 2025", title: "ATL inaugration Sainik School (Kapurthala)" },
+              { date: "December, 2025", title: "Winter Camp" },
             ].map((event, index) => (
               <div
                 key={index}
