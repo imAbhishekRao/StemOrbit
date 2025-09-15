@@ -74,18 +74,6 @@ export default function Footer() {
           {/* Contact Info */}
           <div className="flex-1 min-w-[220px] flex flex-col gap-2 items-center md:items-start">
             <span className="text-lg font-bold font-fredoka mb-2 text-white">Contact Info</span>
-            <div className="flex items-start gap-2 text-white font-fredoka text-sm">
-              <svg className="w-4 h-4 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-              </svg>
-              <div>
-                <p>STEMOrbit Technologies</p>
-                <p>SCO-04, 1st Floor, Mehma Singh</p>
-                <p>Complex, Opp. Jal Vayu Towers, Gate 3</p>
-                <p>New Sunny Enclave, Kharar, Sector-125</p>
-                <p>(Mohali) Punjab - 140301</p>
-              </div>
-            </div>
             <div className="flex items-center gap-2 text-white font-fredoka text-sm">
               <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -104,6 +92,18 @@ export default function Footer() {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.736 6.979C9.208 6.193 9.696 6 10 6c.304 0 .792.193 1.264.979.457.76.736 1.775.736 3.021 0 1.246-.279 2.261-.736 3.021C10.792 13.807 10.304 14 10 14c-.304 0-.792-.193-1.264-.979C8.279 12.261 8 11.246 8 10c0-1.246.279-2.261.736-3.021zM10 12a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
               <a href="https://www.stemorbit.com" target="_blank" rel="noopener noreferrer" className="hover:underline">www.stemorbit.com</a>
+            </div>
+            <div className="flex items-start gap-2 text-white font-fredoka text-sm mt-2">
+              <svg className="w-4 h-4 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              <div>
+                <p>STEMOrbit Technologies</p>
+                <p>SCO-04, 1st Floor, Mehma Singh</p>
+                <p>Complex, Opp. Jal Vayu Towers, Gate 3</p>
+                <p>New Sunny Enclave, Kharar, Sector-125</p>
+                <p>(Mohali) Punjab - 140301</p>
+              </div>
             </div>
           </div>
         </div>
