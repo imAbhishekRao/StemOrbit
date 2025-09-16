@@ -7,129 +7,138 @@ export default function CoursesPage() {
   const courses = [
     {
       id: 1,
-      title: "Robotics Wizards",
-      description: "Build and program your own robots with our hands-on robotics course.",
-      ageGroup: "Ages 8-12",
+      title: "Robotics & Automation",
+      description: "Build and program robots using Arduino, sensors, and motors. Learn coding, electronics, and mechanical design.",
+      ageGroup: "Ages 8-16",
       points: [
-        "Learn basic electronics and circuits",
-        "Program robots using block coding",
-        "Participate in fun robot challenges",
-        "Work with sensors and motors",
-        "Team-based projects"
+        "Arduino microcontroller programming",
+        "Sensor integration and calibration",
+        "Motor control and robotics",
+        "Line following and obstacle avoidance",
+        "Advanced robot challenges"
       ],
-      color: "blue"
+      color: "blue",
+      icon: "🤖"
     },
     {
       id: 2,
-      title: "Coding Explorers",
-      description: "Dive into the world of programming with fun, interactive projects.",
-      ageGroup: "Ages 7-14",
+      title: "3D Printing & Design",
+      description: "Master 3D modeling, CAD design, and 3D printing technology. Create prototypes and functional objects.",
+      ageGroup: "Ages 10-18",
       points: [
-        "Learn programming fundamentals",
-        "Create games and animations",
-        "Solve fun coding puzzles",
-        "Work on creative projects",
-        "Learn problem-solving skills"
+        "3D modeling with Tinkercad/Fusion 360",
+        "CAD design principles",
+        "3D printer operation and maintenance",
+        "Prototype development",
+        "Advanced printing techniques"
       ],
-      color: "purple"
+      color: "green",
+      icon: "🖨️"
     },
     {
       id: 3,
-      title: "Young Scientists",
-      description: "Discover the wonders of science through exciting experiments.",
-      ageGroup: "Ages 6-10",
+      title: "Arduino & IoT",
+      description: "Learn microcontroller programming, sensors, and Internet of Things projects for smart devices.",
+      ageGroup: "Ages 12-18",
       points: [
-        "Hands-on science experiments",
-        "Learn scientific methods",
-        "Explore physics and chemistry",
-        "Fun with kitchen science",
-        "Safe and supervised activities"
+        "Arduino programming fundamentals",
+        "Sensor data collection and analysis",
+        "WiFi and Bluetooth connectivity",
+        "Smart home automation projects",
+        "IoT cloud integration"
       ],
-      color: "green"
+      color: "purple",
+      icon: "🔌"
     },
     {
       id: 4,
-      title: "Creative Coders",
-      description: "Combine art and technology to create digital masterpieces.",
-      ageGroup: "Ages 9-14",
+      title: "Drone Technology",
+      description: "Build, program, and fly drones. Learn aerodynamics, flight control, and aerial photography.",
+      ageGroup: "Ages 10-16",
       points: [
-        "Digital art and animation",
-        "Interactive storytelling",
-        "Game design basics",
-        "Creative coding projects",
-        "Showcase your work"
+        "Drone assembly and maintenance",
+        "Flight control programming",
+        "Aerial photography and videography",
+        "GPS navigation systems",
+        "Drone safety and regulations"
       ],
-      color: "pink"
+      color: "orange",
+      icon: "🚁"
     },
     {
       id: 5,
-      title: "Math Magicians",
-      description: "Make math fun with interactive games and real-world applications.",
-      ageGroup: "Ages 7-12",
+      title: "AI & Machine Learning",
+      description: "Explore artificial intelligence, neural networks, and machine learning algorithms through hands-on projects.",
+      ageGroup: "Ages 14-18",
       points: [
-        "Math through games",
-        "Problem-solving strategies",
-        "Real-world applications",
-        "Interactive activities",
-        "Build math confidence"
+        "Python programming for AI",
+        "Machine learning algorithms",
+        "Computer vision projects",
+        "Natural language processing",
+        "AI ethics and applications"
       ],
-      color: "yellow"
+      color: "red",
+      icon: "🧠"
     },
     {
       id: 6,
-      title: "Space Explorers",
-      description: "Journey through the cosmos and learn about space science.",
-      ageGroup: "Ages 8-13",
+      title: "VR & AR Development",
+      description: "Create virtual and augmented reality experiences using cutting-edge VR/AR technologies.",
+      ageGroup: "Ages 12-18",
       points: [
-        "Solar system exploration",
-        "Rocket science basics",
-        "Astronomy fundamentals",
-        "Space technology",
-        "Mission simulations"
+        "Unity 3D development",
+        "VR headset programming",
+        "AR mobile applications",
+        "3D environment design",
+        "Interactive VR experiences"
       ],
-      color: "indigo"
+      color: "indigo",
+      icon: "🥽"
     },
     {
       id: 7,
-      title: "Eco Warriors",
-      description: "Learn about environmental science and sustainability.",
-      ageGroup: "Ages 7-12",
+      title: "Electronics & Circuits",
+      description: "Learn electronic components, circuit design, and PCB development for STEM projects.",
+      ageGroup: "Ages 10-16",
       points: [
-        "Environmental awareness",
-        "Recycling projects",
-        "Renewable energy",
-        "Eco-friendly crafts",
-        "Nature exploration"
+        "Basic electronic components",
+        "Circuit design and simulation",
+        "PCB design and fabrication",
+        "Soldering and assembly",
+        "Troubleshooting techniques"
       ],
-      color: "emerald"
+      color: "emerald",
+      icon: "⚡"
     },
     {
       id: 8,
-      title: "Young Engineers",
-      description: "Build amazing structures and learn engineering principles.",
-      ageGroup: "Ages 8-14",
+      title: "STEM Engineering",
+      description: "Apply engineering principles to solve real-world problems using math, science, and technology.",
+      ageGroup: "Ages 12-18",
       points: [
-        "Basic engineering concepts",
-        "Structures and bridges",
-        "Simple machines",
-        "Team challenges",
-        "Creative problem-solving"
+        "Engineering design process",
+        "Mechanical and electrical systems",
+        "Project management skills",
+        "Prototype testing and iteration",
+        "Industry-standard tools"
       ],
-      color: "red"
+      color: "yellow",
+      icon: "⚙️"
     },
     {
       id: 9,
-      title: "Digital Makers",
-      description: "Create digital content and learn about technology.",
-      ageGroup: "Ages 10-15",
+      title: "Cybersecurity & Coding",
+      description: "Learn secure programming practices, ethical hacking, and cybersecurity fundamentals.",
+      ageGroup: "Ages 14-18",
       points: [
-        "Digital art and design",
-        "Video production",
-        "Podcast creation",
-        "Basic web development",
-        "Digital storytelling"
+        "Programming languages (Python, C++)",
+        "Cybersecurity fundamentals",
+        "Network security concepts",
+        "Ethical hacking techniques",
+        "Secure coding practices"
       ],
-      color: "orange"
+      color: "pink",
+      icon: "🔒"
     }
   ];
 
@@ -147,6 +156,92 @@ export default function CoursesPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* In-Person Classes Section */}
+      <div className="w-full py-12 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 font-fredoka">
+              Learn In Person
+            </h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              Take our in-person classes in our premises and experience hands-on learning with our expert instructors
+            </p>
+          </div>
+          
+          <div className="bg-white rounded-3xl shadow-xl p-8 border-2 border-blue-200">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <span className="text-2xl">🏫</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 font-fredoka">In-Person Classes</h3>
+                </div>
+                <p className="text-gray-700 mb-4 text-lg">
+                  Experience the full power of hands-on STEM learning in our state-of-the-art facility. 
+                  Work with real equipment, collaborate with peers, and get immediate feedback from our expert instructors.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                    🤖 Robotics Labs
+                  </span>
+                  <span className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                    🖨️ 3D Printing Station
+                  </span>
+                  <span className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
+                    🔌 Electronics Lab
+                  </span>
+                  <span className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
+                    🚁 Drone Workshop
+                  </span>
+                </div>
+              </div>
+              
+              <div className="flex-shrink-0">
+                <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-6 text-white text-center">
+                  <div className="text-4xl mb-2">📍</div>
+                  <p className="text-sm font-medium mb-2">Available at our location:</p>
+                  <p className="text-xs opacity-90">
+                    STEMOrbit Technologies<br/>
+                    SCO-04, 1st Floor, Mehma Singh Complex<br/>
+                    Opp. Jal Vayu Towers, Gate 3<br/>
+                    New Sunny Enclave, Kharar<br/>
+                    Sector-125 (Mohali) Punjab - 140301
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Action Buttons */}
+          <div className="text-center mt-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a 
+                href="https://www.google.com/maps/dir//SCO-04,+First+Floor,+Mehma+Singh+Complex,+03,+Jandpur+Rd,+opp.+Jalvayu+Tower+Road+South,+Sector+125,+Sunny+Enclave,+Kharar,+Mohali,+Punjab+140301/@30.754857,76.5869847,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390fef3cc28f9a51:0x663e39db36882036!2m2!1d76.669386!2d30.754883?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+              >
+                <span className="text-2xl">🚗</span>
+                Take Me There
+              </a>
+              
+              <a 
+                href="tel:+917009594410"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-green-700 hover:to-teal-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+              >
+                <span className="text-2xl">📅</span>
+                Book Your Slot
+              </a>
+            </div>
+            
+            <p className="text-gray-600 mt-4 text-sm">
+              All our courses are available as in-person classes at our facility
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* 1. Explore All Courses Section */}
       <div className="w-full pt-32 pb-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -190,27 +285,17 @@ export default function CoursesPage() {
                     key={course.id}
                     className="relative group"
                   >
-                    {/* SVG Icon Container - Half in, half out */}
-                    <div className="absolute -top-6 -left-6 w-24 h-24 z-10 transition-transform duration-300 group-hover:scale-110">
-                      <div className="relative w-full h-full">
-                        <div className="absolute inset-0 bg-white rounded-2xl shadow-lg p-2">
-                          <img 
-                            src="/courses.svg" 
-                            alt={course.title}
-                            className="w-full h-full object-contain p-1"
-                            style={{ filter: 'hue-rotate(15deg) saturate(1.2)' }}
-                          />
-                        </div>
-                      </div>
-                    </div>
 
                     <div 
                       className={`${color.bg} ${color.border} border-2 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl h-full flex flex-col`}
                     >
-                      <div className="pt-12 px-6 pb-2">
+                      <div className="pt-6 px-6 pb-2">
                         <div className="flex justify-between items-start mb-4">
-                          <h3 className={`text-2xl font-bold ${color.text} mb-2`}>{course.title}</h3>
-                          <span className="text-sm font-medium px-3 py-1 rounded-full bg-white bg-opacity-70">
+                          <div className="flex items-center gap-3">
+                            <span className="text-3xl">{course.icon}</span>
+                            <h3 className={`text-2xl font-bold ${color.text} mb-2`}>{course.title}</h3>
+                          </div>
+                          <span className="text-sm font-medium px-3 py-1 rounded-full bg-white bg-opacity-70 whitespace-nowrap">
                             {course.ageGroup}
                           </span>
                         </div>
@@ -273,7 +358,7 @@ export default function CoursesPage() {
             />
           </svg>
           <h2 className="relative z-10 text-3xl md:text-4xl font-extrabold text-pink-700 font-[Comic Sans MS,cursive,sans-serif] text-center drop-shadow-lg">
-            Our Course Offerings
+            Our Bestseller Courses
           </h2>
         </div>
 
@@ -456,6 +541,7 @@ export default function CoursesPage() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }
