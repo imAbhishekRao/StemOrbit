@@ -242,96 +242,6 @@ export default function CoursesPage() {
         </div>
       </div>
 
-      {/* 1. Explore All Courses Section */}
-      <div className="w-full pt-32 pb-8 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-blue-700 font-fredoka mb-6">
-            Explore Our <span className="text-pink-600">Fun</span> Courses
-          </h1>
-          <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
-            Discover exciting learning adventures for every young explorer! From
-            creative crafts to robotics and science experiments, we've got
-            something for every curious mind.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 mt-10">
-            <button
-              onClick={() => setShowAllCourses(!showAllCourses)}
-              className="px-8 py-3 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-full shadow-lg hover:shadow-pink-300 transition-all duration-300 transform hover:-translate-y-1"
-            >
-              {showAllCourses ? 'Hide Courses' : 'View All Courses'}
-            </button>
-            <a
-              href="#why-choose"
-              className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-blue-300 transition-all duration-300 transform hover:-translate-y-1"
-            >
-              Book a Free Trial
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* All Courses Grid */}
-      {showAllCourses && (
-        <div className="w-full py-12 bg-gray-50 transition-all duration-500 ease-in-out">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12 font-fredoka">
-              Our <span className="text-pink-600">Amazing</span> Courses
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {courses.map((course) => {
-                const color = colorClasses[course.color];
-                return (
-                  <div 
-                    key={course.id}
-                    className="relative group"
-                  >
-
-                    <div 
-                      className={`${color.bg} ${color.border} border-2 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl h-full flex flex-col`}
-                    >
-                      <div className="pt-6 px-6 pb-2">
-                        <div className="flex justify-between items-start mb-4">
-                          <div className="flex items-center gap-3">
-                            <span className="text-3xl">{course.icon}</span>
-                            <h3 className={`text-2xl font-bold ${color.text} mb-2`}>{course.title}</h3>
-                          </div>
-                          <span className="text-sm font-medium px-3 py-1 rounded-full bg-white bg-opacity-70 whitespace-nowrap">
-                            {course.ageGroup}
-                          </span>
-                        </div>
-                        <p className="text-gray-700 mb-4">{course.description}</p>
-                        <ul className="mb-6 space-y-2">
-                          {course.points.map((point, index) => (
-                            <li key={index} className="flex items-start">
-                              <span className="text-green-500 mr-2">✓</span>
-                              <span className="text-gray-700">{point}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="mt-auto p-6 pt-0">
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <button 
-                            className={`${color.button} text-white font-bold py-2 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105 ${color.buttonHover} flex-1`}
-                          >
-                            Enroll Now
-                          </button>
-                          <button 
-                            className="bg-white text-gray-800 font-bold py-2 px-6 border-2 border-gray-300 rounded-full shadow-md transition-all duration-300 transform hover:scale-105 hover:bg-gray-100 hover:border-gray-400 flex-1"
-                          >
-                            Enquire
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* 2. Our Course Offerings Section */}
       <section
         id="offerings"
@@ -436,6 +346,96 @@ export default function CoursesPage() {
           </div>
         </div>
       </section>
+
+      {/* 1. Explore All Courses Section */}
+      <div className="w-full pt-32 pb-8 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-blue-700 font-fredoka mb-6">
+            Explore Our <span className="text-pink-600">Fun</span> Courses
+          </h1>
+          <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
+            Discover exciting learning adventures for every young explorer! From
+            creative crafts to robotics and science experiments, we've got
+            something for every curious mind.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 mt-10">
+            <button
+              onClick={() => setShowAllCourses(!showAllCourses)}
+              className="px-8 py-3 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-full shadow-lg hover:shadow-pink-300 transition-all duration-300 transform hover:-translate-y-1"
+            >
+              {showAllCourses ? 'Hide Courses' : 'View All Courses'}
+            </button>
+            <a
+              href="#why-choose"
+              className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-blue-300 transition-all duration-300 transform hover:-translate-y-1"
+            >
+              Book a Free Trial
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* All Courses Grid */}
+      {showAllCourses && (
+        <div className="w-full py-12 bg-gray-50 transition-all duration-500 ease-in-out">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12 font-fredoka">
+              Our <span className="text-pink-600">Amazing</span> Courses
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {courses.map((course) => {
+                const color = colorClasses[course.color];
+                return (
+                  <div 
+                    key={course.id}
+                    className="relative group"
+                  >
+
+                    <div 
+                      className={`${color.bg} ${color.border} border-2 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl h-full flex flex-col`}
+                    >
+                      <div className="pt-6 px-6 pb-2">
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="flex items-center gap-3">
+                            <span className="text-3xl">{course.icon}</span>
+                            <h3 className={`text-2xl font-bold ${color.text} mb-2`}>{course.title}</h3>
+                          </div>
+                          <span className="text-sm font-medium px-3 py-1 rounded-full bg-white bg-opacity-70 whitespace-nowrap">
+                            {course.ageGroup}
+                          </span>
+                        </div>
+                        <p className="text-gray-700 mb-4">{course.description}</p>
+                        <ul className="mb-6 space-y-2">
+                          {course.points.map((point, index) => (
+                            <li key={index} className="flex items-start">
+                              <span className="text-green-500 mr-2">✓</span>
+                              <span className="text-gray-700">{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="mt-auto p-6 pt-0">
+                        <div className="flex flex-col sm:flex-row gap-3">
+                          <button 
+                            className={`${color.button} text-white font-bold py-2 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105 ${color.buttonHover} flex-1`}
+                          >
+                            Enroll Now
+                          </button>
+                          <button 
+                            className="bg-white text-gray-800 font-bold py-2 px-6 border-2 border-gray-300 rounded-full shadow-md transition-all duration-300 transform hover:scale-105 hover:bg-gray-100 hover:border-gray-400 flex-1"
+                          >
+                            Enquire
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 3. Why Choose Our Courses Section */}
       <div id="why-choose" className="w-full max-w-6xl mx-auto mb-32  mt-32">
