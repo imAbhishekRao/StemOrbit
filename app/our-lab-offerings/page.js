@@ -366,15 +366,21 @@ export default function OurLabOfferings() {
         <p className="text-lg text-gray-600 mb-8 text-center max-w-2xl">Fun activities blended with learning!</p>
         <div className="w-full max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="row-span-2 col-span-2 md:row-span-2 md:col-span-2 flex items-center justify-center">
-            <img src="/about-img.webp" alt="About" className="rounded-2xl object-cover w-full h-64 md:h-80 shadow-lg" />
+            <img src="/activities.jpeg" alt="Activities" className="rounded-2xl object-cover w-full h-64 md:h-80 shadow-lg" />
           </div>
-          <img src="/vr.avif" alt="VR" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/ai.webp" alt="AI" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/iot.webp" alt="IoT" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/app.jpg" alt="App" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/students.svg" alt="Students" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md bg-white p-4" />
-          <img src="/3d-printing-history-featured.webp" alt="3D Printing" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/cybersec.jpg" alt="Cybersecurity" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          
+          {/* Moments gallery */}
+          {/* Moments gallery */}
+          <img src="/moments (1).jpg" alt="Moment 1" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/moments (2).JPG" alt="Moment 2" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/moments (3).jpg" alt="Moment 3" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/moments (4).jpg" alt="Moment 4" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/moments (5).jpg" alt="Moment 5" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/moments (6).jpg" alt="Moment 6" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/moments (7).jpg" alt="Moment 7" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/moments (8).jpg" alt="Moment 8" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/moments (9).jpg" alt="Moment 9" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
+          <img src="/moments (10).jpg" alt="Moment 10" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
         </div>
       </section>
      

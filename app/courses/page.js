@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 export default function CoursesPage() {
   const [showAllCourses, setShowAllCourses] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   const courses = [
     {
@@ -139,6 +140,75 @@ export default function CoursesPage() {
       ],
       color: "pink",
       icon: "🔒"
+    }
+  ];
+
+  const engineers = [
+    {
+      id: 1,
+      name: "Arjun Singh",
+      age: 12,
+      project: "Smart Home Automation",
+      description: "Built a complete smart home system using Arduino and sensors",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with actual video URL
+      course: "Arduino & IoT",
+      achievement: "Best Innovation Award"
+    },
+    {
+      id: 2,
+      name: "Priya Sharma",
+      age: 14,
+      project: "3D Printed Prosthetic Hand",
+      description: "Designed and printed a functional prosthetic hand for a classmate",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with actual video URL
+      course: "3D Printing & Design",
+      achievement: "Community Impact Award"
+    },
+    {
+      id: 3,
+      name: "Rohan Kumar",
+      age: 11,
+      project: "Line Following Robot",
+      description: "Created an autonomous robot that follows colored lines using sensors",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with actual video URL
+      course: "Robotics & Automation",
+      achievement: "Young Engineer Award"
+    },
+    {
+      id: 4,
+      name: "Sneha Patel",
+      age: 13,
+      project: "Weather Station",
+      description: "Built a complete weather monitoring station with data logging",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with actual video URL
+      course: "Electronics & Circuits",
+      achievement: "Scientific Excellence Award"
+    },
+    {
+      id: 5,
+      name: "Vikram Reddy",
+      age: 15,
+      project: "AI-Powered Plant Monitor",
+      description: "Developed an AI system that monitors plant health and sends alerts",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with actual video URL
+      course: "AI & Machine Learning",
+      achievement: "Future Tech Award"
+    },
+    {
+      id: 6,
+      name: "Ananya Joshi",
+      age: 12,
+      project: "Solar-Powered Drone",
+      description: "Designed and built a drone powered entirely by solar energy",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&crop=face",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Replace with actual video URL
+      course: "Drone Technology",
+      achievement: "Green Innovation Award"
     }
   ];
 
@@ -347,6 +417,97 @@ export default function CoursesPage() {
         </div>
       </section>
 
+      {/* Our Little Engineers Section */}
+      <section className="w-full py-16 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 font-fredoka">
+              Our Little <span className="text-purple-600">Engineers</span> Built Something
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Meet our amazing young innovators and see the incredible projects they've created! 
+              Click on any project to watch their journey and achievements.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {engineers.map((engineer) => (
+              <div 
+                key={engineer.id}
+                className="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border-2 border-transparent hover:border-purple-200"
+              >
+                {/* Project Image/Thumbnail */}
+                <div className="relative h-48 bg-gradient-to-br from-purple-400 to-pink-400 overflow-hidden">
+                  <img 
+                    src={engineer.image} 
+                    alt={engineer.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                  
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <button
+                      onClick={() => setSelectedVideo(engineer)}
+                      className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center group-hover:bg-opacity-100 transition-all duration-300 transform group-hover:scale-110 shadow-lg"
+                    >
+                      <svg className="w-8 h-8 text-purple-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Achievement Badge */}
+                  <div className="absolute top-3 right-3">
+                    <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                      🏆 {engineer.achievement}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 font-fredoka">{engineer.name}</h3>
+                    <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                      Age {engineer.age}
+                    </span>
+                  </div>
+                  
+                  <h4 className="text-lg font-semibold text-purple-700 mb-2">{engineer.project}</h4>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{engineer.description}</p>
+                  
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-purple-600 font-medium bg-purple-100 px-3 py-1 rounded-full">
+                      {engineer.course}
+                    </span>
+                    <button
+                      onClick={() => setSelectedVideo(engineer)}
+                      className="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all duration-300"
+                    >
+                      Watch Project
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-12">
+            <p className="text-lg text-gray-700 mb-6">
+              Want to see your child's project featured here? Join our courses today!
+            </p>
+            <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+              Start Your Journey
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* 1. Explore All Courses Section */}
       <div className="w-full pt-32 pb-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -541,6 +702,67 @@ export default function CoursesPage() {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+          <div className="relative bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedVideo(null)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black bg-opacity-50 text-white rounded-full flex items-center justify-center hover:bg-opacity-75 transition-all duration-300"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Video Header */}
+            <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-6">
+              <h3 className="text-2xl font-bold font-fredoka">{selectedVideo.name}</h3>
+              <p className="text-purple-100 mt-1">{selectedVideo.project}</p>
+              <div className="flex items-center gap-4 mt-3">
+                <span className="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+                  Age {selectedVideo.age}
+                </span>
+                <span className="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">
+                  {selectedVideo.course}
+                </span>
+                <span className="bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-bold">
+                  🏆 {selectedVideo.achievement}
+                </span>
+              </div>
+            </div>
+
+            {/* Video Content */}
+            <div className="p-6">
+              <p className="text-gray-700 mb-6">{selectedVideo.description}</p>
+              
+              {/* Video Player */}
+              <div className="relative w-full h-0 pb-[56.25%] bg-gray-900 rounded-lg overflow-hidden">
+                <iframe
+                  src={selectedVideo.videoUrl}
+                  className="absolute top-0 left-0 w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title={`${selectedVideo.name}'s Project Video`}
+                ></iframe>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                <button className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full font-bold hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
+                  Enroll in {selectedVideo.course}
+                </button>
+                <button className="flex-1 bg-gray-100 text-gray-800 px-6 py-3 rounded-full font-bold hover:bg-gray-200 transition-all duration-300">
+                  View All Projects
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
