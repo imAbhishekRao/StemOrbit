@@ -1,146 +1,442 @@
 "use client";
+import { useEffect, useRef, useState } from 'react';
 
-import { useState } from "react";
-import { ParallaxScrollSecond } from "../../components/ui/parallax-scroll-2";
+export default function GalleryPage() {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const detailedGridRef = useRef(null);
 
-const parallaxData = [
-  {
-    label: "Achievements",
-    images: [
-      "https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-4.0.3&auto=format&fit=crop&w=3387&q=80",
-      "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?ixlib=rb-4.0.3&auto=format&fit=crop&w=3070&q=80",
-      "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?ixlib=rb-4.0.3&auto=format&fit=crop&w=3540&q=80",
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-    ],
-  },
-  {
-    label: "Inaugurations",
-    images: [
-      "https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6?ixlib=rb-4.0.3&auto=format&fit=crop&w=3540&q=80",
-      "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?ixlib=rb-4.0.3&auto=format&fit=crop&w=3540&q=80",
-      "https://images.unsplash.com/photo-1439853949127-fa647821eba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2640&q=80",
-      "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
-    ],
-  },
-  {
-    label: "School Sessions",
-    images: [
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80",
-    ],
-  },
-  {
-    label: "STEMOrbit Inauguration",
-    images: [
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80&h=800&w=640",
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80&h=600&w=600",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80&h=600&w=600",
-    ],
-  },
-  {
-    label: "Summer-Winter Camp",
-    images: [
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
-    ],
-  },
-  {
-    label: "Teachers Training",
-    images: [
-      "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-    ],
-  },
-  {
-    label: "Techfests",
-    images: [
-      "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-    ],
-  },
-];
+  const galleryImages = [
+    {
+      id: 1,
+      image: "https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&w=600&q=80",
+      title: "Robotics Competition Winners",
+      description: "Students celebrating their victory at the National Robotics Championship with their innovative robot design.",
+      category: "Achievements"
+    },
+    {
+      id: 2,
+      image: "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?auto=format&fit=crop&w=600&q=80",
+      title: "STEM Lab Inauguration",
+      description: "Grand opening ceremony of our state-of-the-art STEM laboratory with distinguished guests and students.",
+      category: "Inaugurations"
+    },
+    {
+      id: 3,
+      image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=600&q=80",
+      title: "3D Printing Workshop",
+      description: "Students learning advanced 3D modeling and printing techniques to bring their creative ideas to life.",
+      category: "Workshops"
+    },
+    {
+      id: 4,
+      image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
+      title: "School Session - Coding",
+      description: "Interactive coding session where students learn programming fundamentals through hands-on activities.",
+      category: "School Sessions"
+    },
+    {
+      id: 5,
+      image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80",
+      title: "Summer Camp Activities",
+      description: "Exciting summer camp where students explore robotics, AI, and engineering through fun projects.",
+      category: "Camps"
+    },
+    {
+      id: 6,
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+      title: "Teacher Training Program",
+      description: "Professional development session for educators to enhance their STEM teaching capabilities.",
+      category: "Teacher Training"
+    },
+    {
+      id: 7,
+      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
+      title: "Techfest Exhibition",
+      description: "Students showcasing their innovative projects and technological solutions at our annual techfest.",
+      category: "Techfests"
+    },
+    {
+      id: 8,
+      image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80",
+      title: "Award Ceremony",
+      description: "Recognizing outstanding student achievements in STEM education and innovation competitions.",
+      category: "Achievements"
+    },
+    {
+      id: 9,
+      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981d?auto=format&fit=crop&w=600&q=80",
+      title: "Robotics Lab Session",
+      description: "Building and testing autonomous bots in the lab.",
+      category: "School Sessions"
+    },
+    {
+      id: 10,
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+      title: "Coding Bootcamp",
+      description: "Deep dive into JavaScript and problem-solving.",
+      category: "Workshops"
+    },
+    {
+      id: 11,
+      image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=600&q=80",
+      title: "3D Prints Showcase",
+      description: "Students displaying their 3D printed prototypes.",
+      category: "Techfests"
+    },
+    {
+      id: 12,
+      image: "https://images.unsplash.com/photo-1529336953121-c212c68be8b5?auto=format&fit=crop&w=600&q=80",
+      title: "STEM Camp Outdoors",
+      description: "Outdoor activities combining physics and fun.",
+      category: "Camps"
+    },
+    {
+      id: 13,
+      image: "https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=600&q=80",
+      title: "Teacher Workshop",
+      description: "Upskilling educators on hands-on STEM kits.",
+      category: "Teacher Training"
+    },
+    {
+      id: 14,
+      image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80",
+      title: "Innovation Day",
+      description: "Parents and students explore innovative projects.",
+      category: "Inaugurations"
+    },
+    {
+      id: 15,
+      image: "https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=600&q=80",
+      title: "AI Club Meetup",
+      description: "Discussing real-world AI applications.",
+      category: "Workshops"
+    },
+    {
+      id: 16,
+      image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80",
+      title: "Circuit Design",
+      description: "Soldering and testing custom circuits.",
+      category: "School Sessions"
+    },
+    {
+      id: 17,
+      image: "https://images.unsplash.com/photo-1526328828355-93f9c4f2a1f2?auto=format&fit=crop&w=600&q=80",
+      title: "Drone Workshop",
+      description: "Flight basics and safety with mini drones.",
+      category: "Workshops"
+    },
+    {
+      id: 18,
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+      title: "Maker Space",
+      description: "Collaborative building and prototyping.",
+      category: "Techfests"
+    },
+    {
+      id: 19,
+      image: "https://images.unsplash.com/photo-1516542076529-1ea3854896e1?auto=format&fit=crop&w=600&q=80",
+      title: "Camp Robotics",
+      description: "Team challenges with line-followers.",
+      category: "Camps"
+    },
+    {
+      id: 20,
+      image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=600&q=80",
+      title: "STEM Fair Awards",
+      description: "Celebrating student innovators.",
+      category: "Achievements"
+    },
+    {
+      id: 21,
+      image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
+      title: "Intro to Python",
+      description: "First steps in programming.",
+      category: "School Sessions"
+    },
+    {
+      id: 22,
+      image: "https://images.unsplash.com/photo-1496302662116-35cc4f36df92?auto=format&fit=crop&w=600&q=80",
+      title: "Electronics 101",
+      description: "Understanding sensors and actuators.",
+      category: "Teacher Training"
+    },
+    {
+      id: 23,
+      image: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=600&q=80",
+      title: "STEM Expo",
+      description: "Booths featuring student prototypes.",
+      category: "Techfests"
+    },
+    {
+      id: 24,
+      image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=600&q=80",
+      title: "Science Demo Day",
+      description: "Live demos of physics experiments.",
+      category: "Inaugurations"
+    }
+  ];
 
-export default function Gallery() {
-  const [active, setActive] = useState(0);
+  const categories = ['all', 'Achievements', 'Inaugurations', 'School Sessions', 'Workshops', 'Camps', 'Teacher Training', 'Techfests'];
+
+  const filteredImages = selectedCategory === 'all'
+    ? galleryImages
+    : galleryImages.filter((image) => image.category === selectedCategory);
+
+  // Parallax scroll effect for detailed gallery images
+  useEffect(() => {
+    const container = detailedGridRef.current;
+    if (!container) return;
+
+    const elements = container.querySelectorAll('.parallax-item');
+    const grid = container.querySelector('.detailed-grid');
+
+    const handleScroll = () => {
+      const viewportHeight = window.innerHeight || 0;
+      // compute current columns from CSS grid
+      let cols = 4;
+      if (grid) {
+        const style = window.getComputedStyle(grid);
+        const template = style.getPropertyValue('grid-template-columns');
+        const trackCount = template ? template.split(' ').length : 4;
+        cols = Math.max(1, trackCount);
+      }
+      const totalItems = elements.length;
+      const rows = Math.ceil(totalItems / cols);
+
+      elements.forEach((el, idx) => {
+        const rect = el.getBoundingClientRect();
+        const centerDelta = (rect.top + rect.height / 2) - (viewportHeight / 2);
+        const progress = centerDelta / viewportHeight; // roughly -1..1
+        const baseSpeed = parseFloat(el.getAttribute('data-speed') || '0.15');
+        // Row-based speed modulation: outer rows faster, center slower
+        const rowIndex = Math.floor(idx / cols);
+        const distanceFromCenter = Math.abs(rowIndex - (rows - 1) / 2);
+        const norm = rows > 1 ? distanceFromCenter / ((rows - 1) / 2) : 1; // 0 center, 1 edges
+        const rowMultiplier = 0.6 + norm * 0.8; // center ~0.6x .. edges ~1.4x
+        const speed = baseSpeed * rowMultiplier;
+        const translateY = -progress * 60 * speed; // adjust strength
+
+        // Additional scroll-linked animation
+        const absProgress = Math.min(1, Math.abs(progress));
+        const scale = 1 - absProgress * 0.04; // 1 -> 0.96
+        const opacity = 1 - absProgress * 0.2; // 1 -> 0.8
+        const rotateX = -progress * 4; // subtle tilt up/down
+        const shadowStrength = 0.15 + (1 - absProgress) * 0.25; // stronger near center
+
+        el.style.transform = `translateY(${translateY}px) scale(${scale}) rotateX(${rotateX}deg)`;
+        el.style.opacity = String(opacity);
+        el.style.boxShadow = `0 18px 35px rgba(0,0,0,${shadowStrength})`;
+      });
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [selectedCategory]);
+
+  // Scroll-triggered reveal for detailed gallery
+  useEffect(() => {
+    const container = detailedGridRef.current;
+    if (!container) return;
+
+    const revealItems = container.querySelectorAll('.reveal-on-scroll');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.12 }
+    );
+
+    revealItems.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [selectedCategory]);
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 py-16 px-0 flex items-center justify-center">
-      <div className="w-full max-w-5xl mx-auto rounded-3xl shadow-2xl bg-white/80 backdrop-blur-lg p-6 sm:p-12 flex flex-col items-center gap-8">
-        <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-2 text-center drop-shadow-lg tracking-tight bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-transparent animate-fade-in">Gallery</h1>
-        <div className="flex flex-wrap gap-4 justify-center mb-4">
-          {parallaxData.map((item, idx) => (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-fredoka">
+              Our <span className="text-yellow-300">Gallery</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+              Explore our journey through moments of learning, innovation, and achievement.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Small Gallery (Quick Preview) */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8 font-fredoka">
+            Quick <span className="text-purple-600">Preview</span>
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {galleryImages.slice(0, 6).map((item, index) => (
+              <div
+                key={`preview-${item.id}`}
+                className="flip-card h-32 md:h-40 fade-up"
+                style={{ animationDelay: `${(index % 6) * 0.08}s` }}
+              >
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                  </div>
+                  <div className="flip-card-back">
+                    <div className="p-2 h-full flex flex-col justify-center text-center">
+                      <h3 className="text-sm font-bold text-white mb-1 line-clamp-2">{item.title}</h3>
+                      <p className="text-xs text-gray-200 line-clamp-2">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Detailed Gallery Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Sidebar */}
+            <div className="lg:w-1/4">
+              <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-6 font-fredoka">Categories</h3>
+                <div className="space-y-2">
+                  {categories.map((category) => (
             <button
-              key={item.label}
-              className={`px-6 py-2 rounded-full font-semibold text-lg border-2 transition-all duration-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-white backdrop-blur-md
-                ${active === idx
-                  ? "bg-gradient-to-r from-blue-600 to-pink-500 text-white border-blue-600 shadow-lg scale-105"
-                  : "bg-white text-blue-700 border-blue-300 hover:bg-blue-50 hover:scale-105 hover:shadow-md"}
-              `}
-              style={{minWidth: 180}}
-              onClick={() => setActive(idx)}
-            >
-              {item.label}
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
+                        selectedCategory === category
+                          ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                          : 'text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      {category === 'all' ? 'All Photos' : category}
             </button>
           ))}
         </div>
-        <div className="w-full animate-fade-in-slow">
-          <ParallaxScrollSecond images={parallaxData[active].images} />
+              </div>
+            </div>
+
+            {/* Image Grid */}
+            <div className="lg:w-3/4" ref={detailedGridRef}>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 detailed-grid">
+                {filteredImages.map((item, index) => (
+                  <div
+                    key={item.id}
+                    className="group cursor-pointer parallax-item will-change-transform fade-in reveal-on-scroll"
+                    data-speed={(0.12 + (index % 4) * 0.04).toFixed(2)}
+                    data-index={index}
+                    style={{ transition: 'transform 0.2s ease-out', animationDelay: `${(index % 8) * 0.06}s` }}
+                  >
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-64 object-cover rounded-lg shadow-lg"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Flip Card Styles */}
       <style jsx global>{`
+        /* Marquee */
+        .marquee {
+          display: flex;
+          width: max-content;
+          animation: marquee-scroll 35s linear infinite;
+          padding: 0 1rem;
+        }
+        .marquee:hover { animation-play-state: paused; }
+        @keyframes marquee-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        /* Entry animations */
+        .fade-up {
+          opacity: 0;
+          transform: translateY(12px);
+          animation: fade-up 0.6s ease-out forwards;
+        }
+        @keyframes fade-up {
+          0% { opacity: 0; transform: translateY(12px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+          opacity: 0;
+          animation: fade-in 0.6s ease-out forwards;
+        }
         @keyframes fade-in {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: none; }
+          0% { opacity: 0; }
+          100% { opacity: 1; }
         }
-        .animate-fade-in {
-          animation: fade-in 1s cubic-bezier(0.4,0,0.2,1) both;
+
+        /* Scroll reveal modifier */
+        .reveal-on-scroll { opacity: 0; transform: translateY(10px); }
+        .reveal-on-scroll.in-view { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+
+        .flip-card {
+          background-color: transparent;
+          width: 100%;
+          height: 250px;
+          perspective: 1000px;
         }
-        .animate-fade-in-slow {
-          animation: fade-in 1.5s cubic-bezier(0.4,0,0.2,1) both;
+
+        .flip-card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          transition: transform 0.6s;
+          transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+          transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          border-radius: 0.5rem;
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .flip-card-front {
+          background-color: #bbb;
+          color: black;
+        }
+
+        .flip-card-back {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          transform: rotateY(180deg);
         }
       `}</style>
     </div>
