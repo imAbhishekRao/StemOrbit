@@ -295,8 +295,159 @@ export default function WhatsStemLab() {
         </div>
       </section>
 
+      {/* Lab Gallery Section */}
+      <section className="py-16 px-4 md:px-0 bg-gradient-to-br from-gray-50 via-white to-blue-50" ref={ctaRef}>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 font-fredoka">
+              Our <span className="text-blue-600">STEM Lab</span> in Action
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Step inside our state-of-the-art STEM laboratory and see where young minds explore, create, and innovate!
+            </p>
+          </div>
+
+          {/* Lab Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl">🔬</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Advanced Equipment</h3>
+              <p className="text-gray-600">Cutting-edge technology and professional-grade tools for hands-on learning</p>
+            </div>
+            
+            <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl">👥</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Collaborative Learning</h3>
+              <p className="text-gray-600">Team-based projects and peer-to-peer learning in a supportive environment</p>
+            </div>
+            
+            <div className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl">🚀</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Innovation Hub</h3>
+              <p className="text-gray-600">Where creativity meets technology to build the future</p>
+            </div>
+          </div>
+
+          {/* Lab Gallery */}
+          <div className="bg-white rounded-3xl shadow-2xl p-8">
+            <h3 className="text-2xl font-bold text-center text-gray-900 mb-8 font-fredoka">
+              Lab <span className="text-blue-600">Gallery</span>
+            </h3>
+            
+            {/* Alternating Rows Gallery */}
+            <div className="space-y-6">
+              {/* Row 1: Two images */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.41.jpeg" alt="Lab Overview" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-4 left-4 text-white text-lg font-bold">Lab Overview</div>
+                  </div>
+                </div>
+                <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.41 (1).jpeg" alt="Students in Action" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-4 left-4 text-white text-lg font-bold">Students in Action</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 2: Full-width landscape */}
+              <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                <img src="/WhatsApp Image 2025-09-27 at 16.07.42.jpeg" alt="Learning Space" className="w-full h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white text-lg font-bold">Learning Space</div>
+                </div>
+              </div>
+
+              {/* Row 3: Two images */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.43.jpeg" alt="Project Showcase" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-4 left-4 text-white text-lg font-bold">Project Showcase</div>
+                  </div>
+                </div>
+                <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.44.jpeg" alt="Innovation Station" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-4 left-4 text-white text-lg font-bold">Innovation Station</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 4: Full-width landscape */}
+              <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                <img src="/WhatsApp Image 2025-09-27 at 16.07.44 (1).jpeg" alt="Team Work" className="w-full h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white text-lg font-bold">Team Work</div>
+                </div>
+              </div>
+
+              {/* Row 5: Two images */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.44 (2).jpeg" alt="Advanced Projects" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-4 left-4 text-white text-lg font-bold">Advanced Projects</div>
+                  </div>
+                </div>
+                {/* Duplicate one nice highlight to fill the pair visually */}
+                <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.41 (2).jpeg" alt="Advanced Equipment" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-4 left-4 text-white text-lg font-bold">Advanced Equipment</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Lab Statistics */}
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
+                <div className="text-gray-600">Students Trained</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">50+</div>
+                <div className="text-gray-600">Projects Completed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-purple-600 mb-2">15+</div>
+                <div className="text-gray-600">Technologies</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-orange-600 mb-2">100%</div>
+                <div className="text-gray-600">Hands-on Learning</div>
+              </div>
+            </div>
+
+            {/* Call to Action */}
+            <div className="text-center mt-12">
+              <p className="text-lg text-gray-700 mb-6">
+                Ready to experience our amazing STEM lab? Book a visit today!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                  Book Lab Visit
+                </button>
+                <button className="bg-white text-blue-600 border-2 border-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                  Virtual Tour
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 px-4 md:px-0" ref={ctaRef}>
+      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 px-4 md:px-0">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Experience STEM Learning?</h2>
           <p className="text-lg text-blue-100 mb-8">Discover how our STEM labs can transform education and inspire the next generation of innovators and problem-solvers.</p>

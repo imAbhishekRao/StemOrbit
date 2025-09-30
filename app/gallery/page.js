@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -182,6 +182,27 @@ export default function GalleryPage() {
     ? galleryImages
     : galleryImages.filter((image) => image.category === selectedCategory);
 
+  // Stable random order per category change
+  const collageImages = useMemo(() => {
+    const arr = [...filteredImages];
+    for (let i = arr.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }, [filteredImages]);
+
+  // Small collage sizing (no big boxes): return small spans
+  const getCollageSpan = (index) => {
+    // Pattern of small sizes: mostly 1x1, occasional 2x1 or 1x2
+    const pattern = [
+      { c: 1, r: 20 }, { c: 1, r: 20 }, { c: 2, r: 20 }, { c: 1, r: 20 },
+      { c: 1, r: 20 }, { c: 1, r: 20 }, { c: 1, r: 30 }, { c: 1, r: 20 },
+      { c: 2, r: 20 }, { c: 1, r: 20 }, { c: 1, r: 24 }, { c: 1, r: 20 }
+    ];
+    return pattern[index % pattern.length];
+  };
+
   // Parallax scroll effect for detailed gallery images
   useEffect(() => {
     const container = detailedGridRef.current;
@@ -335,28 +356,36 @@ export default function GalleryPage() {
               </div>
             </div>
 
-            {/* Image Grid */}
+            {/* Collage Image Gallery (randomized, no big boxes) */}
             <div className="lg:w-3/4" ref={detailedGridRef}>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 detailed-grid">
-                {filteredImages.map((item, index) => (
-                  <div
-                    key={item.id}
-                    className="group cursor-pointer parallax-item will-change-transform fade-in reveal-on-scroll"
-                    data-speed={(0.12 + (index % 4) * 0.04).toFixed(2)}
-                    data-index={index}
-                    style={{ transition: 'transform 0.2s ease-out', animationDelay: `${(index % 8) * 0.06}s` }}
-                  >
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-64 object-cover rounded-lg shadow-lg"
-                    />
-                  </div>
-                ))}
+              <div className="collage-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+                {collageImages.map((item, index) => {
+                  const span = getCollageSpan(index);
+                  const colSpanClass = `col-span-${span.c}`;
+                  // grid-auto-rows defined in CSS; span.r is number of rows to span
+                  return (
+                    <div
+                      key={`${item.id}-${index}`}
+                      className={`parallax-item will-change-transform fade-in reveal-on-scroll ${colSpanClass}`}
+                      data-speed={(0.14 + (index % 5) * 0.03).toFixed(2)}
+                      style={{ transition: 'transform 0.2s ease-out', animationDelay: `${(index % 10) * 0.05}s`, gridRow: `span ${span.r} / span ${span.r}` }}
+                    >
+                      <div className="p-[2px] rounded-xl bg-gradient-to-br from-purple-500 via-pink-500 to-amber-400 shadow-md">
+                        <div className="rounded-lg overflow-hidden bg-white">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          </div>
         </div>
+      </div>
       </section>
 
       {/* Flip Card Styles */}
@@ -438,7 +467,18 @@ export default function GalleryPage() {
           color: white;
           transform: rotateY(180deg);
         }
+
+        /* Masonry fix for gaps on Safari */
+        .masonry { -webkit-column-gap: 1rem; column-gap: 1rem; }
+        .masonry > * { -webkit-column-break-inside: avoid; break-inside: avoid; }
+
+        /* Collage grid baseline row height for fine-grained spans */
+        .collage-grid { grid-auto-rows: 6px; }
       `}</style>
     </div>
   );
+} 
+    </div>
+  );
+
 } 
