@@ -477,4 +477,4 @@ export default function GalleryPage() {
       `}</style>
     </div>
   );
-}
+} 

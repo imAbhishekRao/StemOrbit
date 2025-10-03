@@ -178,7 +178,7 @@ function DynamicNavImage() {
     <div className="relative w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-22 lg:h-22 xl:w-24 xl:h-24">
       {/* Default Logo (visible at top of page) */}
       <img
-        src="/logo.svg"
+        src="/With Strock (2).png"
         alt="STEMOrbit Logo"
         style={{
           width: "100%",
