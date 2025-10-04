@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const testimonials = [
@@ -72,10 +72,115 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0);
-  const t = testimonials[current];
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length);
-  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
+  // Get three testimonials to display (left, center, right)
+  const getCurrentTestimonials = () => {
+    const prev = testimonials[(current - 1 + testimonials.length) % testimonials.length];
+    const center = testimonials[current];
+    const next = testimonials[(current + 1) % testimonials.length];
+    return [prev, center, next];
+  };
+
+  const [tLeft, tCenter, tRight] = getCurrentTestimonials();
+
+  const next = () => {
+    setCurrent((c) => (c + 1) % testimonials.length);
+    setIsAutoPlaying(false);
+  };
+  
+  const prev = () => {
+    setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
+    setIsAutoPlaying(false);
+  };
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrent((c) => (c + 1) % testimonials.length);
+    }, 4000); // Change every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const TestimonialCard = ({ testimonial, size = 'center', position = 'center' }) => {
+    const isCenter = size === 'center';
+    const isSide = size === 'side';
+    
+    return (
+      <div className={`relative rounded-xl sm:rounded-2xl shadow-xl flex flex-col items-center px-3 sm:px-4 py-4 sm:py-6 w-full transition-all duration-700 transform hover:scale-105 ${
+        isCenter 
+          ? 'min-h-[450px] sm:min-h-[420px] lg:min-h-[400px]' 
+          : 'min-h-[200px] sm:min-h-[220px] lg:min-h-[240px] opacity-80'
+      } ${position === 'left' ? 'animate-slideInLeft' : position === 'right' ? 'animate-slideInRight' : 'animate-fadeIn'}`} 
+      style={{ background: testimonial.color }}>
+        {/* Profile image */}
+        <div className={`mb-3 sm:mb-4 ${
+          isCenter ? 'w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28' : 'w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16'
+        }`}>
+          <div className={`rounded-full border-2 sm:border-3 border-white overflow-hidden shadow-lg bg-white ${
+            isCenter ? 'w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28' : 'w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16'
+          }`}>
+            <Image 
+              src={testimonial.img} 
+              alt={testimonial.name} 
+              width={isCenter ? 112 : 64} 
+              height={isCenter ? 112 : 64} 
+              className="object-cover w-full h-full" 
+            />
+          </div>
+        </div>
+        
+        {/* Content */}
+        <div className="flex-1 flex flex-col justify-center items-center text-center">
+          <div className="flex flex-col items-center gap-1 mb-2">
+            <div className="flex flex-col items-center gap-1">
+              <span className={`text-white leading-none ${
+                isCenter ? 'text-xl sm:text-2xl' : 'text-sm sm:text-base'
+              }`}>"</span>
+              <div>
+                <span className={`text-white font-extrabold font-fredoka ${
+                  isCenter 
+                    ? 'text-base sm:text-lg lg:text-xl xl:text-2xl' 
+                    : 'text-xs sm:text-sm lg:text-base'
+                }`}>{testimonial.name}</span>
+                <div className={`text-white opacity-90 mt-1 font-medium ${
+                  isCenter ? 'text-xs sm:text-sm' : 'text-xs'
+                }`}>{testimonial.subtitle}</div>
+              </div>
+            </div>
+          </div>
+          
+          <p className={`text-white font-quicksand mb-3 sm:mb-4 leading-relaxed ${
+            isCenter 
+              ? 'text-sm sm:text-base lg:text-lg line-clamp-4' 
+              : 'text-xs sm:text-sm line-clamp-3'
+          }`}>
+            {testimonial.text}
+          </p>
+          
+          <div className={`flex flex-wrap gap-1 sm:gap-2 justify-center ${
+            isCenter ? 'gap-2 sm:gap-3' : 'gap-1'
+          }`}>
+            {testimonial.badges.slice(0, isCenter ? 2 : 1).map((badge, i) => (
+              <div key={i} className={`flex items-center gap-1 bg-white/90 text-black font-bold rounded-lg px-2 py-1 shadow ${
+                isCenter 
+                  ? 'text-xs sm:text-sm px-2 sm:px-3 py-1' 
+                  : 'text-xs px-1 py-0.5'
+              }`}>
+                <img src={badge.icon} alt="badge" className={`${
+                  isCenter ? 'w-3 h-3 sm:w-4 sm:h-4' : 'w-2 h-2 sm:w-3 sm:h-3'
+                }`} />
+                <span className={isCenter ? 'text-xs sm:text-sm' : 'text-xs'}>{badge.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <section className="w-full py-8 sm:py-12 lg:py-16 bg-[#fafafa] flex flex-col items-center justify-center px-4 sm:px-6">
@@ -84,47 +189,138 @@ export default function TestimonialsSection() {
         <span className="text-pink-500 font-bold text-lg font-bubblegum mb-2">Testimonials</span>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center font-fredoka text-sky-500">Voices from Our Partner Schools</h2>
       </div>
-      <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center">
-        {/* Card */}
-        <div className="relative rounded-2xl sm:rounded-[2.5rem] shadow-2xl flex flex-col lg:flex-row items-center px-4 sm:px-6 lg:px-8 lg:pl-40 py-8 sm:py-10 lg:py-12 w-full min-h-[400px] sm:min-h-[360px] lg:min-h-[340px] transition-colors duration-500" style={{ background: t.color }}>
-          {/* Overlapping circular image */}
-          <div className="absolute -top-16 sm:-top-20 left-1/2 lg:left-12 -translate-x-1/2 lg:translate-x-0 z-20">
-            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 sm:border-8 border-white overflow-hidden shadow-lg bg-white">
-              <Image src={t.img} alt={t.name} width={160} height={160} className="object-cover w-full h-full" />
-            </div>
+      
+      {/* Three testimonials with center focus - carousel style */}
+      <div className="relative w-full max-w-7xl mx-auto overflow-hidden">
+        <div className="flex items-center justify-center gap-3 lg:gap-6">
+          {/* Left testimonial (smaller) */}
+          <div className="relative group order-2 md:order-1 w-1/3 max-w-[280px]">
+            <TestimonialCard testimonial={tLeft} size="side" position="left" />
+            {/* Hover overlay effect */}
+            <div className="absolute inset-0 bg-black/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          {/* Content */}
-          <div className="flex-1 flex flex-col justify-center items-center lg:items-start mt-20 sm:mt-24 lg:mt-0 lg:ml-8 text-center lg:text-left">
-            <div className="flex flex-col items-center lg:items-start gap-1 mb-2">
-              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
-                <span className="text-white text-3xl sm:text-5xl leading-none">"</span>
-                <div>
-                  <span className="text-white text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold font-fredoka">{t.name}</span>
-                  <div className="text-white text-xs sm:text-sm opacity-90 mt-1 font-medium">{t.subtitle}</div>
-                </div>
-              </div>
-            </div>
-            <p className="text-white text-sm sm:text-base lg:text-lg font-quicksand mb-6 sm:mb-8 max-w-2xl lg:max-w-3xl leading-relaxed">
-              {t.text}
-            </p>
-            <div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-6 mt-auto justify-center lg:justify-start">
-              {t.badges.map((badge, i) => (
-                <div key={i} className="flex items-center gap-2 bg-white/90 text-black font-bold rounded-lg sm:rounded-xl px-3 sm:px-4 py-2 text-xs sm:text-sm lg:text-base shadow">
-                  <img src={badge.icon} alt="badge" className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
-                  <span>{badge.text}</span>
-                </div>
+          
+          {/* Center testimonial (larger) */}
+          <div className="relative group order-1 md:order-2 w-1/3 max-w-[400px]">
+            <TestimonialCard testimonial={tCenter} size="center" position="center" />
+            {/* Hover overlay effect */}
+            <div className="absolute inset-0 bg-black/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          </div>
+          
+          {/* Right testimonial (smaller) */}
+          <div className="relative group order-3 md:order-3 w-1/3 max-w-[280px]">
+            <TestimonialCard testimonial={tRight} size="side" position="right" />
+            {/* Hover overlay effect */}
+            <div className="absolute inset-0 bg-black/5 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          </div>
+        </div>
+        
+        {/* Sliding indicator */}
+        <div className="flex justify-center mt-6">
+          <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
+            <div className="flex gap-1">
+              {testimonials.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === current ? 'bg-sky-500 w-6' : 'bg-gray-300'
+                  }`}
+                />
               ))}
             </div>
+            <div className="ml-2 text-xs text-gray-600 font-medium">
+              {current + 1} / {testimonials.length}
+            </div>
           </div>
-          {/* Navigation buttons */}
-          <button onClick={prev} className="absolute -left-2 sm:-left-4 lg:-left-8 top-1/2 -translate-y-1/2 bg-white text-pink-500 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow hover:bg-pink-100 active:scale-90 transition-all border-2 border-pink-200 z-20">
-            <img src="/arrow.svg" alt="Previous" className="w-5 h-5 sm:w-7 sm:h-7" />
+        </div>
+        
+        {/* Navigation buttons */}
+        <div className="flex justify-center gap-4 mt-6">
+          <button 
+            onClick={prev} 
+            className="bg-white text-pink-500 rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-pink-100 active:scale-90 transition-all border-2 border-pink-200 hover:shadow-xl"
+          >
+            <img src="/arrow.svg" alt="Previous" className="w-5 h-5" />
           </button>
-          <button onClick={next} className="absolute -right-2 sm:-right-4 lg:-right-8 top-1/2 -translate-y-1/2 bg-white text-sky-500 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow hover:bg-sky-100 active:scale-90 transition-all border-2 border-sky-200 z-20">
-            <img src="/arrow.svg" alt="Next" className="w-5 h-5 sm:w-7 sm:h-7 rotate-180" />
+          <button 
+            onClick={next} 
+            className="bg-white text-sky-500 rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-sky-100 active:scale-90 transition-all border-2 border-sky-200 hover:shadow-xl"
+          >
+            <img src="/arrow.svg" alt="Next" className="w-5 h-5 rotate-180" />
           </button>
         </div>
+        
+        {/* Auto-play indicator */}
+        <div className="flex justify-center mt-3">
+          <div className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-full px-3 py-1">
+            <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isAutoPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-300'}`}></div>
+            <span className="text-xs text-gray-600 font-medium">
+              {isAutoPlaying ? 'Auto-sliding' : 'Paused'}
+            </span>
+          </div>
+        </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px) scale(0.8);
+          }
+          to {
+            opacity: 0.8;
+            transform: translateX(0) scale(1);
+          }
+        }
+        
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px) scale(0.8);
+          }
+          to {
+            opacity: 0.8;
+            transform: translateX(0) scale(1);
+          }
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-slideInLeft {
+          animation: slideInLeft 0.6s ease-out;
+        }
+        
+        .animate-slideInRight {
+          animation: slideInRight 0.6s ease-out;
+        }
+        
+        .animate-fadeIn {
+          animation: fadeIn 0.6s ease-out;
+        }
+        
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        
+        .line-clamp-4 {
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </section>
   );
 }
