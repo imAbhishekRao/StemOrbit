@@ -210,6 +210,10 @@ export default function Contact() {
               <a href="tel:+917009594410" className="text-blue-600 hover:underline">+91-70095-94410</a>
             </div>
             <div className="mb-4">
+              <div className="font-semibold text-gray-900">Landline:</div>
+              <a href="tel:+911605010684" className="text-blue-600 hover:underline">+91-160-501-0684</a>
+            </div>
+            <div className="mb-4">
               <div className="font-semibold text-gray-900">WhatsApp:</div>
               <a href="https://wa.me/917009594410" className="text-blue-600 hover:underline">+91-70095-94410</a>
             </div>

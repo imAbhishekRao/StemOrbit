@@ -21,14 +21,17 @@ export default function PrivacyPolicy() {
               <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">1. Information We Collect</h2>
               <p className="text-gray-700 mb-4 font-fredoka">
                 We collect information you provide directly to us, such as when you create an account, 
-                register for courses, or contact us. This may include:
+                register for courses, visit our physical retail store, or contact us. This may include:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4 font-fredoka">
                 <li>Name and contact information</li>
                 <li>Email address and phone number</li>
                 <li>Payment information (processed securely through third-party providers)</li>
                 <li>Course preferences and educational background</li>
+                <li>In-store purchase history and product preferences</li>
+                <li>Physical address for delivery of course materials</li>
                 <li>Communication preferences</li>
+                <li>Technical specifications and project requirements for in-store consultations</li>
               </ul>
             </section>
 
@@ -38,12 +41,15 @@ export default function PrivacyPolicy() {
                 We use the information we collect to:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4 font-fredoka">
-                <li>Provide, maintain, and improve our services</li>
-                <li>Process transactions and send related information</li>
-                <li>Send technical notices, updates, and support messages</li>
-                <li>Respond to your comments and questions</li>
-                <li>Personalize your learning experience</li>
-                <li>Comply with legal obligations</li>
+                <li>Provide, maintain, and improve our educational services and in-store retail experience</li>
+                <li>Process course enrollments and in-store electronics component sales</li>
+                <li>Send course confirmations and material delivery notifications</li>
+                <li>Provide technical support for both courses and in-store purchased components</li>
+                <li>Send product recommendations based on your interests and in-store purchase history</li>
+                <li>Respond to your comments, questions, and support requests</li>
+                <li>Personalize your learning experience and in-store product suggestions</li>
+                <li>Process returns, refunds, and warranty claims for in-store purchases</li>
+                <li>Comply with legal obligations and industry regulations</li>
               </ul>
             </section>
 
@@ -54,9 +60,12 @@ export default function PrivacyPolicy() {
                 without your consent, except as described in this policy. We may share your information:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4 font-fredoka">
-                <li>With service providers who assist us in operating our website and conducting our business</li>
+                <li>With service providers who assist us in operating our website and processing payments</li>
+                <li>With logistics partners for course material delivery</li>
+                <li>With manufacturers and suppliers for warranty claims and technical support</li>
                 <li>When required by law or to protect our rights</li>
                 <li>In connection with a merger, acquisition, or sale of assets</li>
+                <li>With educational partners for course-related communications</li>
               </ul>
             </section>
 
@@ -124,3 +133,4 @@ export default function PrivacyPolicy() {
     </div>
   );
 }
+

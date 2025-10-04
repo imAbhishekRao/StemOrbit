@@ -56,9 +56,26 @@ export default function TermsAndConditions() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">4. Refund Policy</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">4. Electronics Components and In-Store Sales</h2>
               <p className="text-gray-700 mb-4 font-fredoka">
-                Refunds are available under the following conditions:
+                When purchasing electronics components and materials from our physical retail store, you agree to:
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 font-fredoka">
+                <li>Provide accurate contact information for warranty and support purposes</li>
+                <li>Pay all applicable taxes at the time of purchase</li>
+                <li>Verify product specifications before purchase</li>
+                <li>Use components according to manufacturer specifications and safety guidelines</li>
+                <li>Follow proper handling and storage procedures for electronic components</li>
+                <li>Report any defective products within the specified warranty period</li>
+                <li>Comply with all applicable electronics and safety regulations</li>
+                <li>Present valid identification when required for certain component purchases</li>
+              </ul>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">5. Refund and Return Policy</h2>
+              <p className="text-gray-700 mb-4 font-fredoka">
+                <strong>Course Refunds:</strong>
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4 font-fredoka">
                 <li>Full refund if cancellation is made 7 days before course start date</li>
@@ -66,10 +83,22 @@ export default function TermsAndConditions() {
                 <li>No refund after course has commenced</li>
                 <li>Refunds will be processed within 5-7 business days</li>
               </ul>
+              <p className="text-gray-700 mb-4 font-fredoka">
+                <strong>Electronics Components Returns (In-Store):</strong>
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 font-fredoka">
+                <li>Returns accepted within 15 days of purchase for unused components</li>
+                <li>Components must be in original packaging with all accessories</li>
+                <li>Defective products covered under manufacturer warranty</li>
+                <li>Custom or special order items are non-returnable</li>
+                <li>Returns must be made in person at our physical store location</li>
+                <li>Original receipt or proof of purchase required for all returns</li>
+                <li>Refunds processed immediately for cash purchases, 3-5 business days for card purchases</li>
+              </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">5. Intellectual Property</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">6. Intellectual Property</h2>
               <p className="text-gray-700 mb-4 font-fredoka">
                 All content, materials, and intellectual property on this website, including but not 
                 limited to text, graphics, logos, images, and software, are the property of STEMOrbit 
@@ -78,7 +107,7 @@ export default function TermsAndConditions() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">6. User Conduct</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">7. User Conduct</h2>
               <p className="text-gray-700 mb-4 font-fredoka">
                 You agree not to:
               </p>
@@ -92,22 +121,26 @@ export default function TermsAndConditions() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">7. Safety and Liability</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">8. Safety and Liability</h2>
               <p className="text-gray-700 mb-4 font-fredoka">
-                STEMOrbit is committed to providing a safe learning environment. However, participation 
-                in hands-on activities involves inherent risks. By enrolling in our programs, you acknowledge 
-                these risks and agree to:
+                STEMOrbit is committed to providing a safe learning environment and quality electronics components 
+                at our physical retail store. However, participation in hands-on activities and use of electronic 
+                components involves inherent risks. By enrolling in our programs or purchasing components in-store, 
+                you acknowledge these risks and agree to:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4 font-fredoka">
-                <li>Follow all safety instructions and guidelines</li>
+                <li>Follow all safety instructions and guidelines for both courses and component usage</li>
                 <li>Use provided safety equipment appropriately</li>
-                <li>Report any unsafe conditions immediately</li>
+                <li>Handle electronic components according to manufacturer specifications</li>
+                <li>Report any unsafe conditions or defective products immediately</li>
+                <li>Ensure proper electrical safety practices when working with components</li>
                 <li>Hold STEMOrbit harmless for any injuries resulting from failure to follow safety guidelines</li>
+                <li>Use components only for their intended purpose and within specified parameters</li>
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">8. Privacy</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">9. Privacy</h2>
               <p className="text-gray-700 mb-4 font-fredoka">
                 Your privacy is important to us. Please review our Privacy Policy, which also governs 
                 your use of the service, to understand our practices.
@@ -115,7 +148,7 @@ export default function TermsAndConditions() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">9. Termination</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">10. Termination</h2>
               <p className="text-gray-700 mb-4 font-fredoka">
                 We may terminate or suspend your access immediately, without prior notice or liability, 
                 for any reason whatsoever, including without limitation if you breach the Terms.
@@ -123,7 +156,7 @@ export default function TermsAndConditions() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">10. Changes to Terms</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">11. Changes to Terms</h2>
               <p className="text-gray-700 mb-4 font-fredoka">
                 We reserve the right, at our sole discretion, to modify or replace these Terms at any time. 
                 If a revision is material, we will try to provide at least 30 days notice prior to any new 
@@ -132,7 +165,32 @@ export default function TermsAndConditions() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">11. Contact Information</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">12. Electronics Components Warranty and Support</h2>
+              <p className="text-gray-700 mb-4 font-fredoka">
+                <strong>Warranty Coverage:</strong>
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 font-fredoka">
+                <li>All electronics components purchased in-store come with manufacturer warranty as specified</li>
+                <li>Warranty periods vary by component type and manufacturer</li>
+                <li>Warranty covers manufacturing defects under normal use conditions</li>
+                <li>Physical damage, misuse, or modification voids warranty</li>
+                <li>Warranty claims must be submitted in person at our store or via contact information provided</li>
+                <li>Original receipt required for all warranty claims</li>
+              </ul>
+              <p className="text-gray-700 mb-4 font-fredoka">
+                <strong>Technical Support:</strong>
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-4 font-fredoka">
+                <li>Basic technical support provided for in-store purchased components</li>
+                <li>In-person consultation available at our retail store during business hours</li>
+                <li>Support includes datasheet interpretation and basic troubleshooting</li>
+                <li>Advanced project support available by appointment</li>
+                <li>Complex project support may require additional consultation fees</li>
+              </ul>
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 font-fredoka">13. Contact Information</h2>
               <p className="text-gray-700 mb-4 font-fredoka">
                 If you have any questions about these Terms and Conditions, please contact us:
               </p>
@@ -148,3 +206,4 @@ export default function TermsAndConditions() {
     </div>
   );
 }
+
