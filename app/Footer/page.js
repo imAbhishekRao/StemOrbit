@@ -135,10 +135,10 @@ export default function Footer() {
               </a>
             ))}
           </div>
-            <div className="flex gap-4 text-xs text-white font-fredoka">
+          <div className="flex gap-4 text-xs text-white font-fredoka">
               <a href="/privacy-policy" className="hover:underline">Privacy Policy</a>
               <a href="/terms-and-conditions" className="hover:underline">Terms and Conditions</a>
-            </div>
+          </div>
         </div>
       </footer>
     </div>

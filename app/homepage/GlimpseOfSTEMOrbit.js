@@ -59,7 +59,7 @@ export default function GlimpseOfSTEMOrbit() {
               <div className="relative w-full h-full shadow-lg rounded-xl overflow-hidden bg-white ring-1 ring-pink-100/60 group [transform-style:preserve-3d]">
                 {/* Front */}
                 <div className="absolute inset-0 [backface-visibility:hidden]">
-                  <Image
+          <Image 
                     src={img.src}
                     alt={img.title}
                     width={500}
@@ -68,18 +68,18 @@ export default function GlimpseOfSTEMOrbit() {
                     draggable={false}
                     priority={idx < 3}
                     sizes="500px"
-                  />
-                </div>
+          />
+        </div>
                 {/* Back */}
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-pink-500 to-purple-600 text-white px-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
                   <div>
                     <div className="text-xl font-bold font-fredoka mb-2">{img.title}</div>
                     <div className="text-sm opacity-90">STEMOrbit Moments</div>
-                  </div>
-                </div>
+            </div>
+          </div>
                 {/* Hover Flip */}
                 <div className="absolute inset-0 transition-transform duration-500 group-hover:[transform:rotateY(180deg)]"></div>
-              </div>
+            </div>
             </div>
           ))}
             </div>
