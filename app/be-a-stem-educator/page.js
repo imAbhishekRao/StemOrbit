@@ -2,8 +2,90 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function BeASTEMEducatorPage() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    currentRole: '',
+    schoolName: '',
+    experience: '',
+    qualification: '',
+    stemSubjects: [],
+    motivation: '',
+    goals: '',
+    startTime: '',
+    additionalInfo: '',
+    terms: false
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    
+    if (type === 'checkbox') {
+      if (name === 'stemSubjects') {
+        setFormData(prev => ({
+          ...prev,
+          stemSubjects: checked 
+            ? [...prev.stemSubjects, value]
+            : prev.stemSubjects.filter(subject => subject !== value)
+        }));
+      } else {
+        setFormData(prev => ({
+          ...prev,
+          [name]: checked
+        }));
+      }
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Here you would typically send the data to your backend
+      console.log('Form submitted:', formData);
+      
+      setSubmitStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        currentRole: '',
+        schoolName: '',
+        experience: '',
+        qualification: '',
+        stemSubjects: [],
+        motivation: '',
+        goals: '',
+        startTime: '',
+        additionalInfo: '',
+        terms: false
+      });
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-pink-50">
       {/* Hero Section */}
@@ -364,6 +446,333 @@ export default function BeASTEMEducatorPage() {
               <h3 className="text-xl font-bold text-gray-900 mb-4 font-fredoka">Recognized Certification</h3>
               <p className="text-gray-700 font-quicksand">Certification recognized by leading institutions and STEM education networks</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Application Form Section */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 font-fredoka">
+              📝 Apply for STEM Educator Training Program
+            </h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto font-quicksand leading-relaxed">
+              Ready to transform your teaching career? Fill out the application form below and take the first step towards becoming a Certified STEM Educator.
+            </p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-blue-50 to-pink-50 rounded-3xl p-8 sm:p-12 shadow-2xl">
+            {/* Success Message */}
+            {submitStatus === 'success' && (
+              <div className="mb-8 p-6 bg-green-100 border border-green-400 rounded-xl">
+                <div className="flex items-center">
+                  <svg className="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <div>
+                    <h3 className="text-lg font-semibold text-green-800 font-fredoka">Application Submitted Successfully!</h3>
+                    <p className="text-green-700 font-quicksand">Thank you for your interest. We'll review your application and contact you within 3-5 business days.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Error Message */}
+            {submitStatus === 'error' && (
+              <div className="mb-8 p-6 bg-red-100 border border-red-400 rounded-xl">
+                <div className="flex items-center">
+                  <svg className="w-6 h-6 text-red-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  <div>
+                    <h3 className="text-lg font-semibold text-red-800 font-fredoka">Submission Failed</h3>
+                    <p className="text-red-700 font-quicksand">There was an error submitting your application. Please try again.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Personal Information */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                    First Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand"
+                    placeholder="Enter your first name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                    Last Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand"
+                    placeholder="Enter your last name"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand"
+                    placeholder="+91 98765 43210"
+                  />
+                </div>
+              </div>
+
+              {/* Professional Information */}
+              <div>
+                <label htmlFor="currentRole" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                  Current Role/Position *
+                </label>
+                <input
+                  type="text"
+                  id="currentRole"
+                  name="currentRole"
+                  value={formData.currentRole}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand"
+                  placeholder="e.g., Science Teacher, Math Teacher, Principal, etc."
+                />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="schoolName" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                    School/Institution Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="schoolName"
+                    name="schoolName"
+                    value={formData.schoolName}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand"
+                    placeholder="Your school or institution name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="experience" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                    Years of Teaching Experience *
+                  </label>
+                  <select
+                    id="experience"
+                    name="experience"
+                    value={formData.experience}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand"
+                  >
+                    <option value="">Select experience</option>
+                    <option value="0-1">0-1 years</option>
+                    <option value="2-5">2-5 years</option>
+                    <option value="6-10">6-10 years</option>
+                    <option value="11-15">11-15 years</option>
+                    <option value="16+">16+ years</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Educational Background */}
+              <div>
+                <label htmlFor="qualification" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                  Educational Qualification *
+                </label>
+                <select
+                  id="qualification"
+                  name="qualification"
+                  value={formData.qualification}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand"
+                >
+                  <option value="">Select qualification</option>
+                  <option value="B.Ed">B.Ed</option>
+                  <option value="M.Ed">M.Ed</option>
+                  <option value="B.Sc + B.Ed">B.Sc + B.Ed</option>
+                  <option value="M.Sc + B.Ed">M.Sc + B.Ed</option>
+                  <option value="Ph.D">Ph.D</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              {/* STEM Interest */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-4 font-fredoka">
+                  Which STEM subjects interest you most? (Select all that apply) *
+                </label>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <label className="flex items-center space-x-3 cursor-pointer">
+                    <input type="checkbox" name="stemSubjects" value="Science" checked={formData.stemSubjects.includes('Science')} onChange={handleInputChange} className="w-5 h-5 text-pink-500 rounded focus:ring-pink-500" />
+                    <span className="text-gray-700 font-quicksand">Science</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer">
+                    <input type="checkbox" name="stemSubjects" value="Technology" checked={formData.stemSubjects.includes('Technology')} onChange={handleInputChange} className="w-5 h-5 text-pink-500 rounded focus:ring-pink-500" />
+                    <span className="text-gray-700 font-quicksand">Technology</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer">
+                    <input type="checkbox" name="stemSubjects" value="Engineering" checked={formData.stemSubjects.includes('Engineering')} onChange={handleInputChange} className="w-5 h-5 text-pink-500 rounded focus:ring-pink-500" />
+                    <span className="text-gray-700 font-quicksand">Engineering</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer">
+                    <input type="checkbox" name="stemSubjects" value="Mathematics" checked={formData.stemSubjects.includes('Mathematics')} onChange={handleInputChange} className="w-5 h-5 text-pink-500 rounded focus:ring-pink-500" />
+                    <span className="text-gray-700 font-quicksand">Mathematics</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer">
+                    <input type="checkbox" name="stemSubjects" value="Robotics" checked={formData.stemSubjects.includes('Robotics')} onChange={handleInputChange} className="w-5 h-5 text-pink-500 rounded focus:ring-pink-500" />
+                    <span className="text-gray-700 font-quicksand">Robotics</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer">
+                    <input type="checkbox" name="stemSubjects" value="Coding" checked={formData.stemSubjects.includes('Coding')} onChange={handleInputChange} className="w-5 h-5 text-pink-500 rounded focus:ring-pink-500" />
+                    <span className="text-gray-700 font-quicksand">Coding</span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Motivation */}
+              <div>
+                <label htmlFor="motivation" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                  Why do you want to become a STEM Educator? *
+                </label>
+                <textarea
+                  id="motivation"
+                  name="motivation"
+                  value={formData.motivation}
+                  onChange={handleInputChange}
+                  required
+                  rows={4}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand resize-none"
+                  placeholder="Tell us about your passion for STEM education and how you plan to inspire students..."
+                ></textarea>
+              </div>
+
+              {/* Goals */}
+              <div>
+                <label htmlFor="goals" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                  What are your goals after completing this training? *
+                </label>
+                <textarea
+                  id="goals"
+                  name="goals"
+                  value={formData.goals}
+                  onChange={handleInputChange}
+                  required
+                  rows={3}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand resize-none"
+                  placeholder="Describe how you plan to implement STEM education in your classroom..."
+                ></textarea>
+              </div>
+
+              {/* Availability */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-4 font-fredoka">
+                  When would you prefer to start the training? *
+                </label>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <label className="flex items-center space-x-3 cursor-pointer">
+                    <input type="radio" name="startTime" value="immediately" checked={formData.startTime === 'immediately'} onChange={handleInputChange} className="w-5 h-5 text-pink-500 focus:ring-pink-500" />
+                    <span className="text-gray-700 font-quicksand">Immediately</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer">
+                    <input type="radio" name="startTime" value="next-month" checked={formData.startTime === 'next-month'} onChange={handleInputChange} className="w-5 h-5 text-pink-500 focus:ring-pink-500" />
+                    <span className="text-gray-700 font-quicksand">Next Month</span>
+                  </label>
+                  <label className="flex items-center space-x-3 cursor-pointer">
+                    <input type="radio" name="startTime" value="flexible" checked={formData.startTime === 'flexible'} onChange={handleInputChange} className="w-5 h-5 text-pink-500 focus:ring-pink-500" />
+                    <span className="text-gray-700 font-quicksand">Flexible</span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Additional Information */}
+              <div>
+                <label htmlFor="additionalInfo" className="block text-sm font-semibold text-gray-700 mb-2 font-fredoka">
+                  Any additional information you'd like to share?
+                </label>
+                <textarea
+                  id="additionalInfo"
+                  name="additionalInfo"
+                  value={formData.additionalInfo}
+                  onChange={handleInputChange}
+                  rows={3}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-300 font-quicksand resize-none"
+                  placeholder="Any questions, special requirements, or additional details..."
+                ></textarea>
+              </div>
+
+              {/* Terms and Conditions */}
+              <div className="flex items-start space-x-3">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  name="terms"
+                  checked={formData.terms}
+                  onChange={handleInputChange}
+                  required
+                  className="w-5 h-5 text-pink-500 rounded focus:ring-pink-500 mt-1"
+                />
+                <label htmlFor="terms" className="text-sm text-gray-700 font-quicksand">
+                  I agree to the <Link href="/terms-and-conditions" className="text-pink-500 hover:underline">Terms and Conditions</Link> and <Link href="/privacy-policy" className="text-pink-500 hover:underline">Privacy Policy</Link>. I understand that this application will be reviewed and I will be contacted within 3-5 business days. *
+                </label>
+              </div>
+
+              {/* Submit Button */}
+              <div className="text-center pt-6">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-12 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold text-xl rounded-full shadow-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 font-fredoka disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                </button>
+                <p className="text-sm text-gray-600 mt-4 font-quicksand">
+                  * Required fields
+                </p>
+              </div>
+            </form>
           </div>
         </div>
       </section>
