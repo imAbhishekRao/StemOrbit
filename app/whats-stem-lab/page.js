@@ -49,6 +49,76 @@ export default function WhatsStemLab() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isModalOpen]);
 
+  // Load Calendly widget script asynchronously
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (document.getElementById("calendly-widget-script")) return;
+    // Inject Calendly CSS (needed for popup styling)
+    if (!document.getElementById("calendly-widget-css")) {
+      const link = document.createElement("link");
+      link.id = "calendly-widget-css";
+      link.rel = "stylesheet";
+      link.href = "https://assets.calendly.com/assets/external/widget.css";
+      document.head.appendChild(link);
+    }
+    const script = document.createElement("script");
+    script.id = "calendly-widget-script";
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    script.type = "text/javascript";
+    document.body.appendChild(script);
+  }, []);
+
+  const handleBookCallClick = (e) => {
+    e.preventDefault();
+    const url = "https://calendly.com/abhishek-stemorbit";
+    if (typeof window === "undefined") return false;
+
+    // Ensure CSS is present
+    if (!document.getElementById("calendly-widget-css")) {
+      const link = document.createElement("link");
+      link.id = "calendly-widget-css";
+      link.rel = "stylesheet";
+      link.href = "https://assets.calendly.com/assets/external/widget.css";
+      document.head.appendChild(link);
+    }
+
+    const openPopup = () => {
+      try {
+        if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+          window.Calendly.initPopupWidget({ url });
+          return true;
+        }
+      } catch (_) {}
+      return false;
+    };
+
+    if (openPopup()) return false;
+
+    // If Calendly not loaded yet, load script on demand and open when ready
+    let script = document.getElementById("calendly-widget-script");
+    if (!script) {
+      script = document.createElement("script");
+      script.id = "calendly-widget-script";
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      script.type = "text/javascript";
+      script.onload = () => openPopup();
+      document.body.appendChild(script);
+    } else {
+      script.addEventListener("load", () => openPopup(), { once: true });
+    }
+
+    // Final fallback after short delay
+    setTimeout(() => {
+      if (!openPopup()) {
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
+    }, 1200);
+
+    return false;
+  };
+
   const labImages = Array.from({ length: 11 }, (_, i) => ({
     id: i + 1,
     src: `/3D Lab (${i + 1}).jpeg`,
@@ -585,11 +655,11 @@ export default function WhatsStemLab() {
       {/* Call to Action Section */}
       <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 px-4 md:px-0">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Experience STEM Learning?</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-2">Looking for a Lab for Your School?</h2>
           <p className="text-lg text-blue-100 mb-8">Discover how our STEM labs can transform education and inspire the next generation of innovators and problem-solvers.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-10 py-4 bg-white text-blue-700 font-semibold text-lg rounded-xl hover:bg-blue-100 transition-all duration-300 shadow-xl hover:shadow-2xl">
-              Visit Our Labs
+            <button onClick={handleBookCallClick} className="px-10 py-4 bg-white text-blue-700 font-semibold text-lg rounded-xl hover:bg-blue-100 transition-all duration-300 shadow-xl hover:shadow-2xl">
+              Book a Call
             </button>
             <button className="px-10 py-4 border-2 border-white text-white font-semibold text-lg rounded-xl hover:bg-white hover:text-blue-700 transition-all duration-300">
               Get Started Today
