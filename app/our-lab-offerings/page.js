@@ -1,83 +1,92 @@
 "use client";
+
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaCheckCircle, FaArrowRight, FaRocket, FaUsers, FaCog, FaGraduationCap } from "react-icons/fa";
 
-// Testimonial data
-const testimonials = [
-  {
-    name: "Ms. Heena",
-    subtitle: "Air Force School (12 Wing, Chandigarh)",
-    text: `"The educators are knowledgeable and very supportive. Got to learn a lot from you people. Thanks a lot to your whole team for providing such a platform where we can enhance our skills and also make our students know about different technologies."`,
-    img: "https://www.stemorbit.com/assets/images/testimonials/Heena.jpg",
-    badges: [
-      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
-      { icon: "/students.svg", text: "Educator" }
-    ],
-    color: "#0369A1" // deep blue
-  },
-  {
-    name: "Mr. Gurjinder Singh",
-    subtitle: "JNV Patiala",
-    text: `"STEMORBIT have provided us with excellent technical knowledge and their trainer have also been very energetic and supportive. We would definitely recommend STEMORBIT to our known schools when ATL lab setup and services."`,
-    img: "https://www.stemorbit.com/assets/images/testimonials/Gurjinder.jpg",
-    badges: [
-      { icon: "/schools.svg", text: "JNV Patiala" },
-      { icon: "/students.svg", text: "ATL/Technology Coordinator" }
-    ],
-    color: "#5B21B6" // rich indigo
-  },
-  {
-    name: "Mr. Sandeep",
-    subtitle: "JNV Amritsar",
-    text: `"STEMORBIT training triggers curiosity among students to identify real life problem and find their solutions. I thank STEMORBIT and their team for providing their services to our school. Best wishes to your company, I believe your company will grow and flourish wonderfully."`,
-    img: "https://www.stemorbit.com/assets/images/testimonials/Sandeep.jpg",
-    badges: [
-      { icon: "/schools.svg", text: "JNV Amritsar" },
-      { icon: "/students.svg", text: "Teacher / Mentor" }
-    ],
-    color: "#0F766E" // teal
-  },
-  {
-    name: "Ms. Gunjan",
-    subtitle: "Air Force School (12 Wing, Chandigarh)",
-    text: `"I am fortunate enough to work and learn with the experienced, expertise and cooperative team of Stemorbit . I found this learning full of educative, inspirational with a lot of fun filled programs and amazing experiments here. Thanks a lot to the team Stemorbit."`,
-    img: "https://www.stemorbit.com/assets/images/testimonials/Gunjan.jpg",
-    badges: [
-      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
-      { icon: "/students.svg", text: "Science Faculty" }
-    ],
-    color: "#7C3AED" // violet
-  },
-  {
-    name: "Ms. Anita Kumari",
-    subtitle: "Air Force School (12 Wing, Chandigarh)",
-    text: `"Working with Stemorbit has been a joy. They are very detailed and organized. They make sure that the work is done correctly and in a timely manner. Their services have enabled us to reach an efficiency we hadn't previously experienced."`,
-    img: "https://www.stemorbit.com/assets/images/testimonials/Anita.jpg",
-    badges: [
-      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
-      { icon: "/students.svg", text: "Administrator" }
-    ],
-    color: "#BE185D" // rose
-  },
-  {
-    name: "Ms. Shweta Shahi",
-    subtitle: "Air Force School (12 Wing, Chandigarh)",
-    text: `"In the 21st century , Stemorbit has given an opportunity to step into a new outlook for the theories we have learnt. Dedicated staff with on time practical knowledge is been provided by the faculty members."`,
-    img: "https://www.stemorbit.com/assets/images/testimonials/Shweta.jpg",
-    badges: [
-      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
-      { icon: "/students.svg", text: "Faculty" }
-    ],
-    color: "#047857" // emerald
+// Calendly integration
+const handleBookCallClick = (e) => {
+  e.preventDefault();
+  const url = "https://calendly.com/abhishek-stemorbit";
+  if (typeof window === "undefined") return false;
+
+  // Ensure CSS is present
+  if (!document.getElementById("calendly-widget-css")) {
+    const link = document.createElement("link");
+    link.id = "calendly-widget-css";
+    link.rel = "stylesheet";
+    link.href = "https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(link);
   }
-]; 
+
+  const openPopup = () => {
+    try {
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+        window.Calendly.initPopupWidget({ url });
+        return true;
+      }
+    } catch (_) {}
+    return false;
+  };
+
+  if (openPopup()) return false;
+
+  // If Calendly not loaded yet, load script on demand and open when ready
+  let script = document.getElementById("calendly-widget-script");
+  if (!script) {
+    script = document.createElement("script");
+    script.id = "calendly-widget-script";
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    script.type = "text/javascript";
+    script.onload = () => openPopup();
+    document.body.appendChild(script);
+  } else {
+    script.addEventListener("load", () => openPopup(), { once: true });
+  }
+
+  // Final fallback after short delay
+  setTimeout(() => {
+    if (!openPopup()) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }, 1200);
+
+  return false;
+};
+
+// (moved into component) Load Calendly widget script asynchronously
 
 export default function OurLabOfferings() {
-  // Animated counting for achievements
-  const [counts, setCounts] = useState({ schools: 0, students: 0, teachers: 0, curriculum: 0 });
+  const [isVisible, setIsVisible] = useState(false);
+  const [counts, setCounts] = useState({ schools: 0, students: 0, teachers: 0, projects: 0 });
   const [hasCounted, setHasCounted] = useState(false);
+  const [atlVisible, setAtlVisible] = useState(false);
   const achievementsRef = useRef(null);
+  const atlRef = useRef(null);
+
+  // Load Calendly widget script asynchronously (hooks must be inside component)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (document.getElementById("calendly-widget-script")) return;
+    if (!document.getElementById("calendly-widget-css")) {
+      const link = document.createElement("link");
+      link.id = "calendly-widget-css";
+      link.rel = "stylesheet";
+      link.href = "https://assets.calendly.com/assets/external/widget.css";
+      document.head.appendChild(link);
+    }
+    const script = document.createElement("script");
+    script.id = "calendly-widget-script";
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    script.type = "text/javascript";
+    document.body.appendChild(script);
+  }, []);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   useEffect(() => {
     if (!achievementsRef.current || hasCounted) return;
@@ -88,22 +97,22 @@ export default function OurLabOfferings() {
           triggered = true;
           setHasCounted(true);
           // Animate numbers
-          let schools = 0, students = 0, teachers = 0, curriculum = 0;
-          const schoolsTarget = 50, studentsTarget = 10000, teachersTarget = 100, curriculumTarget = 1;
-          const duration = 1200; // ms
-          const steps = 40;
+          let schools = 0, students = 0, teachers = 0, projects = 0;
+          const schoolsTarget = 50, studentsTarget = 10000, teachersTarget = 200, projectsTarget = 500;
+          const duration = 2000;
+          const steps = 60;
           let step = 0;
           const interval = setInterval(() => {
             step++;
             schools = Math.round((schoolsTarget / steps) * step);
             students = Math.round((studentsTarget / steps) * step);
             teachers = Math.round((teachersTarget / steps) * step);
-            curriculum = Math.round((curriculumTarget / steps) * step);
+            projects = Math.round((projectsTarget / steps) * step);
             setCounts({
               schools: schools > schoolsTarget ? schoolsTarget : schools,
               students: students > studentsTarget ? studentsTarget : students,
               teachers: teachers > teachersTarget ? teachersTarget : teachers,
-              curriculum: curriculum > curriculumTarget ? curriculumTarget : curriculum,
+              projects: projects > projectsTarget ? projectsTarget : projects,
             });
             if (step >= steps) clearInterval(interval);
           }, duration / steps);
@@ -116,320 +125,688 @@ export default function OurLabOfferings() {
     return () => observer.disconnect();
   }, [achievementsRef, hasCounted]);
 
+  // ATL section animation observer
+  useEffect(() => {
+    if (!atlRef.current) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAtlVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(atlRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-  // Testimonial carousel state
-  const [current, setCurrent] = useState(0);
-  const t = testimonials[current];
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length);
-  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
+  const labOfferings = [
+    {
+      id: 1,
+      title: "Robotics Lab",
+      description: "Hands-on robotics education with programmable robots, sensors, and coding challenges",
+      icon: "🤖",
+      color: "from-blue-500 to-cyan-500",
+      bgColor: "bg-blue-50",
+      features: [
+        "Programmable Robot Kits",
+        "Sensor Integration",
+        "Coding & Programming",
+        "Team Challenges",
+        "Real-world Applications"
+      ],
+      image: "/app.webp"
+    },
+    {
+      id: 2,
+      title: "AI & Machine Learning Lab",
+      description: "Explore artificial intelligence, machine learning, and smart technology applications",
+      icon: "🧠",
+      color: "from-purple-500 to-pink-500",
+      bgColor: "bg-purple-50",
+      features: [
+        "AI Concepts & Applications",
+        "Machine Learning Projects",
+        "Smart Technology",
+        "Data Analysis",
+        "Future-Ready Skills"
+      ],
+      image: "/ai.webp"
+    },
+    {
+      id: 3,
+      title: "STEM Discovery Lab",
+      description: "Comprehensive STEM learning covering science, technology, engineering, and mathematics",
+      icon: "🔬",
+      color: "from-green-500 to-emerald-500",
+      bgColor: "bg-green-50",
+      features: [
+        "Science Experiments",
+        "Engineering Challenges",
+        "Math Applications",
+        "Technology Integration",
+        "Problem Solving"
+      ],
+      image: "/iot.webp"
+    },
+    {
+      id: 4,
+      title: "3D Design & Printing Lab",
+      description: "Creative design thinking with 3D modeling, prototyping, and manufacturing",
+      icon: "🖨️",
+      color: "from-orange-500 to-red-500",
+      bgColor: "bg-orange-50",
+      features: [
+        "3D Modeling & Design",
+        "Creative Prototyping",
+        "Digital Manufacturing",
+        "Innovation Projects",
+        "Bring Ideas to Life"
+      ],
+      image: "/3d-printing-history-featured.webp"
+    }
+  ];
+
+  const features = [
+    {
+      icon: <FaRocket className="w-8 h-8" />,
+      title: "Hands-On Learning",
+      description: "Interactive, experiential learning that engages students and makes concepts tangible"
+    },
+    {
+      icon: <FaUsers className="w-8 h-8" />,
+      title: "Collaborative Environment",
+      description: "Team-based projects that develop communication, leadership, and teamwork skills"
+    },
+    {
+      icon: <FaCog className="w-8 h-8" />,
+      title: "Modern Equipment",
+      description: "State-of-the-art technology and tools that prepare students for the future"
+    },
+    {
+      icon: <FaGraduationCap className="w-8 h-8" />,
+      title: "Expert Guidance",
+      description: "Trained educators who provide support and inspiration throughout the learning journey"
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Ms. Heena",
+      school: "Air Force School (12 Wing, Chandigarh)",
+      role: "Educator",
+      quote: "The educators are knowledgeable and very supportive. Got to learn a lot from you people. Thanks a lot to your whole team for providing such a platform where we can enhance our skills and also make our students know about different technologies.",
+      image: "https://www.stemorbit.com/assets/images/testimonials/Heena.jpg"
+    },
+    {
+      name: "Mr. Gurjinder Singh",
+      school: "JNV Patiala",
+      role: "ATL/Technology Coordinator",
+      quote: "STEMORBIT have provided us with excellent technical knowledge and their trainer have also been very energetic and supportive. We would definitely recommend STEMORBIT to our known schools when ATL lab setup and services.",
+      image: "https://www.stemorbit.com/assets/images/testimonials/Gurjinder.jpg"
+    },
+    {
+      name: "Ms. Gunjan",
+      school: "Air Force School (12 Wing, Chandigarh)",
+      role: "Science Faculty",
+      quote: "I am fortunate enough to work and learn with the experienced, expertise and cooperative team of Stemorbit. I found this learning full of educative, inspirational with a lot of fun filled programs and amazing experiments here.",
+      image: "https://www.stemorbit.com/assets/images/testimonials/Gunjan.jpg"
+    }
+  ];
+
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentBgColor, setCurrentBgColor] = useState(0);
+
+  const testimonialBgColors = [
+    'from-pink-400 to-pink-500',
+    'from-yellow-400 to-yellow-500', 
+    'from-sky-400 to-sky-500'
+  ];
+
+  // Auto-rotate testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+      setCurrentBgColor((prev) => (prev + 1) % testimonialBgColors.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [testimonials.length, testimonialBgColors.length]);
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    setCurrentBgColor((prev) => (prev + 1) % testimonialBgColors.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentBgColor((prev) => (prev - 1 + testimonialBgColors.length) % testimonialBgColors.length);
+  };
 
   return (
-    <div className="relative min-h-screen bg-white flex flex-col justify-start items-center">
+    <div className="min-h-screen bg-blue-900 text-white">
       {/* Hero Section */}
-      <section className="w-full flex flex-col md:flex-row items-center justify-center pt-4 pb-0 px-1 relative min-h-[420px] md:min-h-[520px] overflow-hidden" style={{background: 'linear-gradient(135deg, #ec4899 0%, #f472b6 100%)'}}>
-        {/* Decorative shapes - more texture */}
-        <div className="absolute left-8 top-10 w-20 h-20 bg-pink-300 rounded-full opacity-30 blur-2xl animate-pulse z-0" />
-        <div className="absolute right-16 top-16 w-10 h-10 bg-pink-200 rounded-full opacity-40 blur animate-bounce z-0" />
-        <div className="absolute left-1/4 bottom-24 w-3 h-3 bg-yellow-300 rounded-full opacity-80 animate-ping z-0" />
-        <div className="absolute right-1/3 bottom-32 w-2 h-2 bg-white rounded-full opacity-80 animate-pulse z-0" />
-        <div className="absolute left-1/2 top-1/3 w-2 h-2 bg-yellow-400 rounded-full opacity-80 animate-pulse z-0" />
-        <div className="absolute right-10 bottom-10 w-2 h-2 bg-white rounded-full opacity-60 animate-pulse z-0" />
-        {/* New shapes for extra texture */}
-        <div className="absolute left-10 top-1/2 w-6 h-6 bg-blue-300 rounded-full opacity-50 animate-float z-0" />
-        <div className="absolute right-24 top-1/4 w-4 h-4 bg-yellow-200 rounded-full opacity-70 animate-bounce-slow z-0" />
-        <div className="absolute left-1/3 bottom-10 w-8 h-8 bg-white rounded-full opacity-30 animate-float z-0" />
-        <div className="absolute right-1/4 bottom-16 w-5 h-5 bg-purple-200 rounded-full opacity-60 animate-pulse z-0" />
-        {/* Star shape */}
-        <svg className="absolute left-1/2 top-8 w-6 h-6 z-0 animate-spin-slow" viewBox="0 0 24 24" fill="#fff59d" style={{opacity: 0.7}}><polygon points="12,2 15,10 24,10 17,15 19,23 12,18 5,23 7,15 0,10 9,10"/></svg>
-        {/* Triangle shape */}
-        <svg className="absolute right-1/3 top-1/2 w-5 h-5 z-0 animate-float" viewBox="0 0 24 24" fill="#fbbf24" style={{opacity: 0.5}}><polygon points="12,2 22,22 2,22"/></svg>
-        {/* Main Content - left side */}
-        <div className="relative z-10 flex flex-col items-start w-full md:w-1/2 max-w-2xl mx-auto text-left md:pl-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-3 drop-shadow-lg font-[Comic Sans MS,cursive,sans-serif] tracking-tight animate-bounce leading-tight">
-            Our Lab Offerings
-          </h1>
-          <p className="text-lg md:text-xl text-white mb-6 font-normal font-[Comic Sans MS,cursive,sans-serif] animate-fade-in">
-            Discover a world of hands-on learning and creativity! Our labs empower students to explore robotics, artificial intelligence, coding, and real-world STEM challenges in a fun, engaging, and supportive environment designed for every curious mind.
-          </p>
-        </div>
-        {/* Right side - hero image */}
-        <div className="relative z-10 w-full md:w-1/2 flex justify-center items-center mt-0 md:mt-0">
-          <Image
-            src="/ourofferingher.png"
-            alt="Our Offerings Hero"
-            width={420}
-            height={320}
-            className="rounded-2xl object-contain max-h-[380px] w-auto h-auto"
-            priority
-          />
-        </div>
-        {/* Responsive White Wave SVG with yellow accent at the bottom of hero */}
-        <div className="absolute left-0 bottom-0 w-screen max-w-none overflow-visible leading-none pointer-events-none" style={{height: '90px'}}>
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-            <path d="M0 60 Q 360 120 720 80 T 1440 70 V120 H0V60Z" fill="#fff" filter="url(#glow)"/>
-            <path d="M0 60 Q 360 120 720 80 T 1440 70" stroke="#FFD600" strokeWidth="8" fill="none" filter="url(#glow)"/>
-          </svg>
-        </div>
-      </section>
-      {/* Stats Cards Section */}
-      <section ref={achievementsRef} className="w-full flex justify-center bg-white py-8 px-2">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full max-w-4xl">
-          <div className="text-center p-6 bg-gradient-to-br from-blue-100 to-blue-300 rounded-2xl">
-            <div className="text-3xl font-bold text-blue-700 mb-2">{counts.schools}+</div>
-            <div className="text-sm text-gray-600">Schools Equipped</div>
-          </div>
-          <div className="text-center p-6 bg-gradient-to-br from-purple-100 to-purple-300 rounded-2xl">
-            <div className="text-3xl font-bold text-purple-700 mb-2">{counts.students.toLocaleString()}+</div>
-            <div className="text-sm text-gray-600">Students Impacted</div>
-          </div>
-          <div className="text-center p-6 bg-gradient-to-br from-green-100 to-green-300 rounded-2xl">
-            <div className="text-3xl font-bold text-green-700 mb-2">{counts.teachers}%</div>
-            <div className="text-sm text-gray-600">Teacher Satisfaction</div>
-          </div>
-          <div className="text-center p-6 bg-gradient-to-br from-orange-100 to-orange-300 rounded-2xl">
-            <div className="text-3xl font-bold text-orange-700 mb-2">A{counts.curriculum === 1 ? '+' : ''}</div>
-            <div className="text-sm text-gray-600">Curriculum Alignment</div>
-          </div>
-        </div>
-      </section>
-      {/* Blue Wave Effect Section */}
-      <div className="relative w-full overflow-hidden" style={{height: '90px'}}>
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" preserveAspectRatio="none">
-          <path d="M0 60 Q 180 0 360 60 T 720 60 T 1080 60 T 1440 60 V120 H0V60Z" fill="#b2f5ea"/>
-        </svg>
-      </div>
-      {/* Design the perfect STEM journey Section */}
-      <section className="w-full flex flex-col items-center justify-center bg-white py-10 px-2">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-pink-700 mb-2 font-[Comic Sans MS,cursive,sans-serif] text-center">Design the perfect STEM journey</h2>
-        <p className="text-lg md:text-xl text-gray-700 mb-8 font-normal text-center max-w-2xl mx-auto">
-          — tailor every module to spark student interest, align with your school’s academic vision, and fit seamlessly within your annual budget.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-4 w-full max-w-6xl">
-          {/* Robotics */}
-          <div className="flex flex-col items-center relative min-w-[270px] w-full h-[420px]">
-            {/* Heading above card, overlapping */}
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-20 px-4 py-2 bg-white rounded-2xl shadow-lg border border-blue-100 flex items-center justify-center" style={{minWidth: '140px'}}>
-              <h3 className="text-xl font-bold text-blue-700 text-center whitespace-nowrap">Robotics Lab</h3>
-            </div>
-            <div className="flex flex-col justify-between bg-blue-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
-              <div className="flex justify-center items-center mb-4 -mt-4">
-                <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
-                  <Image src="/app.webp" width={176} height={176} alt="Robotics" className="object-cover w-full h-full" />
-                </div>
+      <section className="relative py-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute top-10 left-10 w-20 h-20 bg-white/20 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-16 h-16 bg-white/20 rounded-full animate-bounce"></div>
+        <div className="absolute top-1/2 right-1/4 w-12 h-12 bg-white/20 rounded-full animate-pulse"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+                Our <span className="bg-gradient-to-r from-pink-400 to-fuchsia-400 bg-clip-text text-transparent">Lab Offerings</span>
+              </h1>
+              <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl leading-relaxed mx-auto lg:mx-0">
+                Transform your school with state-of-the-art STEM laboratories designed to inspire innovation, creativity, and hands-on learning for the next generation of problem-solvers.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <button 
+                  onClick={handleBookCallClick}
+                  className="px-10 py-4 bg-gradient-to-r from-pink-500 to-fuchsia-600 text-white font-semibold text-xl rounded-full shadow-lg hover:from-pink-600 hover:to-fuchsia-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  Book a Call with our Expert
+                </button>
+                <button className="px-10 py-4 border-2 border-pink-400 text-pink-300 font-semibold text-xl rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300">
+                  Download Brochure
+                </button>
               </div>
-              <ul className="mb-4 space-y-2">
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Hands-on Robot Kits</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Coding & Programming</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Teamwork Challenges</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Real-World Problem </li>
-              </ul>
-              <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-blue-500 text-white font-bold text-base shadow hover:bg-blue-600 mt-auto mb-4 transition-all tracking-wide">
-                <span className="">EXPLORE</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              </button>
             </div>
-          </div>
-          {/* AI Labs */}
-          <div className="flex flex-col items-center relative min-w-[270px] w-full h-[420px]">
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-20 px-4 py-2 bg-white rounded-2xl shadow-lg border border-purple-100 flex items-center justify-center" style={{minWidth: '140px'}}>
-              <h3 className="text-xl font-bold text-purple-700 text-center whitespace-nowrap">AI LAB</h3>
-            </div>
-            <div className="flex flex-col justify-between bg-purple-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
-              <div className="flex justify-center items-center mb-4 -mt-4">
-                <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
-                  <Image src="/ai.webp" width={176} height={176} alt="AI Labs" className="object-cover w-full h-full" />
-                </div>
+            {/* Right: brochure element image */}
+            <div className="relative hidden sm:block">
+              <div className="relative w-full max-w-xl mx-auto">
+                <Image
+                  src="/style1.png"
+                  alt="STEM Pillars – brochure style"
+                  width={1000}
+                  height={1000}
+                  className="w-full h-auto object-contain drop-shadow-[0_10px_40px_rgba(236,72,153,0.35)]"
+                  priority
+                />
               </div>
-              <ul className="mb-4 space-y-2">
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> AI & Machine Learning</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Smart Tech Projects</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Creative Problem Solving</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Future-Ready Skills</li>
-              </ul>
-              <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-purple-500 text-white font-bold text-base shadow hover:bg-purple-600 mt-auto mb-4 transition-all tracking-wide">
-                <span className="">EXPLORE</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              </button>
-            </div>
-          </div>
-          {/* STEM Labs */}
-          <div className="flex flex-col items-center relative min-w-[270px] w-full h-[420px]">
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-20 px-4 py-2 bg-white rounded-2xl shadow-lg border border-green-100 flex items-center justify-center" style={{minWidth: '140px'}}>
-              <h3 className="text-xl font-bold text-green-700 text-center whitespace-nowrap">STEM LAB</h3>
-            </div>
-            <div className="flex flex-col justify-between bg-green-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
-              <div className="flex justify-center items-center mb-4 -mt-4">
-                <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
-                  <Image src="/iot.webp" width={176} height={176} alt="STEM Labs" className="object-cover w-full h-full" />
-                </div>
-              </div>
-              <ul className="mb-4 space-y-2">
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Tech Discovery</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Engineering Challenges</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Math in Action</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Science Discovery</li>
-              </ul>
-              <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-green-500 text-white font-bold text-base shadow hover:bg-green-600 mt-auto mb-4 transition-all tracking-wide">
-                <span className="">EXPLORE</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              </button>
-            </div>
-          </div>
-          {/* 3D Design & Printing */}
-          <div className="flex flex-col items-center relative min-w-[270px] w-full h-[420px]">
-            <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-20 px-4 py-2 bg-white rounded-2xl shadow-lg border border-pink-100 flex items-center justify-center" style={{minWidth: '140px'}}>
-              <h3 className="text-xl font-bold text-pink-700 text-center whitespace-nowrap">3D LAB</h3>
-            </div>
-            <div className="flex flex-col justify-between bg-yellow-100 rounded-3xl shadow-xl p-8 w-full h-full pt-14 border border-gray-100 z-10">
-              <div className="flex justify-center items-center mb-4 -mt-4">
-                <div className="w-44 h-44 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center border-4 border-white shadow">
-                  <Image src="/3d-printing-history-featured.webp" width={176} height={176} alt="3D Design & Printing" className="object-cover w-full h-full" />
-                </div>
-              </div>
-              <ul className="mb-4 space-y-2">
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> 3D Modeling Skills</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Creative Prototyping</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Real-World Innovation</li>
-                <li className="flex items-center gap-2 font-semibold text-gray-700 text-sm"><svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg> Bring Ideas to Life</li>
-              </ul>
-              <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-pink-500 text-white font-bold text-base shadow hover:bg-pink-600 mt-auto mb-4 transition-all tracking-wide">
-                <span className="">EXPLORE</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              </button>
             </div>
           </div>
         </div>
       </section>
-      {/* Lab Offerings Feature Section (new) */}
-      <section className="w-full flex flex-col md:flex-row items-center justify-between bg-white py-12 px-4 md:px-12 max-w-6xl mx-auto gap-8 md:gap-0 relative overflow-visible">
-        {/* Left Wave SVG */}
-        <svg className="hidden md:block absolute -left-16 top-1/2 -translate-y-1/2 z-0" width="80" height="400" viewBox="0 0 80 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{pointerEvents: 'none'}}>
-          <path d="M80 0 Q 40 100 80 200 Q 120 300 80 400" stroke="#a5b4fc" strokeWidth="8" fill="none"/>
-        </svg>
-        {/* Right Wave SVG (mirrored) */}
-        <svg className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-0" width="80" height="400" viewBox="0 0 80 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{pointerEvents: 'none', transform: 'scaleX(-1) translateY(-50%)'}}>
-          <path d="M80 0 Q 40 100 80 200 Q 120 300 80 400" stroke="#a5b4fc" strokeWidth="8" fill="none"/>
-        </svg>
-        {/* Content Row */}
-        <div className="relative z-10 flex-1 flex flex-col items-start max-w-xl">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
-            Empowering Educators: Teacher Training & Support
-          </h2>
-          <p className="text-lg text-gray-700 mb-6">
-            Our teacher training and support program equips educators with the skills, confidence, and resources to deliver engaging, hands-on STEM learning experiences. We believe empowered teachers ignite curiosity and inspire lifelong learning in every student.
-          </p>
-          <div className="flex flex-col gap-5 w-full">
-            <div className="flex items-start gap-4">
-              <span className="flex-shrink-0 w-10 h-10 bg-green-400 rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+
+      {/* Key Focus Areas Section */}
+      <section className="py-16 bg-blue-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+              <span className="bg-gradient-to-r from-pink-400 to-fuchsia-400 bg-clip-text text-transparent">
+                Key Focus Areas
               </span>
-              <div>
-                <div className="font-bold text-lg text-gray-900">Comprehensive Training</div>
-                <div className="text-gray-600 text-base">Hands-on, practical workshops ensure teachers master STEM tools, curriculum, and classroom strategies.</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="flex-shrink-0 w-10 h-10 bg-green-400 rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-              </span>
-              <div>
-                <div className="font-bold text-lg text-gray-900">Ongoing Support</div>
-                <div className="text-gray-600 text-base">Continuous mentoring, resources, and troubleshooting help teachers stay confident and effective all year.</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="flex-shrink-0 w-10 h-10 bg-green-400 rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-              </span>
-              <div>
-                <div className="font-bold text-lg text-gray-900">Empowering Educators</div>
-                <div className="text-gray-600 text-base">We foster a community of passionate teachers who inspire students and drive innovation in STEM education.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Right: Full image, object-contain, never cropped */}
-        <div className="relative z-10 flex-1 flex justify-center items-center w-full h-full mt-8 md:mt-16">
-          <Image src="/TeacherTraining.jpg" alt="Lab Experience" width={600} height={600} className="w-full h-auto max-h-[420px] object-contain" />
-        </div>
-      </section>
-      {/* Plethora of Activities Section */}
-      <section className="w-full flex flex-col items-center justify-center py-16 px-2 bg-white">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-blue-700 mb-2 text-center drop-shadow-lg">Plethora of Activities</h2>
-        <p className="text-lg text-gray-600 mb-8 text-center max-w-2xl">Fun activities blended with learning!</p>
-        <div className="w-full max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="row-span-2 col-span-2 md:row-span-2 md:col-span-2 flex items-center justify-center">
-            <img src="/activities.jpeg" alt="Activities" className="rounded-2xl object-cover w-full h-64 md:h-80 shadow-lg" />
+            </h2>
+            <p className="text-lg text-pink-200 max-w-3xl mx-auto">
+              Our comprehensive approach ensures holistic development across all critical STEM domains
+            </p>
           </div>
           
-          {/* Moments gallery */}
-          {/* Moments gallery */}
-          <img src="/moments (1).jpg" alt="Moment 1" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/moments (2).JPG" alt="Moment 2" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/moments (3).jpg" alt="Moment 3" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/moments (4).jpg" alt="Moment 4" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/moments (5).jpg" alt="Moment 5" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/moments (6).jpg" alt="Moment 6" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/moments (7).jpg" alt="Moment 7" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/moments (8).jpg" alt="Moment 8" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/moments (9).jpg" alt="Moment 9" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-          <img src="/moments (10).jpg" alt="Moment 10" className="rounded-xl object-cover w-full h-40 md:h-48 shadow-md" />
-        </div>
-      </section>
-     
-      
-      {/* Testimonials Section */}
-      <section className="w-full py-16 bg-[#fafafa] flex flex-col items-center justify-center">
-        {/* Heading with strawberry icon and playful text */}
-        <div className="flex flex-col items-center mb-8">
-          <span className="text-pink-500 font-bold text-lg font-bubblegum mb-2">Testimonials</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-center font-fredoka text-sky-500">Voices from Our Partner Schools</h2>
-        </div>
-        <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center">
-          {/* Card */}
-          <div className="relative rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center px-8 md:pl-40 py-12 w-full min-h-[340px] transition-colors duration-500" style={{ background: t.color }}>
-            {/* Overlapping circular image */}
-            <div className="absolute -top-20 left-1/2 md:left-12 -translate-x-1/2 md:translate-x-0 z-20">
-              <div className="w-40 h-40 rounded-full border-8 border-white overflow-hidden shadow-lg bg-white">
-                <Image src={t.img} alt={t.name} width={160} height={160} className="object-cover w-full h-full" />
-              </div>
-            </div>
-            {/* Content */}
-            <div className="flex-1 flex flex-col justify-center items-start mt-24 md:mt-0 md:ml-8">
-              <div className="flex flex-col items-start gap-1 mb-2">
-                <div className="flex items-center gap-3">
-                  <span className="text-white text-5xl leading-none">"</span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Content */}
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-fuchsia-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <FaRocket className="w-6 h-6 text-white" />
+                  </div>
                   <div>
-                    <span className="text-white text-3xl md:text-4xl font-extrabold font-fredoka">{t.name}</span>
-                    <div className="text-white text-sm opacity-90 mt-1 font-medium">{t.subtitle}</div>
+                    <h3 className="text-xl font-bold text-white mb-2">Innovation & Creativity</h3>
+                    <p className="text-pink-200 leading-relaxed">Fostering creative thinking and innovative problem-solving skills through hands-on projects and real-world challenges.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <FaCog className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Technical Excellence</h3>
+                    <p className="text-pink-200 leading-relaxed">Building strong foundations in science, technology, engineering, and mathematics through practical applications.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <FaUsers className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Collaborative Learning</h3>
+                    <p className="text-pink-200 leading-relaxed">Encouraging teamwork, communication, and leadership skills through group projects and peer learning.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <FaGraduationCap className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Future-Ready Skills</h3>
+                    <p className="text-pink-200 leading-relaxed">Preparing students for tomorrow's challenges with cutting-edge technology and industry-relevant skills.</p>
                   </div>
                 </div>
               </div>
-              <p className="text-white text-lg font-quicksand mb-8 max-w-3xl">
-                {t.text}
-              </p>
-              <div className="flex flex-wrap gap-6 mt-auto">
-                {t.badges.map((badge, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-white/90 text-black font-bold rounded-xl px-4 py-2 text-base shadow">
-                    <img src={badge.icon} alt="badge" className="w-6 h-6" />
-                    <span>{badge.text}</span>
+              
+              <div className="bg-gradient-to-r from-pink-500/10 to-fuchsia-500/10 rounded-2xl p-6 border border-pink-500/20">
+                <h4 className="text-lg font-bold text-white mb-3">Our Impact</h4>
+                <p className="text-pink-200 text-sm leading-relaxed">
+                  Through our comprehensive STEM education approach, we've successfully transformed learning experiences in over 50 schools, 
+                  impacting more than 10,000 students and training 200+ educators to deliver world-class STEM education.
+                </p>
+              </div>
+            </div>
+            
+            {/* Right Side - Image */}
+            <div className="relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-pink-500/20">
+                <Image
+                  src="/laboffering image 2.png"
+                  alt="Key Focus Areas - STEM Education"
+                  width={1600}
+                  height={1200}
+                  className="w-full h-auto object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ATL Setup Section */}
+      <section ref={atlRef} className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`text-center mb-16 transition-all duration-1000 ${atlVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+              <span className="bg-gradient-to-r from-pink-400 to-fuchsia-400 bg-clip-text text-transparent">
+                How to Setup ATL for Your School
+              </span>
+            </h2>
+            <p className="text-lg text-pink-200 max-w-3xl mx-auto">
+              A comprehensive guide to establishing your Atal Tinkering Lab with all necessary tools, equipment, and infrastructure
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Main Title */}
+            <div className={`text-center mb-12 transition-all duration-1000 delay-200 ${atlVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold text-xl sm:text-2xl px-8 py-4 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300 animate-pulse">
+                HOW TO SETUP A STEM/TINKERING LAB
+              </div>
+            </div>
+
+            {/* Diagram Container */}
+            <div className="relative max-w-6xl mx-auto">
+              {/* Main Categories */}
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                {/* Tools and Equipment Category */}
+                <div className={`space-y-6 transition-all duration-1000 delay-400 ${atlVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+                  <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold text-lg px-6 py-4 rounded-xl shadow-lg text-center transform hover:scale-105 transition-all duration-300 animate-bounce">
+                    TOOLS AND EQUIPMENT
                   </div>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      Package 01: Electronics Development, Robotics, Internet of things and Sensors
+                    </div>
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      Package 02: Rapid Prototyping (3D Printer, Filaments and other Supporting Material)
+                    </div>
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      Package 03: Mechanical, Electrical and Measurement Tools
+                    </div>
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      Package 04: Power Supply & Accessories and Safety Equipment
+                    </div>
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      Advance Prototyping STEM Kits
+                    </div>
+                  </div>
+                </div>
+
+                {/* Infrastructure Category */}
+                <div className={`space-y-6 transition-all duration-1000 delay-600 ${atlVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+                  <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold text-lg px-6 py-4 rounded-xl shadow-lg text-center transform hover:scale-105 transition-all duration-300 animate-bounce">
+                    INFRASTRUCTURE
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      3D Design, Lab Furniture, Graffities, Branding, Storage
+                    </div>
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      Information & Communication Technology: (Laptops, Computers, Interactive Panels and Projector)
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* STEM Icon */}
+              <div className={`flex justify-center mt-8 transition-all duration-1000 delay-800 ${atlVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
+                <div className="w-16 h-16 bg-gradient-to-r from-pink-400 to-fuchsia-400 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-spin">
+                  <div className="text-white text-2xl">⚛️</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Information Cards */}
+            <div className={`grid md:grid-cols-3 gap-6 mt-16 transition-all duration-1000 delay-1000 ${atlVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-6 text-center transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                  <FaRocket className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-pink-300 mb-2">
+                  Quick Setup
+                </h3>
+                <p className="text-pink-200 text-sm">Complete lab setup in 2-4 weeks with our expert team</p>
+              </div>
+
+              <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl p-6 text-center transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                  <FaUsers className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-yellow-300 mb-2">
+                  Teacher Training
+                </h3>
+                <p className="text-pink-200 text-sm">Comprehensive training for educators to maximize lab utilization</p>
+              </div>
+
+              <div className="bg-gradient-to-br from-orange-500/20 to-red-500/20 backdrop-blur-sm border border-orange-400/30 rounded-2xl p-6 text-center transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                  <FaCog className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-pink-300 mb-2">
+                  Ongoing Support
+                </h3>
+                <p className="text-pink-200 text-sm">24/7 technical support and regular maintenance services</p>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className={`text-center mt-12 transition-all duration-1000 delay-1200 ${atlVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <button 
+                onClick={handleBookCallClick}
+                className="px-10 py-4 bg-gradient-to-r from-pink-500 to-fuchsia-600 text-white font-semibold text-xl rounded-full shadow-lg hover:from-pink-600 hover:to-fuchsia-700 transition-all duration-300 transform hover:scale-105 animate-pulse"
+              >
+                Start Your ATL Setup Journey
+                <FaArrowRight className="inline-block ml-2" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section ref={achievementsRef} className="py-16 bg-blue-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center p-6 bg-blue-800 rounded-2xl shadow-lg">
+              <div className="text-4xl font-bold text-pink-400 mb-2">{counts.schools}+</div>
+              <div className="text-pink-200 font-semibold">Schools Equipped</div>
+            </div>
+            <div className="text-center p-6 bg-blue-800 rounded-2xl shadow-lg">
+              <div className="text-4xl font-bold text-pink-400 mb-2">{counts.students.toLocaleString()}+</div>
+              <div className="text-pink-200 font-semibold">Students Impacted</div>
+          </div>
+            <div className="text-center p-6 bg-blue-800 rounded-2xl shadow-lg">
+              <div className="text-4xl font-bold text-pink-400 mb-2">{counts.teachers}+</div>
+              <div className="text-pink-200 font-semibold">Teachers Trained</div>
+          </div>
+            <div className="text-center p-6 bg-blue-800 rounded-2xl shadow-lg">
+              <div className="text-4xl font-bold text-pink-400 mb-2">{counts.projects}+</div>
+              <div className="text-pink-200 font-semibold">Projects Completed</div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lab Offerings Section */}
+      <section className="py-20 bg-blue-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+              <span className="bg-gradient-to-r from-pink-400 to-fuchsia-400 bg-clip-text text-transparent">
+                Our Lab Offerings
+              </span>
+            </h2>
+            <p className="text-lg text-pink-200 max-w-3xl mx-auto">
+              Choose from our comprehensive range of STEM laboratory solutions, each designed to provide hands-on learning experiences that inspire curiosity and innovation.
+            </p>
+            </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {labOfferings.map((lab) => (
+              <div key={lab.id} className="group relative bg-[#101f4a] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ring-1 ring-pink-500/10">
+                <div className="p-8">
+                  <div className="text-center mb-6">
+                    <div className={`w-20 h-20 mx-auto rounded-full bg-gradient-to-r ${lab.color} flex items-center justify-center text-4xl mb-4`}>
+                      {lab.icon}
+                </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{lab.title}</h3>
+                    <p className="text-pink-200 text-sm leading-relaxed">{lab.description}</p>
+              </div>
+                  
+                  <div className="space-y-3 mb-6">
+                    {lab.features.map((feature, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <FaCheckCircle className="w-5 h-5 text-pink-400 flex-shrink-0" />
+                        <span className="text-pink-100 text-sm font-medium">{feature}</span>
+            </div>
+                    ))}
+          </div>
+
+                  <button className="w-full py-3 bg-gradient-to-r from-pink-500 to-fuchsia-600 text-white font-semibold rounded-xl hover:from-pink-600 hover:to-fuchsia-700 transition-all duration-300 transform hover:scale-105">
+                    Learn More
+                    <FaArrowRight className="inline-block ml-2" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+            </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-blue-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-pink-400 mb-6">
+              Why Choose Our Lab Solutions?
+            </h2>
+            <p className="text-lg text-blue-100 max-w-3xl mx-auto">
+              Our comprehensive approach ensures that every student gets the best possible STEM education experience.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div key={index} className="text-center p-6 bg-gradient-to-br from-blue-700 to-blue-600 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-pink-300 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-blue-100 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Teacher Training Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-700 to-blue-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-6">
+            Empowering Educators: Teacher Training & Support
+          </h2>
+              <p className="text-lg text-blue-100 mb-8 leading-relaxed">
+                Our comprehensive teacher training program ensures that educators are fully equipped to deliver engaging, hands-on STEM learning experiences. We provide ongoing support, resources, and professional development opportunities.
+              </p>
+              
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <FaCheckCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-yellow-300 mb-2">
+                      Comprehensive Training
+                    </h3>
+                    <p className="text-blue-100">Hands-on workshops covering all lab equipment, curriculum integration, and teaching methodologies.</p>
+                  </div>
+                </div>
+                
+            <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <FaUsers className="w-6 h-6 text-white" />
+                  </div>
+              <div>
+                    <h3 className="text-xl font-bold text-pink-300 mb-2">
+                      Ongoing Support
+                    </h3>
+                    <p className="text-blue-100">Continuous mentoring, troubleshooting assistance, and access to our educator community.</p>
+              </div>
+            </div>
+                
+            <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <FaRocket className="w-6 h-6 text-white" />
+                  </div>
+              <div>
+                    <h3 className="text-xl font-bold text-yellow-300 mb-2">
+                      Innovation Focus
+                    </h3>
+                    <p className="text-blue-100">Stay updated with the latest STEM trends and teaching innovations through our regular updates.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl">
+                <Image 
+                  src="/TeacherTraining.JPG" 
+                  alt="Teacher Training" 
+                  fill 
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Testimonials Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-pink-400 mb-6">
+              What Our Partner Schools Say
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Hear from educators who have transformed their teaching with our STEM lab solutions.
+            </p>
+        </div>
+
+          <div className="relative">
+            {/* Left Side - Background Color Navigation */}
+            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 flex flex-col gap-2">
+              <button
+                onClick={() => setCurrentBgColor((prev) => (prev - 1 + testimonialBgColors.length) % testimonialBgColors.length)}
+                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+                title="Previous Background Color"
+              >
+                <FaArrowRight className="w-5 h-5 rotate-90" />
+              </button>
+              
+              <button
+                onClick={() => setCurrentBgColor((prev) => (prev + 1) % testimonialBgColors.length)}
+                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+                title="Next Background Color"
+              >
+                <FaArrowRight className="w-5 h-5 -rotate-90" />
+              </button>
+            </div>
+
+            {/* Right Side - Navigation Buttons */}
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 flex flex-col gap-2">
+              <button
+                onClick={prevTestimonial}
+                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+              >
+                <FaArrowRight className="w-5 h-5 rotate-180" />
+              </button>
+              
+              <button
+                onClick={nextTestimonial}
+                className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+              >
+                <FaArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className={`bg-gradient-to-r ${testimonialBgColors[currentBgColor]} rounded-3xl p-8 md:p-12 text-white mx-16 transition-all duration-500 ease-in-out`}>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-white">
+                  <Image 
+                    src={testimonials[currentTestimonial].image} 
+                    alt={testimonials[currentTestimonial].name}
+                    width={64}
+                    height={64}
+                    className="object-cover w-full h-full"
+                  />
+            </div>
+                  <div>
+                  <h3 className="text-2xl font-bold">{testimonials[currentTestimonial].name}</h3>
+                  <p className="text-white/80">{testimonials[currentTestimonial].role}</p>
+                  <p className="text-white/70 text-sm">{testimonials[currentTestimonial].school}</p>
+                </div>
+              </div>
+              
+              <blockquote className="text-lg md:text-xl leading-relaxed mb-6">
+                "{testimonials[currentTestimonial].quote}"
+              </blockquote>
+              
+              <div className="flex justify-center gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentTestimonial ? 'bg-white' : 'bg-white/50'
+                    }`}
+                  />
                 ))}
               </div>
             </div>
-            {/* Navigation buttons */}
-            <button onClick={prev} className="absolute -left-4 md:-left-8 top-1/2 -translate-y-1/2 bg-white text-pink-500 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-pink-100 active:scale-90 transition-all border-2 border-pink-200 z-20">
-              <img src="/arrow.svg" alt="Previous" className="w-7 h-7" />
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-700 to-blue-600">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-6">
+            Ready to Transform Your School's STEM Education?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Join hundreds of schools already using our lab solutions to inspire the next generation of innovators and problem-solvers.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={handleBookCallClick}
+              className="px-10 py-4 bg-white text-blue-700 font-semibold text-xl rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+            >
+              Book a Call with our Expert
             </button>
-            <button onClick={next} className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 bg-white text-sky-500 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-sky-100 active:scale-90 transition-all border-2 border-sky-200 z-20">
-              <img src="/arrow.svg" alt="Next" className="w-7 h-7 rotate-180" />
+            <button className="px-10 py-4 border-2 border-white text-white font-semibold text-xl rounded-full hover:bg-white hover:text-blue-700 transition-all duration-300">
+              Download Brochure
             </button>
           </div>
         </div>
