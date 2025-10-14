@@ -121,16 +121,17 @@ export default function ThreeDPrintingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+      {/* Hero Section - Left text, right animated image */}
       <section className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text */}
             <div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 font-fredoka">
                 3D <span className="text-yellow-300">Printing</span> Services
               </h1>
               <p className="text-xl md:text-2xl mb-8">
-                Bring your ideas to life with our professional 3D printing services. 
+                Bring your ideas to life with our professional 3D printing services.
                 From rapid prototyping to custom designs, we make innovation tangible.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -142,30 +143,14 @@ export default function ThreeDPrintingPage() {
                 </button>
               </div>
             </div>
+            {/* Right: Image with bubbles */}
             <div className="relative">
-              <div className="bg-white bg-opacity-20 rounded-3xl p-8 backdrop-blur-sm">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">🖨️</div>
-                  <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>
-                  <div className="space-y-3 text-left">
-                    <div className="flex items-center gap-3">
-                      <span className="text-green-400">✓</span>
-                      <span>State-of-the-art 3D printers</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-green-400">✓</span>
-                      <span>Multiple material options</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-green-400">✓</span>
-                      <span>Expert design consultation</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-green-400">✓</span>
-                      <span>Fast delivery nationwide</span>
-                    </div>
-                  </div>
-                </div>
+              <img src="/3dprinitng.svg" alt="3D Printing banner" className="w-11/12 mx-auto h-auto" loading="eager" />
+              <div className="pointer-events-none absolute inset-0">
+                <div className="absolute top-6 left-6 w-6 h-6 bg-white/30 rounded-full animate-ping"></div>
+                <div className="absolute top-1/3 right-10 w-8 h-8 bg-yellow-300/30 rounded-full animate-bounce" style={{animationDelay:'0.4s'}}></div>
+                <div className="absolute bottom-10 left-1/4 w-5 h-5 bg-pink-300/40 rounded-full animate-pulse" style={{animationDelay:'0.8s'}}></div>
+                <div className="absolute bottom-6 right-6 w-10 h-10 bg-blue-300/30 rounded-full animate-ping" style={{animationDelay:'1.2s'}}></div>
               </div>
             </div>
           </div>

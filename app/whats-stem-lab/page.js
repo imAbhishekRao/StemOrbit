@@ -318,10 +318,10 @@ export default function WhatsStemLab() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stemComponents.map((component, idx) => {
               const cardColors = [
-                'from-pink-100 to-rose-200',
-                'from-blue-100 to-indigo-200', 
-                'from-green-100 to-emerald-200',
-                'from-purple-100 to-violet-200'
+                'from-pink-200 to-rose-300',
+                'from-blue-200 to-indigo-300', 
+                'from-green-200 to-emerald-300',
+                'from-purple-200 to-violet-300'
               ];
               const cardBg = cardColors[idx % cardColors.length];
               
@@ -360,12 +360,12 @@ export default function WhatsStemLab() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {benefits.map((benefit, idx) => {
               const benefitColors = [
-                'from-emerald-100 to-teal-200',
-                'from-cyan-100 to-blue-200',
-                'from-violet-100 to-purple-200',
-                'from-rose-100 to-pink-200',
-                'from-amber-100 to-orange-200',
-                'from-indigo-100 to-blue-200'
+                'from-emerald-200 to-teal-300',
+                'from-cyan-200 to-blue-300',
+                'from-violet-200 to-purple-300',
+                'from-rose-200 to-pink-300',
+                'from-amber-200 to-orange-300',
+                'from-indigo-200 to-blue-300'
               ];
               const cardBg = benefitColors[idx % benefitColors.length];
               
@@ -390,12 +390,12 @@ export default function WhatsStemLab() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {labFeatures.map((feature, idx) => {
               const featureColors = [
-                'from-indigo-100 to-purple-200',
-                'from-pink-100 to-rose-200',
-                'from-blue-100 to-cyan-200',
-                'from-green-100 to-emerald-200',
-                'from-amber-100 to-orange-200',
-                'from-sky-100 to-indigo-200'
+                'from-indigo-200 to-purple-300',
+                'from-pink-200 to-rose-300',
+                'from-blue-200 to-cyan-300',
+                'from-green-200 to-emerald-300',
+                'from-amber-200 to-orange-300',
+                'from-sky-200 to-indigo-300'
               ];
               const cardBg = featureColors[idx % featureColors.length];
               
