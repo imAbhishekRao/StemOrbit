@@ -291,7 +291,7 @@ export default function WhatsStemLab() {
         <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
           <div className="relative overflow-hidden">
             <img
-              src="/whatsstemlab.png"
+              src="/whatsstemlab.svg"
               alt="What's STEM Lab banner"
               className="w-full h-auto block"
               loading="eager"
@@ -318,27 +318,27 @@ export default function WhatsStemLab() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stemComponents.map((component, idx) => {
               const cardColors = [
-                'from-pink-500 to-rose-600',
-                'from-blue-500 to-indigo-600', 
-                'from-green-500 to-emerald-600',
-                'from-purple-500 to-violet-600'
+                'from-pink-100 to-rose-200',
+                'from-blue-100 to-indigo-200', 
+                'from-green-100 to-emerald-200',
+                'from-purple-100 to-violet-200'
               ];
               const cardBg = cardColors[idx % cardColors.length];
               
               return (
-              <div key={idx} className={`stem-card bg-gradient-to-br ${cardBg} rounded-2xl shadow-lg p-4 sm:p-6 flex flex-col items-center text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-105 border-2 border-transparent hover:border-white/30`}>
-                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm flex items-center justify-center text-2xl sm:text-3xl text-white font-bold mb-3 sm:mb-4 shadow-lg animate-pulse border border-white/30`}>
+              <div key={idx} className={`stem-card bg-gradient-to-br ${cardBg} rounded-2xl shadow-lg p-4 sm:p-6 flex flex-col items-center text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-105 border-2 border-transparent hover:border-pink-200/60`}>
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-sm flex items-center justify-center text-2xl sm:text-3xl text-gray-900 font-bold mb-3 sm:mb-4 shadow-lg animate-pulse border border-white/60`}>
                   {component.letter}
                 </div>
-                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 animate-bounce drop-shadow-lg">{component.icon}</div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white drop-shadow-md">{component.title}</h3>
-                <p className="text-white/90 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed drop-shadow-sm">{component.description}</p>
+                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{component.icon}</div>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-900">{component.title}</h3>
+                <p className="text-gray-700 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">{component.description}</p>
                 <div className="w-full">
-                  <h4 className="font-semibold text-white/90 mb-2 text-sm drop-shadow-sm">Examples:</h4>
-                  <ul className="text-xs text-white/80 space-y-1">
+                  <h4 className="font-semibold text-gray-800 mb-2 text-sm">Examples:</h4>
+                  <ul className="text-xs text-gray-700 space-y-1">
                     {component.examples.map((example, i) => (
                       <li key={i} className="flex items-center">
-                        <span className="w-1 h-1 bg-white/60 rounded-full mr-2"></span>
+                        <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
                         {example}
                       </li>
                     ))}
@@ -360,20 +360,20 @@ export default function WhatsStemLab() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {benefits.map((benefit, idx) => {
               const benefitColors = [
-                'from-emerald-600 to-teal-700',
-                'from-cyan-600 to-blue-700',
-                'from-violet-600 to-purple-700',
-                'from-rose-600 to-pink-700',
-                'from-amber-600 to-orange-700',
-                'from-indigo-600 to-blue-800'
+                'from-emerald-100 to-teal-200',
+                'from-cyan-100 to-blue-200',
+                'from-violet-100 to-purple-200',
+                'from-rose-100 to-pink-200',
+                'from-amber-100 to-orange-200',
+                'from-indigo-100 to-blue-200'
               ];
               const cardBg = benefitColors[idx % benefitColors.length];
               
               return (
-              <div key={idx} className={`benefit-card bg-gradient-to-br ${cardBg} rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-105 border-2 border-transparent hover:border-white/30`}>
-                <div className="text-4xl sm:text-5xl mb-3 sm:mb-4 animate-bounce drop-shadow-lg">{benefit.icon}</div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white drop-shadow-md">{benefit.title}</h3>
-                <p className="text-sm sm:text-base text-white/90 leading-relaxed drop-shadow-sm">{benefit.description}</p>
+              <div key={idx} className={`benefit-card bg-gradient-to-br ${cardBg} rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-105 border-2 border-transparent hover:border-emerald-200/60`}>
+                <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">{benefit.icon}</div>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-900">{benefit.title}</h3>
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">{benefit.description}</p>
               </div>
               );
             })}
@@ -390,21 +390,21 @@ export default function WhatsStemLab() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {labFeatures.map((feature, idx) => {
               const featureColors = [
-                'from-slate-700 to-gray-800',
-                'from-zinc-700 to-stone-800',
-                'from-neutral-700 to-gray-800',
-                'from-stone-700 to-zinc-800',
-                'from-gray-700 to-slate-800',
-                'from-slate-600 to-gray-700'
+                'from-indigo-100 to-purple-200',
+                'from-pink-100 to-rose-200',
+                'from-blue-100 to-cyan-200',
+                'from-green-100 to-emerald-200',
+                'from-amber-100 to-orange-200',
+                'from-sky-100 to-indigo-200'
               ];
               const cardBg = featureColors[idx % featureColors.length];
               
               return (
-              <div key={idx} className={`feature-card bg-gradient-to-br ${cardBg} rounded-2xl shadow-lg p-6 sm:p-8 flex items-start space-x-4 sm:space-x-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-105 border-2 border-transparent hover:border-white/30`}>
-                <div className="text-4xl sm:text-5xl flex-shrink-0 animate-bounce drop-shadow-lg">{feature.image}</div>
+              <div key={idx} className={`feature-card bg-gradient-to-br ${cardBg} rounded-2xl shadow-lg p-6 sm:p-8 flex items-start space-x-4 sm:space-x-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-105 border-2 border-transparent hover:border-indigo-200/60`}>
+                <div className="text-4xl sm:text-5xl flex-shrink-0">{feature.image}</div>
                 <div>
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white drop-shadow-md">{feature.title}</h3>
-                  <p className="text-sm sm:text-base text-white/90 leading-relaxed drop-shadow-sm">{feature.description}</p>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-900">{feature.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">{feature.description}</p>
                 </div>
               </div>
               );
@@ -419,7 +419,7 @@ export default function WhatsStemLab() {
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Our STEM Lab in Detail
+              Explore Our STEM Lab Creations
               </span>
             </h2>
             <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
@@ -495,38 +495,7 @@ export default function WhatsStemLab() {
             ))}
           </div>
           
-          {/* Additional Lab Features */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Modern Equipment</h3>
-              <p className="text-gray-600">Cutting-edge technology and tools for hands-on STEM learning experiences.</p>
-            </div>
-            
-            <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Interactive Learning</h3>
-              <p className="text-gray-600">Engaging spaces designed to foster collaboration and creativity among students.</p>
-            </div>
-            
-            <div className="text-center p-6 bg-white rounded-2xl shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Innovation Focus</h3>
-              <p className="text-gray-600">Spaces that encourage experimentation and real-world problem solving.</p>
-            </div>
-          </div>
+          {/* Additional Lab Features - removed duplicate block; see IRL section below */}
         </div>
       </section>
 
@@ -544,28 +513,28 @@ export default function WhatsStemLab() {
 
           {/* Lab Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="text-center p-6 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105">
+            <div className="text-center p-6 bg-gradient-to-br from-blue-100 to-indigo-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105">
               <div className="w-16 h-16 bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-white/30">
                 <span className="text-3xl drop-shadow-lg">🔬</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 drop-shadow-md">Advanced Equipment</h3>
-              <p className="text-white/90 drop-shadow-sm">Cutting-edge technology and professional-grade tools for hands-on learning</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Modern Equipment</h3>
+              <p className="text-gray-700">Cutting-edge technology and tools for hands-on STEM learning experiences.</p>
             </div>
             
-            <div className="text-center p-6 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105">
+            <div className="text-center p-6 bg-gradient-to-br from-emerald-100 to-teal-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105">
               <div className="w-16 h-16 bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-white/30">
                 <span className="text-3xl drop-shadow-lg">👥</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 drop-shadow-md">Collaborative Learning</h3>
-              <p className="text-white/90 drop-shadow-sm">Team-based projects and peer-to-peer learning in a supportive environment</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Interactive Learning</h3>
+              <p className="text-gray-700">Engaging spaces designed to foster collaboration and creativity among students.</p>
             </div>
             
-            <div className="text-center p-6 bg-gradient-to-br from-purple-600 to-violet-700 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105">
+            <div className="text-center p-6 bg-gradient-to-br from-purple-100 to-violet-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105">
               <div className="w-16 h-16 bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-white/30">
                 <span className="text-3xl drop-shadow-lg">🚀</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 drop-shadow-md">Innovation Hub</h3>
-              <p className="text-white/90 drop-shadow-sm">Where creativity meets technology to build the future</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Innovation Focus</h3>
+              <p className="text-gray-700">Spaces that encourage experimentation and real-world problem solving</p>
             </div>
           </div>
 
@@ -621,21 +590,21 @@ export default function WhatsStemLab() {
 
           {/* Lab Statistics */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center bg-gradient-to-br from-pink-600 to-rose-700 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 shadow-lg">
-              <div className="text-3xl font-bold text-white mb-2 drop-shadow-md">500+</div>
-              <div className="text-white/90 drop-shadow-sm">Students Trained</div>
+            <div className="text-center bg-gradient-to-br from-pink-100 to-rose-200 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 shadow-lg">
+              <div className="text-3xl font-bold text-pink-700 mb-2">500+</div>
+              <div className="text-gray-700">Students Trained</div>
             </div>
-            <div className="text-center bg-gradient-to-br from-emerald-600 to-green-700 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 shadow-lg">
-              <div className="text-3xl font-bold text-white mb-2 drop-shadow-md">50+</div>
-              <div className="text-white/90 drop-shadow-sm">Projects Completed</div>
+            <div className="text-center bg-gradient-to-br from-emerald-100 to-green-200 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 shadow-lg">
+              <div className="text-3xl font-bold text-emerald-700 mb-2">50+</div>
+              <div className="text-gray-700">Projects Completed</div>
             </div>
-            <div className="text-center bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 shadow-lg">
-              <div className="text-3xl font-bold text-white mb-2 drop-shadow-md">15+</div>
-              <div className="text-white/90 drop-shadow-sm">Technologies</div>
+            <div className="text-center bg-gradient-to-br from-violet-100 to-purple-200 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 shadow-lg">
+              <div className="text-3xl font-bold text-violet-700 mb-2">15+</div>
+              <div className="text-gray-700">Technologies</div>
             </div>
-            <div className="text-center bg-gradient-to-br from-amber-600 to-orange-700 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 shadow-lg">
-              <div className="text-3xl font-bold text-white mb-2 drop-shadow-md">100%</div>
-              <div className="text-white/90 drop-shadow-sm">Hands-on Learning</div>
+            <div className="text-center bg-gradient-to-br from-amber-100 to-orange-200 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 shadow-lg">
+              <div className="text-3xl font-bold text-amber-700 mb-2">100%</div>
+              <div className="text-gray-700">Hands-on Learning</div>
             </div>
           </div>
 
