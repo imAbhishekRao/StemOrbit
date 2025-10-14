@@ -187,40 +187,40 @@ export default function Contact() {
         </div>
       </section>
       {/* Contact Section */}
-      <section className="w-full py-24 md:py-32 px-4 md:px-0 bg-white">
-        <div className="max-w-5xl mx-auto flex flex-col gap-12">
-          <div className="flex flex-col md:flex-row items-stretch gap-8">
+      <section className="w-full py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-0 bg-white">
+        <div className="max-w-5xl mx-auto flex flex-col gap-8 sm:gap-10 lg:gap-12">
+          <div className="flex flex-col lg:flex-row items-stretch gap-6 sm:gap-8">
           {/* Left: Contact Info */}
-            <div className="flex-1 flex flex-col justify-center md:pr-8 mb-8 md:mb-0">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Contact Us</h1>
-            <p className="text-lg text-gray-700 mb-6 max-w-xl">
+            <div className="flex-1 flex flex-col justify-center lg:pr-8 mb-6 sm:mb-8 lg:mb-0">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">Contact Us</h1>
+            <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6 max-w-xl">
               Have a question, want to collaborate, or just want to say hello? Reach out to the STEMOrbit team and we'll get back to you as soon as possible!
             </p>
-            <div className="mb-4">
-              <div className="font-semibold text-gray-900">Address:</div>
-              <div className="text-gray-700">
+            <div className="mb-3 sm:mb-4">
+              <div className="font-semibold text-gray-900 text-sm sm:text-base">Address:</div>
+              <div className="text-gray-700 text-sm sm:text-base">
                 SCO-04, 1st Floor, Mehma Singh<br />
                 Complex, Opp. Jal Vayu Towers, Gate 3<br />
                 New Sunny Enclave, Kharar, Sector-125<br />
                 (Mohali) Punjab - 140301
               </div>
             </div>
-            <div className="mb-4">
-              <div className="font-semibold text-gray-900">Call:</div>
-              <a href="tel:+917009594410" className="text-blue-600 hover:underline">+91-70095-94410</a>
+            <div className="mb-3 sm:mb-4">
+              <div className="font-semibold text-gray-900 text-sm sm:text-base">Call:</div>
+              <a href="tel:+917009594410" className="text-blue-600 hover:underline text-sm sm:text-base">+91-70095-94410</a>
             </div>
-            <div className="mb-4">
-              <div className="font-semibold text-gray-900">Landline:</div>
-              <a href="tel:+911605010684" className="text-blue-600 hover:underline">+91-160-501-0684</a>
+            <div className="mb-3 sm:mb-4">
+              <div className="font-semibold text-gray-900 text-sm sm:text-base">Landline:</div>
+              <a href="tel:+911605010684" className="text-blue-600 hover:underline text-sm sm:text-base">+91-160-501-0684</a>
             </div>
-            <div className="mb-4">
-              <div className="font-semibold text-gray-900">WhatsApp:</div>
-              <a href="https://wa.me/917009594410" className="text-blue-600 hover:underline">+91-70095-94410</a>
+            <div className="mb-3 sm:mb-4">
+              <div className="font-semibold text-gray-900 text-sm sm:text-base">WhatsApp:</div>
+              <a href="https://wa.me/917009594410" className="text-blue-600 hover:underline text-sm sm:text-base">+91-70095-94410</a>
             </div>
-            <div className="mb-4">
-              <div className="font-semibold text-gray-900">Mail:</div>
-              <a href="mailto:stemorbit@gmail.com" className="text-blue-600 hover:underline block">stemorbit@gmail.com</a>
-              <a href="mailto:info@stemorbit.com" className="text-blue-600 hover:underline">info@stemorbit.com</a>
+            <div className="mb-3 sm:mb-4">
+              <div className="font-semibold text-gray-900 text-sm sm:text-base">Mail:</div>
+              <a href="mailto:stemorbit@gmail.com" className="text-blue-600 hover:underline block text-sm sm:text-base">stemorbit@gmail.com</a>
+              <a href="mailto:info@stemorbit.com" className="text-blue-600 hover:underline text-sm sm:text-base">info@stemorbit.com</a>
             </div>
           </div>
             {/* Right: Map */}
@@ -240,63 +240,63 @@ export default function Contact() {
             </div>
           </div>
           {/* Contact Form below */}
-          <div className="flex items-center justify-center mt-20 mb-0">
-            <form className="w-full max-w-5xl bg-gray-50 rounded-2xl shadow p-8 flex flex-col gap-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Send Us a Message</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex items-center justify-center mt-12 sm:mt-16 lg:mt-20 mb-0">
+            <form className="w-full max-w-5xl bg-gray-50 rounded-2xl shadow p-6 sm:p-8 flex flex-col gap-4 sm:gap-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Send Us a Message</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="name">Name</label>
-                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500" type="text" id="name" name="name" placeholder="Your Name" />
+                  <label className="block text-gray-700 font-medium mb-2 text-sm sm:text-base" htmlFor="name">Name</label>
+                  <input className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500 text-sm sm:text-base" type="text" id="name" name="name" placeholder="Your Name" />
                 </div>
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="city">City</label>
-                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500" type="text" id="city" name="city" placeholder="Your City" />
+                  <label className="block text-gray-700 font-medium mb-2 text-sm sm:text-base" htmlFor="city">City</label>
+                  <input className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500 text-sm sm:text-base" type="text" id="city" name="city" placeholder="Your City" />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="mobile">Mobile Number</label>
-                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500" type="tel" id="mobile" name="mobile" placeholder="Your Mobile Number" pattern="[0-9]{10}" maxLength="15" />
+                  <label className="block text-gray-700 font-medium mb-2 text-sm sm:text-base" htmlFor="mobile">Mobile Number</label>
+                  <input className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500 text-sm sm:text-base" type="tel" id="mobile" name="mobile" placeholder="Your Mobile Number" pattern="[0-9]{10}" maxLength="15" />
                 </div>
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2" htmlFor="email">Email</label>
-                  <input className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500" type="email" id="email" name="email" placeholder="you@email.com" />
+                  <label className="block text-gray-700 font-medium mb-2 text-sm sm:text-base" htmlFor="email">Email</label>
+                  <input className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500 text-sm sm:text-base" type="email" id="email" name="email" placeholder="you@email.com" />
                 </div>
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-2" htmlFor="message">Message</label>
-                <textarea className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-white-700 focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500" id="message" name="message" rows={5} placeholder="How can we help you?" />
+                <label className="block text-gray-700 font-medium mb-2 text-sm sm:text-base" htmlFor="message">Message</label>
+                <textarea className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500 text-sm sm:text-base" id="message" name="message" rows={4} placeholder="How can we help you?" />
               </div>
-              <button type="submit" className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg">Send Message</button>
+              <button type="submit" className="w-full py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg text-sm sm:text-base">Send Message</button>
             </form>
           </div>
         </div>
       </section>
       {/* FAQ Section */}
-      <section className="w-full py-10 px-4 bg-white -mt-20" style={{ fontFamily: 'Manrope, sans-serif' }}>
+      <section className="w-full py-8 sm:py-10 px-4 sm:px-6 md:px-8 bg-white -mt-16 sm:-mt-20" style={{ fontFamily: 'Manrope, sans-serif' }}>
         <div className="max-w-3xl mx-auto mt-0">
    
-          <div className="text-center mb-8">
-            <div className="text-2xl md:text-3xl font-semibold mb-1 text-pink-500 mt-0.5" style={{ fontFamily: 'cursive' }}>You Ask We Answer</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="text-xl sm:text-2xl md:text-3xl font-semibold mb-1 text-pink-500 mt-0.5" style={{ fontFamily: 'cursive' }}>You Ask We Answer</div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
           </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 max-w-2xl mx-auto mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 max-w-2xl mx-auto mb-6 sm:mb-8">
             <button
-              className={`min-w-[260px] w-full rounded-xl border shadow-sm px-8 py-8 flex items-center justify-center text-center text-xl font-semibold transition focus:outline-none ${openFaqGroup === 'principals' ? 'bg-[#33aade] text-white border-[#33aade]' : 'bg-white border-blue-200 text-blue-700 hover:bg-blue-100'}`}
+              className={`min-w-[200px] sm:min-w-[260px] w-full rounded-xl border shadow-sm px-4 sm:px-8 py-4 sm:py-6 lg:py-8 flex items-center justify-center text-center text-base sm:text-lg lg:text-xl font-semibold transition focus:outline-none ${openFaqGroup === 'principals' ? 'bg-[#33aade] text-white border-[#33aade]' : 'bg-white border-blue-200 text-blue-700 hover:bg-blue-100'}`}
               style={{ fontFamily: 'Manrope, sans-serif' }}
               onClick={() => { setOpenFaqGroup('principals'); setOpenQuestionIdx(null); }}
             >
               For Schools
             </button>
             <button
-              className={`min-w-[260px] w-full rounded-xl border shadow-sm px-8 py-8 flex items-center justify-center text-center text-xl font-semibold transition focus:outline-none ${openFaqGroup === 'students' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white border-purple-200 text-purple-700 hover:bg-purple-100'}`}
+              className={`min-w-[200px] sm:min-w-[260px] w-full rounded-xl border shadow-sm px-4 sm:px-8 py-4 sm:py-6 lg:py-8 flex items-center justify-center text-center text-base sm:text-lg lg:text-xl font-semibold transition focus:outline-none ${openFaqGroup === 'students' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white border-purple-200 text-purple-700 hover:bg-purple-100'}`}
               style={{ fontFamily: 'Manrope, sans-serif' }}
               onClick={() => { setOpenFaqGroup('students'); setOpenQuestionIdx(null); }}
             >
               For Students
             </button>
             <button
-              className={`min-w-[260px] w-full rounded-xl border shadow-sm px-8 py-8 flex items-center justify-center text-center text-xl font-semibold transition focus:outline-none ${openFaqGroup === 'parents' ? 'bg-[#33aade] text-white border-[#33aade]' : 'bg-white border-blue-200 text-blue-700 hover:bg-blue-100'}`}
+              className={`min-w-[200px] sm:min-w-[260px] w-full rounded-xl border shadow-sm px-4 sm:px-8 py-4 sm:py-6 lg:py-8 flex items-center justify-center text-center text-base sm:text-lg lg:text-xl font-semibold transition focus:outline-none ${openFaqGroup === 'parents' ? 'bg-[#33aade] text-white border-[#33aade]' : 'bg-white border-blue-200 text-blue-700 hover:bg-blue-100'}`}
               style={{ fontFamily: 'Manrope, sans-serif' }}
               onClick={() => { setOpenFaqGroup('parents'); setOpenQuestionIdx(null); }}
             >

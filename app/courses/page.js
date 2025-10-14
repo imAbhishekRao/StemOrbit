@@ -227,50 +227,50 @@ export default function CoursesPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* In-Person Classes Section */}
-      <div className="w-full py-12 bg-gradient-to-r from-blue-50 to-purple-50">
+      <div className="w-full py-8 sm:py-12 bg-gradient-to-r from-blue-50 to-purple-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 font-fredoka">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 font-fredoka">
               Learn In Person
             </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto">
               Take our in-person classes in our premises and experience hands-on learning with our expert instructors
             </p>
           </div>
           
-          <div className="bg-white rounded-3xl shadow-xl p-8 border-2 border-blue-200">
-            <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 border-2 border-blue-200">
+            <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6">
               <div className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <span className="text-2xl">🏫</span>
+                <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <span className="text-xl sm:text-2xl">🏫</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 font-fredoka">In-Person Classes</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 font-fredoka">In-Person Classes</h3>
                 </div>
-                <p className="text-gray-700 mb-4 text-lg">
+                <p className="text-gray-700 mb-3 sm:mb-4 text-base sm:text-lg">
                   Experience the full power of hands-on STEM learning in our state-of-the-art facility. 
                   Work with real equipment, collaborate with peers, and get immediate feedback from our expert instructors.
                 </p>
-                <div className="flex flex-wrap gap-3">
-                  <span className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  <span className="px-3 sm:px-4 py-1 sm:py-2 bg-blue-100 text-blue-800 rounded-full text-xs sm:text-sm font-medium">
                     🤖 Robotics Labs
                   </span>
-                  <span className="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
+                  <span className="px-3 sm:px-4 py-1 sm:py-2 bg-green-100 text-green-800 rounded-full text-xs sm:text-sm font-medium">
                     🖨️ 3D Printing Station
                   </span>
-                  <span className="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
+                  <span className="px-3 sm:px-4 py-1 sm:py-2 bg-purple-100 text-purple-800 rounded-full text-xs sm:text-sm font-medium">
                     🔌 Electronics Lab
                   </span>
-                  <span className="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
+                  <span className="px-3 sm:px-4 py-1 sm:py-2 bg-orange-100 text-orange-800 rounded-full text-xs sm:text-sm font-medium">
                     🚁 Drone Workshop
                   </span>
                 </div>
               </div>
               
-              <div className="flex-shrink-0">
-                <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-6 text-white text-center">
-                  <div className="text-4xl mb-2">📍</div>
-                  <p className="text-sm font-medium mb-2">Available at our location:</p>
+              <div className="flex-shrink-0 w-full lg:w-auto">
+                <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-4 sm:p-6 text-white text-center">
+                  <div className="text-3xl sm:text-4xl mb-2">📍</div>
+                  <p className="text-xs sm:text-sm font-medium mb-2">Available at our location:</p>
                   <p className="text-xs opacity-90">
                     STEMOrbit Technologies<br/>
                     SCO-04, 1st Floor, Mehma Singh Complex<br/>

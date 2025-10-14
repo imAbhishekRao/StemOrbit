@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function AboutSection() {
   return (
-    <section className="relative w-full flex flex-col lg:flex-row items-center justify-between min-h-[600px] sm:min-h-[700px] lg:min-h-[500px] bg-white px-4 sm:px-6 md:px-8 py-8 sm:py-12 lg:py-16">
+    <section className="relative w-full flex flex-col lg:flex-row items-center justify-between min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[500px] xl:min-h-[600px] bg-white px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 lg:py-16">
       {/* Decorative Drone SVG Top Left */}
       <div className="hidden lg:block absolute top-12 left-12 z-10 animate-ambient-float">
         <svg width="80" height="60" viewBox="0 0 100 100" fill="#ec4899" xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +23,7 @@ export default function AboutSection() {
         <svg viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute w-[280px] h-[240px] sm:w-[320px] sm:h-[260px] md:w-[370px] md:h-[300px] lg:w-[420px] lg:h-[340px] -left-2 sm:-left-4 lg:left-0 z-0">
           <path d="M60 60 Q210 0 360 60 Q420 170 360 280 Q210 340 60 280 Q0 170 60 60Z" fill="#FFA726"/>
         </svg>
-        <div className="relative w-[260px] h-[320px] sm:w-[300px] sm:h-[380px] md:w-[350px] md:h-[420px] lg:w-[400px] lg:h-[520px] rounded-[50%_60%_40%_70%/60%_40%_70%_50%] overflow-hidden shadow-strong z-10">
+        <div className="relative w-[240px] h-[300px] sm:w-[280px] sm:h-[340px] md:w-[320px] md:h-[380px] lg:w-[360px] lg:h-[440px] xl:w-[400px] xl:h-[520px] rounded-[50%_60%_40%_70%/60%_40%_70%_50%] overflow-hidden shadow-strong z-10">
           <Image src="/about.jpg" alt="About Us" fill className="object-cover animate-ambient-zoom" priority />
         </div>
         {/* Decorative Dot */}

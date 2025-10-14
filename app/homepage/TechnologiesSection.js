@@ -73,9 +73,9 @@ const techBgImages = [
 
 export default function TechnologiesSection() {
   return (
-    <section className="w-full flex flex-col items-center justify-center py-8 sm:py-12 lg:py-16 bg-[#FFF7F0] relative px-4 sm:px-6">
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-8 lg:mb-10 text-pink-600 font-fredoka">Technologies We Are In</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-6xl w-full">
+    <section className="w-full flex flex-col items-center justify-center py-6 sm:py-8 md:py-12 lg:py-16 bg-[#FFF7F0] relative px-4 sm:px-6">
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4 sm:mb-6 md:mb-8 lg:mb-10 text-pink-600 font-fredoka">Technologies We Are In</h2>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-6xl w-full">
         {technologies.map((tech, idx) => {
           // Assign a unique color for each icon's main circle
           const circleColors = [
