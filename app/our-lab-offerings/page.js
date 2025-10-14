@@ -286,7 +286,7 @@ export default function OurLabOfferings() {
   return (
     <div className="min-h-screen bg-blue-900 text-white">
       {/* Hero Section */}
-      <section className="relative py-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 overflow-hidden">
+      <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute top-10 left-10 w-20 h-20 bg-white/20 rounded-full animate-pulse"></div>
@@ -305,13 +305,17 @@ export default function OurLabOfferings() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button 
                   onClick={handleBookCallClick}
-                  className="px-10 py-4 bg-gradient-to-r from-pink-500 to-fuchsia-600 text-white font-semibold text-xl rounded-full shadow-lg hover:from-pink-600 hover:to-fuchsia-700 transition-all duration-300 transform hover:scale-105"
+                  className="px-6 py-3 bg-gradient-to-r from-pink-500 to-fuchsia-600 text-white font-semibold text-base rounded-full shadow-lg hover:from-pink-600 hover:to-fuchsia-700 transition-all duration-300 transform hover:scale-105"
                 >
-                  Book a Call with our Expert
+                  Book a Call
                 </button>
-                <button className="px-10 py-4 border-2 border-pink-400 text-pink-300 font-semibold text-xl rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300">
+                <a 
+                  href="/STEMOrbit%20Brochure.pdf" 
+                  download
+                  className="px-6 py-3 border-2 border-pink-400 text-pink-300 font-semibold text-base rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 inline-block text-center"
+                >
                   Download Brochure
-                </button>
+                </a>
               </div>
             </div>
             {/* Right: brochure element image */}
@@ -473,12 +477,24 @@ export default function OurLabOfferings() {
                     INFRASTRUCTURE
                   </div>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
-                      3D Design, Lab Furniture, Graffities, Branding, Storage
+                      3D Design
                     </div>
                     <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
-                      Information & Communication Technology: (Laptops, Computers, Interactive Panels and Projector)
+                      Lab Furniture
+                    </div>
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      Graffities
+                    </div>
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      Branding
+                    </div>
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      Storage
+                    </div>
+                    <div className="bg-white text-black font-semibold px-4 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:bg-yellow-50">
+                      Information Technology: (Laptops and Projector)
                     </div>
                   </div>
                 </div>

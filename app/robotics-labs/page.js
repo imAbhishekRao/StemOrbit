@@ -4,6 +4,57 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 
+// Calendly integration
+const handleBookCallClick = (e) => {
+  e.preventDefault();
+  const url = "https://calendly.com/abhishek-stemorbit";
+  if (typeof window === "undefined") return false;
+
+  // Ensure CSS is present
+  if (!document.getElementById("calendly-widget-css")) {
+    const link = document.createElement("link");
+    link.id = "calendly-widget-css";
+    link.rel = "stylesheet";
+    link.href = "https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(link);
+  }
+
+  const openPopup = () => {
+    try {
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+        window.Calendly.initPopupWidget({ url });
+        return true;
+      }
+    } catch (_) {}
+    return false;
+  };
+
+  if (openPopup()) return false;
+
+  // If Calendly not loaded yet, load script on demand and open when ready
+  let script = document.getElementById("calendly-widget-script");
+  if (!script) {
+    script = document.createElement("script");
+    script.id = "calendly-widget-script";
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    script.type = "text/javascript";
+    script.onload = () => openPopup();
+    document.body.appendChild(script);
+  } else {
+    script.addEventListener("load", () => openPopup(), { once: true });
+  }
+
+  // Final fallback after short delay
+  setTimeout(() => {
+    if (!openPopup()) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }, 1200);
+
+  return false;
+};
+
 function useSectionAnimation(ref, animationFn, deps = []) {
   useEffect(() => {
     if (!ref.current) return;
@@ -254,12 +305,12 @@ export default function RoboticsLabs() {
               <div className={`flex flex-col sm:flex-row gap-4 mb-8 transition-all duration-1000 delay-400 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-                <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                <button onClick={handleBookCallClick} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                   Request a School Demo
                 </button>
-                <button className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold text-lg rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 hover:shadow-lg">
+                <a href="/STEMOrbit%20Brochure.pdf" download className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold text-lg rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 hover:shadow-lg inline-block text-center">
                   Download Brochure
-                </button>
+                </a>
               </div>
             </div>
             
@@ -579,12 +630,12 @@ export default function RoboticsLabs() {
             Contact us to schedule a demo, request a proposal, or learn how we can help your school lead in STEM education.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-white text-blue-600 font-semibold text-lg rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl">
+            <button onClick={handleBookCallClick} className="px-8 py-4 bg-white text-blue-600 font-semibold text-lg rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl">
               Request a School Demo
             </button>
-            <button className="px-8 py-4 border-2 border-white text-white font-semibold text-lg rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300">
+            <a href="/STEMOrbit%20Brochure.pdf" download className="px-8 py-4 border-2 border-white text-white font-semibold text-lg rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 inline-block text-center">
               Download Brochure
-            </button>
+            </a>
           </div>
         </div>
       </section>

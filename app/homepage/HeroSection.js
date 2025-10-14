@@ -3,6 +3,57 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+// Calendly integration
+const handleBookCallClick = (e) => {
+  e.preventDefault();
+  const url = "https://calendly.com/abhishek-stemorbit";
+  if (typeof window === "undefined") return false;
+
+  // Ensure CSS is present
+  if (!document.getElementById("calendly-widget-css")) {
+    const link = document.createElement("link");
+    link.id = "calendly-widget-css";
+    link.rel = "stylesheet";
+    link.href = "https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(link);
+  }
+
+  const openPopup = () => {
+    try {
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+        window.Calendly.initPopupWidget({ url });
+        return true;
+      }
+    } catch (_) {}
+    return false;
+  };
+
+  if (openPopup()) return false;
+
+  // If Calendly not loaded yet, load script on demand and open when ready
+  let script = document.getElementById("calendly-widget-script");
+  if (!script) {
+    script = document.createElement("script");
+    script.id = "calendly-widget-script";
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    script.type = "text/javascript";
+    script.onload = () => openPopup();
+    document.body.appendChild(script);
+  } else {
+    script.addEventListener("load", () => openPopup(), { once: true });
+  }
+
+  // Final fallback after short delay
+  setTimeout(() => {
+    if (!openPopup()) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }, 1200);
+
+  return false;
+};
+
 export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
@@ -72,7 +123,7 @@ export default function HeroSection() {
       {/* Get in Touch Button - Fixed at bottom center on mobile, right on desktop */}
       <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 sm:left-auto sm:transform-none sm:bottom-16 sm:right-4 md:bottom-20 md:right-6 lg:bottom-24 lg:right-8 xl:bottom-28 xl:right-10 z-10">
         <button 
-          onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+          onClick={handleBookCallClick}
           className="px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-sm sm:text-base md:text-lg rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl animate-bounce whitespace-nowrap"
         >
           Get in Touch

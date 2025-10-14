@@ -1,6 +1,57 @@
 "use client";
 import { useState } from 'react';
 
+// Calendly integration
+const handleBookCallClick = (e) => {
+  e.preventDefault();
+  const url = "https://calendly.com/abhishek-stemorbit";
+  if (typeof window === "undefined") return false;
+
+  // Ensure CSS is present
+  if (!document.getElementById("calendly-widget-css")) {
+    const link = document.createElement("link");
+    link.id = "calendly-widget-css";
+    link.rel = "stylesheet";
+    link.href = "https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(link);
+  }
+
+  const openPopup = () => {
+    try {
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+        window.Calendly.initPopupWidget({ url });
+        return true;
+      }
+    } catch (_) {}
+    return false;
+  };
+
+  if (openPopup()) return false;
+
+  // If Calendly not loaded yet, load script on demand and open when ready
+  let script = document.getElementById("calendly-widget-script");
+  if (!script) {
+    script = document.createElement("script");
+    script.id = "calendly-widget-script";
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    script.type = "text/javascript";
+    script.onload = () => openPopup();
+    document.body.appendChild(script);
+  } else {
+    script.addEventListener("load", () => openPopup(), { once: true });
+  }
+
+  // Final fallback after short delay
+  setTimeout(() => {
+    if (!openPopup()) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }, 1200);
+
+  return false;
+};
+
 export default function SummerCampPage() {
   const [selectedProgram, setSelectedProgram] = useState('robotics');
 
@@ -184,12 +235,12 @@ export default function SummerCampPage() {
               </span>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+              <button onClick={handleBookCallClick} className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
                 Register Now
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300">
+              <a href="/STEMOrbit%20Brochure.pdf" download className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 inline-block text-center">
                 Download Brochure
-              </button>
+              </a>
             </div>
           </div>
         </div>

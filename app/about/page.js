@@ -1,6 +1,57 @@
 "use client";
 import Image from "next/image";
 
+// Calendly integration
+const handleBookCallClick = (e) => {
+  e.preventDefault();
+  const url = "https://calendly.com/abhishek-stemorbit";
+  if (typeof window === "undefined") return false;
+
+  // Ensure CSS is present
+  if (!document.getElementById("calendly-widget-css")) {
+    const link = document.createElement("link");
+    link.id = "calendly-widget-css";
+    link.rel = "stylesheet";
+    link.href = "https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(link);
+  }
+
+  const openPopup = () => {
+    try {
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+        window.Calendly.initPopupWidget({ url });
+        return true;
+      }
+    } catch (_) {}
+    return false;
+  };
+
+  if (openPopup()) return false;
+
+  // If Calendly not loaded yet, load script on demand and open when ready
+  let script = document.getElementById("calendly-widget-script");
+  if (!script) {
+    script = document.createElement("script");
+    script.id = "calendly-widget-script";
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    script.type = "text/javascript";
+    script.onload = () => openPopup();
+    document.body.appendChild(script);
+  } else {
+    script.addEventListener("load", () => openPopup(), { once: true });
+  }
+
+  // Final fallback after short delay
+  setTimeout(() => {
+    if (!openPopup()) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }, 1200);
+
+  return false;
+};
+
 export default function About() {
   return (
     <div className="min-h-screen bg-white">
@@ -26,7 +77,7 @@ export default function About() {
             </p>
             {/* Get in Touch Button */}
             <div className="flex justify-center lg:justify-start mb-6">
-              <button className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-base sm:text-lg rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+              <button onClick={handleBookCallClick} className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-base sm:text-lg rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                 Get in Touch
               </button>
             </div>

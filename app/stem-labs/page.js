@@ -3,6 +3,57 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 
+// Calendly integration
+const handleBookCallClick = (e) => {
+  e.preventDefault();
+  const url = "https://calendly.com/abhishek-stemorbit";
+  if (typeof window === "undefined") return false;
+
+  // Ensure CSS is present
+  if (!document.getElementById("calendly-widget-css")) {
+    const link = document.createElement("link");
+    link.id = "calendly-widget-css";
+    link.rel = "stylesheet";
+    link.href = "https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(link);
+  }
+
+  const openPopup = () => {
+    try {
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+        window.Calendly.initPopupWidget({ url });
+        return true;
+      }
+    } catch (_) {}
+    return false;
+  };
+
+  if (openPopup()) return false;
+
+  // If Calendly not loaded yet, load script on demand and open when ready
+  let script = document.getElementById("calendly-widget-script");
+  if (!script) {
+    script = document.createElement("script");
+    script.id = "calendly-widget-script";
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    script.type = "text/javascript";
+    script.onload = () => openPopup();
+    document.body.appendChild(script);
+  } else {
+    script.addEventListener("load", () => openPopup(), { once: true });
+  }
+
+  // Final fallback after short delay
+  setTimeout(() => {
+    if (!openPopup()) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }, 1200);
+
+  return false;
+};
+
 function useSectionAnimation(ref, animationFn, deps = []) {
   useEffect(() => {
     if (!ref.current) return;
@@ -178,18 +229,18 @@ export default function StemLabs() {
               <div className={`flex flex-col sm:flex-row gap-4 mb-8 transition-all duration-1000 delay-400 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-                <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                <button onClick={handleBookCallClick} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                   Request a School Demo
                 </button>
-                <button className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold text-lg rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 hover:shadow-lg">
+                <a href="/STEMOrbit%20Brochure.pdf" download className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold text-lg rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 hover:shadow-lg inline-block text-center">
                   Download Brochure
-                </button>
+                </a>
               </div>
               {/* Get in Touch Button */}
               <div className={`mb-8 transition-all duration-1000 delay-600 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-                <button className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-lg rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                <button onClick={handleBookCallClick} className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-lg rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                   Get in Touch
                 </button>
               </div>
@@ -239,12 +290,12 @@ export default function StemLabs() {
               Transform your school with a custom STEM lab. We make it easy, engaging, and tailored to your needs—just three simple steps to get started!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-pink-500 text-white font-semibold text-lg rounded-2xl shadow-xl hover:from-blue-700 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-md">
+              <button onClick={handleBookCallClick} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-pink-500 text-white font-semibold text-lg rounded-2xl shadow-xl hover:from-blue-700 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-md">
                 Start the 3 Steps
               </button>
-              <button className="px-8 py-4 border-2 border-blue-400 text-blue-700 font-semibold text-lg rounded-2xl hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 hover:shadow-lg backdrop-blur-md">
+              <a href="/STEMOrbit%20Brochure.pdf" download className="px-8 py-4 border-2 border-blue-400 text-blue-700 font-semibold text-lg rounded-2xl hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 hover:shadow-lg backdrop-blur-md inline-block text-center">
                 Download Brochure
-              </button>
+              </a>
             </div>
           </div>
           {/* Right: Ladder Steps (staggered vertical, wide, no overlap, moved up) */}
