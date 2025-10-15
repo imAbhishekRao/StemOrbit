@@ -1,6 +1,7 @@
 
 "use client";
 import { useEffect, useState } from "react";
+import { handleBookCallClick } from "../../lib/calendly";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -50,7 +51,7 @@ export default function Navbar() {
                 <a href="/gallery" className="hover:text-pink-200 transition-colors">Gallery</a>
               </div>
               <div className="w-px h-4 bg-white opacity-50"></div>
-              <button className="bg-white text-pink-500 hover:bg-pink-50 px-4 py-1 rounded text-sm font-medium transition-colors">
+              <button onClick={handleBookCallClick} className="bg-white text-pink-500 hover:bg-pink-50 px-4 py-1 rounded text-sm font-medium transition-colors">
                 Enquire Now
               </button>
             </div>
@@ -80,13 +81,14 @@ export default function Navbar() {
               <a href="/courses" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Courses</a>
               <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">For School</a>
               <a href="/3d-printing" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">3D Printing</a>
-              <a href="/summercamp" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Summercamp</a>
+              <a href="/summercamp" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">STEM Camps</a>
+              <a href="/what-we-provide" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">What We Provide</a>
             </div>
           </div>
 
           {/* Right Side Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            <button onClick={handleBookCallClick} className="bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
               Get Demo
             </button>
             <button className="text-gray-700 hover:text-pink-500 transition-all duration-300 p-2 bg-white bg-opacity-80 rounded-lg shadow hover:shadow-pink-200 hover:-translate-y-1">
@@ -123,11 +125,12 @@ export default function Navbar() {
   <a href="/courses" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-blue-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Courses</a>
   <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-purple-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">For School</a>
   <a href="/3d-printing" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-orange-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">3D Printing</a>
-  <a href="/summercamp" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-red-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Summercamp</a>
+  <a href="/summercamp" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-red-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">STEM Camps</a>
+  <a href="/what-we-provide" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-green-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">What We Provide</a>
   {/* Mobile Actions */}
   <div className="border-t border-pink-200 pt-3 mt-3">
     <div className="px-4 py-3">
-      <button className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 px-6 py-3 rounded-lg text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-3">
+      <button onClick={handleBookCallClick} className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 px-6 py-3 rounded-lg text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-3">
         Get Demo
       </button>
     </div>

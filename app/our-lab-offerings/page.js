@@ -3,57 +3,7 @@
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { FaStar, FaCheckCircle, FaArrowRight, FaRocket, FaUsers, FaCog, FaGraduationCap } from "react-icons/fa";
-
-// Calendly integration
-const handleBookCallClick = (e) => {
-  e.preventDefault();
-  const url = "https://calendly.com/abhishek-stemorbit";
-  if (typeof window === "undefined") return false;
-
-  // Ensure CSS is present
-  if (!document.getElementById("calendly-widget-css")) {
-    const link = document.createElement("link");
-    link.id = "calendly-widget-css";
-    link.rel = "stylesheet";
-    link.href = "https://assets.calendly.com/assets/external/widget.css";
-    document.head.appendChild(link);
-  }
-
-  const openPopup = () => {
-    try {
-      if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
-        window.Calendly.initPopupWidget({ url });
-        return true;
-      }
-    } catch (_) {}
-    return false;
-  };
-
-  if (openPopup()) return false;
-
-  // If Calendly not loaded yet, load script on demand and open when ready
-  let script = document.getElementById("calendly-widget-script");
-  if (!script) {
-    script = document.createElement("script");
-    script.id = "calendly-widget-script";
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-    script.type = "text/javascript";
-    script.onload = () => openPopup();
-    document.body.appendChild(script);
-  } else {
-    script.addEventListener("load", () => openPopup(), { once: true });
-  }
-
-  // Final fallback after short delay
-  setTimeout(() => {
-    if (!openPopup()) {
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-  }, 1200);
-
-  return false;
-};
+import { handleBookCallClick } from '../../lib/calendly';
 
 // (moved into component) Load Calendly widget script asynchronously
 
@@ -349,57 +299,47 @@ export default function OurLabOfferings() {
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Side - Content */}
-            <div className="space-y-8">
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-fuchsia-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <FaRocket className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Innovation & Creativity</h3>
-                    <p className="text-pink-200 leading-relaxed">Fostering creative thinking and innovative problem-solving skills through hands-on projects and real-world challenges.</p>
-                  </div>
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-fuchsia-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <FaRocket className="w-6 h-6 text-white" />
                 </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <FaCog className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Technical Excellence</h3>
-                    <p className="text-pink-200 leading-relaxed">Building strong foundations in science, technology, engineering, and mathematics through practical applications.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <FaUsers className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Collaborative Learning</h3>
-                    <p className="text-pink-200 leading-relaxed">Encouraging teamwork, communication, and leadership skills through group projects and peer learning.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <FaGraduationCap className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Future-Ready Skills</h3>
-                    <p className="text-pink-200 leading-relaxed">Preparing students for tomorrow's challenges with cutting-edge technology and industry-relevant skills.</p>
-                  </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Innovation & Creativity</h3>
+                  <p className="text-pink-200 leading-relaxed">Fostering creative thinking and innovative problem-solving skills through hands-on projects and real-world challenges.</p>
                 </div>
               </div>
               
-              <div className="bg-gradient-to-r from-pink-500/10 to-fuchsia-500/10 rounded-2xl p-6 border border-pink-500/20">
-                <h4 className="text-lg font-bold text-white mb-3">Our Impact</h4>
-                <p className="text-pink-200 text-sm leading-relaxed">
-                  Through our comprehensive STEM education approach, we've successfully transformed learning experiences in over 50 schools, 
-                  impacting more than 10,000 students and training 200+ educators to deliver world-class STEM education.
-                </p>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <FaCog className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Technical Excellence</h3>
+                  <p className="text-pink-200 leading-relaxed">Building strong foundations in science, technology, engineering, and mathematics through practical applications.</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <FaUsers className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Collaborative Learning</h3>
+                  <p className="text-pink-200 leading-relaxed">Encouraging teamwork, communication, and leadership skills through group projects and peer learning.</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <FaGraduationCap className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Future-Ready Skills</h3>
+                  <p className="text-pink-200 leading-relaxed">Preparing students for tomorrow's challenges with cutting-edge technology and industry-relevant skills.</p>
+                </div>
               </div>
             </div>
             
@@ -415,6 +355,17 @@ export default function OurLabOfferings() {
                   priority
                 />
               </div>
+            </div>
+          </div>
+          
+          {/* Our Impact - Full Width at Bottom */}
+          <div className="mt-12">
+            <div className="bg-gradient-to-r from-pink-500/10 to-fuchsia-500/10 rounded-2xl p-8 border border-pink-500/20">
+              <h4 className="text-2xl font-bold text-white mb-4 text-center">Our Impact</h4>
+              <p className="text-pink-200 text-lg leading-relaxed text-center max-w-4xl mx-auto">
+                Through our comprehensive STEM education approach, we've successfully transformed learning experiences in over 50 schools, 
+                impacting more than 10,000 students and training 200+ educators to deliver world-class STEM education.
+              </p>
             </div>
           </div>
         </div>
@@ -501,11 +452,7 @@ export default function OurLabOfferings() {
               </div>
 
               {/* STEM Icon */}
-              <div className={`flex justify-center mt-8 transition-all duration-1000 delay-800 ${atlVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
-                <div className="w-16 h-16 bg-gradient-to-r from-pink-400 to-fuchsia-400 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300 animate-spin">
-                  <div className="text-white text-2xl">⚛️</div>
-                </div>
-              </div>
+              
             </div>
 
             {/* Additional Information Cards */}

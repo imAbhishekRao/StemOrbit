@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import { handleBookCallClick } from '../../lib/calendly';
 
 export default function ThreeDPrintingPage() {
   const [selectedService, setSelectedService] = useState('prototyping');
@@ -194,7 +195,7 @@ export default function ThreeDPrintingPage() {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
+                <button onClick={handleBookCallClick} className="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
                   Learn More
                 </button>
               </div>

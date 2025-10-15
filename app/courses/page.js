@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import { handleBookCallClick } from '../../lib/calendly';
 
 export default function CoursesPage() {
   const [showAllCourses, setShowAllCourses] = useState(false);
@@ -583,6 +584,7 @@ export default function CoursesPage() {
                             Enroll Now
                           </button>
                           <button 
+                            onClick={handleBookCallClick}
                             className="bg-white text-gray-800 font-bold py-2 px-6 border-2 border-gray-300 rounded-full shadow-md transition-all duration-300 transform hover:scale-105 hover:bg-gray-100 hover:border-gray-400 flex-1"
                           >
                             Enquire

@@ -66,7 +66,7 @@ export default function Footer() {
             <a href="/courses" className="hover:underline font-fredoka text-white">Courses</a>
             <a href="/our-lab-offerings" className="hover:underline font-fredoka text-white">For School</a>
             <a href="/3d-printing" className="hover:underline font-fredoka text-white">3D Printing</a>
-            <a href="/summercamp" className="hover:underline font-fredoka text-white">Summercamp</a>
+            <a href="/summercamp" className="hover:underline font-fredoka text-white">STEM Camps</a>
           </div>
           {/* Help Links */}
           <div className="flex-1 min-w-[180px] flex flex-col gap-2 items-center md:items-start">

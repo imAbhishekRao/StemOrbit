@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
+import { handleBookCallClick } from '../../lib/calendly';
 
 function useSectionAnimation(ref, animationFn, deps = []) {
   useEffect(() => {
@@ -646,18 +647,18 @@ export default function WhatsStemLab() {
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-2">Looking for a Lab for Your School?</h2>
           <p className="text-lg text-pink-100 mb-8">Discover how our STEM labs can transform education and inspire the next generation of innovators and problem-solvers.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/contact" 
+            <button 
+              onClick={handleBookCallClick}
               className="px-10 py-4 bg-white text-purple-700 font-semibold text-lg rounded-xl hover:bg-pink-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 inline-block text-center"
             >
               Book a Call
-            </a>
-            <a 
-              href="/contact" 
+            </button>
+            <button 
+              onClick={handleBookCallClick}
               className="px-10 py-4 border-2 border-white text-white font-semibold text-lg rounded-xl hover:bg-white hover:text-purple-700 transition-all duration-300 transform hover:scale-105 inline-block text-center"
             >
               Get Started Today
-            </a>
+            </button>
           </div>
         </div>
       </section>

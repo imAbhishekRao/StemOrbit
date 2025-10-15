@@ -1,59 +1,37 @@
 "use client";
-import { useState } from 'react';
-
-// Calendly integration
-const handleBookCallClick = (e) => {
-  e.preventDefault();
-  const url = "https://calendly.com/abhishek-stemorbit";
-  if (typeof window === "undefined") return false;
-
-  // Ensure CSS is present
-  if (!document.getElementById("calendly-widget-css")) {
-    const link = document.createElement("link");
-    link.id = "calendly-widget-css";
-    link.rel = "stylesheet";
-    link.href = "https://assets.calendly.com/assets/external/widget.css";
-    document.head.appendChild(link);
-  }
-
-  const openPopup = () => {
-    try {
-      if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
-        window.Calendly.initPopupWidget({ url });
-        return true;
-      }
-    } catch (_) {}
-    return false;
-  };
-
-  if (openPopup()) return false;
-
-  // If Calendly not loaded yet, load script on demand and open when ready
-  let script = document.getElementById("calendly-widget-script");
-  if (!script) {
-    script = document.createElement("script");
-    script.id = "calendly-widget-script";
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-    script.type = "text/javascript";
-    script.onload = () => openPopup();
-    document.body.appendChild(script);
-  } else {
-    script.addEventListener("load", () => openPopup(), { once: true });
-  }
-
-  // Final fallback after short delay
-  setTimeout(() => {
-    if (!openPopup()) {
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-  }, 1200);
-
-  return false;
-};
+import { useState, useEffect, useRef } from 'react';
+import { handleBookCallClick } from '../../lib/calendly';
 
 export default function SummerCampPage() {
   const [selectedProgram, setSelectedProgram] = useState('robotics');
+  const [storyVisible, setStoryVisible] = useState(false);
+  const storyRef = useRef(null);
+
+  const storyPoints = [
+    'Riya is a bright 10-year-old who loves asking “Why?” — Why does the fan spin? Why does the rainbow have seven colors? Why can’t a toy car run without batteries?',
+    'At home, her parents smile at her questions, sometimes without knowing how to answer them. In school, she memorizes textbook answers — but that spark of “How does this really work?” starts to fade.',
+    'One summer, her parents enrolled her in a STEMOrbit Camp — just to try something new. On the very first day, Riya built a mini windmill that lit up an LED bulb. Her eyes lit up brighter than the bulb.',
+    'Suddenly, “Why?” turned into “What if I could make it better?”',
+    'That’s the power of STEM. It doesn’t just teach science — it teaches kids to think, create, and explore. It transforms passive learners into curious innovators.',
+    'In a world where technology is everywhere, our children need more than grades — they need imagination, problem-solving, and the courage to build what they dream. That’s what STEMOrbit stands for — turning curiosity into creation, and learners into leaders.'
+  ];
+
+  useEffect(() => {
+    if (!storyRef.current || typeof window === 'undefined') return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setStoryVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(storyRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const programs = [
     {
@@ -246,6 +224,95 @@ export default function SummerCampPage() {
         </div>
       </section>
 
+      {/* Why to How - Storytelling Section */}
+      <section ref={storyRef} className="relative py-20 bg-gradient-to-br from-purple-50 via-white to-pink-50 overflow-hidden">
+        {/* Soft decorative shapes */}
+        <div className="absolute -top-10 -left-10 w-56 h-56 bg-pink-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-16 -right-10 w-64 h-64 bg-purple-200/30 rounded-full blur-3xl"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-fredoka">
+              From <span className="text-pink-600">Why</span> to <span className="text-purple-600">How</span> — the journey begins with <span className="text-orange-600">STEMOrbit</span>
+            </h2>
+            <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
+              When a child asks “Why does this happen?” — that’s the beginning of innovation. We nurture that spark through hands-on STEM learning, where kids build, experiment, and discover how things work.
+            </p>
+          </div>
+
+          {/* Story card */}
+          <div className="grid grid-cols-1 gap-8 justify-items-center">
+            {/* Left: Narrative */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-pink-100 flex flex-col max-w-2xl mx-auto">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <span className="text-2xl">🌟</span>
+                <h3 className="text-xl font-bold text-gray-900">A Story Every Parent Can Relate To</h3>
+              </div>
+              <div className="space-y-4 text-gray-700 leading-relaxed relative">
+                {storyPoints.map((text, idx) => {
+                  const visible = storyVisible;
+                  const sideClass = idx % 2 === 0 ? '-translate-x-12' : 'translate-x-12';
+                  const bgClasses = [
+                    'from-rose-50 to-pink-100 border-pink-200',
+                    'from-amber-50 to-orange-100 border-amber-200',
+                    'from-indigo-50 to-blue-100 border-indigo-200',
+                    'from-violet-50 to-purple-100 border-purple-200 italic',
+                    'from-emerald-50 to-green-100 border-emerald-200',
+                    'from-fuchsia-50 to-pink-100 border-fuchsia-200 font-medium'
+                  ];
+                  const bgTone = `bg-gradient-to-r ${bgClasses[idx % bgClasses.length]}`;
+                  return (
+                    <div
+                      key={idx}
+                      className={`relative ring-1 rounded-xl p-4 pl-8 backdrop-blur-sm transition-all duration-1000 ease-out will-change-transform will-change-opacity hover:ring-2 hover:shadow-xl ${bgTone} 
+                      ${visible ? 'opacity-100 translate-x-0 scale-100 shadow-lg' : `opacity-0 ${sideClass} scale-95 shadow-none`}`}
+                      style={{ transitionDelay: `${idx * 350}ms` }}
+                    >
+                      <span className={`absolute left-3 top-4 w-2.5 h-2.5 rounded-full ${idx % 2 === 0 ? 'bg-pink-500' : 'bg-purple-500'} shadow ring-2 ring-white`}></span>
+                      {idx < storyPoints.length - 1 && (
+                        <span className="absolute left-[13px] top-6 bottom-[-10px] w-px bg-gradient-to-b from-pink-300 to-transparent"></span>
+                      )}
+                      <p className="text-sm md:text-base">{text}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100">
+                <button onClick={handleBookCallClick} className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full font-semibold hover:from-pink-600 hover:to-purple-700 transition-all shadow-lg">
+                  Start Your Child’s Journey
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Full-width Quote Panel (below story) */}
+          <div className="mt-10 bg-gradient-to-r from-orange-100 via-amber-100 to-yellow-100 rounded-2xl shadow-xl p-10 border border-orange-200">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="text-7xl leading-none mb-2">“</div>
+              <p className="text-2xl md:text-3xl font-semibold text-gray-900">
+                Because today’s curious minds are tomorrow’s inventors — and every great idea starts with a question.
+              </p>
+              <div className="text-7xl leading-none mt-2">”</div>
+              <p className="mt-6 text-gray-700">We turn children’s questions into experiments, and experiments into confidence.</p>
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-white/70 rounded-xl p-4 border border-orange-200">
+                  <div className="text-2xl">🧪</div>
+                  <div className="mt-2 text-sm font-semibold text-gray-800">Hands‑on Learning</div>
+                </div>
+                <div className="bg-white/70 rounded-xl p-4 border border-orange-200">
+                  <div className="text-2xl">🧠</div>
+                  <div className="mt-2 text-sm font-semibold text-gray-800">Think & Create</div>
+                </div>
+                <div className="bg-white/70 rounded-xl p-4 border border-orange-200">
+                  <div className="text-2xl">🚀</div>
+                  <div className="mt-2 text-sm font-semibold text-gray-800">Build Confidence</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Programs Section */}
       <section className="py-16 bg-gradient-to-br from-sky-50 via-white to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -352,108 +419,152 @@ export default function SummerCampPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-fredoka">
-              <span className="text-orange-600">OFFLINE</span> Summer/Winter <span className="text-blue-600"> Camp</span>
+              <span className="text-orange-600">OFFLINE</span> STEM <span className="text-blue-600">Camps</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               20 hours of Practical Live & Interactive sessions by an International Robotics expert
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Skills Acquired Section */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
-              <div className="text-center mb-6">
-                <div className="text-5xl mb-4">🤖</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Skills Acquired</h3>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { skill: 'Programming in Python and C++', icon: '💻', color: 'from-blue-500 to-indigo-600' },
-                  { skill: 'Electronics', icon: '⚡', color: 'from-yellow-500 to-orange-600' },
-                  { skill: 'Hardware', icon: '🔧', color: 'from-gray-500 to-gray-700' },
-                  { skill: 'Arduino Controller', icon: '🎛️', color: 'from-green-500 to-emerald-600' },
-                  { skill: 'Raspberry Pi Controller', icon: '🍓', color: 'from-red-500 to-pink-600' },
-                  { skill: 'Sensors and Motors', icon: '🔍', color: 'from-purple-500 to-violet-600' }
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300">
-                    <div className={`w-12 h-12 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center text-white text-xl`}>
+          {/* Skills Acquired Section - Full Width Top */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 mb-8">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Skills Acquired</h3>
+              <p className="text-gray-600 text-sm mb-6">Master essential robotics and programming skills through hands-on learning</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { skill: 'Programming in Python and C++', icon: '💻', color: 'from-blue-500 to-indigo-600', desc: 'Learn industry-standard programming languages' },
+                { skill: 'Electronics', icon: '⚡', color: 'from-yellow-500 to-orange-600', desc: 'Understand circuits and electronic components' },
+                { skill: 'Hardware', icon: '🔧', color: 'from-gray-500 to-gray-700', desc: 'Build and assemble robotic systems' },
+                { skill: 'Arduino Controller', icon: '🎛️', color: 'from-green-500 to-emerald-600', desc: 'Program microcontrollers for automation' },
+                { skill: 'Raspberry Pi Controller', icon: '🍓', color: 'from-red-500 to-pink-600', desc: 'Advanced computing and IoT applications' },
+                { skill: 'Sensors and Motors', icon: '🔍', color: 'from-purple-500 to-violet-600', desc: 'Interface sensors and control motor systems' }
+              ].map((item, index) => (
+                <div key={index} className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className={`w-10 h-10 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center text-white text-lg flex-shrink-0`}>
                       {item.icon}
                     </div>
-                    <span className="font-semibold text-gray-800">{item.skill}</span>
+                    <span className="font-semibold text-gray-800 text-sm">{item.skill}</span>
                   </div>
-                ))}
+                  <p className="text-gray-600 text-xs ml-13">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            
+            <div className="mt-6 p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl border border-orange-200">
+              <h4 className="font-bold text-gray-800 text-sm mb-2 text-center">🎯 Learning Approach</h4>
+              <p className="text-gray-600 text-xs text-center">Project-based learning with real-world applications and industry-relevant challenges</p>
+            </div>
+          </div>
+
+          {/* Bottom Two Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* About Curriculum */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                <span className="text-3xl">📚</span>
+                About the Curriculum
+              </h3>
+              
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-sm">Aligned with International Standards</p>
+                    <p className="text-gray-600 text-xs mt-1">Following IEEE and ACM guidelines for robotics education</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-sm">Starts from LED Blink to develop different robots</p>
+                    <p className="text-gray-600 text-xs mt-1">Progressive learning from basic to advanced robotics</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-sm">HRDF Malaysia and MOE Singapore approved courses</p>
+                    <p className="text-gray-600 text-xs mt-1">Government recognized and certified programs</p>
+                  </div>
+                </div>
+                
+                <div className="bg-white bg-opacity-60 rounded-xl p-3 mt-3">
+                  <p className="text-sm text-gray-600 text-center">
+                    <span className="font-bold text-blue-600">25,000+</span> students and <span className="font-bold text-blue-600">75+</span> institutions globally in the last 5 years
+                  </p>
+                </div>
+              </div>
+              
+              <div className="mt-4 p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+                <h4 className="font-bold text-gray-800 text-sm mb-1">🏆 Certification</h4>
+                <p className="text-gray-600 text-xs">Industry-recognized certificates upon successful completion of the program</p>
               </div>
             </div>
 
-            {/* About Curriculum & Learning Outcomes */}
-            <div className="space-y-6">
-              {/* About Curriculum */}
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <span className="text-3xl">📚</span>
-                  About the Curriculum
-                </h3>
+            {/* Learning Outcomes */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                <span className="text-3xl">🎯</span>
+                Learning Outcomes
+              </h3>
+              
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-sm">Hands-on Industry relevant topics</p>
+                    <p className="text-gray-600 text-xs mt-1">Real-world projects and industry case studies</p>
+                  </div>
+                </div>
                 
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white text-sm">✓</span>
-                    </div>
-                    <p className="text-gray-700 font-medium">Aligned with International Standards</p>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
                   </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white text-sm">✓</span>
-                    </div>
-                    <p className="text-gray-700 font-medium">Starts from LED Blink to develop different robots</p>
+                  <div>
+                    <p className="text-gray-700 font-medium text-sm">Clear understanding of Robotics, building Robots, Coding, Sensors and motors</p>
+                    <p className="text-gray-600 text-xs mt-1">Comprehensive knowledge of all robotics components</p>
                   </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white text-sm">✓</span>
-                    </div>
-                    <p className="text-gray-700 font-medium">HRDF Malaysia and MOE Singapore approved courses</p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
                   </div>
-                  
-                  <div className="bg-white bg-opacity-60 rounded-xl p-4 mt-4">
-                    <p className="text-sm text-gray-600">
-                      <span className="font-bold text-blue-600">25,000+</span> students and <span className="font-bold text-blue-600">75+</span> institutions globally in the last 5 years
-                    </p>
+                  <div>
+                    <p className="text-gray-700 font-medium text-sm">After the course students will be able to independently develop robots on their own</p>
+                    <p className="text-gray-600 text-xs mt-1">Build complete robotic systems from scratch</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-sm">Problem-solving and critical thinking skills</p>
+                    <p className="text-gray-600 text-xs mt-1">Develop analytical and troubleshooting abilities</p>
                   </div>
                 </div>
               </div>
-
-              {/* Learning Outcomes */}
-              <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <span className="text-3xl">🎯</span>
-                  Learning Outcomes
-                </h3>
-                
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white text-sm">✓</span>
-                    </div>
-                    <p className="text-gray-700 font-medium">Hands-on Industry relevant topics</p>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white text-sm">✓</span>
-                    </div>
-                    <p className="text-gray-700 font-medium">Clear understanding of Robotics, building Robots, Coding, Sensors and motors</p>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-white text-sm">✓</span>
-                    </div>
-                    <p className="text-gray-700 font-medium">After the course students will be able to independently develop robots on their own</p>
-                  </div>
-                </div>
+              
+              <div className="mt-4 p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
+                <h4 className="font-bold text-gray-800 text-sm mb-1">🚀 Career Readiness</h4>
+                <p className="text-gray-600 text-xs">Prepare for careers in robotics, automation, and engineering fields</p>
               </div>
             </div>
           </div>
