@@ -79,7 +79,6 @@ export default function Navbar() {
               <a href="/whats-stem-lab" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">What's STEM Lab</a>
               <a href="/courses" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Courses</a>
               <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">For School</a>
-              <a href="/kits" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Kits</a>
               <a href="/3d-printing" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">3D Printing</a>
               <a href="/summercamp" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Summercamp</a>
             </div>
@@ -123,7 +122,6 @@ export default function Navbar() {
   <a href="/whats-stem-lab" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-indigo-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">What's STEM Lab</a>
   <a href="/courses" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-blue-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Courses</a>
   <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-purple-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">For School</a>
-  <a href="/kits" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-green-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Kits</a>
   <a href="/3d-printing" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-orange-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">3D Printing</a>
   <a href="/summercamp" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-red-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Summercamp</a>
   {/* Mobile Actions */}

@@ -65,7 +65,6 @@ export default function Footer() {
             <a href="/whats-stem-lab" className="hover:underline font-fredoka text-white">What's STEM Lab</a>
             <a href="/courses" className="hover:underline font-fredoka text-white">Courses</a>
             <a href="/our-lab-offerings" className="hover:underline font-fredoka text-white">For School</a>
-            <a href="/kits" className="hover:underline font-fredoka text-white">Kits</a>
             <a href="/3d-printing" className="hover:underline font-fredoka text-white">3D Printing</a>
             <a href="/summercamp" className="hover:underline font-fredoka text-white">Summercamp</a>
           </div>
