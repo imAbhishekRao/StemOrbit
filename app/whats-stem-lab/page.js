@@ -314,15 +314,15 @@ export default function WhatsStemLab() {
       <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-0 bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50" ref={stemRef}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-center text-gray-900 mb-8 sm:mb-10 lg:mb-12">
-            Breaking Down <span className="bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 bg-clip-text text-transparent">STEM</span>
+            Breaking Down <span className="bg-gradient-to-r from-pink-600 via-purple-700 to-blue-700 bg-clip-text text-transparent">STEM</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stemComponents.map((component, idx) => {
               const cardColors = [
-                'from-pink-200 to-rose-300',
-                'from-blue-200 to-indigo-300', 
-                'from-green-200 to-emerald-300',
-                'from-purple-200 to-violet-300'
+                'from-pink-300 to-rose-400',
+                'from-blue-300 to-indigo-400', 
+                'from-green-300 to-emerald-400',
+                'from-purple-300 to-violet-400'
               ];
               const cardBg = cardColors[idx % cardColors.length];
               
@@ -356,17 +356,17 @@ export default function WhatsStemLab() {
       <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-0 bg-gradient-to-br from-green-50 via-teal-50 to-cyan-50" ref={benefitsRef}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-center text-gray-900 mb-8 sm:mb-10 lg:mb-12">
-            Why STEM Labs <span className="bg-gradient-to-r from-green-500 via-teal-600 to-cyan-600 bg-clip-text text-transparent">Matter</span>
+            Why STEM Labs <span className="bg-gradient-to-r from-green-600 via-teal-700 to-cyan-700 bg-clip-text text-transparent">Matter</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {benefits.map((benefit, idx) => {
               const benefitColors = [
-                'from-emerald-200 to-teal-300',
-                'from-cyan-200 to-blue-300',
-                'from-violet-200 to-purple-300',
-                'from-rose-200 to-pink-300',
-                'from-amber-200 to-orange-300',
-                'from-indigo-200 to-blue-300'
+                'from-emerald-300 to-teal-400',
+                'from-cyan-300 to-blue-400',
+                'from-violet-300 to-purple-400',
+                'from-rose-300 to-pink-400',
+                'from-amber-300 to-orange-400',
+                'from-indigo-300 to-blue-400'
               ];
               const cardBg = benefitColors[idx % benefitColors.length];
               
@@ -386,17 +386,17 @@ export default function WhatsStemLab() {
       <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-8 lg:px-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50" ref={featuresRef}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-center text-gray-900 mb-8 sm:mb-10 lg:mb-12">
-            What Makes Our STEM Labs <span className="bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-600 bg-clip-text text-transparent">Special</span>
+            What Makes Our STEM Labs <span className="bg-gradient-to-r from-indigo-600 via-purple-700 to-pink-700 bg-clip-text text-transparent">Special</span>
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {labFeatures.map((feature, idx) => {
               const featureColors = [
-                'from-indigo-200 to-purple-300',
-                'from-pink-200 to-rose-300',
-                'from-blue-200 to-cyan-300',
-                'from-green-200 to-emerald-300',
-                'from-amber-200 to-orange-300',
-                'from-sky-200 to-indigo-300'
+                'from-indigo-300 to-purple-400',
+                'from-pink-300 to-rose-400',
+                'from-blue-300 to-cyan-400',
+                'from-green-300 to-emerald-400',
+                'from-amber-300 to-orange-400',
+                'from-sky-300 to-indigo-400'
               ];
               const cardBg = featureColors[idx % featureColors.length];
               
@@ -419,7 +419,7 @@ export default function WhatsStemLab() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
-              <span className="bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-600 via-blue-700 to-indigo-700 bg-clip-text text-transparent">
               Explore Our STEM Lab Creations
               </span>
             </h2>

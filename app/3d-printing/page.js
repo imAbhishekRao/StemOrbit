@@ -146,7 +146,7 @@ export default function ThreeDPrintingPage() {
             </div>
             {/* Right: Image with bubbles */}
             <div className="relative">
-              <img src="/3dprinitng.svg" alt="3D Printing banner" className="w-11/12 mx-auto h-auto" loading="eager" />
+              <img src="/3-dprinter.svg" alt="3D Printing banner" className="w-11/12 mx-auto h-auto" loading="eager" />
               <div className="pointer-events-none absolute inset-0">
                 <div className="absolute top-6 left-6 w-6 h-6 bg-white/30 rounded-full animate-ping"></div>
                 <div className="absolute top-1/3 right-10 w-8 h-8 bg-yellow-300/30 rounded-full animate-bounce" style={{animationDelay:'0.4s'}}></div>
@@ -171,16 +171,24 @@ export default function ThreeDPrintingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div 
-                key={service.id}
-                className={`bg-white rounded-2xl shadow-xl p-8 transition-all duration-300 cursor-pointer ${
-                  selectedService === service.id 
-                    ? 'ring-4 ring-purple-500 transform scale-105' 
-                    : 'hover:shadow-2xl hover:scale-105'
-                }`}
-                onClick={() => setSelectedService(service.id)}
-              >
+            {services.map((service, index) => {
+              const cardColors = [
+                'from-pink-200 to-rose-300 border-pink-400',
+                'from-blue-200 to-indigo-300 border-blue-400', 
+                'from-green-200 to-emerald-300 border-green-400'
+              ];
+              const selectedColor = cardColors[index % cardColors.length];
+              
+              return (
+                <div 
+                  key={service.id}
+                  className={`bg-gradient-to-br ${selectedColor} rounded-2xl shadow-xl p-8 transition-all duration-300 cursor-pointer border-2 ${
+                    selectedService === service.id 
+                      ? 'ring-4 ring-purple-500 transform scale-105' 
+                      : 'hover:shadow-2xl hover:scale-105'
+                  }`}
+                  onClick={() => setSelectedService(service.id)}
+                >
                 <div className="text-center mb-6">
                   <div className="text-5xl mb-4">{service.icon}</div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{service.title}</h3>
@@ -198,8 +206,9 @@ export default function ThreeDPrintingPage() {
                 <button onClick={handleBookCallClick} className="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
                   Learn More
                 </button>
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -217,11 +226,22 @@ export default function ThreeDPrintingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {materials.map((material, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-                <div className={`w-12 h-12 rounded-full mb-4 bg-${material.color.toLowerCase()}-100 flex items-center justify-center`}>
-                  <div className={`w-8 h-8 rounded-full bg-${material.color.toLowerCase()}-500`}></div>
-                </div>
+            {materials.map((material, index) => {
+              const materialColors = [
+                { bg: 'from-green-200 to-emerald-300', border: 'border-green-400', dot: 'bg-green-600' },
+                { bg: 'from-blue-200 to-indigo-300', border: 'border-blue-400', dot: 'bg-blue-600' },
+                { bg: 'from-purple-200 to-violet-300', border: 'border-purple-400', dot: 'bg-purple-600' },
+                { bg: 'from-orange-200 to-amber-300', border: 'border-orange-400', dot: 'bg-orange-600' }
+              ];
+              const selectedColor = materialColors[index % materialColors.length];
+              
+              return (
+                <div key={index} className={`bg-gradient-to-br ${selectedColor.bg} rounded-xl p-6 hover:shadow-lg transition-all duration-300 border-2 ${selectedColor.border}`}>
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className={`w-4 h-4 rounded-full ${selectedColor.dot}`}></div>
+                    <div className={`w-3 h-3 rounded-full ${selectedColor.dot} opacity-70`}></div>
+                    <div className={`w-2 h-2 rounded-full ${selectedColor.dot} opacity-50`}></div>
+                  </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{material.name}</h3>
                 <p className="text-gray-600 text-sm mb-4">{material.description}</p>
                 <div className="space-y-2 text-sm">
@@ -242,8 +262,9 @@ export default function ThreeDPrintingPage() {
                   <p className="text-xs text-gray-500">Applications:</p>
                   <p className="text-sm text-gray-700">{material.applications}</p>
                 </div>
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -261,8 +282,17 @@ export default function ThreeDPrintingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projects.map((project, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            {projects.map((project, index) => {
+              const portfolioColors = [
+                { bg: 'from-red-200 to-pink-300', border: 'border-red-400' },
+                { bg: 'from-blue-200 to-indigo-300', border: 'border-blue-400' },
+                { bg: 'from-green-200 to-emerald-300', border: 'border-green-400' },
+                { bg: 'from-purple-200 to-violet-300', border: 'border-purple-400' }
+              ];
+              const selectedColor = portfolioColors[index % portfolioColors.length];
+              
+              return (
+                <div key={index} className={`bg-gradient-to-br ${selectedColor.bg} rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 ${selectedColor.border}`}>
                 <img 
                   src={project.image} 
                   alt={project.title}
@@ -270,24 +300,25 @@ export default function ThreeDPrintingPage() {
                 />
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
                       {project.category}
                     </span>
                     <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                       project.complexity === 'High' 
-                        ? 'bg-red-100 text-red-800' 
+                        ? 'bg-red-200 text-red-800' 
                         : project.complexity === 'Medium'
-                        ? 'bg-yellow-100 text-yellow-800'
-                        : 'bg-green-100 text-green-800'
+                        ? 'bg-yellow-200 text-yellow-800'
+                        : 'bg-green-200 text-green-800'
                     }`}>
                       {project.complexity}
                     </span>
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{project.title}</h3>
-                  <p className="text-gray-600 text-sm">{project.description}</p>
+                  <p className="text-gray-700 text-sm">{project.description}</p>
                 </div>
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -310,36 +341,44 @@ export default function ThreeDPrintingPage() {
                 step: '1',
                 title: 'Upload Design',
                 description: 'Send us your 3D model or describe your requirements',
-                icon: '📤'
+                icon: '📤',
+                color: 'from-pink-200 to-rose-300 border-pink-400'
               },
               {
                 step: '2',
                 title: 'Review & Quote',
                 description: 'We analyze your design and provide a detailed quote',
-                icon: '🔍'
+                icon: '🔍',
+                color: 'from-blue-200 to-indigo-300 border-blue-400'
               },
               {
                 step: '3',
                 title: 'Print & Quality Check',
                 description: 'We print your design and perform quality inspections',
-                icon: '🖨️'
+                icon: '/3-dprinter.svg',
+                color: 'from-green-200 to-emerald-300 border-green-400'
               },
               {
                 step: '4',
                 title: 'Delivery',
                 description: 'Your finished product is carefully packaged and delivered',
-                icon: '📦'
+                icon: '📦',
+                color: 'from-purple-200 to-violet-300 border-purple-400'
               }
             ].map((step, index) => (
-              <div key={index} className="text-center">
+              <div key={index} className={`bg-gradient-to-br ${step.color} rounded-2xl p-6 border-2 text-center hover:shadow-xl transition-all duration-300`}>
                 <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">{step.icon}</span>
+                  {step.icon.startsWith('/') ? (
+                    <img src={step.icon} alt={step.title} className="w-10 h-10" />
+                  ) : (
+                    <span className="text-3xl">{step.icon}</span>
+                  )}
                 </div>
-                <div className="bg-purple-100 text-purple-800 w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-4 font-bold">
+                <div className="bg-purple-200 text-purple-800 w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-4 font-bold">
                   {step.step}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
+                <p className="text-gray-700">{step.description}</p>
               </div>
             ))}
           </div>

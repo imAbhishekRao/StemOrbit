@@ -77,12 +77,12 @@ export default function Navbar() {
           {/* Desktop Navigation Links */}
           <div className="hidden md:block">
             <div className="ml-8 flex items-center space-x-6 bubblegum-sans">
-              <a href="/whats-stem-lab" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">What's STEM Lab</a>
+              <a href="/whats-stem-lab" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">STEM Lab</a>
               <a href="/courses" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Courses</a>
               <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">For School</a>
               <a href="/3d-printing" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">3D Printing</a>
               <a href="/summercamp" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">STEM Camps</a>
-              <a href="/what-we-provide" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">What We Provide</a>
+              <a href="/what-we-provide" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Programs and Services</a>
             </div>
           </div>
 
