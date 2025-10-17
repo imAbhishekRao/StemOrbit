@@ -300,7 +300,7 @@ export default function SummerCampPage() {
           animation: scroll 20s linear infinite;
         }
       `}</style>
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-sky-50">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-sky-50 text-lg md:text-xl">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-orange-500 to-pink-500 text-white py-20 relative overflow-hidden">
         {/* Animated Background Elements */}
@@ -379,13 +379,13 @@ export default function SummerCampPage() {
                   const textTone = textColorClasses[idx % textColorClasses.length];
                   
                   return (
-                    <div key={idx} className={`flex ${isQuestion ? 'flex-row' : 'flex-row-reverse'} items-center gap-6 mx-12`}>
+                    <div key={idx} className={`flex ${isQuestion ? 'flex-row' : 'flex-row-reverse'} items-center gap-6 mx-6`}>
                       {/* Image */}
                       <div className="flex-shrink-0">
                         <img 
                           src={avatarSrc} 
                           alt={isQuestion ? 'Child asking question' : 'Child with parent answering'} 
-                          className="w-44 h-44 md:w-52 md:h-52 opacity-95 transition-all duration-1000 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}"
+                          className="w-60 h-60 md:w-72 md:h-72 opacity-95 transition-all duration-1000 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}"
                           style={{ transitionDelay: `${idx * 350}ms` }}
                         />
                       </div>
@@ -411,30 +411,7 @@ export default function SummerCampPage() {
           </div>
 
           {/* Full-width Quote Panel (below story) */}
-          <div className="mt-10 bg-gradient-to-r from-orange-100 via-amber-100 to-yellow-100 rounded-2xl shadow-xl p-10 border border-orange-200">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="text-7xl leading-none mb-2">“</div>
-              <p className="text-2xl md:text-3xl font-semibold text-gray-900">
-                Because today’s curious minds are tomorrow’s inventors — and every great idea starts with a question.
-              </p>
-              <div className="text-7xl leading-none mt-2">”</div>
-              <p className="mt-6 text-gray-700">We turn children’s questions into experiments, and experiments into confidence.</p>
-              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="bg-white/70 rounded-xl p-4 border border-orange-200">
-                  <div className="text-2xl">🧪</div>
-                  <div className="mt-2 text-sm font-semibold text-gray-800">Hands‑on Learning</div>
-                </div>
-                <div className="bg-white/70 rounded-xl p-4 border border-orange-200">
-                  <div className="text-2xl">🧠</div>
-                  <div className="mt-2 text-sm font-semibold text-gray-800">Think & Create</div>
-                </div>
-                <div className="bg-white/70 rounded-xl p-4 border border-orange-200">
-                  <div className="text-2xl">🚀</div>
-                  <div className="mt-2 text-sm font-semibold text-gray-800">Build Confidence</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </section>
 
@@ -476,17 +453,17 @@ export default function SummerCampPage() {
                   </div>
                   
                   <div className="p-6">
-                    <p className="text-gray-700 mb-4 text-sm">{program.description}</p>
+                    <p className="text-gray-700 mb-4 text-base">{program.description}</p>
                     <ul className="space-y-2 mb-6">
                       {program.features.slice(0, 3).map((feature, index) => (
-                        <li key={index} className="flex items-center gap-2 text-sm">
+                        <li key={index} className="flex items-center gap-2 text-base">
                           <span className="text-green-500">✓</span>
                           <span className="text-gray-700">{feature}</span>
                         </li>
                       ))}
-                      <li className="text-sm text-gray-500">+{program.features.length - 3} more features</li>
+                      <li className="text-base text-gray-500">+{program.features.length - 3} more features</li>
                     </ul>
-                    <div className="space-y-2 text-sm text-gray-700 mb-4">
+                    <div className="space-y-2 text-base text-gray-700 mb-4">
                       <div className="flex justify-between">
                         <span>Schedule:</span>
                         <span className="font-semibold text-purple-700">{program.schedule}</span>
@@ -578,9 +555,9 @@ export default function SummerCampPage() {
                     <div className={`w-10 h-10 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center text-white text-lg flex-shrink-0`}>
                       {item.icon}
                     </div>
-                    <span className="font-semibold text-gray-800 text-sm">{item.skill}</span>
+                    <span className="font-semibold text-gray-800 text-base md:text-base">{item.skill}</span>
                   </div>
-                  <p className="text-gray-600 text-xs ml-13">{item.desc}</p>
+                  <p className="text-gray-600 text-base md:text-base ml-13">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -606,8 +583,8 @@ export default function SummerCampPage() {
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-medium text-sm">Aligned with International Standards</p>
-                    <p className="text-gray-600 text-xs mt-1">Following IEEE and ACM guidelines for robotics education</p>
+                    <p className="text-gray-700 font-medium text-base">Aligned with International Standards</p>
+                    <p className="text-gray-600 text-sm mt-1">Following IEEE and ACM guidelines for robotics education</p>
                   </div>
                 </div>
                 
@@ -616,8 +593,8 @@ export default function SummerCampPage() {
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-medium text-sm">Starts from LED Blink to develop different robots</p>
-                    <p className="text-gray-600 text-xs mt-1">Progressive learning from basic to advanced robotics</p>
+                    <p className="text-gray-700 font-medium text-base">Starts from LED Blink to develop different robots</p>
+                    <p className="text-gray-600 text-sm mt-1">Progressive learning from basic to advanced robotics</p>
                   </div>
                 </div>
                 
@@ -626,8 +603,8 @@ export default function SummerCampPage() {
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-medium text-sm">HRDF Malaysia and MOE Singapore approved courses</p>
-                    <p className="text-gray-600 text-xs mt-1">Government recognized and certified programs</p>
+                    <p className="text-gray-700 font-medium text-base">HRDF Malaysia and MOE Singapore approved courses</p>
+                    <p className="text-gray-600 text-sm mt-1">Government recognized and certified programs</p>
                   </div>
                 </div>
                 
@@ -657,8 +634,8 @@ export default function SummerCampPage() {
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-medium text-sm">Hands-on Industry relevant topics</p>
-                    <p className="text-gray-600 text-xs mt-1">Real-world projects and industry case studies</p>
+                    <p className="text-gray-700 font-medium text-base">Hands-on Industry relevant topics</p>
+                    <p className="text-gray-600 text-sm mt-1">Real-world projects and industry case studies</p>
                   </div>
                 </div>
                 
@@ -667,8 +644,8 @@ export default function SummerCampPage() {
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-medium text-sm">Clear understanding of Robotics, building Robots, Coding, Sensors and motors</p>
-                    <p className="text-gray-600 text-xs mt-1">Comprehensive knowledge of all robotics components</p>
+                    <p className="text-gray-700 font-medium text-base">Clear understanding of Robotics, building Robots, Coding, Sensors and motors</p>
+                    <p className="text-gray-600 text-sm mt-1">Comprehensive knowledge of all robotics components</p>
                   </div>
                 </div>
                 
@@ -677,8 +654,8 @@ export default function SummerCampPage() {
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-medium text-sm">After the course students will be able to independently develop robots on their own</p>
-                    <p className="text-gray-600 text-xs mt-1">Build complete robotic systems from scratch</p>
+                    <p className="text-gray-700 font-medium text-base">After the course students will be able to independently develop robots on their own</p>
+                    <p className="text-gray-600 text-sm mt-1">Build complete robotic systems from scratch</p>
                   </div>
                 </div>
                 
@@ -687,8 +664,8 @@ export default function SummerCampPage() {
                     <span className="text-white text-sm">✓</span>
                   </div>
                   <div>
-                    <p className="text-gray-700 font-medium text-sm">Problem-solving and critical thinking skills</p>
-                    <p className="text-gray-600 text-xs mt-1">Develop analytical and troubleshooting abilities</p>
+                    <p className="text-gray-700 font-medium text-base">Problem-solving and critical thinking skills</p>
+                    <p className="text-gray-600 text-sm mt-1">Develop analytical and troubleshooting abilities</p>
                   </div>
                 </div>
               </div>
@@ -762,7 +739,7 @@ export default function SummerCampPage() {
                       </div>
                       <div className="flex-1">
                         <h4 className="font-bold text-gray-900 text-lg mb-2">{item.title}</h4>
-                        <p className="text-gray-600">{item.description}</p>
+                        <p className="text-gray-600 text-base">{item.description}</p>
                       </div>
                     </div>
                   );
@@ -816,7 +793,7 @@ export default function SummerCampPage() {
                       </div>
                       <div className="flex-1">
                         <h4 className="font-bold text-gray-900 text-lg mb-2">{item.title}</h4>
-                        <p className="text-gray-600">{item.description}</p>
+                        <p className="text-gray-600 text-base">{item.description}</p>
                       </div>
                     </div>
                   );

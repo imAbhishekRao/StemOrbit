@@ -146,7 +146,7 @@ export default function ThreeDPrintingPage() {
             </div>
             {/* Right: Image with bubbles */}
             <div className="relative">
-              <img src="/3-dprinter.svg" alt="3D Printing banner" className="w-11/12 mx-auto h-auto" loading="eager" />
+              <img src="/3dprinitng.svg" alt="3D Printing banner" className="w-11/12 mx-auto h-auto" loading="eager" />
               <div className="pointer-events-none absolute inset-0">
                 <div className="absolute top-6 left-6 w-6 h-6 bg-white/30 rounded-full animate-ping"></div>
                 <div className="absolute top-1/3 right-10 w-8 h-8 bg-yellow-300/30 rounded-full animate-bounce" style={{animationDelay:'0.4s'}}></div>
