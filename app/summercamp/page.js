@@ -71,7 +71,7 @@ export default function SummerCampPage() {
       ],
       schedule: 'Monday-Friday, 9:00 AM - 4:00 PM',
       capacity: '15 students',
-      icon: '🖨️',
+      icon: '🔧',
       color: 'green'
     },
     {
@@ -450,17 +450,16 @@ export default function SummerCampPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {programs.map((program) => {
               const color = colorClasses[program.color];
               return (
                 <div 
                   key={program.id}
-                  className={`rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer animate-fade-in-up hover:animate-wiggle ${
+                  className={`rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer hover:animate-wiggle ${
                     selectedProgram === program.id ? 'ring-4 ring-purple-500 animate-float' : ''
                   }`}
                   onClick={() => setSelectedProgram(program.id)}
-                  style={{animationDelay: `${programs.indexOf(program) * 0.1}s`}}
                 >
                   <div className={`bg-gradient-to-br ${color.bg} p-6 text-center border-b ${color.border}`}>
                     <div className="text-5xl mb-4 animate-bounce">{program.icon}</div>
