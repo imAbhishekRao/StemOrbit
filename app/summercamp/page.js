@@ -462,7 +462,13 @@ export default function SummerCampPage() {
                   onClick={() => setSelectedProgram(program.id)}
                 >
                   <div className={`bg-gradient-to-br ${color.bg} p-6 text-center border-b ${color.border}`}>
-                    <div className="text-5xl mb-4 animate-bounce">{program.icon}</div>
+                    {program.id === '3d-printing' ? (
+                      <div className="mb-4 flex items-center justify-center animate-bounce">
+                        <img src="/3-dprinter.svg" alt="3D Printing" className="w-14 h-14" />
+                      </div>
+                    ) : (
+                      <div className="text-5xl mb-4 animate-bounce">{program.icon}</div>
+                    )}
                     <h3 className={`text-xl font-bold mb-2 ${color.text}`}>{program.title}</h3>
                     <div className={`text-sm mb-4 ${color.text.replace('900','700')}`}>{program.ageGroup}</div>
                     <div className="text-2xl font-bold text-purple-700 mb-2">{program.price}</div>
