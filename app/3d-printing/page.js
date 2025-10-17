@@ -180,15 +180,15 @@ export default function ThreeDPrintingPage() {
               const selectedColor = cardColors[index % cardColors.length];
               
               return (
-                <div 
-                  key={service.id}
+              <div 
+                key={service.id}
                   className={`bg-gradient-to-br ${selectedColor} rounded-2xl shadow-xl p-8 transition-all duration-300 cursor-pointer border-2 ${
-                    selectedService === service.id 
-                      ? 'ring-4 ring-purple-500 transform scale-105' 
-                      : 'hover:shadow-2xl hover:scale-105'
-                  }`}
-                  onClick={() => setSelectedService(service.id)}
-                >
+                  selectedService === service.id 
+                    ? 'ring-4 ring-purple-500 transform scale-105' 
+                    : 'hover:shadow-2xl hover:scale-105'
+                }`}
+                onClick={() => setSelectedService(service.id)}
+              >
                 <div className="text-center mb-6">
                   <div className="text-5xl mb-4">{service.icon}</div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{service.title}</h3>
@@ -206,7 +206,7 @@ export default function ThreeDPrintingPage() {
                 <button onClick={handleBookCallClick} className="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
                   Learn More
                 </button>
-                </div>
+              </div>
               );
             })}
           </div>
@@ -241,7 +241,7 @@ export default function ThreeDPrintingPage() {
                     <div className={`w-4 h-4 rounded-full ${selectedColor.dot}`}></div>
                     <div className={`w-3 h-3 rounded-full ${selectedColor.dot} opacity-70`}></div>
                     <div className={`w-2 h-2 rounded-full ${selectedColor.dot} opacity-50`}></div>
-                  </div>
+                </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{material.name}</h3>
                 <p className="text-gray-600 text-sm mb-4">{material.description}</p>
                 <div className="space-y-2 text-sm">
@@ -262,7 +262,7 @@ export default function ThreeDPrintingPage() {
                   <p className="text-xs text-gray-500">Applications:</p>
                   <p className="text-sm text-gray-700">{material.applications}</p>
                 </div>
-                </div>
+              </div>
               );
             })}
           </div>
@@ -316,7 +316,7 @@ export default function ThreeDPrintingPage() {
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{project.title}</h3>
                   <p className="text-gray-700 text-sm">{project.description}</p>
                 </div>
-                </div>
+              </div>
               );
             })}
           </div>
@@ -371,7 +371,7 @@ export default function ThreeDPrintingPage() {
                   {step.icon.startsWith('/') ? (
                     <img src={step.icon} alt={step.title} className="w-10 h-10" />
                   ) : (
-                    <span className="text-3xl">{step.icon}</span>
+                  <span className="text-3xl">{step.icon}</span>
                   )}
                 </div>
                 <div className="bg-purple-200 text-purple-800 w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-4 font-bold">
