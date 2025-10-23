@@ -5,14 +5,24 @@ import { handleBookCallClick } from "../../lib/calendly";
 
 export default function WhatWeProvidePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-sky-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-20 h-20 bg-pink-300/30 rounded-full animate-bounce" style={{animationDelay: '0s', animationDuration: '3s'}}></div>
+        <div className="absolute top-40 right-20 w-16 h-16 bg-purple-300/30 rounded-full animate-bounce" style={{animationDelay: '1s', animationDuration: '4s'}}></div>
+        <div className="absolute bottom-40 left-20 w-24 h-24 bg-blue-300/30 rounded-full animate-bounce" style={{animationDelay: '2s', animationDuration: '3.5s'}}></div>
+        <div className="absolute bottom-20 right-10 w-12 h-12 bg-yellow-300/30 rounded-full animate-bounce" style={{animationDelay: '0.5s', animationDuration: '2.5s'}}></div>
+        <div className="absolute top-1/2 left-1/4 w-8 h-8 bg-green-300/30 rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute top-1/3 right-1/3 w-14 h-14 bg-orange-300/30 rounded-full animate-pulse" style={{animationDelay: '2.5s'}}></div>
+      </div>
+
       {/* Page Header */}
-      <section className="py-16">
+      <section className="py-16 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 font-fredoka">
-            What We <span className="text-pink-600">Provide</span>
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 font-fredoka animate-fade-in">
+            What We <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 animate-gradient">Provide</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             A complete STEM ecosystem for schools, students and educators — programs that inspire curiosity and build real-world skills.
           </p>
         </div>
@@ -172,65 +182,112 @@ export default function WhatWeProvidePage() {
 
       {/* Footer spacer */}
       <div className="h-10" />
+      
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out;
+        }
+        
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+        
+        .group:hover .animate-gradient {
+          animation-duration: 1s;
+        }
+      `}</style>
     </div>
   );
 }
 
 function Section({ index, title, description, bullets, img, ctas }) {
   const isEven = index % 2 === 0;
+  
+  // Color schemes for different sections
+  const colorSchemes = [
+    { bg: 'from-pink-200 to-rose-300', accent: 'from-pink-500 to-rose-600', dot: 'bg-pink-500' },
+    { bg: 'from-blue-200 to-indigo-300', accent: 'from-blue-500 to-indigo-600', dot: 'bg-blue-500' },
+    { bg: 'from-green-200 to-emerald-300', accent: 'from-green-500 to-emerald-600', dot: 'bg-green-500' },
+    { bg: 'from-purple-200 to-violet-300', accent: 'from-purple-500 to-violet-600', dot: 'bg-purple-500' },
+    { bg: 'from-orange-200 to-amber-300', accent: 'from-orange-500 to-amber-600', dot: 'bg-orange-500' },
+    { bg: 'from-cyan-200 to-teal-300', accent: 'from-cyan-500 to-teal-600', dot: 'bg-cyan-500' },
+    { bg: 'from-red-200 to-pink-300', accent: 'from-red-500 to-pink-600', dot: 'bg-red-500' },
+    { bg: 'from-yellow-200 to-orange-300', accent: 'from-yellow-500 to-orange-600', dot: 'bg-yellow-500' },
+    { bg: 'from-indigo-200 to-purple-300', accent: 'from-indigo-500 to-purple-600', dot: 'bg-indigo-500' }
+  ];
+  
+  const colors = colorSchemes[index % colorSchemes.length];
+  
   return (
-    <section className="py-10">
+    <section className="py-10 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`grid lg:grid-cols-2 gap-10 items-center ${isEven ? '' : ''}`}>
-          {/* Media */}
-          <div className={`${isEven ? '' : 'lg:order-2'}`}>
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-pink-500/20 bg-white">
-              <img src={img} alt={title} className="w-full h-auto object-cover" />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-pink-100/20 via-transparent to-purple-100/20" />
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className={`${isEven ? '' : 'lg:order-1'}`}>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 font-fredoka">
-              {title}
-            </h2>
-            <p className="mt-4 text-gray-700 text-base md:text-lg leading-relaxed">
-              {description}
-            </p>
-            {bullets && bullets.length > 0 && (
-              <ul className="mt-5 space-y-2 text-gray-700">
-                {bullets.map((b, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="mt-1 inline-block w-2.5 h-2.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 shadow ring-2 ring-white"></span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-            {ctas && ctas.length > 0 && (
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                {ctas.map((cta, i) => (
-                  cta.href ? (
-                    <Link
-                      key={i}
-                      href={cta.href}
-                      className={`px-5 py-2.5 rounded-full font-semibold shadow-lg transition-all ${cta.variant === 'primary' ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700' : 'bg-white text-pink-600 ring-1 ring-pink-300 hover:bg-pink-50'}`}
-                    >
-                      {cta.label}
-                    </Link>
-                  ) : (
-                    <button
-                      key={i}
-                      onClick={cta.onClick}
-                      className={`px-5 py-2.5 rounded-full font-semibold shadow-lg transition-all ${cta.variant === 'primary' ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700' : 'bg-white text-pink-600 ring-1 ring-pink-300 hover:bg-pink-50'}`}
-                    >
-                      {cta.label}
-                    </button>
-                  )
-                ))}
+        {/* Single merged section with no borders */}
+        <div className={`bg-gradient-to-br ${colors.bg} rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-3xl`}>
+          <div className={`grid lg:grid-cols-2 gap-0 ${isEven ? '' : ''}`}>
+            {/* Media - merged with content */}
+            <div className={`${isEven ? '' : 'lg:order-2'} group relative`}>
+              <div className="relative h-full min-h-[400px] overflow-hidden">
+                <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-white/10" />
+                {/* Animated overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               </div>
-            )}
+            </div>
+
+            {/* Content - merged with media */}
+            <div className={`${isEven ? '' : 'lg:order-1'} p-8 lg:p-12 flex flex-col justify-center`}>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 font-fredoka mb-4">
+                {title}
+              </h2>
+              <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
+                {description}
+              </p>
+              {bullets && bullets.length > 0 && (
+                <ul className="space-y-3 mb-6">
+                  {bullets.map((b, i) => (
+                    <li key={i} className="flex items-start gap-3 group">
+                      <span className={`mt-1 inline-block w-3 h-3 rounded-full ${colors.dot} shadow-lg ring-2 ring-white transform transition-all duration-300 group-hover:scale-125 group-hover:animate-pulse`}></span>
+                      <span className="text-gray-700 group-hover:text-gray-900 transition-colors duration-300">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {ctas && ctas.length > 0 && (
+                <div className="flex flex-wrap items-center gap-3">
+                  {ctas.map((cta, i) => (
+                    cta.href ? (
+                      <Link
+                        key={i}
+                        href={cta.href}
+                        className={`px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl ${cta.variant === 'primary' ? `bg-gradient-to-r ${colors.accent} text-white hover:shadow-2xl` : 'bg-white text-gray-700 ring-2 ring-gray-300 hover:bg-gray-50 hover:ring-gray-400'}`}
+                      >
+                        {cta.label}
+                      </Link>
+                    ) : (
+                      <button
+                        key={i}
+                        onClick={cta.onClick}
+                        className={`px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl ${cta.variant === 'primary' ? `bg-gradient-to-r ${colors.accent} text-white hover:shadow-2xl` : 'bg-white text-gray-700 ring-2 ring-gray-300 hover:bg-gray-50 hover:ring-gray-400'}`}
+                      >
+                        {cta.label}
+                      </button>
+                    )
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
