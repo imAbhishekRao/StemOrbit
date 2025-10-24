@@ -5,80 +5,98 @@ export default function OfferingsSection() {
     {
       id: 1,
       title: "STEM Classes (Grade 1-12)",
-      description: "Engaging technology sessions in robotics, 3D design, AI, IoT, coding, game development, and drone operation for all grade levels.",
+      description: "Comprehensive technology sessions covering robotics, 3D design, AI, IoT, coding, game development, and drone operation for all grade levels.",
       emoji: "🔬",
       vector: "/stem-classes.svg",
       gradient: "linear-gradient(to right, #ef4444, #dc2626)",
-      buttonColor: "#ef4444"
+      buttonColor: "#ef4444",
+      cardBackground: "#fef2f2"
     },
     {
       id: 2,
       title: "STEM/Atal Tinkering Lab Setup",
-      description: "Complete support for schools setting up ATLs with effective operation aligned with NITI Aayog's innovation vision for the nation.",
+      description: "Complete support for schools setting up ATLs with effective operation aligned with NITI Aayog's innovation vision and national goals.",
       emoji: "🏗️",
       vector: "/atl-lab.svg",
       gradient: "linear-gradient(to right, #ef4444, #dc2626)",
-      buttonColor: "#ef4444"
+      buttonColor: "#ef4444",
+      cardBackground: "#fef2f2"
     },
     {
       id: 3,
       title: "School Sessions",
-      description: "Customized curriculum sessions integrating interactive STEM activities, demonstrations, and experiments for enhanced learning experiences.",
+      description: "Customized curriculum sessions with interactive STEM activities, hands-on demonstrations, and practical experiments for enhanced learning.",
       emoji: "🎓",
       vector: "/school-sessions.svg",
       gradient: "linear-gradient(to right, #f97316, #ea580c)",
-      buttonColor: "#f97316"
+      buttonColor: "#f97316",
+      cardBackground: "#fff7ed"
     },
     {
       id: 4,
       title: "Technical Event Support",
-      description: "End-to-end support for organizing technical events including planning, resource procurement, mentorship, and seamless coordination.",
+      description: "Complete end-to-end support for organizing technical events including planning, resource procurement, mentorship, and seamless coordination.",
       emoji: "🎪",
       vector: "/technical-events.svg",
       gradient: "linear-gradient(to right, #06b6d4, #0891b2)",
-      buttonColor: "#06b6d4"
+      buttonColor: "#06b6d4",
+      cardBackground: "#f0fdfa"
     },
     {
       id: 5,
       title: "Teacher Training Program",
-      description: "Hands-on STEM modules integrating 3D printing, Drones, IoT, and Robotics with design mindset and computational thinking skills.",
+      description: "Comprehensive hands-on STEM modules covering 3D printing, Drones, IoT, and Robotics with design thinking and computational skills.",
       emoji: "👩‍🏫",
       vector: "/teacher-training.svg",
       gradient: "linear-gradient(to right, #3b82f6, #2563eb)",
-      buttonColor: "#3b82f6"
+      buttonColor: "#3b82f6",
+      cardBackground: "#eff6ff"
     },
     {
       id: 6,
       title: "Skill Summer/Winter Camp",
-      description: "Exciting camps featuring hands-on workshops, project-based learning, and team-building activities at our technical lab facility.",
+      description: "Engaging camps featuring hands-on workshops, project-based learning, and team-building activities at our state-of-the-art lab facility.",
       emoji: "🏕️",
       vector: "/summer-camp.svg",
       gradient: "linear-gradient(to right, #22c55e, #16a34a)",
-      buttonColor: "#22c55e"
+      buttonColor: "#22c55e",
+      cardBackground: "#f0fdf4"
     },
     {
       id: 7,
       title: "Technical Competition Support",
-      description: "Specialized coaching and mentoring for technical competitions with problem-solving strategies, teamwork skills, and innovation focus.",
+      description: "Expert coaching and mentoring for technical competitions with advanced problem-solving strategies, teamwork skills, and innovation focus.",
       emoji: "🏆",
       vector: "/competition-support.svg",
       gradient: "linear-gradient(to right, #a855f7, #9333ea)",
-      buttonColor: "#a855f7"
+      buttonColor: "#a855f7",
+      cardBackground: "#faf5ff"
     },
     {
       id: 8,
       title: "Industrial Training Program",
-      description: "Six-week internship program offering engineering students practical industry experience, professional mentorship, and hands-on projects.",
+      description: "Comprehensive six-week internship program providing engineering students with practical industry experience and professional mentorship.",
       emoji: "🏭",
       vector: "/industrial-training.svg",
       gradient: "linear-gradient(to right, #6366f1, #4f46e5)",
-      buttonColor: "#6366f1"
+      buttonColor: "#6366f1",
+      cardBackground: "#eef2ff"
     }
   ];
 
   return (
     <>
       <section className="offerings-section">
+        {/* Animated Bubbles */}
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        
         <div className="container">
           <div className="title-wrapper">
             <h2 className="main-title">
@@ -97,11 +115,7 @@ export default function OfferingsSection() {
                    <div className="icon-circle" style={{ backgroundImage: service.gradient }}>
                      <div className="icon-content">
                        <div className="emoji-icon">{service.emoji}</div>
-                       <img 
-                         src={service.vector} 
-                         alt={service.title}
-                         className="vector-icon"
-                       />
+                       
                      </div>
                    </div>
           </div>
@@ -110,7 +124,7 @@ export default function OfferingsSection() {
                  <div className="connecting-line"></div>
                  
                  {/* Card Content */}
-                 <div className="service-card">
+                 <div className="service-card" style={{ backgroundColor: service.cardBackground }}>
                    <h3 className="card-title">
                      {service.title}
                    </h3>
@@ -137,8 +151,10 @@ export default function OfferingsSection() {
         .offerings-section {
           width: 100%;
           padding: 4rem 0;
-          background-color: #f9fafb;
+          background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdf4 100%);
           font-family: sans-serif;
+          position: relative;
+          overflow: hidden;
         }
         .container {
           max-width: 80rem;
@@ -174,18 +190,20 @@ export default function OfferingsSection() {
            flex-direction: column;
            align-items: center;
            position: relative;
+           height: 100%;
          }
          .service-card {
-           background-color: transparent;
            border: 2px solid #374151;
            border-radius: 0.75rem;
-           padding: 1.5rem;
+           padding: 1rem;
            display: flex;
            flex-direction: column;
            align-items: center;
            transition: all 0.3s ease;
            width: 100%;
-           max-width: 300px;
+           max-width: 280px;
+           height: 200px;
+           justify-content: space-between;
          }
          .service-card:hover {
            border-color: #3b82f6;
@@ -244,23 +262,30 @@ export default function OfferingsSection() {
           object-fit: contain;
         }
         .card-title {
-          font-size: 1rem;
+          font-size: 0.875rem;
           font-weight: 700;
           color: #1f2937;
           text-align: center;
           text-transform: uppercase;
-          margin-bottom: 0.75rem;
+          margin-bottom: 0.5rem;
+          line-height: 1.2;
         }
          .card-description {
            color: #4b5563;
-           font-size: 0.875rem;
+           font-size: 0.75rem;
            text-align: center;
-           line-height: 1.6;
+           line-height: 1.4;
            margin-bottom: 0;
+           flex-grow: 1;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           height: 100%;
          }
          .button-wrapper {
            text-align: center;
-           margin-top: 1rem;
+           margin-top: 1.5rem;
+           width: 100%;
          }
         .more-info-btn {
           padding: 0.5rem 1.5rem;
@@ -278,7 +303,89 @@ export default function OfferingsSection() {
           transform: translateY(-2px);
         }
 
-        /* Animation */
+         /* Bubble Animations */
+         .bubble {
+           position: absolute;
+           border-radius: 50%;
+           background: rgba(255, 255, 255, 0.3);
+           animation: float 6s ease-in-out infinite;
+         }
+         .bubble:nth-child(1) {
+           width: 60px;
+           height: 60px;
+           left: 10%;
+           animation-delay: 0s;
+           animation-duration: 8s;
+         }
+         .bubble:nth-child(2) {
+           width: 40px;
+           height: 40px;
+           left: 20%;
+           animation-delay: 2s;
+           animation-duration: 6s;
+         }
+         .bubble:nth-child(3) {
+           width: 80px;
+           height: 80px;
+           left: 30%;
+           animation-delay: 4s;
+           animation-duration: 10s;
+         }
+         .bubble:nth-child(4) {
+           width: 50px;
+           height: 50px;
+           left: 70%;
+           animation-delay: 1s;
+           animation-duration: 7s;
+         }
+         .bubble:nth-child(5) {
+           width: 70px;
+           height: 70px;
+           left: 80%;
+           animation-delay: 3s;
+           animation-duration: 9s;
+         }
+         .bubble:nth-child(6) {
+           width: 35px;
+           height: 35px;
+           left: 90%;
+           animation-delay: 5s;
+           animation-duration: 5s;
+         }
+         .bubble:nth-child(7) {
+           width: 45px;
+           height: 45px;
+           left: 50%;
+           animation-delay: 2.5s;
+           animation-duration: 8.5s;
+         }
+         .bubble:nth-child(8) {
+           width: 65px;
+           height: 65px;
+           left: 60%;
+           animation-delay: 1.5s;
+           animation-duration: 7.5s;
+         }
+
+         @keyframes float {
+           0%, 100% {
+             transform: translateY(0px) rotate(0deg);
+             opacity: 0.7;
+           }
+           25% {
+             transform: translateY(-20px) rotate(90deg);
+             opacity: 0.9;
+           }
+           50% {
+             transform: translateY(-40px) rotate(180deg);
+             opacity: 0.6;
+           }
+           75% {
+             transform: translateY(-20px) rotate(270deg);
+             opacity: 0.8;
+           }
+         }
+
         @keyframes childish-bounce {
           0%, 100% {
             transform: scale(1);
@@ -292,19 +399,96 @@ export default function OfferingsSection() {
          @media (min-width: 640px) {
            .grid-container {
              grid-template-columns: repeat(2, minmax(0, 1fr));
-             gap: 4rem;
+             gap: 2rem;
+           }
+           .main-title {
+              font-size: 2rem;
+           }
+           .card-title {
+             font-size: 0.9rem;
+           }
+           .card-description {
+             font-size: 0.8rem;
+           }
+           .service-card {
+             height: 200px;
+             padding: 1rem;
+           }
+         }
+         @media (min-width: 768px) {
+           .grid-container {
+             grid-template-columns: repeat(2, minmax(0, 1fr));
+             gap: 2.5rem;
            }
            .main-title {
               font-size: 2.25rem;
            }
+           .card-title {
+             font-size: 0.95rem;
+           }
+           .card-description {
+             font-size: 0.85rem;
+           }
+           .service-card {
+             height: 220px;
+             padding: 1.25rem;
+           }
          }
          @media (min-width: 1024px) {
+           .grid-container {
+             grid-template-columns: repeat(4, minmax(0, 1fr));
+             gap: 2rem;
+           }
+            .main-title {
+              font-size: 2.5rem;
+           }
+           .card-title {
+             font-size: 0.9rem;
+           }
+           .card-description {
+             font-size: 0.8rem;
+           }
+           .service-card {
+             height: 200px;
+             padding: 1rem;
+           }
+         }
+         @media (min-width: 1280px) {
+           .grid-container {
+             grid-template-columns: repeat(4, minmax(0, 1fr));
+             gap: 2.5rem;
+           }
+           .main-title {
+              font-size: 2.75rem;
+           }
+           .card-title {
+             font-size: 1rem;
+           }
+           .card-description {
+             font-size: 0.85rem;
+           }
+           .service-card {
+             height: 220px;
+             padding: 1.25rem;
+           }
+         }
+         @media (min-width: 1536px) {
            .grid-container {
              grid-template-columns: repeat(4, minmax(0, 1fr));
              gap: 3rem;
            }
             .main-title {
               font-size: 3rem;
+           }
+           .card-title {
+             font-size: 1.1rem;
+           }
+           .card-description {
+             font-size: 0.9rem;
+           }
+           .service-card {
+             height: 240px;
+             padding: 1.5rem;
            }
          }
       `}</style>

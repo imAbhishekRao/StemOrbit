@@ -3,35 +3,38 @@ import Image from "next/image";
 
 const testimonials = [
   {
-    name: "Ms. Heena",
-    subtitle: "Air Force School (12 Wing, Chandigarh)",
-    text: `"The educators are knowledgeable and very supportive. Got to learn a lot from you people. Thanks a lot to your whole team for providing such a platform where we can enhance our skills and also make our students know about different technologies."`,
-    img: "https://www.stemorbit.com/assets/images/testimonials/Heena.jpg",
+    name: "Sachin Rana",
+    subtitle: "M.D.N.Sr.Sec. School, Kalayat District -Kaithal",
+    text: `"The STEAM lab has significantly enhanced my students' engagement and critical thinking. Through hands-on activities, my students have developed essential problem-solving and collaboration skills. The lab's innovative environment supports meaningful learning and prepares students for future challenges."`,
+    img: "/SachinRana.jpeg",
     badges: [
-      { icon: "/schools.svg", text: "Air Force School (12 Wing, Chandigarh)" },
+      { icon: "/schools.svg", text: "M.D.N.Sr.Sec. School, Kalayat District -Kaithal" },
       { icon: "/students.svg", text: "Educator" }
     ],
     color: "#0369A1" // deep blue
   },
   {
-    name: "Mr. Gurjinder Singh",
-    subtitle: "JNV Patiala",
-    text: `"STEMORBIT have provided us with excellent technical knowledge and their trainer have also been very energetic and supportive. We would definitely recommend STEMORBIT to our known schools when ATL lab setup and services."`,
-    img: "https://www.stemorbit.com/assets/images/testimonials/Gurjinder.jpg",
+    name: "Divya Garg",
+    subtitle: "AFS Sarsawa",
+    text: `"The partnership with STEM Orbit has been a complete, end-to-end solution for 
+us. They built a phenomenal ATL and their expert instructors continue to deliver 
+high-quality, engaging sessions for our students, keeping them at the forefront of 
+innovation."`,
+    img: "/divyagarg.jpeg",
     badges: [
-      { icon: "/schools.svg", text: "JNV Patiala" },
-      { icon: "/students.svg", text: "ATL/Technology Coordinator" }
+      { icon: "/schools.svg", text: "AFS Sarsawa" },
+      { icon: "/students.svg", text: "Principal" }
     ],
     color: "#5B21B6" // rich indigo
   },
   {
-    name: "Mr. Sandeep",
-    subtitle: "JNV Amritsar",
+    name: "Arti Pandey",
+    subtitle: "Saint Soldier School Panchkula",
     text: `"STEMORBIT training triggers curiosity among students to identify real life problem and find their solutions. I thank STEMORBIT and their team for providing their services to our school. Best wishes to your company, I believe your company will grow and flourish wonderfully."`,
-    img: "https://www.stemorbit.com/assets/images/testimonials/Sandeep.jpg",
+    img: "/artipandey.jpeg",
     badges: [
-      { icon: "/schools.svg", text: "JNV Amritsar" },
-      { icon: "/students.svg", text: "Teacher / Mentor" }
+      { icon: "/schools.svg", text: "Saint Soldier School Panchkula" },
+      { icon: "/students.svg", text: "ATL Incharge" }
     ],
     color: "#0F766E" // teal
   },
