@@ -6,8 +6,6 @@ export default function GalleryPage() {
   const detailedGridRef = useRef(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadedCount, setLoadedCount] = useState(0);
 
   const openLightbox = (img) => {
     setLightboxImage(img);
@@ -264,45 +262,6 @@ export default function GalleryPage() {
     ? allImages
     : allImages.filter((image) => image.category === selectedCategory);
 
-  // Preload all images and show preloader until done (or timeout)
-  useEffect(() => {
-    if (!allImages || allImages.length === 0) {
-      setIsLoading(false);
-      return;
-    }
-    let cancelled = false;
-    setIsLoading(true);
-    setLoadedCount(0);
-
-    const total = allImages.length;
-    const onDone = () => {
-      if (cancelled) return;
-      setLoadedCount((c) => {
-        const next = c + 1;
-        if (next >= total) setIsLoading(false);
-        return next;
-      });
-    };
-
-    const preloaders = allImages.map((item) => {
-      const img = new Image();
-      img.onload = onDone;
-      img.onerror = onDone;
-      img.src = item.image;
-      return img;
-    });
-
-    const timeoutId = setTimeout(() => {
-      if (!cancelled) setIsLoading(false);
-    }, 12000);
-
-    return () => {
-      cancelled = true;
-      clearTimeout(timeoutId);
-      preloaders.forEach((img) => { img.onload = null; img.onerror = null; });
-    };
-  }, [allImages]);
-
   // Stable random order per category change
   const collageImages = useMemo(() => {
     const arr = [...filteredImages];
@@ -403,14 +362,6 @@ export default function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {isLoading && (
-        <div className="preloader-overlay">
-          <div className="preloader-box">
-            <div className="spinner"></div>
-            <div className="preloader-text">Loading gallery… {loadedCount}/{allImages.length}</div>
-          </div>
-        </div>
-      )}
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -624,42 +575,7 @@ export default function GalleryPage() {
         /* Collage grid: natural row height so items don't overlap */
         .collage-grid { grid-auto-rows: auto; align-items: start; }
 
-        /* Preloader */
-        .preloader-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(249, 250, 251, 0.95);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 2000;
-          backdrop-filter: blur(2px);
-        }
-        .preloader-box {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.75rem;
-          padding: 1.25rem 1.5rem;
-          background: white;
-          border-radius: 0.75rem;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-          border: 1px solid #e5e7eb;
-        }
-        .spinner {
-          width: 42px;
-          height: 42px;
-          border: 4px solid #e5e7eb;
-          border-top-color: #7c3aed;
-          border-radius: 9999px;
-          animation: spin 0.9s linear infinite;
-        }
-        .preloader-text {
-          font-size: 0.9375rem;
-          color: #374151;
-          font-weight: 600;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        
 
         /* Lightbox styles */
         .lightbox-overlay {
