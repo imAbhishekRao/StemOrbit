@@ -4,6 +4,27 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const detailedGridRef = useRef(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedCount, setLoadedCount] = useState(0);
+
+  const openLightbox = (img) => {
+    setLightboxImage(img);
+    setLightboxOpen(true);
+    // Prevent background scroll
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    setLightboxImage(null);
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+    }
+  };
 
   const galleryImages = [
     {
@@ -176,11 +197,111 @@ export default function GalleryPage() {
     }
   ];
 
+  // New Inaugurations images provided by user
+  const inaugurationLinks = [
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(1).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(2).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(3).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(4).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(5).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(6).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(7).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(8).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(9).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(10).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(11).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(12).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(13).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(15).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(16).webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/inaug%20(17).webp?raw=true",
+  ];
+
+  // Move previous inauguration links under Teacher Training
+  const teacherTrainingLinks = [
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/1.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/2.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/3.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/4.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/5.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/6.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/7.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/8.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/9.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/10.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/11.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/12.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/13.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/14.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/15.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/16.webp?raw=true",
+    "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/17.webp?raw=true",
+  ];
+
+  const userInaugurationImages = inaugurationLinks.map((url, idx) => ({
+    id: 1000 + idx,
+    image: url,
+    title: `Inauguration ${idx + 1}`,
+    description: "Inauguration snapshot",
+    category: "Inaugurations",
+    link: url,
+  }));
+
+  const userTeacherTrainingImages = teacherTrainingLinks.map((url, idx) => ({
+    id: 2000 + idx,
+    image: url,
+    title: `Teacher Training ${idx + 1}`,
+    description: "Teacher training snapshot",
+    category: "Teacher Training",
+    link: url,
+  }));
+
   const categories = ['all', 'Achievements', 'Inaugurations', 'School Sessions', 'Workshops', 'Camps', 'Teacher Training', 'Techfests'];
 
+  const allImages = useMemo(() => [...userInaugurationImages, ...userTeacherTrainingImages], [userInaugurationImages, userTeacherTrainingImages]);
+
   const filteredImages = selectedCategory === 'all'
-    ? galleryImages
-    : galleryImages.filter((image) => image.category === selectedCategory);
+    ? allImages
+    : allImages.filter((image) => image.category === selectedCategory);
+
+  // Preload all images and show preloader until done (or timeout)
+  useEffect(() => {
+    if (!allImages || allImages.length === 0) {
+      setIsLoading(false);
+      return;
+    }
+    let cancelled = false;
+    setIsLoading(true);
+    setLoadedCount(0);
+
+    const total = allImages.length;
+    const onDone = () => {
+      if (cancelled) return;
+      setLoadedCount((c) => {
+        const next = c + 1;
+        if (next >= total) setIsLoading(false);
+        return next;
+      });
+    };
+
+    const preloaders = allImages.map((item) => {
+      const img = new Image();
+      img.onload = onDone;
+      img.onerror = onDone;
+      img.src = item.image;
+      return img;
+    });
+
+    const timeoutId = setTimeout(() => {
+      if (!cancelled) setIsLoading(false);
+    }, 12000);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timeoutId);
+      preloaders.forEach((img) => { img.onload = null; img.onerror = null; });
+    };
+  }, [allImages]);
 
   // Stable random order per category change
   const collageImages = useMemo(() => {
@@ -282,6 +403,14 @@ export default function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {isLoading && (
+        <div className="preloader-overlay">
+          <div className="preloader-box">
+            <div className="spinner"></div>
+            <div className="preloader-text">Loading gallery… {loadedCount}/{allImages.length}</div>
+          </div>
+        </div>
+      )}
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -303,7 +432,7 @@ export default function GalleryPage() {
             Quick <span className="text-purple-600">Preview</span>
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {galleryImages.slice(0, 6).map((item, index) => (
+            {allImages.slice(0, 6).map((item, index) => (
               <div
                 key={`preview-${item.id}`}
                 className="flip-card h-32 md:h-40 fade-up"
@@ -311,11 +440,14 @@ export default function GalleryPage() {
               >
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-auto object-contain rounded-lg"
-                    />
+                    <button type="button" onClick={() => openLightbox(item.image)} className="w-full h-full">
+                      <img 
+                        src={item.image} 
+                        alt={item.title}
+                        className="w-full h-auto object-contain rounded-lg"
+                        loading="lazy"
+                      />
+                    </button>
                   </div>
                   <div className="flip-card-back">
                     <div className="p-2 h-full flex flex-col justify-center text-center">
@@ -356,27 +488,28 @@ export default function GalleryPage() {
               </div>
             </div>
 
-            {/* Collage Image Gallery (randomized, no big boxes) */}
+            {/* Collage Image Gallery - 3 per row */}
             <div className="lg:w-3/4" ref={detailedGridRef}>
-              <div className="collage-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
+              <div className="collage-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-4 gap-y-3">
                 {collageImages.map((item, index) => {
-                  const span = getCollageSpan(index);
-                  const colSpanClass = `col-span-${span.c}`;
-                  // grid-auto-rows defined in CSS; span.r is number of rows to span
+                  const colSpanClass = `col-span-1`;
                   return (
                     <div
                       key={`${item.id}-${index}`}
                       className={`parallax-item will-change-transform fade-in reveal-on-scroll ${colSpanClass}`}
                       data-speed={(0.14 + (index % 5) * 0.03).toFixed(2)}
-                      style={{ transition: 'transform 0.2s ease-out', animationDelay: `${(index % 10) * 0.05}s`, gridRow: `span ${span.r} / span ${span.r}` }}
+                      style={{ transition: 'transform 0.2s ease-out', animationDelay: `${(index % 10) * 0.05}s` }}
                     >
                       <div className="p-[2px] rounded-xl bg-gradient-to-br from-purple-500 via-pink-500 to-amber-400 shadow-md">
                         <div className="rounded-lg overflow-hidden bg-white">
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-auto object-contain"
-                          />
+                          <button type="button" onClick={() => openLightbox(item.image)} className="w-full h-full">
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="w-full h-auto object-contain"
+                              loading="lazy"
+                            />
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -387,6 +520,22 @@ export default function GalleryPage() {
         </div>
       </div>
       </section>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div className="lightbox-overlay" role="dialog" aria-modal="true" onClick={closeLightbox}>
+          <div className="lightbox-frame" onClick={(e) => e.stopPropagation()}>
+            <button type="button" className="lightbox-close" onClick={closeLightbox} aria-label="Close">
+              ✕
+            </button>
+            <div className="lightbox-inner">
+              {lightboxImage && (
+                <img src={lightboxImage} alt="Preview" className="lightbox-image" />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Flip Card Styles */}
       <style jsx global>{`
@@ -430,7 +579,7 @@ export default function GalleryPage() {
         .flip-card {
           background-color: transparent;
           width: 100%;
-          height: 250px;
+          height: 160px;
           perspective: 1000px;
         }
 
@@ -472,8 +621,98 @@ export default function GalleryPage() {
         .masonry { -webkit-column-gap: 1rem; column-gap: 1rem; }
         .masonry > * { -webkit-column-break-inside: avoid; break-inside: avoid; }
 
-        /* Collage grid baseline row height for fine-grained spans */
-        .collage-grid { grid-auto-rows: 6px; }
+        /* Collage grid: natural row height so items don't overlap */
+        .collage-grid { grid-auto-rows: auto; align-items: start; }
+
+        /* Preloader */
+        .preloader-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(249, 250, 251, 0.95);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2000;
+          backdrop-filter: blur(2px);
+        }
+        .preloader-box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 1.25rem 1.5rem;
+          background: white;
+          border-radius: 0.75rem;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+          border: 1px solid #e5e7eb;
+        }
+        .spinner {
+          width: 42px;
+          height: 42px;
+          border: 4px solid #e5e7eb;
+          border-top-color: #7c3aed;
+          border-radius: 9999px;
+          animation: spin 0.9s linear infinite;
+        }
+        .preloader-text {
+          font-size: 0.9375rem;
+          color: #374151;
+          font-weight: 600;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Lightbox styles */
+        .lightbox-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.65);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+          padding: 1rem;
+        }
+        .lightbox-frame {
+          position: relative;
+          background: #fafafa;
+          border-radius: 16px;
+          box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+          padding: 1rem;
+          max-width: min(90vw, 1100px);
+          max-height: min(90vh, 800px);
+          border: 12px solid #e5e7eb; /* photo frame outer */
+          outline: 6px solid #d1d5db; /* bevel */
+        }
+        .lightbox-inner {
+          background: white;
+          border-radius: 10px;
+          padding: 0.5rem;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .lightbox-image {
+          max-width: 100%;
+          max-height: 78vh;
+          object-fit: contain;
+          border-radius: 8px;
+          box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+        }
+        .lightbox-close {
+          position: absolute;
+          top: -18px;
+          right: -18px;
+          width: 40px;
+          height: 40px;
+          border-radius: 9999px;
+          background: #111827;
+          color: white;
+          font-weight: 700;
+          border: 3px solid #e5e7eb;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+          cursor: pointer;
+        }
       `}</style>
     </div>
   );
