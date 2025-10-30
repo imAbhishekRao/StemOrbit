@@ -479,10 +479,17 @@ export default function GalleryPage() {
             <button type="button" className="lightbox-close" onClick={closeLightbox} aria-label="Close">
               ✕
             </button>
-            <div className="lightbox-inner">
-              {lightboxImage && (
-                <img src={lightboxImage} alt="Preview" className="lightbox-image" />
-              )}
+            {/* playful stickers/tapes */}
+            <div className="tape tape-1"></div>
+            <div className="tape tape-2"></div>
+            <div className="sticker sticker-1">✨</div>
+            <div className="sticker sticker-2">⭐</div>
+            <div className="lightbox-mat">
+              <div className="lightbox-inner">
+                {lightboxImage && (
+                  <img src={lightboxImage} alt="Preview" className="lightbox-image" />
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -590,14 +597,21 @@ export default function GalleryPage() {
         }
         .lightbox-frame {
           position: relative;
-          background: #fafafa;
-          border-radius: 16px;
+          background: linear-gradient(135deg, #fde68a, #fca5a5, #93c5fd, #a7f3d0);
+          background-size: 300% 300%;
+          animation: frameFlow 8s ease infinite;
+          border-radius: 20px;
           box-shadow: 0 30px 60px rgba(0,0,0,0.35);
-          padding: 1rem;
+          padding: 12px; /* frame thickness */
           max-width: min(90vw, 1100px);
           max-height: min(90vh, 800px);
-          border: 12px solid #e5e7eb; /* photo frame outer */
-          outline: 6px solid #d1d5db; /* bevel */
+          transform: rotate(-0.3deg);
+        }
+        .lightbox-mat {
+          background: repeating-linear-gradient(135deg, #fff, #fff 10px, #fcfcfd 10px, #fcfcfd 20px);
+          border-radius: 14px;
+          padding: 12px; /* mat thickness */
+          box-shadow: inset 0 0 0 2px rgba(0,0,0,0.05);
         }
         .lightbox-inner {
           background: white;
@@ -607,6 +621,7 @@ export default function GalleryPage() {
           display: flex;
           align-items: center;
           justify-content: center;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.12);
         }
         .lightbox-image {
           max-width: 100%;
@@ -617,17 +632,56 @@ export default function GalleryPage() {
         }
         .lightbox-close {
           position: absolute;
-          top: -18px;
-          right: -18px;
-          width: 40px;
-          height: 40px;
+          top: -20px;
+          right: -20px;
+          width: 44px;
+          height: 44px;
           border-radius: 9999px;
-          background: #111827;
-          color: white;
+          background: radial-gradient(circle at 30% 30%, #f472b6, #8b5cf6);
+          color: #fff;
           font-weight: 700;
-          border: 3px solid #e5e7eb;
+          border: 3px solid #fff;
           box-shadow: 0 8px 20px rgba(0,0,0,0.35);
           cursor: pointer;
+          transition: transform 0.15s ease;
+        }
+        .lightbox-close:hover { transform: scale(1.06); }
+
+        /* animated frame gradient */
+        @keyframes frameFlow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        /* playful tape corners */
+        .tape {
+          position: absolute;
+          width: 90px;
+          height: 22px;
+          background: linear-gradient(180deg, #fef08a, #fde047);
+          box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+          opacity: 0.9;
+          z-index: 5;
+        }
+        .tape:after {
+          content: "";
+          position: absolute;
+          inset: 3px;
+          border: 1px dashed rgba(0,0,0,0.15);
+        }
+        .tape-1 { top: -8px; left: 18px; transform: rotate(-12deg); }
+        .tape-2 { bottom: -8px; right: 18px; transform: rotate(10deg); }
+
+        /* little emoji stickers */
+        .sticker {
+          position: absolute;
+          font-size: 18px;
+          transform: rotate(-8deg);
+          user-select: none;
+        }
+        .sticker-1 { top: 8px; right: 60px; }
+        .sticker-2 { bottom: 10px; left: 60px; transform: rotate(6deg); }
         }
       `}</style>
     </div>
