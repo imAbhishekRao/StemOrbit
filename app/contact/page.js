@@ -24,6 +24,8 @@ const shadowPulseStyle = (
 export default function Contact() {
   const [openFaqGroup, setOpenFaqGroup] = useState('principals');
   const [openQuestionIdx, setOpenQuestionIdx] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState(null);
 
   const faqsData = {
     principals: [
@@ -241,7 +243,42 @@ export default function Contact() {
           </div>
           {/* Contact Form below */}
           <div className="flex items-center justify-center mt-12 sm:mt-16 lg:mt-20 mb-0">
-            <form className="w-full max-w-5xl bg-gray-50 rounded-2xl shadow p-6 sm:p-8 flex flex-col gap-4 sm:gap-6">
+            <form className="w-full max-w-5xl bg-gray-50 rounded-2xl shadow p-6 sm:p-8 flex flex-col gap-4 sm:gap-6" onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.currentTarget;
+              const formData = new FormData(form);
+              const payload = {
+                name: formData.get('name') || '',
+                city: formData.get('city') || '',
+                mobile: formData.get('mobile') || '',
+                email: formData.get('email') || '',
+                message: formData.get('message') || '',
+              };
+              if (!payload.message) {
+                setSubmitResult({ ok: false, error: 'Please enter a message.' });
+                return;
+              }
+              setIsSubmitting(true);
+              setSubmitResult(null);
+              try {
+                const res = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(payload),
+                });
+                const data = await res.json();
+                if (res.ok) {
+                  setSubmitResult({ ok: true });
+                  form.reset();
+                } else {
+                  setSubmitResult({ ok: false, error: data?.error || 'Failed to send message' });
+                }
+              } catch (err) {
+                setSubmitResult({ ok: false, error: 'Network error. Please try again.' });
+              } finally {
+                setIsSubmitting(false);
+              }
+            }}>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Send Us a Message</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
@@ -267,7 +304,12 @@ export default function Contact() {
                 <label className="block text-gray-700 font-medium mb-2 text-sm sm:text-base" htmlFor="message">Message</label>
                 <textarea className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-200 placeholder-gray-500 text-sm sm:text-base" id="message" name="message" rows={4} placeholder="How can we help you?" />
               </div>
-              <button type="submit" className="w-full py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg text-sm sm:text-base">Send Message</button>
+              {submitResult && (
+                <div className={`text-sm ${submitResult.ok ? 'text-green-600' : 'text-red-600'}`}>
+                  {submitResult.ok ? 'Message sent! We will get back to you shortly.' : submitResult.error}
+                </div>
+              )}
+              <button type="submit" disabled={isSubmitting} className={`w-full py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg text-sm sm:text-base ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}>{isSubmitting ? 'Sending…' : 'Send Message'}</button>
             </form>
           </div>
         </div>
