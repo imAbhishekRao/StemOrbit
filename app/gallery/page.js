@@ -395,7 +395,7 @@ export default function GalleryPage() {
                       <img 
                         src={item.image} 
                         alt={item.title}
-                        className="block w-full h-full object-cover rounded-lg"
+                        className="block w-full h-full object-contain rounded-lg ring-1 ring-gray-200"
                         loading="lazy"
                       />
                     </button>
@@ -451,17 +451,15 @@ export default function GalleryPage() {
                       data-speed={(0.14 + (index % 5) * 0.03).toFixed(2)}
                       style={{ transition: 'transform 0.2s ease-out', animationDelay: `${(index % 10) * 0.05}s` }}
                     >
-                      <div className="p-[2px] rounded-xl bg-gradient-to-br from-purple-500 via-pink-500 to-amber-400 shadow-md">
-                        <div className="rounded-lg overflow-hidden bg-white">
-                          <button type="button" onClick={() => openLightbox(item.image)} className="w-full h-full">
-                            <img
-                              src={item.image}
-                              alt={item.title}
-                              className="block w-full h-full object-cover"
-                              loading="lazy"
-                            />
-                          </button>
-                        </div>
+                      <div className="collage-card rounded-xl overflow-hidden border border-gray-200 shadow-md bg-white">
+                        <button type="button" onClick={() => openLightbox(item.image)} className="w-full h-full">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="block w-full h-auto object-contain"
+                            loading="lazy"
+                          />
+                        </button>
                       </div>
                     </div>
                   );
@@ -586,6 +584,11 @@ export default function GalleryPage() {
         .collage-grid { grid-auto-rows: auto; align-items: start; }
         .collage-grid img { display: block; }
         .collage-grid .rounded-lg { line-height: 0; }
+
+        /* Ensure collage cards and images align without cropping */
+        .collage-card { position: relative; line-height: 0; background: #fff; }
+        .collage-card > button { display: block; width: 100%; height: auto; }
+        .collage-card img { width: 100%; height: auto; object-fit: contain; }
 
         
 
