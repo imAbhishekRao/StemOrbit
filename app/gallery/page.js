@@ -395,7 +395,7 @@ export default function GalleryPage() {
                       <img 
                         src={item.image} 
                         alt={item.title}
-                        className="w-full h-auto object-contain rounded-lg"
+                        className="block w-full h-full object-cover rounded-lg"
                         loading="lazy"
                       />
                     </button>
@@ -457,7 +457,7 @@ export default function GalleryPage() {
                             <img
                               src={item.image}
                               alt={item.title}
-                              className="w-full h-auto object-contain"
+                              className="block w-full h-full object-cover"
                               loading="lazy"
                             />
                           </button>
@@ -567,12 +567,15 @@ export default function GalleryPage() {
         .flip-card-front {
           background-color: #bbb;
           color: black;
+          overflow: hidden; /* ensure image respects border radius */
+          line-height: 0; /* remove baseline gap under images */
         }
 
         .flip-card-back {
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
           transform: rotateY(180deg);
+          line-height: 0;
         }
 
         /* Masonry fix for gaps on Safari */
@@ -581,6 +584,8 @@ export default function GalleryPage() {
 
         /* Collage grid: natural row height so items don't overlap */
         .collage-grid { grid-auto-rows: auto; align-items: start; }
+        .collage-grid img { display: block; }
+        .collage-grid .rounded-lg { line-height: 0; }
 
         
 
