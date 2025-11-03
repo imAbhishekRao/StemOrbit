@@ -326,7 +326,7 @@ export default function GalleryPage() {
 
         el.style.transform = `translateY(${translateY}px) scale(${scale}) rotateX(${rotateX}deg)`;
         el.style.opacity = String(opacity);
-        el.style.boxShadow = `0 18px 35px rgba(0,0,0,${shadowStrength})`;
+        el.style.boxShadow = 'none';
       });
     };
 
@@ -361,7 +361,7 @@ export default function GalleryPage() {
   }, [selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -377,7 +377,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Small Gallery (Quick Preview) */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-center text-gray-900 mb-8 font-fredoka">
             Quick <span className="text-purple-600">Preview</span>
@@ -392,12 +392,14 @@ export default function GalleryPage() {
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
                     <button type="button" onClick={() => openLightbox(item.image)} className="w-full h-full">
-                      <img 
-                        src={item.image} 
-                        alt={item.title}
-                        className="block w-full h-full object-contain rounded-lg ring-1 ring-gray-200"
-                        loading="lazy"
-                      />
+                      <div className="rounded-lg p-[1px] bg-gradient-to-br from-purple-500 via-pink-500 to-amber-400">
+                        <img 
+                          src={item.image} 
+                          alt={item.title}
+                          className="block w-full h-full object-contain rounded-lg bg-white"
+                          loading="lazy"
+                        />
+                      </div>
                     </button>
                   </div>
                   <div className="flip-card-back">
@@ -414,7 +416,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Detailed Gallery Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Sidebar */}
@@ -451,15 +453,17 @@ export default function GalleryPage() {
                       data-speed={(0.14 + (index % 5) * 0.03).toFixed(2)}
                       style={{ transition: 'transform 0.2s ease-out', animationDelay: `${(index % 10) * 0.05}s` }}
                     >
-                      <div className="collage-card rounded-xl overflow-hidden border border-gray-200 shadow-md bg-white">
-                        <button type="button" onClick={() => openLightbox(item.image)} className="w-full h-full">
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="block w-full h-auto object-contain"
-                            loading="lazy"
-                          />
-                        </button>
+                      <div className="rounded-xl p-[1px] bg-gradient-to-br from-purple-500 via-pink-500 to-amber-400">
+                        <div className="collage-card rounded-xl overflow-hidden bg-white">
+                          <button type="button" onClick={() => openLightbox(item.image)} className="w-full h-full">
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="block w-full h-auto object-contain"
+                              loading="lazy"
+                            />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   );
@@ -690,7 +694,6 @@ export default function GalleryPage() {
         }
         .sticker-1 { top: 8px; right: 60px; }
         .sticker-2 { bottom: 10px; left: 60px; transform: rotate(6deg); }
-        }
       `}</style>
     </div>
   );
