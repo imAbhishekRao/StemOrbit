@@ -26,12 +26,14 @@ export default function GlimpseOfSTEMOrbit() {
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+    
     let rafId;
     let x = el.scrollLeft;
     const speed = 1.1; // px per frame
     const loop = () => {
       x += speed;
-      if (x >= el.scrollWidth / 2) x = 0;
+      const halfWidth = el.scrollWidth / 2;
+      if (x >= halfWidth) x = 0;
       el.scrollLeft = x;
       rafId = requestAnimationFrame(loop);
     };
@@ -40,21 +42,20 @@ export default function GlimpseOfSTEMOrbit() {
   }, []);
 
   return (
-    <section className="relative w-full py-12 md:py-20 bg-[#FFF7FB] overflow-hidden flex flex-col items-center justify-center">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-pink-700 mb-10 text-center drop-shadow-lg font-fredoka">
+    <section className="relative w-full py-8 sm:py-12 md:py-16 lg:py-20 bg-[#FFF7FB] overflow-hidden flex flex-col items-center justify-center px-4">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-pink-700 mb-6 sm:mb-8 md:mb-10 text-center drop-shadow-lg font-fredoka">
         STEM ORBIT Gallery
       </h2>
       <div
         ref={scrollRef}
-        className="w-screen overflow-x-auto whitespace-nowrap scrollbar-hide relative flex items-center"
-        style={{ scrollBehavior: "smooth", maxWidth: '100vw', height: '340px' }}
+        className="w-screen overflow-x-auto whitespace-nowrap scrollbar-hide relative flex items-center glimpse-carousel"
+        style={{ scrollBehavior: "smooth", maxWidth: '100vw' }}
       >
-        <div className="flex items-center" style={{ width: `${imagesToRender.length * 520}px`, height: '340px' }}>
+        <div className="flex items-center glimpse-carousel-inner">
           {imagesToRender.map((img, idx) => (
             <div
               key={idx}
-              className="inline-block px-4 max-w-[500px]"
-              style={{ width: '500px', height: '340px', maxWidth: '500px' }}
+              className="inline-block px-2 sm:px-3 md:px-4 glimpse-carousel-item flex-shrink-0"
             >
               <div className="relative w-full h-full shadow-lg rounded-xl overflow-hidden bg-white ring-1 ring-pink-100/60 group [transform-style:preserve-3d]">
                 {/* Front */}
@@ -67,7 +68,7 @@ export default function GlimpseOfSTEMOrbit() {
                     className="object-cover w-full h-full"
                     draggable={false}
                     priority={idx < 3}
-                    sizes="500px"
+                    sizes="(max-width: 640px) 300px, (max-width: 768px) 350px, (max-width: 1024px) 400px, 500px"
           />
         </div>
                 {/* Back */}
@@ -89,6 +90,61 @@ export default function GlimpseOfSTEMOrbit() {
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         /* Enable 3D flip context on the card wrapper */
         .group { perspective: 1200px; }
+        
+        .glimpse-carousel {
+          height: 240px;
+        }
+        .glimpse-carousel-item {
+          width: 300px;
+          height: 240px;
+          max-width: 300px;
+        }
+        .glimpse-carousel-inner {
+          display: inline-flex;
+          height: 240px;
+        }
+        
+        @media (min-width: 640px) {
+          .glimpse-carousel {
+            height: 280px;
+          }
+          .glimpse-carousel-item {
+            width: 350px;
+            height: 280px;
+            max-width: 350px;
+          }
+          .glimpse-carousel-inner {
+            height: 280px;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .glimpse-carousel {
+            height: 300px;
+          }
+          .glimpse-carousel-item {
+            width: 400px;
+            height: 300px;
+            max-width: 400px;
+          }
+          .glimpse-carousel-inner {
+            height: 300px;
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          .glimpse-carousel {
+            height: 340px;
+          }
+          .glimpse-carousel-item {
+            width: 500px;
+            height: 340px;
+            max-width: 500px;
+          }
+          .glimpse-carousel-inner {
+            height: 340px;
+          }
+        }
       `}</style>
     </section>
   );

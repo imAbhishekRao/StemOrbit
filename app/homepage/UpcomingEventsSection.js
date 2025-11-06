@@ -22,15 +22,15 @@ const UpcomingEvents = () => {
         </div>
 
         {/* Right Illustration + Event Cards */}
-        <div className="lg:w-1/2 flex flex-col lg:flex-row items-center lg:items-start gap-4 sm:gap-6">
+        <div className="lg:w-1/2 flex flex-col lg:flex-row items-center lg:items-start gap-4 sm:gap-6 w-full">
           <img
             src="https://cdn-icons-png.flaticon.com/512/3279/3279336.png"
             alt="Upcoming Events"
-            className="w-48 sm:w-60 lg:w-72 h-auto drop-shadow-xl"
+            className="w-32 sm:w-48 md:w-60 lg:w-72 h-auto drop-shadow-xl"
           />
 
           {/* Event Cards */}
-          <div className="flex flex-col gap-3 sm:gap-4 lg:ml-4">
+          <div className="flex flex-col gap-3 sm:gap-4 lg:ml-4 w-full lg:w-auto">
             {[
               { date: "Oct 27, 2025", title: "Teachers Training Workshop" },
               { date: "Nov 03, 2025", title: "ATL inaugration Sainik School (Kapurthala)" },
@@ -38,12 +38,12 @@ const UpcomingEvents = () => {
             ].map((event, index) => (
               <div
                 key={index}
-                className="bg-[#0A6375] text-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 w-full sm:w-64 lg:w-72 flex items-start gap-3 sm:gap-4"
+                className="bg-[#0A6375] text-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 w-full sm:w-64 lg:w-72 flex items-start gap-2 sm:gap-3 md:gap-4"
               >
-                <CalendarDaysIcon className="h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0" />
-                <div>
+                <CalendarDaysIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 flex-shrink-0 mt-1" />
+                <div className="flex-1 min-w-0">
                   <p className="text-xs sm:text-sm font-bold">{event.date}</p>
-                  <h3 className="text-base sm:text-lg font-semibold mt-1">{event.title}</h3>
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold mt-1 break-words">{event.title}</h3>
                 </div>
               </div>
             ))}

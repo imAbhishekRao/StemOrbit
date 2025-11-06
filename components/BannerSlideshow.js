@@ -80,17 +80,17 @@ const BannerSlideshow = () => {
             />
             
             {/* Overlay Content */}
-            <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
-              <div className="text-center text-white z-10">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-2xl">
+            <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center px-4 sm:px-6 md:px-8">
+              <div className="text-center text-white z-10 w-full max-w-5xl">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-2 sm:mb-3 md:mb-4 drop-shadow-2xl leading-tight px-2">
                   {banner.title}
                 </h1>
-                <p className="text-xl md:text-2xl lg:text-3xl mb-8 drop-shadow-xl max-w-4xl mx-auto px-4">
+                <p className="text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl mb-4 sm:mb-6 md:mb-8 drop-shadow-xl max-w-4xl mx-auto px-2 leading-relaxed">
                   {banner.subtitle}
                 </p>
                 {/* Get in Touch Button - Consistent across all banners */}
-                <div className="mb-8">
-                  <button className="px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-sm sm:text-base md:text-lg rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                <div className="mb-4 sm:mb-6 md:mb-8">
+                  <button className="px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-xs sm:text-sm md:text-base lg:text-lg rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl whitespace-nowrap">
                     Get in Touch
                   </button>
                 </div>
@@ -104,10 +104,10 @@ const BannerSlideshow = () => {
       <button
         onClick={prevSlide}
         disabled={isTransitioning}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-20"
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 sm:p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-20"
         aria-label="Previous slide"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
@@ -115,22 +115,22 @@ const BannerSlideshow = () => {
       <button
         onClick={nextSlide}
         disabled={isTransitioning}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-20"
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 sm:p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-20"
         aria-label="Next slide"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3 z-20">
         {banners.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             disabled={isTransitioning}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
               index === currentSlide
                 ? 'bg-white scale-125'
                 : 'bg-white/50 hover:bg-white/75'

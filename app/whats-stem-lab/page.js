@@ -294,7 +294,7 @@ export default function WhatsStemLab() {
             <img
               src="/whatsstemlab.svg"
               alt="What's STEM Lab banner"
-              className="w-full h-auto block"
+              className="w-full block h-[60vw] sm:h-auto object-cover object-right"
               loading="eager"
             />
             {/* Bubbles Overlay */}
@@ -548,49 +548,77 @@ export default function WhatsStemLab() {
             {/* Alternating Rows Gallery */}
             <div className="space-y-6">
               {/* Row 1: Two images */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                  <img src="/WhatsApp Image 2025-09-27 at 16.07.41.jpeg" alt="Lab Overview" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.41.jpeg" alt="Lab Overview" className="w-full h-52 sm:h-64 md:h-72 object-cover object-center group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                  <img src="/WhatsApp Image 2025-09-27 at 16.07.41 (1).jpeg" alt="Students in Action" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.41 (1).jpeg" alt="Students in Action" className="w-full h-52 sm:h-64 md:h-72 object-cover object-center group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
 
               {/* Row 2: Full-width landscape */}
               <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                <img src="/WhatsApp Image 2025-09-27 at 16.07.42.jpeg" alt="Learning Space" className="w-full h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/WhatsApp Image 2025-09-27 at 16.07.42.jpeg" alt="Learning Space" className="w-full h-60 sm:h-72 md:h-80 object-cover object-center group-hover:scale-105 transition-transform duration-300" />
               </div>
 
               {/* Row 3: Two images */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                  <img src="/WhatsApp Image 2025-09-27 at 16.07.43.jpeg" alt="Project Showcase" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.43.jpeg" alt="Project Showcase" className="w-full h-52 sm:h-64 md:h-72 object-cover object-center group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                  <img src="/WhatsApp Image 2025-09-27 at 16.07.44.jpeg" alt="Innovation Station" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.44.jpeg" alt="Innovation Station" className="w-full h-52 sm:h-64 md:h-72 object-cover object-center group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
 
               {/* Row 4: Full-width landscape */}
               <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                <img src="/WhatsApp Image 2025-09-27 at 16.07.44 (1).jpeg" alt="Team Work" className="w-full h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="/WhatsApp Image 2025-09-27 at 16.07.44 (1).jpeg" alt="Team Work" className="w-full h-60 sm:h-72 md:h-80 object-cover object-center group-hover:scale-105 transition-transform duration-300" />
               </div>
 
               {/* Row 5: Two images */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                  <img src="/WhatsApp Image 2025-09-27 at 16.07.44 (2).jpeg" alt="Advanced Projects" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.44 (2).jpeg" alt="Advanced Projects" className="w-full h-52 sm:h-64 md:h-72 object-cover object-center group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 {/* Duplicate one nice highlight to fill the pair visually */}
                 <div className="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                  <img src="/WhatsApp Image 2025-09-27 at 16.07.41 (2).jpeg" alt="Advanced Equipment" className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="/WhatsApp Image 2025-09-27 at 16.07.41 (2).jpeg" alt="Advanced Equipment" className="w-full h-52 sm:h-64 md:h-72 object-cover object-center group-hover:scale-105 transition-transform duration-300" />
                 </div>
               </div>
             </div>
 
-          {/* Lab Statistics */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+          {/* Lab Statistics - Mobile: Horizontal Strips */}
+          <div className="mt-12 space-y-3 sm:space-y-4 md:hidden">
+            <div className="w-full bg-gradient-to-r from-pink-100 to-rose-200 rounded-xl p-3 sm:p-4 shadow-lg">
+              <div className="flex items-center justify-between">
+                <span className="text-xl sm:text-2xl font-extrabold text-pink-700">500+</span>
+                <span className="text-xs sm:text-sm text-gray-700">Students Trained</span>
+              </div>
+            </div>
+            <div className="w-full bg-gradient-to-r from-emerald-100 to-green-200 rounded-xl p-3 sm:p-4 shadow-lg">
+              <div className="flex items-center justify-between">
+                <span className="text-xl sm:text-2xl font-extrabold text-emerald-700">50+</span>
+                <span className="text-xs sm:text-sm text-gray-700">Projects Completed</span>
+              </div>
+            </div>
+            <div className="w-full bg-gradient-to-r from-violet-100 to-purple-200 rounded-xl p-3 sm:p-4 shadow-lg">
+              <div className="flex items-center justify-between">
+                <span className="text-xl sm:text-2xl font-extrabold text-violet-700">15+</span>
+                <span className="text-xs sm:text-sm text-gray-700">Technologies</span>
+              </div>
+            </div>
+            <div className="w-full bg-gradient-to-r from-amber-100 to-orange-200 rounded-xl p-3 sm:p-4 shadow-lg">
+              <div className="flex items-center justify-between">
+                <span className="text-xl sm:text-2xl font-extrabold text-amber-700">100%</span>
+                <span className="text-xs sm:text-sm text-gray-700">Hands-on Learning</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Lab Statistics - Desktop/Laptop: Cards Grid */}
+          <div className="mt-12 hidden md:grid grid-cols-4 gap-6">
             <div className="text-center bg-gradient-to-br from-pink-100 to-rose-200 rounded-2xl p-4 hover:scale-105 transition-transform duration-300 shadow-lg">
               <div className="text-3xl font-bold text-pink-700 mb-2">500+</div>
               <div className="text-gray-700">Students Trained</div>
@@ -617,7 +645,7 @@ export default function WhatsStemLab() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 
                   href="/contact" 
-                  className="bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-pink-600 hover:via-purple-700 hover:to-blue-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 inline-block text-center"
+                  className="w-full sm:w-auto bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-pink-600 hover:via-purple-700 hover:to-blue-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 inline-block text-center"
                 >
                   Book Lab Visit
                 </a>
@@ -625,7 +653,7 @@ export default function WhatsStemLab() {
                   href="https://youtu.be/Gtv-AWWbJfA?si=r8jQc8__uf7KUMHQ" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-cyan-500 to-teal-600 text-white border-2 border-transparent px-8 py-4 rounded-full font-bold text-lg hover:from-cyan-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 inline-block text-center"
+                  className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-teal-600 text-white border-2 border-transparent px-8 py-4 rounded-full font-bold text-lg hover:from-cyan-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 inline-block text-center"
                 >
                   Virtual Tour
                 </a>

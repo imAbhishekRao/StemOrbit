@@ -113,31 +113,31 @@ export default function TestimonialsSection() {
           {/* Mobile: Show only first testimonial */}
           <div className="lg:hidden">
             {currentPair[0] && (
-              <div key={`${current}-0`} className="relative rounded-2xl shadow-2xl flex flex-col items-center px-6 py-8 w-full min-h-[400px] transition-all duration-500 transform hover:scale-105" style={{ background: currentPair[0].color }}>
+              <div key={`${current}-0`} className="relative rounded-xl sm:rounded-2xl shadow-2xl flex flex-col items-center px-4 sm:px-6 py-6 sm:py-8 w-full min-h-[350px] sm:min-h-[400px] transition-all duration-500 transform hover:scale-105" style={{ background: currentPair[0].color }}>
                 {/* Circular image */}
-                <div className="relative -top-16 z-20 mb-2">
-                  <div className="w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-lg bg-white">
+                <div className="relative -top-12 sm:-top-16 z-20 mb-2">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-[3px] sm:border-4 border-white overflow-hidden shadow-lg bg-white">
                     <Image src={currentPair[0].img} alt={currentPair[0].name} width={96} height={96} className="object-cover w-full h-full" />
                   </div>
                 </div>
                 
                 {/* Content */}
-                <div className="flex-1 flex flex-col justify-center items-center text-center">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-white text-2xl leading-none">"</span>
-                    <span className="text-white text-xl font-extrabold font-fredoka">{currentPair[0].name}</span>
+                <div className="flex-1 flex flex-col justify-center items-center text-center pt-4 sm:pt-0">
+                  <div className="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+                    <span className="text-white text-xl sm:text-2xl leading-none">"</span>
+                    <span className="text-white text-lg sm:text-xl font-extrabold font-fredoka">{currentPair[0].name}</span>
                   </div>
-                  <div className="text-white text-sm opacity-90 font-medium mb-4">{currentPair[0].subtitle}</div>
+                  <div className="text-white text-xs sm:text-sm opacity-90 font-medium mb-3 sm:mb-4 px-2">{currentPair[0].subtitle}</div>
                   
-                  <p className="text-white text-sm font-quicksand mb-6 max-w-md leading-relaxed flex-1">
+                  <p className="text-white text-xs sm:text-sm font-quicksand mb-4 sm:mb-6 max-w-md leading-relaxed flex-1 px-2">
                     {currentPair[0].text}
                   </p>
                   
-                  <div className="flex flex-wrap gap-2 justify-center">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center px-2">
                     {currentPair[0].badges.map((badge, i) => (
-                      <div key={i} className="flex items-center gap-1 bg-white/90 text-black font-bold rounded-lg px-3 py-1 text-xs shadow">
-                        <img src={badge.icon} alt="badge" className="w-3 h-3" />
-                        <span>{badge.text}</span>
+                      <div key={i} className="flex items-center gap-1 bg-white/90 text-black font-bold rounded-lg px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs shadow">
+                        <img src={badge.icon} alt="badge" className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                        <span className="break-words">{badge.text}</span>
                       </div>
                     ))}
                   </div>
@@ -184,12 +184,12 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Navigation buttons */}
-        <div className="flex justify-center gap-4">
-          <button onClick={prev} className="bg-white text-pink-500 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-pink-100 active:scale-90 transition-all border-2 border-pink-200">
-            <img src="/arrow.svg" alt="Previous" className="w-6 h-6" />
+        <div className="flex justify-center gap-3 sm:gap-4">
+          <button onClick={prev} className="bg-white text-pink-500 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow hover:bg-pink-100 active:scale-90 transition-all border-2 border-pink-200">
+            <img src="/arrow.svg" alt="Previous" className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
-          <button onClick={next} className="bg-white text-sky-500 rounded-full w-12 h-12 flex items-center justify-center shadow hover:bg-sky-100 active:scale-90 transition-all border-2 border-sky-200">
-            <img src="/arrow.svg" alt="Next" className="w-6 h-6 rotate-180" />
+          <button onClick={next} className="bg-white text-sky-500 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow hover:bg-sky-100 active:scale-90 transition-all border-2 border-sky-200">
+            <img src="/arrow.svg" alt="Next" className="w-5 h-5 sm:w-6 sm:h-6 rotate-180" />
           </button>
         </div>
 

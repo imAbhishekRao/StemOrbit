@@ -16,8 +16,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Strip */}
-      <div className={`w-full fixed top-0 z-50 bg-pink-400 text-white transition-all duration-300 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+      {/* Top Strip - Hidden on mobile */}
+      <div className={`hidden md:block w-full fixed top-0 z-50 bg-pink-400 text-white transition-all duration-300 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">
           <div className="flex items-center justify-between py-2 text-sm">
             {/* Left Side - Contact Info */}
@@ -61,7 +61,7 @@ export default function Navbar() {
 
       {/* Main Navbar */}
       <nav
-        className={`w-full fixed z-40 transition-all duration-300 bg-white border-b border-gray-200 ${scrolled ? 'top-0' : 'top-10'}`}
+        className={`w-full fixed z-40 transition-all duration-300 bg-white border-b border-gray-200 ${scrolled ? 'top-0' : 'md:top-10 top-0'}`}
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">
         <div className="flex items-center justify-between">
@@ -72,6 +72,9 @@ export default function Navbar() {
                 <DynamicNavImage />
               </a>
             </div>
+            <span className="md:hidden ml-2 text-xl font-extrabold tracking-wide bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 bg-clip-text text-transparent">
+              STEMOrbit
+            </span>
           </div>
 
           {/* Desktop Navigation Links */}
@@ -120,35 +123,105 @@ export default function Navbar() {
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-2 border-t border-pink-200 bg-white bg-opacity-90 rounded-b-none bubblegum-sans">
-  <a href="/whats-stem-lab" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-indigo-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">What's STEM Lab</a>
-  <a href="/courses" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-blue-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">Courses</a>
-  <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-purple-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">For School</a>
-  <a href="/3d-printing" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-orange-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">3D Printing</a>
-  <a href="/summercamp" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-red-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">STEM Camps</a>
-  <a href="/what-we-provide" className="text-gray-700 hover:text-pink-500 block px-4 py-3 text-lg font-bold transition-all duration-300 rounded-none shadow-green-100 hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">What We Provide</a>
+            <div className="px-0 pt-2 pb-4 space-y-1 border-t border-gray-200 bg-white rounded-b-none overflow-y-auto max-h-[calc(100vh-80px)]">
+              {/* Top Strip Links - Mobile Only */}
+              <div className="border-b border-gray-200 pb-3 mb-3">
+                <div className="px-4 py-2 space-y-1">
+                  <a 
+                    href="/blogs" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-medium transition-colors rounded-md"
+                  >
+                    Blogs
+                  </a>
+                  <a 
+                    href="/careers" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-medium transition-colors rounded-md"
+                  >
+                    Career
+                  </a>
+                  <a 
+                    href="/contact" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-medium transition-colors rounded-md"
+                  >
+                    Contact Us
+                  </a>
+                  <a 
+                    href="/about" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-medium transition-colors rounded-md"
+                  >
+                    About Us
+                  </a>
+                  <a 
+                    href="/gallery" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-medium transition-colors rounded-md"
+                  >
+                    Gallery
+                  </a>
+                </div>
+              </div>
+              
+              {/* Main Navigation Links */}
+              <div className="px-4 space-y-1">
+                <a 
+                  href="/whats-stem-lab" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                >
+                  STEM Lab
+                </a>
+                <a 
+                  href="/courses" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                >
+                  Courses
+                </a>
+                <a 
+                  href="/our-lab-offerings" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                >
+                  For School
+                </a>
+                <a 
+                  href="/3d-printing" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                >
+                  3D Printing
+                </a>
+                <a 
+                  href="/summercamp" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                >
+                  STEM Camps
+                </a>
+                <a 
+                  href="/what-we-provide" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                >
+                  Programs and Services
+                </a>
+              </div>
+              
   {/* Mobile Actions */}
-  <div className="border-t border-pink-200 pt-3 mt-3">
-    <div className="px-4 py-3">
-      <button onClick={handleBookCallClick} className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 px-6 py-3 rounded-lg text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-3">
-        Get Demo
-      </button>
-    </div>
-    <div className="flex items-center justify-between px-3 py-2">
-      <span className="text-gray-700 text-lg font-medium bubblegum-sans">🙋‍♂️ Ask Us</span>
-      <div className="flex space-x-3">
-        <button className="text-gray-700 hover:text-pink-500 transition-all duration-300 p-3 bg-white bg-opacity-80 rounded-none shadow hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
+              <div className="border-t border-gray-200 pt-3 mt-3 px-4">
+                <button 
+                  onClick={() => {
+                    handleBookCallClick();
+                    setIsMobileMenuOpen(false);
+                  }} 
+                  className="w-full bg-pink-500 text-white hover:bg-pink-600 px-6 py-3 rounded-lg text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-3"
+                >
+                  Enquire Now
         </button>
-        <button className="text-gray-700 hover:text-pink-500 transition-all duration-300 p-3 bg-white bg-opacity-80 rounded-none shadow hover:shadow-pink-200 hover:-translate-y-1 bubblegum-sans">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5.5M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6" />
-          </svg>
-        </button>
-      </div>
-    </div>
   </div>
 </div>
           </div>

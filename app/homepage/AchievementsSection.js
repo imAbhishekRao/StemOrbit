@@ -68,15 +68,20 @@ const achievementImages = [
 export default function AchievementsSection() {
   const scrollRef = useRef(null);
 
+  // Duplicate images for infinite effect
+  const imagesToRender = [...achievementImages, ...achievementImages];
+
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
+    
     let animationFrame;
     let scrollAmount = scrollContainer.scrollLeft;
     const speed = 1;
     function animate() {
       scrollAmount += speed;
-      if (scrollAmount >= scrollContainer.scrollWidth / 2) {
+      const halfWidth = scrollContainer.scrollWidth / 2;
+      if (scrollAmount >= halfWidth) {
         scrollAmount = 0;
       }
       scrollContainer.scrollLeft = scrollAmount;
@@ -86,25 +91,21 @@ export default function AchievementsSection() {
     return () => cancelAnimationFrame(animationFrame);
   }, []);
 
-  // Duplicate images for infinite effect
-  const imagesToRender = [...achievementImages, ...achievementImages];
-
   return (
-    <section className="relative w-full py-12 md:py-20 bg-[#FFF0F6] overflow-hidden flex flex-col items-center justify-center">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-pink-700 mb-10 text-center drop-shadow-lg font-fredoka">
+    <section className="relative w-full py-8 sm:py-12 md:py-16 lg:py-20 bg-[#FFF0F6] overflow-hidden flex flex-col items-center justify-center px-4">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-pink-700 mb-6 sm:mb-8 md:mb-10 text-center drop-shadow-lg font-fredoka">
         Achievements Gallery
       </h2>
       <div
         ref={scrollRef}
-        className="w-screen overflow-x-auto whitespace-nowrap scrollbar-hide relative flex items-center"
-        style={{ scrollBehavior: "smooth", maxWidth: '100vw', height: '340px' }}
+        className="w-screen overflow-x-auto whitespace-nowrap scrollbar-hide relative flex items-center achievements-carousel"
+        style={{ scrollBehavior: "smooth", maxWidth: '100vw' }}
       >
-        <div className="flex items-center" style={{ width: `${imagesToRender.length * 520}px`, height: '340px' }}>
+        <div className="flex items-center achievements-carousel-inner">
           {imagesToRender.map((img, idx) => (
             <div
               key={idx}
-              className="inline-block px-4 max-w-[500px]"
-              style={{ width: '500px', height: '340px', maxWidth: '500px' }}
+              className="inline-block px-2 sm:px-3 md:px-4 achievements-carousel-item flex-shrink-0"
             >
               <div className="relative w-full h-full shadow-lg rounded-xl overflow-hidden flex items-center justify-center bg-white ring-1 ring-pink-100/60">
                 <Image
@@ -115,7 +116,7 @@ export default function AchievementsSection() {
                   className="object-cover w-full h-full"
                   draggable={false}
                   priority={idx < 3}
-                  sizes="500px"
+                  sizes="(max-width: 640px) 300px, (max-width: 768px) 350px, (max-width: 1024px) 400px, 500px"
                 />
               </div>
             </div>
@@ -125,6 +126,61 @@ export default function AchievementsSection() {
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .achievements-carousel {
+          height: 240px;
+        }
+        .achievements-carousel-item {
+          width: 300px;
+          height: 240px;
+          max-width: 300px;
+        }
+        .achievements-carousel-inner {
+          display: inline-flex;
+          height: 240px;
+        }
+        
+        @media (min-width: 640px) {
+          .achievements-carousel {
+            height: 280px;
+          }
+          .achievements-carousel-item {
+            width: 350px;
+            height: 280px;
+            max-width: 350px;
+          }
+          .achievements-carousel-inner {
+            height: 280px;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .achievements-carousel {
+            height: 300px;
+          }
+          .achievements-carousel-item {
+            width: 400px;
+            height: 300px;
+            max-width: 400px;
+          }
+          .achievements-carousel-inner {
+            height: 300px;
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          .achievements-carousel {
+            height: 340px;
+          }
+          .achievements-carousel-item {
+            width: 500px;
+            height: 340px;
+            max-width: 500px;
+          }
+          .achievements-carousel-inner {
+            height: 340px;
+          }
+        }
       `}</style>
     </section>
   );

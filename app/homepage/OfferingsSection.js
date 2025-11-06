@@ -150,11 +150,21 @@ export default function OfferingsSection() {
       <style jsx>{`
         .offerings-section {
           width: 100%;
-          padding: 4rem 0;
+          padding: 2rem 0;
           background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdf4 100%);
           font-family: sans-serif;
           position: relative;
           overflow: hidden;
+        }
+        @media (min-width: 640px) {
+          .offerings-section {
+            padding: 3rem 0;
+          }
+        }
+        @media (min-width: 1024px) {
+          .offerings-section {
+            padding: 4rem 0;
+          }
         }
         .container {
           max-width: 80rem;
@@ -163,27 +173,69 @@ export default function OfferingsSection() {
         }
         .title-wrapper {
           text-align: center;
-          margin-bottom: 4rem;
+          margin-bottom: 2rem;
+          padding: 0 0.5rem;
+        }
+        @media (min-width: 640px) {
+          .title-wrapper {
+            margin-bottom: 3rem;
+          }
+        }
+        @media (min-width: 1024px) {
+          .title-wrapper {
+            margin-bottom: 4rem;
+          }
         }
         .main-title {
-          font-size: 2.25rem;
+          font-size: 1.5rem;
           font-weight: 800;
           color: #111827;
-          margin-bottom: 1rem;
+          margin-bottom: 0.75rem;
           letter-spacing: -0.025em;
+        }
+        @media (min-width: 640px) {
+          .main-title {
+            font-size: 2rem;
+          }
+        }
+        @media (min-width: 1024px) {
+          .main-title {
+            font-size: 2.25rem;
+          }
         }
         .title-blue { color: #2563eb; }
         .title-purple { color: #9333ea; }
         .subtitle {
-          font-size: 1.125rem;
+          font-size: 0.875rem;
           color: #4b5563;
           max-width: 48rem;
           margin: 0 auto;
+          padding: 0 0.5rem;
+        }
+        @media (min-width: 640px) {
+          .subtitle {
+            font-size: 1rem;
+          }
+        }
+        @media (min-width: 1024px) {
+          .subtitle {
+            font-size: 1.125rem;
+          }
         }
          .grid-container {
            display: grid;
            grid-template-columns: repeat(1, minmax(0, 1fr));
-           gap: 3rem;
+           gap: 2rem;
+         }
+         @media (min-width: 640px) {
+           .grid-container {
+             gap: 2.5rem;
+           }
+         }
+         @media (min-width: 1024px) {
+           .grid-container {
+             gap: 3rem;
+           }
          }
          .service-item {
            display: flex;
@@ -195,15 +247,21 @@ export default function OfferingsSection() {
          .service-card {
            border: 2px solid #374151;
            border-radius: 0.75rem;
-           padding: 1rem;
+           padding: 0.75rem;
            display: flex;
            flex-direction: column;
            align-items: center;
            transition: all 0.3s ease;
            width: 100%;
            max-width: 280px;
-           height: 200px;
+           height: 180px;
            justify-content: space-between;
+         }
+         @media (min-width: 640px) {
+           .service-card {
+             padding: 1rem;
+             height: 200px;
+           }
          }
          .service-card:hover {
            border-color: #3b82f6;
@@ -211,17 +269,30 @@ export default function OfferingsSection() {
          }
          .icon-wrapper {
            position: relative;
-           width: 6rem;
-           height: 6rem;
-           margin-bottom: 1rem;
+           width: 5rem;
+           height: 5rem;
+           margin-bottom: 0.75rem;
            z-index: 10;
+         }
+         @media (min-width: 640px) {
+           .icon-wrapper {
+             width: 6rem;
+             height: 6rem;
+             margin-bottom: 1rem;
+           }
          }
          .connecting-line {
            width: 2px;
-           height: 2rem;
+           height: 1.5rem;
            background-color: #374151;
-           margin-bottom: 1rem;
+           margin-bottom: 0.75rem;
            position: relative;
+         }
+         @media (min-width: 640px) {
+           .connecting-line {
+             height: 2rem;
+             margin-bottom: 1rem;
+           }
          }
          .connecting-line::before {
            content: '';
@@ -253,8 +324,13 @@ export default function OfferingsSection() {
           gap: 0.25rem;
         }
         .emoji-icon {
-          font-size: 1.5rem;
+          font-size: 1.25rem;
           line-height: 1;
+        }
+        @media (min-width: 640px) {
+          .emoji-icon {
+            font-size: 1.5rem;
+          }
         }
         .vector-icon {
           width: 1.5rem;
@@ -262,7 +338,7 @@ export default function OfferingsSection() {
           object-fit: contain;
         }
         .card-title {
-          font-size: 0.875rem;
+          font-size: 0.75rem;
           font-weight: 700;
           color: #1f2937;
           text-align: center;
@@ -270,9 +346,14 @@ export default function OfferingsSection() {
           margin-bottom: 0.5rem;
           line-height: 1.2;
         }
+        @media (min-width: 640px) {
+          .card-title {
+            font-size: 0.875rem;
+          }
+        }
          .card-description {
            color: #4b5563;
-           font-size: 0.75rem;
+           font-size: 0.7rem;
            text-align: center;
            line-height: 1.4;
            margin-bottom: 0;
@@ -282,21 +363,37 @@ export default function OfferingsSection() {
            justify-content: center;
            height: 100%;
          }
+         @media (min-width: 640px) {
+           .card-description {
+             font-size: 0.75rem;
+           }
+         }
          .button-wrapper {
            text-align: center;
-           margin-top: 1.5rem;
+           margin-top: 1rem;
            width: 100%;
          }
+         @media (min-width: 640px) {
+           .button-wrapper {
+             margin-top: 1.5rem;
+           }
+         }
         .more-info-btn {
-          padding: 0.5rem 1.5rem;
+          padding: 0.5rem 1.25rem;
           border-radius: 9999px;
           color: #ffffff;
           font-weight: 600;
-          font-size: 0.875rem;
+          font-size: 0.75rem;
           border: none;
           cursor: pointer;
           transition: all 0.3s ease;
           box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        }
+        @media (min-width: 640px) {
+          .more-info-btn {
+            padding: 0.5rem 1.5rem;
+            font-size: 0.875rem;
+          }
         }
         .more-info-btn:hover {
           box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
