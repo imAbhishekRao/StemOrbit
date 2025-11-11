@@ -110,21 +110,13 @@ export default function OfferingsSection() {
            <div className="grid-container">
              {services.map((service) => (
                <div key={service.id} className="service-item">
-                 {/* Icon Circle - Outside Card */}
-                 <div className="icon-wrapper">
-                   <div className="icon-circle" style={{ backgroundImage: service.gradient }}>
-                     <div className="icon-content">
-                       <div className="emoji-icon">{service.emoji}</div>
-                       
-                     </div>
-                   </div>
-          </div>
-
-                 {/* Connecting Line */}
-                 <div className="connecting-line"></div>
-                 
-                 {/* Card Content */}
+                 {/* Normal Card with all content inside */}
                  <div className="service-card" style={{ backgroundColor: service.cardBackground }}>
+                   {/* Icon inside card */}
+                   <div className="icon-circle" style={{ backgroundImage: service.gradient }}>
+                     <div className="emoji-icon">{service.emoji}</div>
+                   </div>
+                   
                    <h3 className="card-title">
                      {service.title}
                    </h3>
@@ -132,10 +124,8 @@ export default function OfferingsSection() {
                    <p className="card-description">
                      {service.description}
                    </p>
-          </div>
 
-                 {/* More Info Button - Outside Card */}
-                 <div className="button-wrapper">
+                   {/* Button inside card */}
                    <button className="more-info-btn" style={{ backgroundColor: service.buttonColor }}>
                      More Info
                    </button>
@@ -240,96 +230,65 @@ export default function OfferingsSection() {
          .service-item {
            display: flex;
            flex-direction: column;
-           align-items: center;
+           align-items: stretch;
            position: relative;
            height: 100%;
          }
          .service-card {
-           border: 2px solid #374151;
-           border-radius: 0.75rem;
-           padding: 0.75rem;
+           border: 2px solid #e5e7eb;
+           border-radius: 1rem;
+           padding: 1.5rem;
            display: flex;
            flex-direction: column;
            align-items: center;
            transition: all 0.3s ease;
            width: 100%;
-           max-width: 280px;
-           height: 180px;
+           height: 100%;
            justify-content: space-between;
+           box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+           min-height: 280px;
          }
          @media (min-width: 640px) {
            .service-card {
-             padding: 1rem;
-             height: 200px;
+             padding: 1.75rem;
+             min-height: 300px;
+           }
+         }
+         @media (min-width: 1024px) {
+           .service-card {
+             padding: 2rem;
+             min-height: 320px;
            }
          }
          .service-card:hover {
            border-color: #3b82f6;
            transform: translateY(-0.25rem);
-         }
-         .icon-wrapper {
-           position: relative;
-           width: 5rem;
-           height: 5rem;
-           margin-bottom: 0.75rem;
-           z-index: 10;
-         }
-         @media (min-width: 640px) {
-           .icon-wrapper {
-             width: 6rem;
-             height: 6rem;
-             margin-bottom: 1rem;
-           }
-         }
-         .connecting-line {
-           width: 2px;
-           height: 1.5rem;
-           background-color: #374151;
-           margin-bottom: 0.75rem;
-           position: relative;
-         }
-         @media (min-width: 640px) {
-           .connecting-line {
-             height: 2rem;
-             margin-bottom: 1rem;
-           }
-         }
-         .connecting-line::before {
-           content: '';
-           position: absolute;
-           top: 0;
-           left: 50%;
-           transform: translateX(-50%);
-           width: 0;
-           height: 0;
-           border-left: 4px solid transparent;
-           border-right: 4px solid transparent;
-           border-top: 6px solid #374151;
+           box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
          }
         .icon-circle {
-          width: 100%;
-          height: 100%;
+          width: 4rem;
+          height: 4rem;
           border-radius: 9999px;
           display: flex;
           align-items: center;
           justify-content: center;
           box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-          animation: childish-bounce 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+          margin-bottom: 1rem;
         }
-        .icon-content {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 0.25rem;
+        @media (min-width: 640px) {
+          .icon-circle {
+            width: 5rem;
+            height: 5rem;
+            margin-bottom: 1.25rem;
+          }
         }
         .emoji-icon {
-          font-size: 1.25rem;
+          font-size: 2rem;
           line-height: 1;
         }
         @media (min-width: 640px) {
           .emoji-icon {
-            font-size: 1.5rem;
+            font-size: 2.5rem;
           }
         }
         .vector-icon {
@@ -338,61 +297,61 @@ export default function OfferingsSection() {
           object-fit: contain;
         }
         .card-title {
-          font-size: 0.75rem;
+          font-size: 1rem;
           font-weight: 700;
           color: #1f2937;
           text-align: center;
-          text-transform: uppercase;
-          margin-bottom: 0.5rem;
-          line-height: 1.2;
+          margin-bottom: 0.75rem;
+          line-height: 1.3;
         }
         @media (min-width: 640px) {
           .card-title {
-            font-size: 0.875rem;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+          }
+        }
+        @media (min-width: 1024px) {
+          .card-title {
+            font-size: 1.25rem;
           }
         }
          .card-description {
            color: #4b5563;
-           font-size: 0.7rem;
+           font-size: 0.875rem;
            text-align: center;
-           line-height: 1.4;
-           margin-bottom: 0;
+           line-height: 1.5;
+           margin-bottom: 1.5rem;
            flex-grow: 1;
-           display: flex;
-           align-items: center;
-           justify-content: center;
-           height: 100%;
          }
          @media (min-width: 640px) {
            .card-description {
-             font-size: 0.75rem;
+             font-size: 0.9375rem;
+             margin-bottom: 1.75rem;
            }
          }
-         .button-wrapper {
-           text-align: center;
-           margin-top: 1rem;
-           width: 100%;
-         }
-         @media (min-width: 640px) {
-           .button-wrapper {
-             margin-top: 1.5rem;
+         @media (min-width: 1024px) {
+           .card-description {
+             font-size: 1rem;
+             margin-bottom: 2rem;
            }
          }
         .more-info-btn {
-          padding: 0.5rem 1.25rem;
-          border-radius: 9999px;
+          padding: 0.625rem 1.5rem;
+          border-radius: 0.5rem;
           color: #ffffff;
           font-weight: 600;
-          font-size: 0.75rem;
+          font-size: 0.875rem;
           border: none;
           cursor: pointer;
           transition: all 0.3s ease;
           box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+          width: 100%;
+          max-width: 200px;
         }
         @media (min-width: 640px) {
           .more-info-btn {
-            padding: 0.5rem 1.5rem;
-            font-size: 0.875rem;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
           }
         }
         .more-info-btn:hover {
@@ -483,109 +442,23 @@ export default function OfferingsSection() {
            }
          }
 
-        @keyframes childish-bounce {
-          0%, 100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.04) rotate(-2deg);
-          }
-        }
 
          /* Responsive Breakpoints */
          @media (min-width: 640px) {
            .grid-container {
              grid-template-columns: repeat(2, minmax(0, 1fr));
-             gap: 2rem;
-           }
-           .main-title {
-              font-size: 2rem;
-           }
-           .card-title {
-             font-size: 0.9rem;
-           }
-           .card-description {
-             font-size: 0.8rem;
-           }
-           .service-card {
-             height: 200px;
-             padding: 1rem;
-           }
-         }
-         @media (min-width: 768px) {
-           .grid-container {
-             grid-template-columns: repeat(2, minmax(0, 1fr));
-             gap: 2.5rem;
-           }
-           .main-title {
-              font-size: 2.25rem;
-           }
-           .card-title {
-             font-size: 0.95rem;
-           }
-           .card-description {
-             font-size: 0.85rem;
-           }
-           .service-card {
-             height: 220px;
-             padding: 1.25rem;
+             gap: 1.5rem;
            }
          }
          @media (min-width: 1024px) {
            .grid-container {
              grid-template-columns: repeat(4, minmax(0, 1fr));
-             gap: 2rem;
-           }
-            .main-title {
-              font-size: 2.5rem;
-           }
-           .card-title {
-             font-size: 0.9rem;
-           }
-           .card-description {
-             font-size: 0.8rem;
-           }
-           .service-card {
-             height: 200px;
-             padding: 1rem;
+             gap: 1.5rem;
            }
          }
          @media (min-width: 1280px) {
            .grid-container {
-             grid-template-columns: repeat(4, minmax(0, 1fr));
-             gap: 2.5rem;
-           }
-           .main-title {
-              font-size: 2.75rem;
-           }
-           .card-title {
-             font-size: 1rem;
-           }
-           .card-description {
-             font-size: 0.85rem;
-           }
-           .service-card {
-             height: 220px;
-             padding: 1.25rem;
-           }
-         }
-         @media (min-width: 1536px) {
-           .grid-container {
-             grid-template-columns: repeat(4, minmax(0, 1fr));
-             gap: 3rem;
-           }
-            .main-title {
-              font-size: 3rem;
-           }
-           .card-title {
-             font-size: 1.1rem;
-           }
-           .card-description {
-             font-size: 0.9rem;
-           }
-           .service-card {
-             height: 240px;
-             padding: 1.5rem;
+             gap: 2rem;
            }
          }
       `}</style>

@@ -32,15 +32,17 @@ export default function About() {
               </button>
             </div>
           </div>
-          {/* Right: Image Placeholder */}
+          {/* Right: About Us Image */}
           <div className="flex-1 flex items-center justify-center">
-            <div className="w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] lg:w-[350px] lg:h-[350px] bg-gray-100 rounded-2xl shadow-md flex items-center justify-center">
-              <span className="text-gray-400 text-sm sm:text-lg">[ About Us Image ]</span>
+            <div className="w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] lg:w-[350px] lg:h-[350px] rounded-2xl shadow-md overflow-hidden">
+              <img 
+                src="/moments (7).jpg" 
+                alt="STEMOrbit Team" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
-        {/* Blue Star Doodle - right side */}
-        <img src="https://buffer.com/static/about/webp/blue-star-doodle.webp" alt="Blue Star Doodle" className="w-16 md:w-20 lg:w-24 h-auto absolute right-0 md:right-10 top-10 md:top-16 z-10" style={{pointerEvents: 'none'}} />
       </section>
 
       {/* Our Story Section */}
@@ -54,8 +56,6 @@ export default function About() {
             <p className="text-base sm:text-lg lg:text-xl text-gray-700 max-w-3xl mx-auto text-center">
               The journey that brought us here and the passion that drives us forward
             </p>
-            {/* Absolutely positioned arrow */}
-            <img src="https://buffer.com/static/about/webp/first-pink-down-arrow-doodle.webp" alt="Down arrow" className="w-16 md:w-20 lg:w-24 h-auto absolute left-0 md:left-10 top-full -mt-6 z-10" style={{pointerEvents: 'none'}} />
           </div>
           <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
             {/* Left: Image */}
@@ -93,7 +93,6 @@ export default function About() {
             <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto text-center">
               Empowering the next generation through innovative STEM education
             </p>
-            <img src="https://buffer.com/static/about/webp/orange-blue-doodle.webp" alt="Mission Doodle" className="w-16 md:w-20 lg:w-24 h-auto absolute right-0 md:right-10 top-full -mt-6 z-10" style={{pointerEvents: 'none'}} />
           </div>
           <div className="flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-12 lg:gap-16">
             {/* Right: Image */}
@@ -169,17 +168,25 @@ export default function About() {
             className="flex gap-4 sm:gap-6 md:gap-8 lg:gap-10 w-max animate-slide-infinite"
             style={{ animation: 'slide-infinite 30s linear infinite' }}
           >
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Team 1" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-4 sm:mt-6 md:mt-8" />
-            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Team 2" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-4 sm:mb-6 md:mb-8" />
-            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Team 3" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-8 sm:mt-12 md:mt-16" />
-            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80" alt="Team 4" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-8 sm:mb-12 md:mb-16" />
-            <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=600&q=80" alt="Team 5" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-4 sm:mt-6 md:mt-8" />
+            <img src="/moments (1).jpg" alt="STEMOrbit Moments 1" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-4 sm:mt-6 md:mt-8" />
+            <img src="/moments (2).jpeg" alt="STEMOrbit Moments 2" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-4 sm:mb-6 md:mb-8" />
+            <img src="/moments (3).jpg" alt="STEMOrbit Moments 3" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-8 sm:mt-12 md:mt-16" />
+            <img src="/moments (4).jpg" alt="STEMOrbit Moments 4" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-8 sm:mb-12 md:mb-16" />
+            <img src="/moments (5).jpg" alt="STEMOrbit Moments 5" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-4 sm:mt-6 md:mt-8" />
+            <img src="/moments (6).jpg" alt="STEMOrbit Moments 6" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-4 sm:mb-6 md:mb-8" />
+            <img src="/moments (8).jpg" alt="STEMOrbit Moments 8" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-8 sm:mt-12 md:mt-16" />
+            <img src="/moments (9).jpg" alt="STEMOrbit Moments 9" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-8 sm:mb-12 md:mb-16" />
+            <img src="/moments (10).jpg" alt="STEMOrbit Moments 10" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-4 sm:mt-6 md:mt-8" />
             {/* Duplicate for infinite effect, same staggered pattern */}
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Team 1" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-4 sm:mt-6 md:mt-8" />
-            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Team 2" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-4 sm:mb-6 md:mb-8" />
-            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Team 3" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-8 sm:mt-12 md:mt-16" />
-            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80" alt="Team 4" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-8 sm:mb-12 md:mb-16" />
-            <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=600&q=80" alt="Team 5" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-4 sm:mt-6 md:mt-8" />
+            <img src="/moments (1).jpg" alt="STEMOrbit Moments 1" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-4 sm:mt-6 md:mt-8" />
+            <img src="/moments (2).jpeg" alt="STEMOrbit Moments 2" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-4 sm:mb-6 md:mb-8" />
+            <img src="/moments (3).jpg" alt="STEMOrbit Moments 3" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-8 sm:mt-12 md:mt-16" />
+            <img src="/moments (4).jpg" alt="STEMOrbit Moments 4" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-8 sm:mb-12 md:mb-16" />
+            <img src="/moments (5).jpg" alt="STEMOrbit Moments 5" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-4 sm:mt-6 md:mt-8" />
+            <img src="/moments (6).jpg" alt="STEMOrbit Moments 6" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-4 sm:mb-6 md:mb-8" />
+            <img src="/moments (8).jpg" alt="STEMOrbit Moments 8" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-8 sm:mt-12 md:mt-16" />
+            <img src="/moments (9).jpg" alt="STEMOrbit Moments 9" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mb-8 sm:mb-12 md:mb-16" />
+            <img src="/moments (10).jpg" alt="STEMOrbit Moments 10" className="w-[280px] h-[200px] sm:w-[320px] sm:h-[230px] md:w-[350px] md:h-[250px] object-cover rounded-2xl shadow mt-4 sm:mt-6 md:mt-8" />
           </div>
         </div>
       </section>
