@@ -260,7 +260,7 @@ export default function OurLabOfferings() {
                   Book a Call
                 </button>
                 <a 
-                  href="/STEMOrbit%20Brochure.pdf" 
+                  href="/stem_brochure.pdf" 
                   download
                   className="px-6 py-3 border-2 border-pink-400 text-pink-300 font-semibold text-base rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 inline-block text-center"
                 >

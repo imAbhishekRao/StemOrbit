@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import Link from 'next/link';
 import { handleBookCallClick } from '../../lib/calendly';
 
 export default function CoursesPage() {
@@ -363,9 +364,14 @@ export default function CoursesPage() {
               <li className="flex items-center gap-2">✅ Weekly Craft Challenges</li>
               <li className="flex items-center gap-2">✅ All materials included</li>
             </ul>
-            <button className="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 sm:py-2.5 px-4 rounded-xl shadow-md transition text-sm sm:text-base">
+            <a
+              href="https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20enrolling%20for%20the%20Creative%20Crafters%20course.%20Could%20you%20please%20provide%20more%20details%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 sm:py-2.5 px-4 rounded-xl shadow-md transition text-sm sm:text-base text-center block"
+            >
               Get started
-            </button>
+            </a>
           </div>
 
           {/* Card 2 - Pink (Most Popular) */}
@@ -386,9 +392,14 @@ export default function CoursesPage() {
               <li className="flex items-center gap-2">✅ Friendly Robot Battles</li>
               <li className="flex items-center gap-2">✅ Trophies & Prizes</li>
             </ul>
-            <button className="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 sm:py-2.5 px-4 rounded-xl shadow-md transition text-sm sm:text-base">
+            <a
+              href="https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20enrolling%20for%20the%20Robo%20Rockstars%20course.%20Could%20you%20please%20provide%20more%20details%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 sm:py-2.5 px-4 rounded-xl shadow-md transition text-sm sm:text-base text-center block"
+            >
               Get started
-            </button>
+            </a>
           </div>
 
           {/* Card 3 - Yellow */}
@@ -411,9 +422,14 @@ export default function CoursesPage() {
               <li className="flex items-center gap-2">✅ Puzzle Challenges</li>
               <li className="flex items-center gap-2">✅ Take-home Kits</li>
             </ul>
-            <button className="w-full bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-bold py-2 sm:py-2.5 px-4 rounded-xl shadow-md transition text-sm sm:text-base">
+            <a
+              href="https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20enrolling%20for%20the%20Science%20Sleuths%20course.%20Could%20you%20please%20provide%20more%20details%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-bold py-2 sm:py-2.5 px-4 rounded-xl shadow-md transition text-sm sm:text-base text-center block"
+            >
               Get started
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -502,9 +518,14 @@ export default function CoursesPage() {
             <p className="text-lg text-gray-700 mb-6">
               Want to see your child's project featured here? Join our courses today!
             </p>
-            <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+            <a
+              href="https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20enrolling%20my%20child%20in%20your%20courses.%20Could%20you%20please%20provide%20more%20details%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+            >
               Start Your Journey
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -527,12 +548,12 @@ export default function CoursesPage() {
             >
               {showAllCourses ? 'Hide Courses' : 'View All Courses'}
             </button>
-            <a
-              href="#why-choose"
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-blue-300 transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base text-center"
+            <Link
+              href="/contact"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full shadow-lg hover:shadow-blue-300 transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base text-center inline-block"
             >
               Book a Free Trial
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -578,11 +599,14 @@ export default function CoursesPage() {
                       </div>
                       <div className="mt-auto p-4 sm:p-6 pt-0">
                         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                          <button 
-                            className={`${color.button} text-white font-bold py-2 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105 ${color.buttonHover} flex-1`}
+                          <a
+                            href={`https://wa.me/917009594410?text=${encodeURIComponent(`Hi! I'm interested in enrolling for the ${course.title} course. Could you please provide more details?`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${color.button} text-white font-bold py-2 px-6 rounded-full shadow-md transition-all duration-300 transform hover:scale-105 ${color.buttonHover} flex-1 text-center`}
                           >
                             Enroll Now
-                          </button>
+                          </a>
                           <button 
                             onClick={handleBookCallClick}
                             className="bg-white text-gray-800 font-bold py-2 px-6 border-2 border-gray-300 rounded-full shadow-md transition-all duration-300 transform hover:scale-105 hover:bg-gray-100 hover:border-gray-400 flex-1"
@@ -815,9 +839,14 @@ export default function CoursesPage() {
                   </svg>
                   Watch on Instagram
                 </a>
-                <button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-sm sm:text-base">
+                <a
+                  href={`https://wa.me/917009594410?text=${encodeURIComponent(`Hi! I'm interested in enrolling for the ${selectedVideo.course} course. Could you please provide more details?`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-sm sm:text-base text-center"
+                >
                   Enroll in {selectedVideo.course}
-                </button>
+                </a>
               </div>
             </div>
           </div>

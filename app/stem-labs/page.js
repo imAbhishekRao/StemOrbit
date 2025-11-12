@@ -182,7 +182,7 @@ export default function StemLabs() {
                 <button onClick={handleBookCallClick} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-lg rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                   Request a School Demo
                 </button>
-                <a href="/STEMOrbit%20Brochure.pdf" download className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold text-lg rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 hover:shadow-lg inline-block text-center">
+                <a href="/stem_brochure.pdf" download className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold text-lg rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 hover:shadow-lg inline-block text-center">
                   Download Brochure
                 </a>
               </div>
@@ -243,7 +243,7 @@ export default function StemLabs() {
               <button onClick={handleBookCallClick} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-pink-500 text-white font-semibold text-lg rounded-2xl shadow-xl hover:from-blue-700 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-md">
                 Start the 3 Steps
               </button>
-              <a href="/STEMOrbit%20Brochure.pdf" download className="px-8 py-4 border-2 border-blue-400 text-blue-700 font-semibold text-lg rounded-2xl hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 hover:shadow-lg backdrop-blur-md inline-block text-center">
+              <a href="/stem_brochure.pdf" download className="px-8 py-4 border-2 border-blue-400 text-blue-700 font-semibold text-lg rounded-2xl hover:bg-blue-100 hover:text-blue-900 transition-all duration-300 hover:shadow-lg backdrop-blur-md inline-block text-center">
                 Download Brochure
               </a>
             </div>

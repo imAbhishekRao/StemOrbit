@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { handleBookCallClick } from '../../lib/calendly';
 
 export default function SummerCampPage() {
@@ -330,7 +331,7 @@ export default function SummerCampPage() {
               <button onClick={handleBookCallClick} className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 animate-pulse hover:animate-none">
                 Register Now
               </button>
-              <a href="/STEMOrbit%20Brochure.pdf" download className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 inline-block text-center hover:scale-105 transform">
+              <a href="/stem_brochure.pdf" download className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 inline-block text-center hover:scale-105 transform">
                 Download Brochure
               </a>
             </div>
@@ -405,9 +406,11 @@ export default function SummerCampPage() {
                 })}
           </div>
           <div className="mt-8 text-center">
-            <button onClick={handleBookCallClick} className="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full font-semibold hover:from-pink-600 hover:to-purple-700 transition-all shadow-lg">
-              Start Your Child's Journey
-            </button>
+            <Link href="/contact">
+              <button className="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full font-semibold hover:from-pink-600 hover:to-purple-700 transition-all shadow-lg">
+                Start Your Child's Journey
+              </button>
+            </Link>
           </div>
 
           {/* Full-width Quote Panel (below story) */}
@@ -473,9 +476,14 @@ export default function SummerCampPage() {
                         <span className="font-semibold text-purple-700">{program.capacity}</span>
                       </div>
                     </div>
-                    <button className={`w-full bg-gradient-to-r ${color.button} text-white py-3 rounded-lg font-semibold transition-all duration-300`} onClick={handleBookCallClick}>
-                      Learn More
-                    </button>
+                    <a
+                      href={`https://wa.me/917009594410?text=${encodeURIComponent(`Hi! I'm interested in the ${program.title} program for my child. Could you please provide more details?`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-full bg-gradient-to-r ${color.button} text-white py-3 rounded-lg font-semibold transition-all duration-300 block text-center`}
+                    >
+                      Enquire Now
+                    </a>
                   </div>
                 </div>
               );

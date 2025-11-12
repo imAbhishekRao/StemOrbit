@@ -62,9 +62,11 @@ export default function BeASTEMEducatorSection() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <button className="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold text-lg rounded-full shadow-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 font-fredoka">
-              Apply Now
-            </button>
+            <Link href="/be-a-stem-educator#application-form">
+              <button className="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold text-lg rounded-full shadow-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 font-fredoka">
+                Apply Now
+              </button>
+            </Link>
             <Link href="/be-a-stem-educator">
               <button className="px-8 py-3 border-2 border-pink-500 text-pink-500 font-semibold text-lg rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 font-fredoka">
                 Learn More

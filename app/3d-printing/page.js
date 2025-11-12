@@ -136,12 +136,20 @@ export default function ThreeDPrintingPage() {
                 From rapid prototyping to custom designs, we make innovation tangible.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <button className="w-full sm:w-auto bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                <a
+                  href="https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20your%203D%20printing%20services.%20Could%20you%20please%20provide%20a%20quote%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 text-center"
+                >
                   Get Quote Now
-                </button>
-                <button className="w-full sm:w-auto border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300">
+                </a>
+                <a
+                  href="#portfolio"
+                  className="w-full sm:w-auto border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 text-center"
+                >
                   View Portfolio
-                </button>
+                </a>
               </div>
             </div>
             {/* Right: Image with bubbles */}
@@ -203,9 +211,14 @@ export default function ThreeDPrintingPage() {
                     </li>
                   ))}
                 </ul>
-                <button onClick={handleBookCallClick} className="w-full mt-4 sm:mt-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 text-sm sm:text-base">
-                  Learn More
-                </button>
+                <a
+                  href={`https://wa.me/917009594410?text=${encodeURIComponent(`Hi! I'm interested in your ${service.title} service. Could you please provide more details?`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full mt-4 sm:mt-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 text-sm sm:text-base block text-center"
+                >
+                  Enquire Now
+                </a>
               </div>
               );
             })}
@@ -270,7 +283,7 @@ export default function ThreeDPrintingPage() {
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-12 sm:py-16 bg-gray-50">
+      <section id="portfolio" className="py-12 sm:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 font-fredoka">
@@ -395,12 +408,22 @@ export default function ThreeDPrintingPage() {
             Get started with your 3D printing project today. Upload your design or contact us for consultation.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <button className="w-full sm:w-auto bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
-              Upload Design
-            </button>
-            <button className="w-full sm:w-auto border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300">
+            <a
+              href="https://wa.me/917009594410?text=Hi!%20I%27d%20like%20to%20send%20my%20design%20for%203D%20printing.%20Could%20you%20please%20guide%20me%20through%20the%20process%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto bg-white text-purple-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 text-center"
+            >
+              Send Design
+            </a>
+            <a
+              href="https://wa.me/917009594410?text=Hi!%20I%27d%20like%20to%20get%20a%20consultation%20for%20my%203D%20printing%20project.%20Could%20you%20please%20help%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 text-center"
+            >
               Get Consultation
-            </button>
+            </a>
           </div>
         </div>
       </section>

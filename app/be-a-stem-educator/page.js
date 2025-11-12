@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function BeASTEMEducatorPage() {
   const [formData, setFormData] = useState({
@@ -86,6 +86,18 @@ export default function BeASTEMEducatorPage() {
     }
   };
 
+  // Handle smooth scrolling to form when page loads with hash
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#application-form') {
+      setTimeout(() => {
+        const element = document.getElementById('application-form');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-pink-50">
       {/* Hero Section */}
@@ -117,9 +129,14 @@ export default function BeASTEMEducatorPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-10 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold text-xl rounded-full shadow-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 font-fredoka">
+              <a
+                href="https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20enrolling%20for%20the%20STEM%20Teacher%20Training%20Program.%20Could%20you%20please%20provide%20more%20details%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-10 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold text-xl rounded-full shadow-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 font-fredoka text-center"
+              >
                 Enroll Today
-              </button>
+              </a>
               <Link href="/contact">
                 <button className="px-10 py-4 border-2 border-pink-500 text-pink-500 font-semibold text-xl rounded-full hover:bg-pink-500 hover:text-white transition-all duration-300 font-fredoka">
                   Contact Us
@@ -451,7 +468,7 @@ export default function BeASTEMEducatorPage() {
       </section>
 
       {/* Application Form Section */}
-      <section className="py-16 sm:py-20 bg-white">
+      <section id="application-form" className="py-16 sm:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 font-fredoka">
@@ -791,9 +808,14 @@ export default function BeASTEMEducatorPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-10 py-4 bg-white text-pink-500 font-semibold text-xl rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 font-fredoka">
+            <a
+              href="https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20enrolling%20for%20the%20STEM%20Teacher%20Training%20Program.%20Could%20you%20please%20provide%20more%20details%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-10 py-4 bg-white text-pink-500 font-semibold text-xl rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 font-fredoka text-center"
+            >
               👉 Enroll Today
-            </button>
+            </a>
             <Link href="/contact">
               <button className="px-10 py-4 border-2 border-white text-white font-semibold text-xl rounded-full hover:bg-white hover:text-pink-500 transition-all duration-300 font-fredoka">
                 Start Your Journey
