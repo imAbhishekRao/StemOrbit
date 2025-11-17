@@ -91,9 +91,12 @@ export default function Navbar() {
 
           {/* Right Side Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <button onClick={handleBookCallClick} className="bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-              Get Demo
-            </button>
+            <a 
+              href="/login"
+              className="bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              Login
+            </a>
             <button className="text-gray-700 hover:text-pink-500 transition-all duration-300 p-2 bg-white bg-opacity-80 rounded-lg shadow hover:shadow-pink-200 hover:-translate-y-1">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5.5M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6" />
@@ -212,13 +215,20 @@ export default function Navbar() {
               </div>
               
   {/* Mobile Actions */}
-              <div className="border-t border-gray-200 pt-3 mt-3 px-4">
+              <div className="border-t border-gray-200 pt-3 mt-3 px-4 space-y-3">
+                <a
+                  href="/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full block text-center bg-white border-2 border-pink-500 text-pink-500 hover:bg-pink-50 px-6 py-3 rounded-lg text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  Login
+                </a>
                 <button 
                   onClick={() => {
                     handleBookCallClick();
                     setIsMobileMenuOpen(false);
                   }} 
-                  className="w-full bg-pink-500 text-white hover:bg-pink-600 px-6 py-3 rounded-lg text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-3"
+                  className="w-full bg-pink-500 text-white hover:bg-pink-600 px-6 py-3 rounded-lg text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   Enquire Now
         </button>
