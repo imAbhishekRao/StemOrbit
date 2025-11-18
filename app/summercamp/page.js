@@ -6,6 +6,7 @@ import { handleBookCallClick } from '../../lib/calendly';
 export default function SummerCampPage() {
   const [selectedProgram, setSelectedProgram] = useState('robotics');
   const [storyVisible, setStoryVisible] = useState(false);
+  const [heroReady, setHeroReady] = useState(false);
   const storyRef = useRef(null);
 
   const storyPoints = [
@@ -16,6 +17,11 @@ export default function SummerCampPage() {
     'That\'s the power of STEM. It doesn\'t just teach science — it teaches kids to think, create, and explore. It transforms passive learners into curious innovators.',
     'In a world where technology is everywhere, our children need more than grades — they need imagination, problem-solving, and the courage to build what they dream. That\'s what STEMOrbit stands for — turning curiosity into creation, and learners into leaders.'
   ];
+
+  useEffect(() => {
+    const timer = setTimeout(() => setHeroReady(true), 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!storyRef.current || typeof window === 'undefined') return;
@@ -303,9 +309,20 @@ export default function SummerCampPage() {
       `}</style>
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-sky-50 text-lg md:text-xl">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-orange-500 to-pink-500 text-white py-20 relative overflow-hidden">
+      <section className="text-gray-900 py-20 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div
+            className={`absolute inset-0 bg-[url('/stemcampbanner.png')] bg-cover bg-center transition-all duration-1000 ${
+              heroReady ? 'scale-100 blur-sm' : 'scale-110 blur-0'
+            }`}
+          />
+        </div>
         {/* Animated Background Elements */}
-        <div className="absolute inset-0 pointer-events-none">
+        <div
+          className={`absolute inset-0 pointer-events-none z-10 transition-opacity duration-700 ${
+            heroReady ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
           <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full animate-ambient" style={{animationDelay: '0s'}}></div>
           <div className="absolute top-20 right-20 w-16 h-16 bg-yellow-300/20 rounded-full animate-slow-float" style={{animationDelay: '1s'}}></div>
           <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-pink-300/20 rounded-full animate-ambient" style={{animationDelay: '2s'}}></div>
@@ -314,26 +331,41 @@ export default function SummerCampPage() {
           <div className="absolute top-1/3 right-10 w-14 h-14 bg-cyan-300/20 rounded-full animate-slow-float" style={{animationDelay: '2.5s'}}></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-fredoka animate-fade-in-up">
-              <span className="text-yellow-300 animate-pulse">STEM</span> Camps
-            </h1>
-            <div className="mb-8 max-w-4xl mx-auto animate-fade-in-up" style={{animationDelay: '0.3s'}}>
-              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-amber-100">
-                From Why to How — the journey begins with STEMOrbit
-              </h2>
-              <p className="text-lg md:text-xl leading-relaxed text-gray-100">
-                When a child asks "Why does this happen?" — that's the beginning of innovation. We nurture that spark through hands-on STEM learning, where kids build, experiment, and discover how things work.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{animationDelay: '0.6s'}}>
-              <button onClick={handleBookCallClick} className="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 animate-pulse hover:animate-none">
-                Register Now
-              </button>
-              <a href="/stem_brochure.pdf" download className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-all duration-300 inline-block text-center hover:scale-105 transform">
-                Download Brochure
-              </a>
+        <div
+          className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 transition-opacity duration-700 ${
+            heroReady ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <div className="relative max-w-4xl mx-auto text-center text-white">
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 h-16 w-48 bg-white/30 blur-3xl rounded-full pointer-events-none"></div>
+            <div className="relative bg-gradient-to-br from-purple-900/60 via-slate-900/40 to-amber-700/40 border border-white/20 rounded-3xl px-6 py-10 sm:px-10 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-md">
+              <div className="absolute inset-0 rounded-3xl border border-white/10 pointer-events-none"></div>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 font-fredoka animate-fade-in-up text-amber-200 drop-shadow-lg">
+                STEM Camps
+              </h1>
+              <div className="mb-8 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white drop-shadow">
+                  From Why to How — the journey begins with STEMOrbit
+                </h2>
+                <p className="text-lg md:text-xl leading-relaxed text-white/90">
+                  When a child asks "Why does this happen?" — that's the beginning of innovation. We nurture that spark through hands-on STEM learning, where kids build, experiment, and discover how things work.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{animationDelay: '0.6s'}}>
+                <button
+                  onClick={handleBookCallClick}
+                  className="bg-gradient-to-r from-amber-300 to-amber-400 text-purple-900 px-8 py-4 rounded-full font-bold text-lg hover:from-amber-200 hover:to-amber-300 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 animate-pulse hover:animate-none"
+                >
+                  Register Now
+                </button>
+                <a
+                  href="/stem_brochure.pdf"
+                  download
+                  className="border-2 border-white/50 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-900 transition-all duration-300 inline-block text-center hover:scale-105 transform bg-white/10 backdrop-blur"
+                >
+                  Download Brochure
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -830,17 +862,15 @@ export default function SummerCampPage() {
               {/* First set of images */}
               <div className="flex gap-4 mr-4">
                 {[
-                  '/3D Lab (11).jpeg',
-                  '/webbanner1.png', 
-                  '/Untitled design (19).svg',
-                  '/Gemini_Generated_Image_trqqrstrqqrstrqq (1).png',
-                  '/Untitled design (7).svg',
-                  '/child.svg',
-                  '/childandparent.svg',
-                  '/point3.svg',
-                  '/point4.png',
-                  '/point5.svg',
-                  '/lastpoint.svg'
+                  '/stemcamps (1).jpg',
+                  '/stemcamps (2).jpg',
+                  '/stemcamps (3).jpg',
+                  '/stemcamps (4).jpg',
+                  '/stemcamps (5).jpg',
+                  '/stemcamps (6).jpg',
+                  '/stemcamps (7).jpg',
+                  '/stemcamps (8).jpg',
+                  '/stemcamps (9).jpg'
                 ].map((image, index) => (
                   <div key={index} className="flex-shrink-0 w-64 h-48 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                     <img 
@@ -855,17 +885,15 @@ export default function SummerCampPage() {
               {/* Duplicate set for seamless loop */}
               <div className="flex gap-4 mr-4">
                 {[
-                  '/3D Lab (11).jpeg',
-                  '/webbanner1.png', 
-                  '/Untitled design (19).svg',
-                  '/Gemini_Generated_Image_trqqrstrqqrstrqq (1).png',
-                  '/Untitled design (7).svg',
-                  '/child.svg',
-                  '/childandparent.svg',
-                  '/point3.svg',
-                  '/point4.png',
-                  '/point5.svg',
-                  '/lastpoint.svg'
+                  '/stemcamps (1).jpg',
+                  '/stemcamps (2).jpg',
+                  '/stemcamps (3).jpg',
+                  '/stemcamps (4).jpg',
+                  '/stemcamps (5).jpg',
+                  '/stemcamps (6).jpg',
+                  '/stemcamps (7).jpg',
+                  '/stemcamps (8).jpg',
+                  '/stemcamps (9).jpg'
                 ].map((image, index) => (
                   <div key={`duplicate-${index}`} className="flex-shrink-0 w-64 h-48 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                     <img 
