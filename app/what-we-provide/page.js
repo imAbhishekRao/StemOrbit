@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 import { handleBookCallClick } from "../../lib/calendly";
 
 export default function WhatWeProvidePage() {
@@ -38,7 +40,18 @@ export default function WhatWeProvidePage() {
           "Weekly sessions with projects and take‑home activities",
           "Focus on creativity, logic and real‑world application"
         ]}
-        img="/style1.png"
+        images={[
+          "/stemclasses (1).jpg",
+          "/stemclasses (2).jpg",
+          "/stemclasses (3).jpg",
+          "/stemclasses (4).jpg",
+          "/stemclasses (5).jpg",
+          "/stemclasses (6).jpg",
+          "/stemclasses (7).jpg",
+          "/stemclasses (8).jpg",
+          "/stemclasses (9).jpg",
+          "/stemclasses (10).jpg",
+        ]}
         ctas={[
           { label: "Learn More", href: "/courses", variant: "primary" },
           { label: "Enquire", onClick: handleBookCallClick, variant: "ghost" }
@@ -55,7 +68,19 @@ export default function WhatWeProvidePage() {
           "Curriculum + activity kits + maintenance",
           "Mentor support and outcome tracking"
         ]}
-        img="/laboffering image 2.png"
+        images={[
+          "/3D Lab (1).jpeg",
+          "/3D Lab (2).jpeg",
+          "/3D Lab (3).jpeg",
+          "/3D Lab (4).jpeg",
+          "/3D Lab (5).jpeg",
+          "/3D Lab (6).jpeg",
+          "/3D Lab (7).jpeg",
+          "/3D Lab (8).jpeg",
+          "/3D Lab (9).jpeg",
+          "/3D Lab (10).jpeg",
+          "/3D Lab (11).jpeg",
+        ]}
         ctas={[
           { label: "Learn More", href: "/our-lab-offerings", variant: "primary" },
           { label: "Book a Call", onClick: handleBookCallClick, variant: "ghost" }
@@ -72,7 +97,13 @@ export default function WhatWeProvidePage() {
           "1‑day to multi‑week formats",
           "Hands‑on demos and collaborative challenges"
         ]}
-        img="/With Strock (2).png"
+        images={[
+          "/schoolsessions (1).jpg",
+          "/schoolsessions (2).jpg",
+          "/schoolsessions (3).jpg",
+          "/schoolsessions (4).jpg",
+          "/schoolsessions (5).jpg",
+        ]}
         ctas={[
           { label: "Learn More", href: "/our-lab-offerings", variant: "primary" },
           { label: "Enquire", onClick: handleBookCallClick, variant: "ghost" }
@@ -107,7 +138,26 @@ export default function WhatWeProvidePage() {
           "Assessment: rubrics, portfolios, outcome tracking",
           "Ongoing mentorship and lesson‑planning support"
         ]}
-        img="/laboffering image 2.png"
+        images={[
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/1.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/2.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/3.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/4.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/5.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/6.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/7.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/8.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/9.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/10.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/11.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/12.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/13.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/14.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/15.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/16.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/17.webp?raw=true",
+        ]}
+        galleryLink="/gallery"
         ctas={[
           { label: "Learn More", href: "/our-lab-offerings", variant: "primary" },
           { label: "Book a Call", onClick: handleBookCallClick, variant: "ghost" }
@@ -124,7 +174,17 @@ export default function WhatWeProvidePage() {
           "Daily builds and take‑home projects",
           "Showcase day for parents"
         ]}
-        img="/style1.png"
+        images={[
+          "/stemcamps (1).jpg",
+          "/stemcamps (2).jpg",
+          "/stemcamps (3).jpg",
+          "/stemcamps (4).jpg",
+          "/stemcamps (5).jpg",
+          "/stemcamps (6).jpg",
+          "/stemcamps (7).jpg",
+          "/stemcamps (8).jpg",
+          "/stemcamps (9).jpg",
+        ]}
         ctas={[
           { label: "Learn More", href: "/summercamp", variant: "primary" },
           { label: "Enquire", onClick: handleBookCallClick, variant: "ghost" }
@@ -212,8 +272,10 @@ export default function WhatWeProvidePage() {
   );
 }
 
-function Section({ index, title, description, bullets, img, ctas }) {
+function Section({ index, title, description, bullets, img, images, galleryLink, ctas }) {
   const isEven = index % 2 === 0;
+  const hasMultipleImages = images && images.length > 0;
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   // Color schemes for different sections
   const colorSchemes = [
@@ -229,6 +291,17 @@ function Section({ index, title, description, bullets, img, ctas }) {
   ];
   
   const colors = colorSchemes[index % colorSchemes.length];
+
+  // Auto-rotate images if multiple images are provided
+  useEffect(() => {
+    if (hasMultipleImages) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 3000); // Change image every 3 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [hasMultipleImages, images]);
   
   return (
     <section className="py-6 sm:py-8 md:py-10 relative z-10">
@@ -239,7 +312,78 @@ function Section({ index, title, description, bullets, img, ctas }) {
             {/* Media - merged with content */}
             <div className={`${isEven ? '' : 'lg:order-2'} group relative`}>
               <div className="relative h-64 sm:h-80 md:h-96 lg:h-full lg:min-h-[400px] overflow-hidden">
-                <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                {hasMultipleImages ? (
+                  <>
+                    {/* Image carousel */}
+                    {images.map((imageSrc, imgIndex) => (
+                      <div
+                        key={imgIndex}
+                        className={`absolute inset-0 transition-opacity duration-1000 ${
+                          imgIndex === currentImageIndex ? "opacity-100 z-0" : "opacity-0 z-0"
+                        }`}
+                      >
+                        {galleryLink ? (
+                          <Link href={galleryLink} className="absolute inset-0">
+                            <Image
+                              src={imageSrc}
+                              alt={`${title} - Image ${imgIndex + 1}`}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-110 cursor-pointer"
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              priority={imgIndex === 0}
+                            />
+                          </Link>
+                        ) : (
+                          <Image
+                            src={imageSrc}
+                            alt={`${title} - Image ${imgIndex + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            priority={imgIndex === 0}
+                          />
+                        )}
+                      </div>
+                    ))}
+                    {/* Image indicators */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+                      {images.map((_, imgIndex) => (
+                        <button
+                          key={imgIndex}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentImageIndex(imgIndex);
+                          }}
+                          className={`h-2 rounded-full transition-all duration-300 ${
+                            imgIndex === currentImageIndex
+                              ? "w-8 bg-white shadow-lg"
+                              : "w-2 bg-white/50 hover:bg-white/75"
+                          }`}
+                          aria-label={`Go to image ${imgIndex + 1}`}
+                        />
+                      ))}
+                    </div>
+                    {/* Image counter with gallery link */}
+                    {galleryLink ? (
+                      <Link 
+                        href={galleryLink}
+                        className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full z-20 hover:bg-black/70 transition-all duration-300 group"
+                      >
+                        <span className="text-white text-sm font-fredoka group-hover:underline">
+                          {currentImageIndex + 1} / {images.length} • View Gallery
+                        </span>
+                      </Link>
+                    ) : (
+                      <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full z-20">
+                        <span className="text-white text-sm font-fredoka">
+                          {currentImageIndex + 1} / {images.length}
+                        </span>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                )}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-white/10" />
                 {/* Animated overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>

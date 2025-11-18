@@ -1,8 +1,29 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function TechNovaSection() {
+  const images = [
+    "/technova (1).jpg",
+    "/technova (2).jpg",
+    "/technova (3).jpg",
+    "/technova (4).jpg",
+    "/technova (5).jpg",
+    "/technova (6).jpg",
+    "/technova (7).jpg",
+    "/technova (8).jpg",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
   return (
     <section className="w-full py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 relative overflow-hidden px-4 sm:px-6">
       {/* Animated Background Elements */}
@@ -95,33 +116,86 @@ export default function TechNovaSection() {
             </div>
           </div>
 
-          {/* Right: Visual Element */}
+          {/* Right: Image Gallery */}
           <div className="relative">
-            <div className="relative w-full h-80 md:h-96">
-              {/* Main circular container */}
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-pink-400/20 rounded-full animate-pulse"></div>
+            <div className="relative w-full h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20">
+              {/* Gradient overlay for better text visibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
               
-              {/* Inner content */}
-              <div className="absolute inset-8 bg-white/10 backdrop-blur-sm rounded-full border-2 border-white/30 flex flex-col items-center justify-center text-center p-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-pink-400 rounded-full flex items-center justify-center mb-4 animate-bounce">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                  </svg>
-                </div>
-                <h4 className="text-2xl font-bold text-white mb-2 font-fredoka">Innovation Hub</h4>
-                <p className="text-gray-200 font-quicksand">Where ideas transform into reality</p>
+              {/* Main image carousel */}
+              <div className="relative w-full h-full">
+                {images.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-1000 ${
+                      index === currentIndex ? "opacity-100 z-0" : "opacity-0 z-0"
+                    }`}
+                  >
+                    <Image
+                      src={image}
+                      alt={`TechNova Event ${index + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority={index === 0}
+                    />
+                  </div>
+                ))}
               </div>
 
-              {/* Orbiting elements */}
-              <div className="absolute top-4 right-8 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center animate-orbit">
-                <span className="text-black font-bold">💡</span>
+              {/* Image indicators */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+                {images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentIndex
+                        ? "w-8 bg-yellow-400"
+                        : "w-2 bg-white/50 hover:bg-white/75"
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
               </div>
-              <div className="absolute bottom-8 left-4 w-10 h-10 bg-pink-400 rounded-full flex items-center justify-center animate-orbit-reverse">
-                <span className="text-white font-bold">🚀</span>
+
+              {/* Decorative floating elements */}
+              <div className="absolute top-4 right-4 w-12 h-12 bg-yellow-400/80 rounded-full flex items-center justify-center animate-float z-20 backdrop-blur-sm">
+                <span className="text-2xl">💡</span>
               </div>
-              <div className="absolute top-1/2 left-0 w-8 h-8 bg-cyan-400 rounded-full flex items-center justify-center animate-orbit-slow">
-                <span className="text-black font-bold">⚡</span>
+              <div className="absolute bottom-16 left-4 w-10 h-10 bg-pink-400/80 rounded-full flex items-center justify-center animate-float-delayed z-20 backdrop-blur-sm">
+                <span className="text-xl">🚀</span>
               </div>
+
+              {/* Image counter */}
+              <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full z-20">
+                <span className="text-white text-sm font-fredoka">
+                  {currentIndex + 1} / {images.length}
+                </span>
+              </div>
+            </div>
+
+            {/* Thumbnail strip below main image */}
+            <div className="mt-4 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+              {images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                    index === currentIndex
+                      ? "border-yellow-400 scale-110 shadow-lg shadow-yellow-400/50"
+                      : "border-white/30 hover:border-white/60 opacity-70 hover:opacity-100"
+                  }`}
+                >
+                  <Image
+                    src={image}
+                    alt={`TechNova thumbnail ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="64px"
+                  />
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -211,6 +285,13 @@ export default function TechNovaSection() {
         .animate-orbit-reverse { animation: orbit-reverse 10s linear infinite; }
         .animate-orbit-slow { animation: orbit-slow 12s linear infinite; }
         .animate-spin-slow { animation: spin-slow 8s linear infinite; }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
       `}</style>
     </section>
   );
