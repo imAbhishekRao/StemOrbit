@@ -120,7 +120,16 @@ export default function WhatWeProvidePage() {
           "Real working demos and interactive booths",
           "Awards, judging criteria and documentation"
         ]}
-        img="/style1.png"
+        images={[
+          "/technova (1).jpg",
+          "/technova (2).jpg",
+          "/technova (3).jpg",
+          "/technova (4).jpg",
+          "/technova (5).jpg",
+          "/technova (6).jpg",
+          "/technova (7).jpg",
+          "/technova (8).jpg",
+        ]}
         ctas={[
           { label: "Enquire", onClick: handleBookCallClick, variant: "primary" }
         ]}
@@ -201,7 +210,14 @@ export default function WhatWeProvidePage() {
           "Team formation, role clarity, project planning",
           "Review sessions and final presentation readiness"
         ]}
-        img="/With Strock (2).png"
+        images={[
+          "/technical-competetion support (1).jpg",
+          "/technical-competetion support (2).jpg",
+          "/technical-competetion support (3).jpg",
+          "/technical-competetion support (4).jpg",
+          "/technical-competetion support (5).jpg",
+          "/technical-competetion support (6).jpg",
+        ]}
         ctas={[
           { label: "Enquire", onClick: handleBookCallClick, variant: "primary" }
         ]}
