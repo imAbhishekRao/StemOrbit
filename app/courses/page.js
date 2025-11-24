@@ -1,11 +1,10 @@
 "use client";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { handleBookCallClick } from '../../lib/calendly';
 
 export default function CoursesPage() {
   const [showAllCourses, setShowAllCourses] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState(null);
 
   const courses = [
     {
@@ -145,74 +144,70 @@ export default function CoursesPage() {
     }
   ];
 
-  const engineers = [
-    {
-      id: 1,
-      name: "Arjun Singh",
-      age: 12,
-      project: "Smart Home Automation",
-      description: "Built a complete smart home system using Arduino and sensors",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-      videoUrl: "https://www.instagram.com/reel/DLccyvovhGH/embed/",
-      course: "Arduino & IoT",
-      achievement: "Best Innovation Award"
-    },
-    {
-      id: 2,
-      name: "Priya Sharma",
-      age: 14,
-      project: "3D Printed Prosthetic Hand",
-      description: "Designed and printed a functional prosthetic hand for a classmate",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
-      videoUrl: "https://www.instagram.com/reel/DLXTMilvciY/embed/",
-      course: "3D Printing & Design",
-      achievement: "Community Impact Award"
-    },
-    {
-      id: 3,
-      name: "Rohan Kumar",
-      age: 11,
-      project: "Line Following Robot",
-      description: "Created an autonomous robot that follows colored lines using sensors",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-      videoUrl: "https://www.instagram.com/reel/DLPk1q_PP-1/embed/",
-      course: "Robotics & Automation",
-      achievement: "Young Engineer Award"
-    },
-    {
-      id: 4,
-      name: "Sneha Patel",
-      age: 13,
-      project: "Weather Station",
-      description: "Built a complete weather monitoring station with data logging",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
-      videoUrl: "https://www.instagram.com/reel/DLFTGdzvZ2t/embed/",
-      course: "Electronics & Circuits",
-      achievement: "Scientific Excellence Award"
-    },
-    {
-      id: 5,
-      name: "Vikram Reddy",
-      age: 15,
-      project: "AI-Powered Plant Monitor",
-      description: "Developed an AI system that monitors plant health and sends alerts",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
-      videoUrl: "https://www.instagram.com/reel/DGIpRaPPLgl/embed/",
-      course: "AI & Machine Learning",
-      achievement: "Future Tech Award"
-    },
-    {
-      id: 6,
-      name: "Ananya Joshi",
-      age: 12,
-      project: "Solar-Powered Drone",
-      description: "Designed and built a drone powered entirely by solar energy",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&crop=face",
-      videoUrl: "https://www.instagram.com/reel/DEsCfrXPm_L/embed/",
-      course: "Drone Technology",
-      achievement: "Green Innovation Award"
-    }
+  const littleEngineerVideos = [
+    { id: 1, title: "Little Engineers Reel 1", src: "/video (1).mp4" },
+    { id: 2, title: "Little Engineers Reel 2", src: "/video (2).mp4" },
+    { id: 3, title: "Little Engineers Reel 3", src: "/video (3).mp4" },
+    { id: 4, title: "Little Engineers Reel 4", src: "/video (4).mp4" }
   ];
+
+  const LittleEngineersVideo = ({ src, title }) => {
+    const videoRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const handlePlay = () => {
+      if (!videoRef.current) return;
+      videoRef.current.muted = false;
+      videoRef.current.play();
+      setIsPlaying(true);
+    };
+
+    const handleVideoClick = () => {
+      if (!videoRef.current) return;
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    };
+
+    return (
+      <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/60 bg-black">
+        <video
+          ref={videoRef}
+          src={src}
+          preload="metadata"
+          className="w-full h-full object-cover cursor-pointer"
+          controls={false}
+          playsInline
+          onClick={handleVideoClick}
+          onEnded={() => setIsPlaying(false)}
+          onPause={() => setIsPlaying(false)}
+          aria-label={title}
+        />
+        {!isPlaying && (
+          <button
+            type="button"
+            onClick={handlePlay}
+            className="absolute inset-0 flex items-center justify-center bg-black/40 transition hover:bg-black/30"
+            aria-label={`Play ${title}`}
+          >
+            <span className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-pink-500 text-white shadow-2xl">
+              <svg
+                className="h-8 w-8 translate-x-0.5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+          </button>
+        )}
+      </div>
+    );
+  };
 
   const colorClasses = {
     blue: { bg: 'bg-blue-100', text: 'text-blue-800', border: 'border-blue-200', hover: 'hover:bg-blue-200', button: 'bg-blue-500 hover:bg-blue-600', buttonHover: 'hover:shadow-blue-300' },
@@ -447,69 +442,9 @@ export default function CoursesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {engineers.map((engineer) => (
-              <div 
-                key={engineer.id}
-                className="group relative bg-white rounded-2xl sm:rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border-2 border-transparent hover:border-purple-200"
-              >
-                {/* Project Image/Thumbnail */}
-                <div className="relative h-40 sm:h-48 bg-gradient-to-br from-purple-400 to-pink-400 overflow-hidden">
-                  <img 
-                    src={engineer.image} 
-                    alt={engineer.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                  
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <button
-                      onClick={() => setSelectedVideo(engineer)}
-                      className="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center group-hover:bg-opacity-100 transition-all duration-300 transform group-hover:scale-110 shadow-lg"
-                    >
-                      <svg className="w-8 h-8 text-purple-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </button>
-                  </div>
-
-                  {/* Achievement Badge */}
-                  <div className="absolute top-3 right-3">
-                    <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                      🏆 {engineer.achievement}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-4 sm:p-6">
-                  <div className="flex items-center justify-between mb-2 sm:mb-3">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 font-fredoka">{engineer.name}</h3>
-                    <span className="text-xs sm:text-sm text-gray-500 bg-gray-100 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
-                      Age {engineer.age}
-                    </span>
-                  </div>
-                  
-                  <h4 className="text-base sm:text-lg font-semibold text-purple-700 mb-1 sm:mb-2">{engineer.project}</h4>
-                  <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">{engineer.description}</p>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-purple-600 font-medium bg-purple-100 px-3 py-1 rounded-full">
-                      {engineer.course}
-                    </span>
-                    <button
-                      onClick={() => setSelectedVideo(engineer)}
-                      className="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all duration-300"
-                    >
-                      Watch Project
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+            {littleEngineerVideos.map((video) => (
+              <LittleEngineersVideo key={video.id} src={video.src} title={video.title} />
             ))}
           </div>
 
@@ -728,131 +663,6 @@ export default function CoursesPage() {
           </div>
         </div>
       </div>
-
-      {/* Video Modal */}
-      {selectedVideo && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-2 sm:p-4">
-          <div className="relative bg-white rounded-xl sm:rounded-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedVideo(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black bg-opacity-50 text-white rounded-full flex items-center justify-center hover:bg-opacity-75 transition-all duration-300"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-
-            {/* Video Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-4 sm:p-6">
-              <h3 className="text-xl sm:text-2xl font-bold font-fredoka">{selectedVideo.name}</h3>
-              <p className="text-sm sm:text-base text-purple-100 mt-1">{selectedVideo.project}</p>
-              <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-3">
-                <span className="bg-white bg-opacity-20 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
-                  Age {selectedVideo.age}
-                </span>
-                <span className="bg-white bg-opacity-20 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
-                  {selectedVideo.course}
-                </span>
-                <span className="bg-yellow-400 text-yellow-900 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
-                  🏆 {selectedVideo.achievement}
-                </span>
-              </div>
-            </div>
-
-            {/* Video Content */}
-            <div className="p-4 sm:p-6">
-              <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg leading-relaxed">{selectedVideo.description}</p>
-              
-              {/* Instagram Video Preview */}
-              <div className="relative w-full bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl mb-4 sm:mb-6">
-                {/* Video Thumbnail/Preview */}
-                <div className="relative h-48 sm:h-64 md:h-80 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                  <div className="text-center text-white px-4">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-3 sm:mb-4 mx-auto backdrop-blur-sm">
-                      <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-                      </svg>
-                    </div>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2">Watch on Instagram</h3>
-                    <p className="text-xs sm:text-sm text-purple-100 mb-3 sm:mb-4">Click to view the full project video</p>
-                    <div className="flex items-center justify-center gap-2 text-xs sm:text-sm">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                      </svg>
-                      <span>@stemorbit_official</span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 hover:bg-opacity-30 transition-all duration-300">
-                  <a
-                    href={selectedVideo.videoUrl.replace('/embed/', '/')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center w-20 h-20 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300"
-                  >
-                    <svg className="w-8 h-8 text-purple-600 ml-1 group-hover:text-purple-700" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              {/* Project Details */}
-              <div className="bg-gray-50 rounded-lg sm:rounded-xl p-4 sm:p-6 mb-4 sm:mb-6">
-                <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3 flex items-center gap-2">
-                  <span className="text-xl sm:text-2xl">🔬</span>
-                  Project Details
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
-                  <div>
-                    <span className="font-semibold text-gray-700">Course:</span>
-                    <span className="ml-2 text-purple-600 font-medium">{selectedVideo.course}</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-gray-700">Achievement:</span>
-                    <span className="ml-2 text-yellow-600 font-medium">{selectedVideo.achievement}</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-gray-700">Age:</span>
-                    <span className="ml-2 text-gray-600">{selectedVideo.age} years old</span>
-                  </div>
-                  <div>
-                    <span className="font-semibold text-gray-700">Platform:</span>
-                    <span className="ml-2 text-pink-600 font-medium">Instagram Reel</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <a
-                  href={selectedVideo.videoUrl.replace('/embed/', '/')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-full font-bold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 text-center flex items-center justify-center gap-2 text-sm sm:text-base"
-                >
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                  Watch on Instagram
-                </a>
-                <a
-                  href={`https://wa.me/917009594410?text=${encodeURIComponent(`Hi! I'm interested in enrolling for the ${selectedVideo.course} course. Could you please provide more details?`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-sm sm:text-base text-center"
-                >
-                  Enroll in {selectedVideo.course}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
     </div>
   );
 }
