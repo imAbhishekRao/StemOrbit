@@ -1,43 +1,15 @@
 "use client";
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { handleBookCallClick } from '../../lib/calendly';
 
 export default function SummerCampPage() {
   const [selectedProgram, setSelectedProgram] = useState('robotics');
-  const [storyVisible, setStoryVisible] = useState(false);
   const [heroReady, setHeroReady] = useState(false);
-  const storyRef = useRef(null);
-
-  const storyPoints = [
-    'Arjun is a bright 10-year-old who loves asking "Why?" — Why does the fan spin? Why does the rainbow have seven colors? Why can\'t a toy car run without batteries?',
-    'At home, his parents smile at his questions, sometimes without knowing how to answer them. In school, he memorizes textbook answers — but that spark of "How does this really work?" starts to fade.',
-    'One summer, his parents enrolled him in a STEMOrbit Camp — just to try something new. On the very first day, Arjun built a mini windmill that lit up an LED bulb. His eyes lit up brighter than the bulb.',
-    'Suddenly, “Why?” turned into “What if I could make it better?”',
-    'That\'s the power of STEM. It doesn\'t just teach science — it teaches kids to think, create, and explore. It transforms passive learners into curious innovators.',
-    'In a world where technology is everywhere, our children need more than grades — they need imagination, problem-solving, and the courage to build what they dream. That\'s what STEMOrbit stands for — turning curiosity into creation, and learners into leaders.'
-  ];
 
   useEffect(() => {
     const timer = setTimeout(() => setHeroReady(true), 1200);
     return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    if (!storyRef.current || typeof window === 'undefined') return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setStoryVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(storyRef.current);
-    return () => observer.disconnect();
   }, []);
 
   const programs = [
@@ -186,10 +158,34 @@ export default function SummerCampPage() {
   ];
 
   const colorClasses = {
-    blue:   { bg: 'from-blue-200 to-indigo-300',     text: 'text-blue-900',   border: 'border-blue-300',   button: 'from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700' },
-    green:  { bg: 'from-emerald-200 to-green-300',   text: 'text-emerald-900',border: 'border-emerald-300',button: 'from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700' },
-    purple: { bg: 'from-violet-200 to-purple-300',   text: 'text-violet-900', border: 'border-violet-300', button: 'from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700' },
-    yellow: { bg: 'from-amber-200 to-orange-300',    text: 'text-amber-900',  border: 'border-amber-300',  button: 'from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700' }
+    blue: {
+      bg: 'from-blue-800/70 to-indigo-900/70',
+      text: 'text-white',
+      subtext: 'text-blue-100',
+      border: 'border-blue-600/40',
+      button: 'from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500'
+    },
+    green: {
+      bg: 'from-emerald-800/70 to-green-900/70',
+      text: 'text-white',
+      subtext: 'text-emerald-100',
+      border: 'border-emerald-600/40',
+      button: 'from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500'
+    },
+    purple: {
+      bg: 'from-violet-800/70 to-purple-900/70',
+      text: 'text-white',
+      subtext: 'text-purple-100',
+      border: 'border-violet-600/40',
+      button: 'from-violet-500 to-purple-600 hover:from-violet-400 hover:to-purple-500'
+    },
+    yellow: {
+      bg: 'from-amber-700/70 to-orange-900/70',
+      text: 'text-white',
+      subtext: 'text-amber-100',
+      border: 'border-amber-600/40',
+      button: 'from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500'
+    }
   };
 
   return (
@@ -307,7 +303,7 @@ export default function SummerCampPage() {
           animation: scroll 20s linear infinite;
         }
       `}</style>
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-sky-50 text-lg md:text-xl">
+    <div className="min-h-screen bg-gradient-to-br from-[#0b1327] via-[#141b32] to-[#1f0f33] text-lg md:text-xl text-gray-100">
       {/* Hero Section */}
       <section className="text-gray-900 py-20 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
@@ -371,93 +367,201 @@ export default function SummerCampPage() {
         </div>
       </section>
 
-      {/* Why to How - Storytelling Section */}
-      <section ref={storyRef} className="relative py-20 bg-gradient-to-br from-purple-50 via-white to-pink-50 overflow-hidden">
-        {/* Soft decorative shapes */}
-        <div className="absolute -top-10 -left-10 w-56 h-56 bg-pink-200/30 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-16 -right-10 w-64 h-64 bg-purple-200/30 rounded-full blur-3xl"></div>
-
-        <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <span className="text-2xl animate-bounce">🌟</span>
-              <h3 className="text-xl font-bold text-gray-900">A Story Every Parent Can Relate To</h3>
+      {/* STEMCamps new content */}
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#111b3a] via-[#191f3f] to-[#2a1245] text-gray-100">
+        <div className="absolute inset-x-0 bottom-[-8%] h-40 bg-gradient-to-r from-transparent via-pink-200/30 to-transparent rotate-[-2deg]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.2),_transparent_60%)]" />
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-6 py-24 lg:flex-row lg:items-center">
+          <div className="flex-1 space-y-6">
+            <h2 className="text-4xl font-bold leading-tight text-white md:text-5xl">
+              <span className="text-sky-400">STEM Camp</span>
+            </h2>
+            <div className="space-y-4 text-lg text-gray-200">
+              <p className="text-sky-300 text-base tracking-[0.4em] uppercase">Where Curiosity Meets Innovation</p>
+              <p className="text-gray-100">
+                At STEMorbit, learning becomes an adventure! Our STEM Camps welcome students from Grade 1 to 12,
+                offering hands-on projects that spark creativity, problem-solving, and a lifelong love for technology.
+              </p>
+              <p className="text-gray-100">
+                Every day is packed with build-it-yourself challenges, collaborative missions, and guided exploration
+                led by passionate trainers who turn curiosity into real-world innovation.
+              </p>
             </div>
           </div>
-          <div className="space-y-8">
-                {storyPoints.map((text, idx) => {
-                  const visible = storyVisible;
-                 const isQuestion = idx % 2 === 0;
-                 const sideClass = isQuestion ? '-translate-x-12' : 'translate-x-12';
-                 // First two keep child/parent, then use provided point images in order
-                 const storyImages = ['/child.svg', '/childandparent.svg', '/point3.svg', '/point4.png', '/point5.svg', '/lastpoint.svg'];
-                 const avatarSrc = storyImages[idx % storyImages.length];
-                  const bgClasses = [
-                    'from-rose-50 to-pink-100 border-pink-200',
-                    'from-amber-50 to-orange-100 border-amber-200',
-                    'from-indigo-50 to-blue-100 border-indigo-200',
-                    'from-violet-50 to-purple-100 border-purple-200 italic',
-                    'from-emerald-50 to-green-100 border-emerald-200',
-                    'from-fuchsia-50 to-pink-100 border-fuchsia-200 font-medium'
-                  ];
-                  const bgTone = `bg-gradient-to-r ${bgClasses[idx % bgClasses.length]}`;
-                  const textColorClasses = [
-                    'text-pink-900',
-                    'text-amber-900',
-                    'text-indigo-900',
-                    'text-purple-900',
-                    'text-emerald-900',
-                    'text-fuchsia-900'
-                  ];
-                  const textTone = textColorClasses[idx % textColorClasses.length];
-                  
-                  return (
-                    <div key={idx} className={`flex ${isQuestion ? 'flex-row' : 'flex-row-reverse'} items-center gap-6 mx-6`}>
-                      {/* Image */}
-                      <div className="flex-shrink-0">
-                        <img 
-                          src={avatarSrc} 
-                          alt={isQuestion ? 'Child asking question' : 'Child with parent answering'} 
-                          className="w-60 h-60 md:w-72 md:h-72 opacity-95 transition-all duration-1000 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}"
-                          style={{ transitionDelay: `${idx * 350}ms` }}
+          <div className="flex-1">
+            <div className="relative mx-auto max-w-lg rounded-[28px] border border-pink-200 bg-white p-3 shadow-[0_20px_50px_rgba(244,114,182,0.25)]">
+              <div className="absolute -inset-4 rounded-[34px] bg-gradient-to-r from-pink-200/50 to-purple-200/50 blur-3xl" />
+              <div className="relative overflow-hidden rounded-[22px] border border-pink-100 bg-white">
+                <Image
+                  src="/stemcamps (1).jpg"
+                  alt="STEMorbit students collaborating on a robotics build"
+                  width={900}
+                  height={600}
+                  className="h-full w-full object-cover"
+                  priority
+                />
+              </div>
+              <div className="absolute -bottom-6 left-1/2 h-10 w-10 -translate-x-1/2 rounded-full border border-sky-500/50 bg-[#0d0f16]" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gradient-to-br from-[#0d142b] via-[#151a34] to-[#1c254d] px-6 py-20 text-gray-100">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="rounded-[32px] border-2 border-pink-400/50 bg-gradient-to-br from-slate-900/40 to-indigo-900/20 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.5)]">
+            <Image
+              src="/stemcamps (2).jpg"
+              alt="Children working with robotics kits at camp"
+              width={900}
+              height={600}
+              className="h-full w-full rounded-[24px] object-cover"
+            />
+            </div>
+          <div className="space-y-6">
+            <h3 className="text-3xl font-bold text-pink-200">What Happens in a STEMorbit Camp?</h3>
+            <p className="text-lg text-gray-200">
+              Kids build, code, experiment, and innovate with real STEM tools — guided step-by-step by expert trainers.
+              Every activity is designed to transform imagination into tangible creations.
+            </p>
+            <ul className="grid gap-3 text-base text-gray-100">
+              {[
+                'Robotics & Automation',
+                'Coding & Game Development',
+                'Science Experiments & DIY Gadgets',
+                'AI, Sensors, Drones & VR experience',
+                'Art + Technology creativity projects',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-1 inline-block h-2 w-2 rounded-full bg-pink-500" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gradient-to-br from-[#121a3d] via-[#0f152f] to-[#090f20] px-6 py-20 text-gray-100">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="space-y-6">
+            <h3 className="text-3xl font-bold text-pink-200">Winter &amp; Summer STEM Camps</h3>
+            <p className="text-lg text-gray-200">
+              School vacations become skill-building journeys at STEMorbit. Students dive into themed missions that
+              strengthen confidence, teamwork, and analytical thinking while building something new every day.
+            </p>
+            <ul className="grid gap-3 text-base text-gray-100">
+              {[
+                'Engineering challenges & gadget making',
+                'Drone & aerodynamics workshops',
+                'Virtual reality adventures',
+                'Electronics + craft integration',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-1 inline-block h-2 w-2 rounded-full bg-rose-300" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-[32px] border-2 border-pink-400/50 bg-gradient-to-br from-[#1b0f2b] to-[#2a1635] p-4 shadow-[0_25px_60px_rgba(0,0,0,0.55)]">
+            <Image
+              src="/stemcamps (3).jpg"
+              alt="Student testing a drone prototype"
+              width={900}
+              height={600}
+              className="h-full w-full rounded-[24px] object-cover"
                         />
                       </div>
+        </div>
+      </section>
 
-                      {/* Text content */}
-                      <div className="flex-1">
-                        <div
-                          className={`relative ring-1 rounded-xl p-4 md:p-5 w-full backdrop-blur-sm transition-all duration-1000 ease-out will-change-transform will-change-opacity ${bgTone}
-                          ${visible ? 'opacity-100 translate-x-0 scale-100 shadow-lg' : `opacity-0 ${sideClass} scale-95 shadow-none`}`}
-                          style={{ transitionDelay: `${idx * 350}ms` }}
-                        >
-                          <p className={`text-base md:text-lg leading-relaxed m-0 ${textTone}`}>{text}</p>
+      <section className="bg-gradient-to-br from-[#0c1228] via-[#121939] to-[#1c2452] px-6 py-20 text-gray-100">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="rounded-[32px] border-2 border-pink-400/50 bg-gradient-to-br from-[#1d132c] to-[#2b1840] p-4 shadow-[0_25px_60px_rgba(0,0,0,0.55)]">
+            <Image
+              src="/stemcamps (4).jpg"
+              alt="After school innovation program in action"
+              width={900}
+              height={600}
+              className="h-full w-full rounded-[24px] object-cover"
+            />
                         </div>
+          <div className="space-y-6">
+            <h3 className="text-3xl font-bold text-pink-200">After-School Innovation Programs</h3>
+            <p className="text-lg text-gray-200">
+              Keep the excitement going all year! Our structured after-school pathway helps students go deeper with
+              guided mentorship, graded projects, and turn-key trainer + equipment support for schools.
+            </p>
+            <ul className="grid gap-3 text-base text-gray-100">
+              {['Robotics', 'Coding', 'Emerging Technologies'].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-1 inline-block h-2 w-2 rounded-full bg-pink-300" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
                       </div>
                     </div>
-                  );
-                })}
-          </div>
-          <div className="mt-8 text-center">
-            <Link href="/contact">
-              <button className="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full font-semibold hover:from-pink-600 hover:to-purple-700 transition-all shadow-lg">
-                Start Your Child's Journey
-              </button>
-            </Link>
-          </div>
+      </section>
 
-          {/* Full-width Quote Panel (below story) */}
-          
+      <section className="bg-gradient-to-br from-[#101732] via-[#1a1d3d] to-[#2c1747] px-6 py-20 text-gray-100">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="space-y-4">
+            <p className="text-sm uppercase tracking-[0.35em] text-pink-300">Young Innovators</p>
+            <h3 className="text-3xl font-bold text-pink-200">STEMorbit — Turning Your Ideas into Reality</h3>
+            <p className="text-lg text-gray-200">
+              Because the future belongs to creators, tinkerers, and builders. STEMorbit equips every child with the
+              mindset and tools to imagine boldly and engineer the future.
+            </p>
+          </div>
+          <div className="rounded-[32px] border-2 border-pink-400/50 bg-gradient-to-br from-[#1c132e] to-[#2d1a40] p-4 shadow-[0_25px_60px_rgba(0,0,0,0.55)]">
+            <Image
+              src="/stemcamps (5).jpg"
+              alt="Student showcasing a finished STEM project"
+              width={900}
+              height={600}
+              className="h-full w-full rounded-[24px] object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="relative isolate bg-gradient-to-br from-[#0b132a] via-[#131f3f] to-[#210f34] px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(139,92,246,0.3),_transparent_55%)]" />
+        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "url('/grid.svg')" , backgroundSize: '600px' }} />
+        <div className="relative z-10 mx-auto max-w-5xl text-center space-y-6 text-gray-100">
+          <p className="text-sm uppercase tracking-[0.4em] text-pink-300">Ready to Begin?</p>
+          <h3 className="text-4xl font-bold text-white md:text-5xl">Enroll Your Child in STEMOrbit Camps</h3>
+          <p className="text-lg text-gray-200 max-w-3xl mx-auto">
+            Seats fill fast! Secure a spot in our high-energy, project-based camps and watch curiosity turn into confidence.
+            Live mentorship, custom kits, and unforgettable STEM adventures await.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+            <a
+              href="https://wa.me/917009594410?text=Hi!%20I%20want%20to%20enroll%20my%20child%20in%20STEMOrbit%20Camp."
+              className="rounded-full bg-pink-500 px-8 py-3 text-lg font-semibold text-white transition hover:bg-pink-400 shadow-lg"
+            >
+              Enroll Now
+            </a>
+            <a
+              href="/contact"
+              className="rounded-full border border-pink-300/70 px-8 py-3 text-lg font-semibold text-pink-200 transition hover:border-pink-200 hover:bg-white/10 shadow"
+            >
+              Book a Counseling Call
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Programs Section */}
-      <section className="py-16 bg-gradient-to-br from-sky-50 via-white to-purple-50">
+      <section className="py-16 bg-gradient-to-br from-[#070f21] via-[#111b34] to-[#1d2a4f] text-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-fredoka animate-fade-in-up">
-              Choose Your <span className="text-orange-600 animate-pulse">Adventure</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-fredoka animate-fade-in-up">
+              Choose Your <span className="text-orange-300 animate-pulse">Adventure</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
               Select from our exciting range of STEM programs designed for different age groups and interests
             </p>
           </div>
@@ -468,7 +572,7 @@ export default function SummerCampPage() {
               return (
                 <div 
                   key={program.id}
-                  className={`rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer hover:animate-wiggle ${
+                  className={`rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer hover:animate-wiggle bg-white/10 border border-white/10 backdrop-blur-sm flex flex-col ${
                     selectedProgram === program.id ? 'ring-4 ring-purple-500 animate-float' : ''
                   }`}
                   onClick={() => setSelectedProgram(program.id)}
@@ -482,37 +586,37 @@ export default function SummerCampPage() {
                       <div className="text-5xl mb-4 animate-bounce">{program.icon}</div>
                     )}
                     <h3 className={`text-xl font-bold mb-2 ${color.text}`}>{program.title}</h3>
-                    <div className={`text-sm mb-4 ${color.text.replace('900','700')}`}>{program.ageGroup}</div>
-                    <div className="text-2xl font-bold text-purple-700 mb-2">{program.price}</div>
-                    <div className="text-sm text-gray-700">{program.duration}</div>
+                    <div className={`text-sm mb-4 ${color.subtext}`}>{program.ageGroup}</div>
+                    <div className="text-2xl font-bold text-amber-200 mb-2">{program.price}</div>
+                    <div className="text-sm text-gray-200">{program.duration}</div>
                   </div>
                   
-                  <div className="p-6">
-                    <p className="text-gray-700 mb-4 text-base">{program.description}</p>
+                  <div className="p-6 text-gray-100 flex-1 flex flex-col">
+                    <p className="text-gray-200 mb-4 text-base">{program.description}</p>
                     <ul className="space-y-2 mb-6">
                       {program.features.slice(0, 3).map((feature, index) => (
                         <li key={index} className="flex items-center gap-2 text-base">
                           <span className="text-green-500">✓</span>
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-gray-100">{feature}</span>
                         </li>
                       ))}
-                      <li className="text-base text-gray-500">+{program.features.length - 3} more features</li>
+                      <li className="text-base text-gray-300">+{program.features.length - 3} more features</li>
                     </ul>
-                    <div className="space-y-2 text-base text-gray-700 mb-4">
+                    <div className="space-y-2 text-base text-gray-200 mb-4">
                       <div className="flex justify-between">
                         <span>Schedule:</span>
-                        <span className="font-semibold text-purple-700">{program.schedule}</span>
+                        <span className="font-semibold text-sky-200">{program.schedule}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Capacity:</span>
-                        <span className="font-semibold text-purple-700">{program.capacity}</span>
+                        <span className="font-semibold text-sky-200">{program.capacity}</span>
                       </div>
                     </div>
                     <a
                       href={`https://wa.me/917009594410?text=${encodeURIComponent(`Hi! I'm interested in the ${program.title} program for my child. Could you please provide more details?`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-full bg-gradient-to-r ${color.button} text-white py-3 rounded-lg font-semibold transition-all duration-300 block text-center`}
+                      className={`mt-auto w-full bg-gradient-to-r ${color.button} text-white py-3 rounded-lg font-semibold transition-all duration-300 block text-center`}
                     >
                       Enquire Now
                     </a>
@@ -525,13 +629,13 @@ export default function SummerCampPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+      <section className="py-16 bg-gradient-to-r from-[#111b36] to-[#0a1327] text-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-fredoka">
-              What <span className="text-pink-600">Students</span> Say
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-fredoka">
+              What <span className="text-pink-300">Students</span> Say
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Hear from our campers about their amazing summer experiences
             </p>
           </div>
@@ -563,13 +667,13 @@ export default function SummerCampPage() {
       </section>
 
       {/* Offline Summer Robo Camp Section */}
-      <section className="py-16 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50">
+      <section className="py-16 bg-gradient-to-br from-[#0a1328] via-[#141f39] to-[#1f2d54] text-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-fredoka">
-              <span className="text-orange-600">OFFLINE</span> STEM <span className="text-blue-600">Camps</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-fredoka">
+              <span className="text-orange-300">OFFLINE</span> STEM <span className="text-sky-300">Camps</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               20 hours of Practical Live & Interactive sessions by an International Robotics expert
             </p>
           </div>
@@ -721,13 +825,13 @@ export default function SummerCampPage() {
       </section>
 
       {/* What Your Kid Will Receive & Build Section */}
-      <section className="py-16 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
+      <section className="py-16 bg-gradient-to-br from-[#0b1229] via-[#161d39] to-[#231746] text-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-fredoka">
-              What Your Kid Will <span className="text-orange-600">Receive</span> & <span className="text-purple-600">Build</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-fredoka">
+              What Your Kid Will <span className="text-orange-300">Receive</span> & <span className="text-purple-200">Build</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Everything your child needs to succeed in our STEM programs
             </p>
           </div>
@@ -845,13 +949,13 @@ export default function SummerCampPage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-16 bg-gradient-to-br from-[#0a162f] to-[#121f43] text-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-fredoka">
-              <span className="text-blue-600">Gallery</span> of <span className="text-purple-600">Innovation</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-fredoka">
+              <span className="text-blue-300">Gallery</span> of <span className="text-purple-300">Innovation</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               See the amazing projects and creations from our STEM camp participants
             </p>
           </div>
