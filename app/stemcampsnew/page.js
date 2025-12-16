@@ -1,9 +1,5 @@
+"use client";
 import Image from 'next/image';
-
-export const metadata = {
-  title: 'STEM Camps & After School Programs | STEMOrbit',
-  description: 'Explore STEMOrbit camps and after school programs designed to spark curiosity and hands-on STEM learning.',
-};
 
 export default function StemCampsNewPage() {
   return (
