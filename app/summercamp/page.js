@@ -924,67 +924,40 @@ export default function SummerCampPage() {
         </div>
       </section>
 
-      {/* Choose Your STEM Adventure Section */}
-      <section className="relative isolate bg-gradient-to-br from-rose-100 via-white to-pink-100 px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.25),_transparent_55%)]" />
-        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "url('/grid.svg')", backgroundSize: '600px' }} />
-        <div className="relative z-10 mx-auto max-w-5xl text-center space-y-6">
-          <p className="text-sm uppercase tracking-[0.4em] text-pink-600">Ready to Begin?</p>
-          <h2 className="text-4xl font-bold text-gray-900 md:text-5xl">Choose Your STEM Adventure</h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Ready to spark your child's curiosity? Choose from our exciting courses, camps, or book a personalized consultation. 
-            Every journey starts with a single step into the world of STEM innovation.
-          </p>
-          
-          {/* Special Offers */}
-          <div className="bg-white bg-opacity-80 rounded-2xl p-6 mb-6 backdrop-blur-sm border border-pink-200 shadow-lg">
-            <h3 className="text-xl font-bold mb-4 text-gray-900">Special Offers Available!</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-              <div className="p-3 bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl border border-pink-200">
-                <div className="text-2xl font-bold text-pink-600">10% OFF</div>
-                <div className="text-sm text-gray-600">Early Bird Registration</div>
-              </div>
-              <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
-                <div className="text-2xl font-bold text-blue-600">Kits Provided</div>
-                <div className="text-sm text-gray-600">All materials at our premises</div>
-              </div>
-              <div className="p-3 bg-gradient-to-r from-purple-50 to-violet-50 rounded-xl border border-purple-200">
-                <div className="text-2xl font-bold text-purple-600">Group Discount</div>
-                <div className="text-sm text-gray-600">10% off for 3+ siblings</div>
-              </div>
+    </div>
+
+    {/* Choose Your STEM Adventure Section */}
+    <section className="relative isolate bg-gradient-to-br from-[#0b1327] via-[#141b32] to-[#1f0f33] px-6 py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(139,92,246,0.3),_transparent_55%)]" />
+      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "url('/grid.svg')", backgroundSize: '600px' }} />
+      <div className="relative z-10 mx-auto max-w-5xl text-center space-y-6">
+        <p className="text-sm uppercase tracking-[0.4em] text-pink-300">Ready to Begin?</p>
+        <h2 className="text-4xl font-bold text-white md:text-5xl">Choose Your STEM Adventure</h2>
+        <p className="text-lg text-gray-200 max-w-3xl mx-auto">
+          Ready to spark your child's curiosity? Choose from our exciting courses, camps, or book a personalized consultation. 
+          Every journey starts with a single step into the world of STEM innovation.
+        </p>
+        
+        {/* Special Offers */}
+        <div className="bg-white bg-opacity-10 rounded-2xl p-6 mb-6 backdrop-blur-sm border border-white/20 shadow-lg">
+          <h3 className="text-xl font-bold mb-4 text-white">Special Offers Available!</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+            <div className="p-3 bg-gradient-to-r from-pink-500/20 to-rose-500/20 rounded-xl border border-pink-400/30">
+              <div className="text-2xl font-bold text-pink-300">10% OFF</div>
+              <div className="text-sm text-gray-300">Early Bird Registration</div>
+            </div>
+            <div className="p-3 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-xl border border-blue-400/30">
+              <div className="text-2xl font-bold text-blue-300">Kits Provided</div>
+              <div className="text-sm text-gray-300">All materials at our premises</div>
+            </div>
+            <div className="p-3 bg-gradient-to-r from-purple-500/20 to-violet-500/20 rounded-xl border border-purple-400/30">
+              <div className="text-2xl font-bold text-purple-300">Group Discount</div>
+              <div className="text-sm text-gray-300">10% off for 3+ siblings</div>
             </div>
           </div>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-            <a
-              href="https://wa.me/917009594410?text=Hi!%20I%20want%20to%20enroll%20my%20child%20in%20STEMOrbit%20courses."
-              className="rounded-full bg-pink-500 px-8 py-3 text-lg font-semibold text-white transition hover:bg-pink-400 shadow-lg"
-            >
-              Enroll in Courses
-            </a>
-            <a
-              href="/stemcampsnew"
-              className="rounded-full bg-blue-500 px-8 py-3 text-lg font-semibold text-white transition hover:bg-blue-400 shadow-lg"
-            >
-              Join STEM Camps
-            </a>
-            <a
-              href="/summercamp"
-              className="rounded-full bg-orange-500 px-8 py-3 text-lg font-semibold text-white transition hover:bg-orange-400 shadow-lg"
-            >
-              Summer Programs
-            </a>
-            <a
-              href="/contact"
-              className="rounded-full border border-pink-300 px-8 py-3 text-lg font-semibold text-pink-600 transition hover:border-pink-400 hover:bg-white shadow"
-            >
-              Book a Counseling Call
-            </a>
-          </div>
         </div>
-      </section>
-
-    </div>
+      </div>
+    </section>
     </>
   );
 }
