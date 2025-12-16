@@ -663,6 +663,130 @@ export default function CoursesPage() {
           </div>
         </div>
       </div>
+
+      {/* Curriculum & Learning Outcomes Section */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-fredoka">
+              Our <span className="text-blue-600">Curriculum</span> & <span className="text-green-600">Learning Outcomes</span>
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Discover our internationally recognized curriculum and the skills your child will develop
+            </p>
+          </div>
+
+          {/* Bottom Two Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* About Curriculum */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                <span className="text-3xl">📚</span>
+                About the Curriculum
+              </h3>
+              
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-base">Aligned with International Standards</p>
+                    <p className="text-gray-600 text-sm mt-1">Following IEEE and ACM guidelines for robotics education</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-base">Starts from LED Blink to develop different robots</p>
+                    <p className="text-gray-600 text-sm mt-1">Progressive learning from basic to advanced robotics</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-base">HRDF Malaysia and MOE Singapore approved courses</p>
+                    <p className="text-gray-600 text-sm mt-1">Government recognized and certified programs</p>
+                  </div>
+                </div>
+                
+                <div className="bg-white bg-opacity-60 rounded-xl p-3 mt-3">
+                  <p className="text-sm text-gray-600 text-center">
+                    <span className="font-bold text-blue-600">25,000+</span> students and <span className="font-bold text-blue-600">75+</span> institutions globally in the last 5 years
+                  </p>
+                </div>
+              </div>
+              
+              <div className="mt-4 p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+                <h4 className="font-bold text-gray-800 text-sm mb-1">🏆 Certification</h4>
+                <p className="text-gray-600 text-xs">Industry-recognized certificates upon successful completion of the program</p>
+              </div>
+            </div>
+
+            {/* Learning Outcomes */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                <span className="text-3xl">🎯</span>
+                Learning Outcomes
+              </h3>
+              
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-base">Hands-on Industry relevant topics</p>
+                    <p className="text-gray-600 text-sm mt-1">Real-world projects and industry case studies</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-base">Clear understanding of Robotics, building Robots, Coding, Sensors and motors</p>
+                    <p className="text-gray-600 text-sm mt-1">Comprehensive knowledge of all robotics components</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-base">After the course students will be able to independently develop robots on their own</p>
+                    <p className="text-gray-600 text-sm mt-1">Build complete robotic systems from scratch</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium text-base">Problem-solving and critical thinking skills</p>
+                    <p className="text-gray-600 text-sm mt-1">Develop analytical and troubleshooting abilities</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-4 p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
+                <h4 className="font-bold text-gray-800 text-sm mb-1">🚀 Career Readiness</h4>
+                <p className="text-gray-600 text-xs">Prepare for careers in robotics, automation, and engineering fields</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

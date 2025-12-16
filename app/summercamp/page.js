@@ -555,7 +555,7 @@ export default function SummerCampPage() {
       </section>
 
       {/* Programs Section */}
-      <section className="py-16 bg-gradient-to-br from-[#070f21] via-[#111b34] to-[#1d2a4f] text-gray-100">
+      {/* <section className="py-16 bg-gradient-to-br from-[#070f21] via-[#111b34] to-[#1d2a4f] text-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-fredoka animate-fade-in-up">
@@ -626,7 +626,7 @@ export default function SummerCampPage() {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
       <section className="py-16 bg-gradient-to-r from-[#111b36] to-[#0a1327] text-gray-100">
@@ -712,114 +712,7 @@ export default function SummerCampPage() {
             </div>
           </div>
 
-          {/* Bottom Two Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* About Curriculum */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                <span className="text-3xl">📚</span>
-                About the Curriculum
-              </h3>
-              
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 font-medium text-base">Aligned with International Standards</p>
-                    <p className="text-gray-600 text-sm mt-1">Following IEEE and ACM guidelines for robotics education</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 font-medium text-base">Starts from LED Blink to develop different robots</p>
-                    <p className="text-gray-600 text-sm mt-1">Progressive learning from basic to advanced robotics</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 font-medium text-base">HRDF Malaysia and MOE Singapore approved courses</p>
-                    <p className="text-gray-600 text-sm mt-1">Government recognized and certified programs</p>
-                  </div>
-                </div>
-                
-                <div className="bg-white bg-opacity-60 rounded-xl p-3 mt-3">
-                  <p className="text-sm text-gray-600 text-center">
-                    <span className="font-bold text-blue-600">25,000+</span> students and <span className="font-bold text-blue-600">75+</span> institutions globally in the last 5 years
-                  </p>
-                </div>
-              </div>
-              
-              <div className="mt-4 p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
-                <h4 className="font-bold text-gray-800 text-sm mb-1">🏆 Certification</h4>
-                <p className="text-gray-600 text-xs">Industry-recognized certificates upon successful completion of the program</p>
-              </div>
-            </div>
 
-            {/* Learning Outcomes */}
-            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                <span className="text-3xl">🎯</span>
-                Learning Outcomes
-              </h3>
-              
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 font-medium text-base">Hands-on Industry relevant topics</p>
-                    <p className="text-gray-600 text-sm mt-1">Real-world projects and industry case studies</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 font-medium text-base">Clear understanding of Robotics, building Robots, Coding, Sensors and motors</p>
-                    <p className="text-gray-600 text-sm mt-1">Comprehensive knowledge of all robotics components</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 font-medium text-base">After the course students will be able to independently develop robots on their own</p>
-                    <p className="text-gray-600 text-sm mt-1">Build complete robotic systems from scratch</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-700 font-medium text-base">Problem-solving and critical thinking skills</p>
-                    <p className="text-gray-600 text-sm mt-1">Develop analytical and troubleshooting abilities</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-4 p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
-                <h4 className="font-bold text-gray-800 text-sm mb-1">🚀 Career Readiness</h4>
-                <p className="text-gray-600 text-xs">Prepare for careers in robotics, automation, and engineering fields</p>
-              </div>
-            </div>
-          </div>
 
         </div>
       </section>
@@ -966,54 +859,24 @@ export default function SummerCampPage() {
               {/* First set of images */}
               <div className="flex gap-4 mr-4">
                 {[
-                  '/stemcapsnew (1).jpg',
-                  '/stemcapsnew (2).jpg',
-                  '/stemcapsnew (3).jpg',
-                  '/stemcapsnew (4).jpg',
-                  '/stemcapsnew (5).jpg',
-                  '/stemcapsnew (6).jpg',
-                  '/stemcapsnew (7).jpg',
-                  '/stemcapsnew (8).jpg',
-                  '/stemcapsnew (9).jpg',
-                  '/stemcapsnew (10).jpg',
-                  '/stemcapsnew (11).jpg',
-                  '/stemcapsnew (12).jpg',
-                  '/stemcapsnew (13).jpg',
-                  '/stemcapsnew (14).jpg',
-                  '/stemcapsnew (15).jpg',
-                  '/stemcapsnew (16).jpg',
-                  '/stemcapsnew (17).jpg',
-                  '/stemcapsnew (18).jpg',
-                  '/stemcapsnew (19).jpg',
-                  '/stemcapsnew (20).jpg',
-                  '/stemcapsnew (21).jpg',
-                  '/stemcapsnew (22).jpg',
-                  '/stemcapsnew (23).jpg',
-                  '/stemcapsnew (24).jpg',
-                  '/stemcapsnew (25).jpg',
-                  '/stemcapsnew (26).jpg',
-                  '/stemcapsnew (27).jpg',
-                  '/stemcapsnew (28).jpg',
-                  '/stemcapsnew (29).jpg',
-                  '/stemcapsnew (30).jpg',
-                  '/stemcapsnew (31).jpg',
-                  '/stemcapsnew (32).jpg',
-                  '/stemcapsnew (33).jpg',
-                  '/stemcapsnew (34).jpg',
-                  '/stemcapsnew (35).jpg',
-                  '/stemcapsnew (36).jpg',
-                  '/stemcapsnew (37).jpg',
-                  '/stemcapsnew (38).jpg',
-                  '/stemcapsnew (39).jpg',
-                  '/stemcapsnew (40).jpg',
-                  '/stemcapsnew (41).jpg',
-                  '/stemcapsnew (42).jpg',
-                  '/stemcapsnew (43).jpg',
-                  '/stemcapsnew (44).jpg',
-                  '/stemcapsnew (45).jpg',
-                  '/stemcapsnew (46).jpg',
-                  '/stemcapsnew (47).jpg',
-                  '/stemcapsnew (48).jpg'
+                  '/camps_(1).jpg',
+                  '/camps_(2).jpg',
+                  '/camps_(3).jpg',
+                  '/camps_(4).jpg',
+                  '/camps_(5).jpg',
+                  '/camps_(6).jpg',
+                  '/camps_(7).jpg',
+                  '/camps_(8).jpg',
+                  '/camps_(9).jpg',
+                  '/camps_(10).jpg',
+                  '/camps_(11).jpg',
+                  '/camps_(12).jpg',
+                  '/camps_(13).jpg',
+                  '/camps_(14).jpg',
+                  '/camps_(15).jpg',
+                  '/camps_(16).jpg',
+                  '/camps_(17).jpg',
+                  '/camps_(18).jpg'
                 ].map((image, index) => (
                   <div key={index} className="flex-shrink-0 w-64 h-48 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                     <img 
@@ -1028,54 +891,24 @@ export default function SummerCampPage() {
               {/* Duplicate set for seamless loop */}
               <div className="flex gap-4 mr-4">
                 {[
-                  '/stemcapsnew (1).jpg',
-                  '/stemcapsnew (2).jpg',
-                  '/stemcapsnew (3).jpg',
-                  '/stemcapsnew (4).jpg',
-                  '/stemcapsnew (5).jpg',
-                  '/stemcapsnew (6).jpg',
-                  '/stemcapsnew (7).jpg',
-                  '/stemcapsnew (8).jpg',
-                  '/stemcapsnew (9).jpg',
-                  '/stemcapsnew (10).jpg',
-                  '/stemcapsnew (11).jpg',
-                  '/stemcapsnew (12).jpg',
-                  '/stemcapsnew (13).jpg',
-                  '/stemcapsnew (14).jpg',
-                  '/stemcapsnew (15).jpg',
-                  '/stemcapsnew (16).jpg',
-                  '/stemcapsnew (17).jpg',
-                  '/stemcapsnew (18).jpg',
-                  '/stemcapsnew (19).jpg',
-                  '/stemcapsnew (20).jpg',
-                  '/stemcapsnew (21).jpg',
-                  '/stemcapsnew (22).jpg',
-                  '/stemcapsnew (23).jpg',
-                  '/stemcapsnew (24).jpg',
-                  '/stemcapsnew (25).jpg',
-                  '/stemcapsnew (26).jpg',
-                  '/stemcapsnew (27).jpg',
-                  '/stemcapsnew (28).jpg',
-                  '/stemcapsnew (29).jpg',
-                  '/stemcapsnew (30).jpg',
-                  '/stemcapsnew (31).jpg',
-                  '/stemcapsnew (32).jpg',
-                  '/stemcapsnew (33).jpg',
-                  '/stemcapsnew (34).jpg',
-                  '/stemcapsnew (35).jpg',
-                  '/stemcapsnew (36).jpg',
-                  '/stemcapsnew (37).jpg',
-                  '/stemcapsnew (38).jpg',
-                  '/stemcapsnew (39).jpg',
-                  '/stemcapsnew (40).jpg',
-                  '/stemcapsnew (41).jpg',
-                  '/stemcapsnew (42).jpg',
-                  '/stemcapsnew (43).jpg',
-                  '/stemcapsnew (44).jpg',
-                  '/stemcapsnew (45).jpg',
-                  '/stemcapsnew (46).jpg',
-                  '/stemcapsnew (47).jpg',
-                  '/stemcapsnew (48).jpg'
+                  '/camps_(1).jpg',
+                  '/camps_(2).jpg',
+                  '/camps_(3).jpg',
+                  '/camps_(4).jpg',
+                  '/camps_(5).jpg',
+                  '/camps_(6).jpg',
+                  '/camps_(7).jpg',
+                  '/camps_(8).jpg',
+                  '/camps_(9).jpg',
+                  '/camps_(10).jpg',
+                  '/camps_(11).jpg',
+                  '/camps_(12).jpg',
+                  '/camps_(13).jpg',
+                  '/camps_(14).jpg',
+                  '/camps_(15).jpg',
+                  '/camps_(16).jpg',
+                  '/camps_(17).jpg',
+                  '/camps_(18).jpg'
                 ].map((image, index) => (
                   <div key={`duplicate-${index}`} className="flex-shrink-0 w-64 h-48 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                     <img 
@@ -1091,44 +924,66 @@ export default function SummerCampPage() {
         </div>
       </section>
 
-      {/* Registration Section */}
-      <section className="py-16 bg-gradient-to-r from-orange-500 to-pink-500 text-white">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-fredoka">
-            Ready for an Amazing Summer?
-          </h2>
-          <p className="text-xl mb-8">
-            Limited spots available! Register now to secure your child's place in our summer STEM camps.
+      {/* Choose Your STEM Adventure Section */}
+      <section className="relative isolate bg-gradient-to-br from-rose-100 via-white to-pink-100 px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.25),_transparent_55%)]" />
+        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "url('/grid.svg')", backgroundSize: '600px' }} />
+        <div className="relative z-10 mx-auto max-w-5xl text-center space-y-6">
+          <p className="text-sm uppercase tracking-[0.4em] text-pink-600">Ready to Begin?</p>
+          <h2 className="text-4xl font-bold text-gray-900 md:text-5xl">Choose Your STEM Adventure</h2>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            Ready to spark your child's curiosity? Choose from our exciting courses, camps, or book a personalized consultation. 
+            Every journey starts with a single step into the world of STEM innovation.
           </p>
           
-          <div className="bg-white bg-opacity-20 rounded-2xl p-8 mb-8 backdrop-blur-sm">
-            <h3 className="text-2xl font-bold mb-4">Early Bird Special!</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold text-yellow-300">20% OFF</div>
-                <div className="text-sm">Register before May 15th</div>
+          {/* Special Offers */}
+          <div className="bg-white bg-opacity-80 rounded-2xl p-6 mb-6 backdrop-blur-sm border border-pink-200 shadow-lg">
+            <h3 className="text-xl font-bold mb-4 text-gray-900">Special Offers Available!</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+              <div className="p-3 bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl border border-pink-200">
+                <div className="text-2xl font-bold text-pink-600">10% OFF</div>
+                <div className="text-sm text-gray-600">Early Bird Registration</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-yellow-300">Free Kit</div>
-                <div className="text-sm">Take-home project materials</div>
+              <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+                <div className="text-2xl font-bold text-blue-600">Kits Provided</div>
+                <div className="text-sm text-gray-600">All materials at our premises</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-yellow-300">Group Discount</div>
-                <div className="text-sm">10% off for 3+ siblings</div>
+              <div className="p-3 bg-gradient-to-r from-purple-50 to-violet-50 rounded-xl border border-purple-200">
+                <div className="text-2xl font-bold text-purple-600">Group Discount</div>
+                <div className="text-sm text-gray-600">10% off for 3+ siblings</div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
-              Register Now
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-orange-600 transition-all duration-300">
-              Contact Us
-            </button>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+            <a
+              href="https://wa.me/917009594410?text=Hi!%20I%20want%20to%20enroll%20my%20child%20in%20STEMOrbit%20courses."
+              className="rounded-full bg-pink-500 px-8 py-3 text-lg font-semibold text-white transition hover:bg-pink-400 shadow-lg"
+            >
+              Enroll in Courses
+            </a>
+            <a
+              href="/stemcampsnew"
+              className="rounded-full bg-blue-500 px-8 py-3 text-lg font-semibold text-white transition hover:bg-blue-400 shadow-lg"
+            >
+              Join STEM Camps
+            </a>
+            <a
+              href="/summercamp"
+              className="rounded-full bg-orange-500 px-8 py-3 text-lg font-semibold text-white transition hover:bg-orange-400 shadow-lg"
+            >
+              Summer Programs
+            </a>
+            <a
+              href="/contact"
+              className="rounded-full border border-pink-300 px-8 py-3 text-lg font-semibold text-pink-600 transition hover:border-pink-400 hover:bg-white shadow"
+            >
+              Book a Counseling Call
+            </a>
           </div>
         </div>
       </section>
+
     </div>
     </>
   );

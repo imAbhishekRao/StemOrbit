@@ -7,6 +7,21 @@ export const metadata = {
 
 export default function StemCampsNewPage() {
   return (
+    <>
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        .animate-scroll {
+          animation: scroll 20s linear infinite;
+        }
+      `}</style>
     <main className="min-h-screen bg-white text-gray-900">
       <section className="relative isolate overflow-hidden bg-gradient-to-br from-pink-50 via-white to-rose-100">
         <div className="absolute inset-x-0 bottom-[-8%] h-40 bg-gradient-to-r from-transparent via-pink-200/30 to-transparent rotate-[-2deg]" />
@@ -166,33 +181,91 @@ export default function StemCampsNewPage() {
         </div>
       </section>
 
-      <section className="relative isolate bg-gradient-to-br from-rose-100 via-white to-pink-100 px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(236,72,153,0.25),_transparent_55%)]" />
-        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "url('/grid.svg')", backgroundSize: '600px' }} />
-        <div className="relative z-10 mx-auto max-w-5xl text-center space-y-6">
-          <p className="text-sm uppercase tracking-[0.4em] text-pink-600">Ready to Begin?</p>
-          <h2 className="text-4xl font-bold text-gray-900 md:text-5xl">Enroll Your Child in STEMOrbit Camps</h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Seats fill fast! Secure a spot in our high-energy, project-based camps and watch curiosity turn into confidence.
-            Live mentorship, custom kits, and unforgettable STEM adventures await.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-            <a
-              href="https://wa.me/917009594410?text=Hi!%20I%20want%20to%20enroll%20my%20child%20in%20STEMOrbit%20Camp."
-              className="rounded-full bg-pink-500 px-8 py-3 text-lg font-semibold text-white transition hover:bg-pink-400 shadow-lg"
-            >
-              Enroll Now
-            </a>
-            <a
-              href="/contact"
-              className="rounded-full border border-pink-300 px-8 py-3 text-lg font-semibold text-pink-600 transition hover:border-pink-400 hover:bg-white shadow"
-            >
-              Book a Counseling Call
-            </a>
+      {/* Gallery Section */}
+      <section className="py-16 bg-gradient-to-br from-pink-100 to-rose-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-fredoka">
+              <span className="text-pink-600">Gallery</span> of <span className="text-purple-600">Innovation</span>
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              See the amazing projects and creations from our STEM camp participants
+            </p>
+          </div>
+
+          {/* Infinite Scroll Gallery */}
+          <div className="relative overflow-hidden">
+            <div className="flex animate-scroll">
+              {/* First set of images */}
+              <div className="flex gap-4 mr-4">
+                {[
+                  '/camps_(1).jpg',
+                  '/camps_(2).jpg',
+                  '/camps_(3).jpg',
+                  '/camps_(4).jpg',
+                  '/camps_(5).jpg',
+                  '/camps_(6).jpg',
+                  '/camps_(7).jpg',
+                  '/camps_(8).jpg',
+                  '/camps_(9).jpg',
+                  '/camps_(10).jpg',
+                  '/camps_(11).jpg',
+                  '/camps_(12).jpg',
+                  '/camps_(13).jpg',
+                  '/camps_(14).jpg',
+                  '/camps_(15).jpg',
+                  '/camps_(16).jpg',
+                  '/camps_(17).jpg',
+                  '/camps_(18).jpg'
+                ].map((image, index) => (
+                  <div key={index} className="flex-shrink-0 w-64 h-48 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <img 
+                      src={image} 
+                      alt={`Gallery image ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              {/* Duplicate set for seamless loop */}
+              <div className="flex gap-4 mr-4">
+                {[
+                  '/camps_(1).jpg',
+                  '/camps_(2).jpg',
+                  '/camps_(3).jpg',
+                  '/camps_(4).jpg',
+                  '/camps_(5).jpg',
+                  '/camps_(6).jpg',
+                  '/camps_(7).jpg',
+                  '/camps_(8).jpg',
+                  '/camps_(9).jpg',
+                  '/camps_(10).jpg',
+                  '/camps_(11).jpg',
+                  '/camps_(12).jpg',
+                  '/camps_(13).jpg',
+                  '/camps_(14).jpg',
+                  '/camps_(15).jpg',
+                  '/camps_(16).jpg',
+                  '/camps_(17).jpg',
+                  '/camps_(18).jpg'
+                ].map((image, index) => (
+                  <div key={`duplicate-${index}`} className="flex-shrink-0 w-64 h-48 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <img 
+                      src={image} 
+                      alt={`Gallery image ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
     </main>
+    </>
   );
 }
 
