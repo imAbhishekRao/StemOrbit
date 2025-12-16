@@ -1,6 +1,37 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
+// Component for handling image with emoji fallback
+const ProfileImage = ({ src, alt, name }) => {
+  const [imageError, setImageError] = useState(false);
+  
+  // Generate emoji based on first letter of name
+  const getEmojiForName = (name) => {
+    const emojis = ['👨‍🏫', '👩‍🏫', '👨‍💼', '👩‍💼', '👨‍🎓', '👩‍🎓', '👨‍🔬', '👩‍🔬'];
+    const index = name.charCodeAt(0) % emojis.length;
+    return emojis[index];
+  };
+
+  if (imageError) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100">
+        <span className="text-3xl">{getEmojiForName(name)}</span>
+      </div>
+    );
+  }
+
+  return (
+    <Image 
+      src={src} 
+      alt={alt} 
+      width={96} 
+      height={96} 
+      className="object-cover w-full h-full" 
+      onError={() => setImageError(true)}
+    />
+  );
+};
+
 const testimonials = [
   {
     name: "Sachin Rana",
@@ -117,7 +148,7 @@ export default function TestimonialsSection() {
                 {/* Circular image */}
                 <div className="relative -top-12 sm:-top-16 z-20 mb-2">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-[3px] sm:border-4 border-white overflow-hidden shadow-lg bg-white">
-                    <Image src={currentPair[0].img} alt={currentPair[0].name} width={96} height={96} className="object-cover w-full h-full" />
+                    <ProfileImage src={currentPair[0].img} alt={currentPair[0].name} name={currentPair[0].name} />
                   </div>
                 </div>
                 
@@ -153,7 +184,7 @@ export default function TestimonialsSection() {
               {/* Circular image */}
               <div className="relative -top-16 z-20 mb-2">
                 <div className="w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-lg bg-white">
-                  <Image src={testimonial.img} alt={testimonial.name} width={96} height={96} className="object-cover w-full h-full" />
+                  <ProfileImage src={testimonial.img} alt={testimonial.name} name={testimonial.name} />
                 </div>
               </div>
               
