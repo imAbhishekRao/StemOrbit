@@ -16,9 +16,14 @@ const UpcomingEvents = () => {
             Get ready to explore, build, and create with exciting activities in robotics, AI,
             3D printing, and more. Join us and spark your imagination!
           </p>
-          <button className="px-6 sm:px-8 py-3 bg-pink-500 text-white font-semibold text-base sm:text-lg rounded-full hover:bg-pink-600 transition duration-300 hover:scale-105 transform">
+          <a 
+            href="https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%20upcoming%20STEM%20events%20and%20schedule.%20Could%20you%20please%20provide%20more%20details%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 sm:px-8 py-3 bg-pink-500 text-white font-semibold text-base sm:text-lg rounded-full hover:bg-pink-600 transition duration-300 hover:scale-105 transform text-center no-underline"
+          >
             See Full Schedule
-          </button>
+          </a>
         </div>
 
         {/* Right Illustration + Event Cards */}

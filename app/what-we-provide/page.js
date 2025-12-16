@@ -53,7 +53,7 @@ export default function WhatWeProvidePage() {
           "/stemclasses (10).jpg",
         ]}
         ctas={[
-          { label: "Learn More", href: "/courses", variant: "primary" },
+          { label: "Learn More", href: "https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%20STEM%20Classes%20for%20Grade%201-12.%20Could%20you%20please%20provide%20more%20details%3F", variant: "primary" },
           { label: "Enquire", onClick: handleBookCallClick, variant: "ghost" }
         ]}
       />
@@ -82,7 +82,7 @@ export default function WhatWeProvidePage() {
           "/3D Lab (11).jpeg",
         ]}
         ctas={[
-          { label: "Learn More", href: "/our-lab-offerings", variant: "primary" },
+          { label: "Learn More", href: "https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%20STEM%20Lab%20setup%20and%20operations.%20Could%20you%20please%20provide%20more%20details%3F", variant: "primary" },
           { label: "Book a Call", onClick: handleBookCallClick, variant: "ghost" }
         ]}
       />
@@ -105,7 +105,7 @@ export default function WhatWeProvidePage() {
           "/schoolsessions (5).jpg",
         ]}
         ctas={[
-          { label: "Learn More", href: "/our-lab-offerings", variant: "primary" },
+          { label: "Learn More", href: "https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%20School%20Sessions%20and%20STEM%20workshops.%20Could%20you%20please%20provide%20more%20details%3F", variant: "primary" },
           { label: "Enquire", onClick: handleBookCallClick, variant: "ghost" }
         ]}
       />
@@ -168,7 +168,7 @@ export default function WhatWeProvidePage() {
         ]}
         galleryLink="/gallery"
         ctas={[
-          { label: "Learn More", href: "/our-lab-offerings", variant: "primary" },
+          { label: "Learn More", href: "https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%20Teacher%20Training%20Program.%20Could%20you%20please%20provide%20more%20details%3F", variant: "primary" },
           { label: "Book a Call", onClick: handleBookCallClick, variant: "ghost" }
         ]}
       />
@@ -195,7 +195,7 @@ export default function WhatWeProvidePage() {
           "/stemcamps (9).jpg",
         ]}
         ctas={[
-          { label: "Learn More", href: "/summercamp", variant: "primary" },
+          { label: "Learn More", href: "https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%20STEM%20Camps.%20Could%20you%20please%20provide%20more%20details%3F", variant: "primary" },
           { label: "Enquire", onClick: handleBookCallClick, variant: "ghost" }
         ]}
       />
@@ -251,7 +251,7 @@ export default function WhatWeProvidePage() {
         ]}
         img="/3d printing 2.png"
         ctas={[
-          { label: "Learn More", href: "/3d-printing", variant: "primary" },
+          { label: "Learn More", href: "https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%203D%20Designing%20and%20Printing%20workshops.%20Could%20you%20please%20provide%20more%20details%3F", variant: "primary" },
           { label: "Enquire", onClick: handleBookCallClick, variant: "ghost" }
         ]}
       />
@@ -428,13 +428,25 @@ function Section({ index, title, description, bullets, img, images, galleryLink,
                 <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2 sm:gap-3">
                   {ctas.map((cta, i) => (
                     cta.href ? (
-                      <Link
-                        key={i}
-                        href={cta.href}
-                        className={`w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-sm sm:text-base text-center ${cta.variant === 'primary' ? `bg-gradient-to-r ${colors.accent} text-white hover:shadow-2xl` : 'bg-white text-gray-700 ring-2 ring-gray-300 hover:bg-gray-50 hover:ring-gray-400'}`}
-                      >
-                        {cta.label}
-                      </Link>
+                      cta.href.startsWith('https://wa.me/') ? (
+                        <a
+                          key={i}
+                          href={cta.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-sm sm:text-base text-center no-underline ${cta.variant === 'primary' ? `bg-gradient-to-r ${colors.accent} text-white hover:shadow-2xl` : 'bg-white text-gray-700 ring-2 ring-gray-300 hover:bg-gray-50 hover:ring-gray-400'}`}
+                        >
+                          {cta.label}
+                        </a>
+                      ) : (
+                        <Link
+                          key={i}
+                          href={cta.href}
+                          className={`w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl text-sm sm:text-base text-center ${cta.variant === 'primary' ? `bg-gradient-to-r ${colors.accent} text-white hover:shadow-2xl` : 'bg-white text-gray-700 ring-2 ring-gray-300 hover:bg-gray-50 hover:ring-gray-400'}`}
+                        >
+                          {cta.label}
+                        </Link>
+                      )
                     ) : (
                       <button
                         key={i}

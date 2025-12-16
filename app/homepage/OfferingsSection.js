@@ -126,9 +126,15 @@ export default function OfferingsSection() {
                    </p>
 
                    {/* Button inside card */}
-                   <button className="more-info-btn" style={{ backgroundColor: service.buttonColor }}>
+                   <a 
+                     href="https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%20STEM%20programs.%20Could%20you%20please%20provide%20more%20details%3F"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="more-info-btn" 
+                     style={{ backgroundColor: service.buttonColor, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
+                   >
                      More Info
-                   </button>
+                   </a>
                  </div>
                </div>
              ))}
