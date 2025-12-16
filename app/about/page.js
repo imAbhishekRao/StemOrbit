@@ -9,21 +9,15 @@ export default function About() {
       <section className="w-full py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-12 bg-white relative">
         <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center lg:items-stretch gap-8 sm:gap-12 lg:gap-16">
           {/* Left: Text */}
-          <div className="flex-1 flex flex-col justify-center lg:pr-16">
+          <div className="w-full lg:w-[70%] flex flex-col justify-center lg:pr-16">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-gray-900 mb-4 text-center lg:text-left">
               Hey! We&apos;re <span className="text-[#33aade]">STEMOrbit</span> <span className="text-2xl align-middle">🚀</span>
             </h1>
             <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6 max-w-2xl text-justify mx-auto lg:mx-0">
-              At STEMOrbit, we empower students, support schools, and expand access to meaningful STEM education. Our mission is to ignite curiosity, creativity, and innovation by offering engaging, hands-on experiences in science, technology, engineering, and mathematics.
+              At STEMOrbit, we make STEM education accessible and engaging through hands-on courses, labs, and interactive programs. We empower students and support schools by igniting curiosity and preparing the next generation of innovators for a technology-driven future.
             </p>
-            <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6 max-w-2xl text-justify mx-auto lg:mx-0">
-              We provide a diverse range of opportunities designed to meet different learning needs. For students, we offer courses, in-person classes, and online programs that make STEM practical, interactive, and inspiring. For schools and institutions, we deliver innovative labs, structured programs, and tailored solutions that strengthen curricula, enrich teaching, and build a strong culture of innovation.
-            </p>
-            <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6 max-w-2xl text-justify mx-auto lg:mx-0">
-              Whether in classrooms, online platforms, or at our own learning centers, STEMOrbit is committed to making STEM education accessible, engaging, and impactful—preparing learners and schools alike for a future driven by science and technology.
-            </p>
-            <p className="text-sm sm:text-base text-gray-600 mb-6 max-w-2xl text-justify mx-auto lg:mx-0">
-              Read on to learn more about our journey, our vision, and the people who make STEMOrbit a hub for future innovators.
+            <p className="text-base sm:text-lg text-gray-700 mb-6 max-w-2xl text-justify mx-auto lg:mx-0">
+              From robotics and AI to 3D printing and coding, we offer diverse learning experiences that make science, technology, engineering, and mathematics both practical and inspiring for learners of all ages.
             </p>
             {/* Get in Touch Button */}
             <div className="flex justify-center lg:justify-start mb-6">
@@ -33,10 +27,10 @@ export default function About() {
             </div>
           </div>
           {/* Right: About Us Image */}
-          <div className="flex-1 flex items-center justify-center">
-            <div className="w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] lg:w-[350px] lg:h-[350px] rounded-2xl shadow-md overflow-hidden">
+          <div className="w-full lg:w-[30%] flex items-center justify-center">
+            <div className="w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] lg:w-[420px] lg:h-[420px] rounded-2xl shadow-md overflow-hidden">
               <img 
-                src="/moments (7).jpg" 
+                src="/abouttus.jpg" 
                 alt="STEMOrbit Team" 
                 className="w-full h-full object-cover"
               />
@@ -46,7 +40,7 @@ export default function About() {
       </section>
 
       {/* Our Story Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-12 bg-white">
+      <section className="w-full py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-8 lg:px-12 bg-white">
         <div className="max-w-[1200px] mx-auto">
           <div className="relative mb-8 sm:mb-10 md:mb-16">
             {/* Heading and subtitle */}
@@ -61,7 +55,7 @@ export default function About() {
             {/* Left: Image */}
             <div className="flex-1 w-full max-w-md lg:max-w-none mb-6 lg:mb-0">
               <img 
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" 
+                src="/aboutus2.jpg" 
                 alt="Our Story - Team collaboration" 
                 className="w-full h-56 sm:h-72 md:h-96 lg:h-[400px] xl:h-[450px] object-cover rounded-2xl shadow-lg"
               />
@@ -97,13 +91,10 @@ export default function About() {
           <div className="flex flex-col lg:flex-row-reverse items-center gap-8 md:gap-12 lg:gap-16">
             {/* Right: Image */}
             <div className="flex-1 w-full max-w-md lg:max-w-none mb-6 lg:mb-0">
-              <Image 
-                src="/moments (9).jpg"
+              <img 
+                src="/abouttus3.jpg"
                 alt="Our Mission - Students learning STEM" 
-                width={600}
-                height={400}
                 className="w-full h-56 sm:h-72 md:h-96 lg:h-[400px] object-cover rounded-2xl shadow-lg"
-                priority
               />
             </div>
             {/* Left: Content */}

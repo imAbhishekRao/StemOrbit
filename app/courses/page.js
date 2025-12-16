@@ -11,7 +11,6 @@ export default function CoursesPage() {
       id: 1,
       title: "Robotics & Automation",
       description: "Build and program robots using Arduino, sensors, and motors. Learn coding, electronics, and mechanical design.",
-      ageGroup: "Ages 8-16",
       points: [
         "Arduino microcontroller programming",
         "Sensor integration and calibration",
@@ -26,7 +25,6 @@ export default function CoursesPage() {
       id: 2,
       title: "3D Printing & Design",
       description: "Master 3D modeling, CAD design, and 3D printing technology. Create prototypes and functional objects.",
-      ageGroup: "Ages 10-18",
       points: [
         "3D modeling with Tinkercad/Fusion 360",
         "CAD design principles",
@@ -41,7 +39,6 @@ export default function CoursesPage() {
       id: 3,
       title: "Arduino & IoT",
       description: "Learn microcontroller programming, sensors, and Internet of Things projects for smart devices.",
-      ageGroup: "Ages 12-18",
       points: [
         "Arduino programming fundamentals",
         "Sensor data collection and analysis",
@@ -56,7 +53,6 @@ export default function CoursesPage() {
       id: 4,
       title: "Drone Technology",
       description: "Build, program, and fly drones. Learn aerodynamics, flight control, and aerial photography.",
-      ageGroup: "Ages 10-16",
       points: [
         "Drone assembly and maintenance",
         "Flight control programming",
@@ -71,7 +67,6 @@ export default function CoursesPage() {
       id: 5,
       title: "AI & Machine Learning",
       description: "Explore artificial intelligence, neural networks, and machine learning algorithms through hands-on projects.",
-      ageGroup: "Ages 14-18",
       points: [
         "Python programming for AI",
         "Machine learning algorithms",
@@ -86,7 +81,6 @@ export default function CoursesPage() {
       id: 6,
       title: "VR & AR Development",
       description: "Create virtual and augmented reality experiences using cutting-edge VR/AR technologies.",
-      ageGroup: "Ages 12-18",
       points: [
         "Unity 3D development",
         "VR headset programming",
@@ -101,7 +95,6 @@ export default function CoursesPage() {
       id: 7,
       title: "Electronics & Circuits",
       description: "Learn electronic components, circuit design, and PCB development for STEM projects.",
-      ageGroup: "Ages 10-16",
       points: [
         "Basic electronic components",
         "Circuit design and simulation",
@@ -116,7 +109,6 @@ export default function CoursesPage() {
       id: 8,
       title: "STEM Engineering",
       description: "Apply engineering principles to solve real-world problems using math, science, and technology.",
-      ageGroup: "Ages 12-18",
       points: [
         "Engineering design process",
         "Mechanical and electrical systems",
@@ -131,7 +123,6 @@ export default function CoursesPage() {
       id: 9,
       title: "Cybersecurity & Coding",
       description: "Learn secure programming practices, ethical hacking, and cybersecurity fundamentals.",
-      ageGroup: "Ages 14-18",
       points: [
         "Programming languages (Python, C++)",
         "Cybersecurity fundamentals",
@@ -344,11 +335,9 @@ export default function CoursesPage() {
           {/* Card 1 - Sky Blue */}
           <div className="flex flex-col items-center bg-sky-300 rounded-2xl sm:rounded-3xl shadow-xl p-4 sm:p-6 md:p-8 border-2 sm:border-4 border-white hover:scale-105 transition-transform duration-300">
             <div className="mb-2 text-xl sm:text-2xl">🎨</div>
-            <h3 className="text-xl sm:text-2xl font-bold text-sky-800 mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold text-sky-800 mb-4">
               Creative Crafters
             </h3>
-            <div className="text-3xl sm:text-4xl font-extrabold text-sky-700 mb-1">₹999</div>
-            <div className="text-sm sm:text-base text-sky-900 mb-3 sm:mb-4">per month</div>
             <div className="text-sm sm:text-base text-sky-900 mb-3 sm:mb-4 text-center">
               Unleash your imagination with hands-on art, design, and DIY
               science fun!
@@ -375,9 +364,7 @@ export default function CoursesPage() {
               Most Popular
             </span>
             <div className="mb-2 text-xl sm:text-2xl">🤖</div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Robo Rockstars</h3>
-            <div className="text-3xl sm:text-4xl font-extrabold text-white mb-1">₹1499</div>
-            <div className="text-sm sm:text-base text-pink-100 mb-3 sm:mb-4">per month</div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Robo Rockstars</h3>
             <div className="text-sm sm:text-base text-pink-50 mb-3 sm:mb-4 text-center">
               Build, code, and battle robots in a playful, team-based adventure!
             </div>
@@ -400,13 +387,9 @@ export default function CoursesPage() {
           {/* Card 3 - Yellow */}
           <div className="flex flex-col items-center bg-yellow-300 rounded-2xl sm:rounded-3xl shadow-xl p-4 sm:p-6 md:p-8 border-2 sm:border-4 border-white hover:scale-105 transition-transform duration-300">
             <div className="mb-2 text-xl sm:text-2xl">🧪</div>
-            <h3 className="text-xl sm:text-2xl font-bold text-yellow-800 mb-2">
+            <h3 className="text-xl sm:text-2xl font-bold text-yellow-800 mb-4">
               Science Sleuths
             </h3>
-            <div className="text-3xl sm:text-4xl font-extrabold text-yellow-700 mb-1">
-              ₹1299
-            </div>
-            <div className="text-sm sm:text-base text-yellow-900 mb-3 sm:mb-4">per month</div>
             <div className="text-sm sm:text-base text-yellow-900 mb-3 sm:mb-4 text-center">
               Solve mysteries with chemistry, physics, and wild hands-on
               experiments!
@@ -513,14 +496,9 @@ export default function CoursesPage() {
                       className={`${color.bg} ${color.border} border-2 rounded-xl sm:rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl h-full flex flex-col`}
                     >
                       <div className="pt-4 sm:pt-6 px-4 sm:px-6 pb-2">
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 sm:mb-4 gap-2">
-                          <div className="flex items-center gap-2 sm:gap-3">
-                            <span className="text-2xl sm:text-3xl">{course.icon}</span>
-                            <h3 className={`text-lg sm:text-xl md:text-2xl font-bold ${color.text} mb-0 sm:mb-2`}>{course.title}</h3>
-                          </div>
-                          <span className="text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-full bg-white bg-opacity-70 whitespace-nowrap self-start sm:self-auto">
-                            {course.ageGroup}
-                          </span>
+                        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                          <span className="text-2xl sm:text-3xl">{course.icon}</span>
+                          <h3 className={`text-lg sm:text-xl md:text-2xl font-bold ${color.text}`}>{course.title}</h3>
                         </div>
                         <p className="text-sm sm:text-base text-gray-700 mb-3 sm:mb-4">{course.description}</p>
                         <ul className="mb-4 sm:mb-6 space-y-1.5 sm:space-y-2">
