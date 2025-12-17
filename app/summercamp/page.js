@@ -545,7 +545,9 @@ export default function SummerCampPage() {
               Enroll Now
             </a>
             <a
-              href="/contact"
+              href="https://calendly.com/stemorbittechllp/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full border border-pink-300/70 px-8 py-3 text-lg font-semibold text-pink-200 transition hover:border-pink-200 hover:bg-white/10 shadow"
             >
               Book a Counseling Call
@@ -862,8 +864,6 @@ export default function SummerCampPage() {
                   '/camps_(1).jpg',
                   '/camps_(2).jpg',
                   '/camps_(3).jpg',
-                  '/camps_(4).jpg',
-                  '/camps_(5).jpg',
                   '/camps_(6).jpg',
                   '/camps_(7).jpg',
                   '/camps_(8).jpg',
@@ -894,8 +894,6 @@ export default function SummerCampPage() {
                   '/camps_(1).jpg',
                   '/camps_(2).jpg',
                   '/camps_(3).jpg',
-                  '/camps_(4).jpg',
-                  '/camps_(5).jpg',
                   '/camps_(6).jpg',
                   '/camps_(7).jpg',
                   '/camps_(8).jpg',

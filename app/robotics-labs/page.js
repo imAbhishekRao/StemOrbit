@@ -7,7 +7,7 @@ import gsap from "gsap";
 // Calendly integration
 const handleBookCallClick = (e) => {
   e.preventDefault();
-  const url = "https://calendly.com/abhishek-stemorbit";
+  const url = "https://calendly.com/stemorbittechllp/30min";
   if (typeof window === "undefined") return false;
 
   // Ensure CSS is present
