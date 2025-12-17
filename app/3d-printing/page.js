@@ -93,28 +93,28 @@ export default function ThreeDPrintingPage() {
     {
       title: 'Medical Training Model',
       description: '3D printed heart model for medical students',
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
+      image: '/3DPRINTING (1).jpg',
       category: 'Medical',
       complexity: 'High'
     },
     {
       title: 'Architectural Scale Model',
       description: 'Detailed building model for presentation',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop',
+      image: '/3DPRINTING (2).jpg',
       category: 'Architecture',
       complexity: 'Medium'
     },
     {
       title: 'Educational Dinosaur Fossil',
       description: 'Life-size dinosaur bone replica for museum',
-      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop',
+      image: '/3DPRINTING (3).jpg',
       category: 'Education',
       complexity: 'High'
     },
     {
       title: 'Custom Phone Case',
       description: 'Personalized phone case with unique design',
-      image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop',
+      image: '/3DPRINTING (4).jpg',
       category: 'Consumer',
       complexity: 'Low'
     }
@@ -295,43 +295,19 @@ export default function ThreeDPrintingPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {projects.map((project, index) => {
-              const portfolioColors = [
-                { bg: 'from-red-200 to-pink-300', border: 'border-red-400' },
-                { bg: 'from-blue-200 to-indigo-300', border: 'border-blue-400' },
-                { bg: 'from-green-200 to-emerald-300', border: 'border-green-400' },
-                { bg: 'from-purple-200 to-violet-300', border: 'border-purple-400' }
-              ];
-              const selectedColor = portfolioColors[index % portfolioColors.length];
-              
-              return (
-                <div key={index} className={`bg-gradient-to-br ${selectedColor.bg} rounded-lg sm:rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 ${selectedColor.border}`}>
+            {projects.map((project, index) => (
+              <div key={index} className="relative rounded-lg sm:rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105" 
+                   style={{
+                     filter: 'drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1)) drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05))',
+                     clipPath: 'polygon(0% 0%, 100% 0%, 100% calc(100% - 48px), calc(100% - 48px) 100%, 0% 100%)'
+                   }}>
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-40 sm:h-48 object-cover"
+                  className="w-full h-auto object-contain"
                 />
-                <div className="p-4 sm:p-6">
-                  <div className="flex items-center justify-between mb-2 gap-2">
-                    <span className="bg-blue-200 text-blue-800 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
-                      {project.category}
-                    </span>
-                    <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${
-                      project.complexity === 'High' 
-                        ? 'bg-red-200 text-red-800' 
-                        : project.complexity === 'Medium'
-                        ? 'bg-yellow-200 text-yellow-800'
-                        : 'bg-green-200 text-green-800'
-                    }`}>
-                      {project.complexity}
-                    </span>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">{project.title}</h3>
-                  <p className="text-gray-700 text-xs sm:text-sm">{project.description}</p>
-                </div>
               </div>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>

@@ -393,7 +393,7 @@ export default function SummerCampPage() {
               <div className="absolute -inset-4 rounded-[34px] bg-gradient-to-r from-pink-200/50 to-purple-200/50 blur-3xl" />
               <div className="relative overflow-hidden rounded-[22px] border border-pink-100 bg-white">
                 <Image
-                  src="/stemcamps (1).jpg"
+                  src="/stemcampsfinal.jpg"
                   alt="STEMorbit students collaborating on a robotics build"
                   width={900}
                   height={600}
@@ -411,7 +411,7 @@ export default function SummerCampPage() {
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
           <div className="rounded-[32px] border-2 border-pink-400/50 bg-gradient-to-br from-slate-900/40 to-indigo-900/20 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.5)]">
             <Image
-              src="/stemcamps (2).jpg"
+              src="/stemcampsfinal2.jpg"
               alt="Children working with robotics kits at camp"
               width={900}
               height={600}
@@ -466,7 +466,7 @@ export default function SummerCampPage() {
           </div>
           <div className="rounded-[32px] border-2 border-pink-400/50 bg-gradient-to-br from-[#1b0f2b] to-[#2a1635] p-4 shadow-[0_25px_60px_rgba(0,0,0,0.55)]">
             <Image
-              src="/stemcamps (3).jpg"
+              src="/stemcampsfinal3.jpg"
               alt="Student testing a drone prototype"
               width={900}
               height={600}
@@ -480,7 +480,7 @@ export default function SummerCampPage() {
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
           <div className="rounded-[32px] border-2 border-pink-400/50 bg-gradient-to-br from-[#1d132c] to-[#2b1840] p-4 shadow-[0_25px_60px_rgba(0,0,0,0.55)]">
             <Image
-              src="/stemcamps (4).jpg"
+              src="/stemcampsfinal.jpg"
               alt="After school innovation program in action"
               width={900}
               height={600}
@@ -517,7 +517,7 @@ export default function SummerCampPage() {
           </div>
           <div className="rounded-[32px] border-2 border-pink-400/50 bg-gradient-to-br from-[#1c132e] to-[#2d1a40] p-4 shadow-[0_25px_60px_rgba(0,0,0,0.55)]">
             <Image
-              src="/stemcamps (5).jpg"
+              src="/stemcampsfinal2.jpg"
               alt="Student showcasing a finished STEM project"
               width={900}
               height={600}
