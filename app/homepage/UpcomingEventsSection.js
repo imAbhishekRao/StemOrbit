@@ -38,8 +38,8 @@ const UpcomingEvents = () => {
           <div className="flex flex-col gap-3 sm:gap-4 lg:ml-4 w-full lg:w-auto">
             {[
               { date: "25th December, 2025", title: "Winter Camp" },
-              { date: "23 January, 2025", title: "ATL inaugration Sainik School (Kapurthala)" },
-              { date: "03 Feburary, 2025", title: "Teachers Training Workshop" },
+              { date: "23 January, 2025", title: "Tech Event" },
+              { date: "03 February, 2025", title: "Teachers Training Workshop" },
             ].map((event, index) => (
               <div
                 key={index}

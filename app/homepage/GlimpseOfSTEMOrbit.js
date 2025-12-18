@@ -43,9 +43,12 @@ export default function GlimpseOfSTEMOrbit() {
 
   return (
     <section className="relative w-full py-8 sm:py-12 md:py-16 lg:py-20 bg-[#FFF7FB] overflow-hidden flex flex-col items-center justify-center px-4">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-pink-700 mb-6 sm:mb-8 md:mb-10 text-center drop-shadow-lg font-fredoka">
-        STEM ORBIT Gallery
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-pink-700 mb-3 sm:mb-4 text-center drop-shadow-lg font-fredoka">
+        STEMOrbit Gallery
       </h2>
+      <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 md:mb-10 text-center font-quicksand">
+        Real moments from our STEM labs, school sessions, camps, and student projects.
+      </p>
       <div
         ref={scrollRef}
         className="w-screen overflow-x-auto whitespace-nowrap scrollbar-hide relative flex items-center glimpse-carousel"

@@ -61,7 +61,7 @@ export default function WhatWeProvidePage() {
       {/* STEM/ATL/Robotics/AI/IoT/Math Lab */}
       <Section
         index={1}
-        title="STEM / Atal Tinkering Lab • Robotics • AI • IoT • Math Lab"
+        title="STEM / Atal Tinkering Lab / Robotics / AI / IoT / Math Lab"
         description="End‑to‑end setup and operations for school innovation labs. We design the lab, install equipment, create safety and usage processes, and run year‑round programs that deliver measurable outcomes."
         bullets={[
           "Lab planning, procurement and setup",
@@ -184,15 +184,22 @@ export default function WhatWeProvidePage() {
           "Showcase day for parents"
         ]}
         images={[
-          "/stemcamps (1).jpg",
-          "/stemcamps (2).jpg",
-          "/stemcamps (3).jpg",
-          "/stemcamps (4).jpg",
-          "/stemcamps (5).jpg",
-          "/stemcamps (6).jpg",
-          "/stemcamps (7).jpg",
-          "/stemcamps (8).jpg",
-          "/stemcamps (9).jpg",
+          "/camps_(1).jpg",
+          "/camps_(2).jpg",
+          "/camps_(3).jpg",
+          "/camps_(6).jpg",
+          "/camps_(7).jpg",
+          "/camps_(8).jpg",
+          "/camps_(9).jpg",
+          "/camps_(10).jpg",
+          "/camps_(11).jpg",
+          "/camps_(12).jpg",
+          "/camps_(13).jpg",
+          "/camps_(14).jpg",
+          "/camps_(15).jpg",
+          "/camps_(16).jpg",
+          "/camps_(17).jpg",
+          "/camps_(18).jpg",
         ]}
         ctas={[
           { label: "Learn More", href: "https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%20STEM%20Camps.%20Could%20you%20please%20provide%20more%20details%3F", variant: "primary" },
@@ -233,7 +240,25 @@ export default function WhatWeProvidePage() {
           "Mini‑internship style projects and reviews",
           "Certificates and portfolio guidance"
         ]}
-        img="/style1.png"
+        images={[
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/17.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/16.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/15.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/14.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/13.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/12.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/11.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/10.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/9.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/8.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/7.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/6.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/5.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/4.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/3.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/2.webp?raw=true",
+          "https://github.com/imAbhishekRao/Photos_storage_for_clients/blob/main/1.webp?raw=true",
+        ]}
         ctas={[
           { label: "Enquire", onClick: handleBookCallClick, variant: "primary" }
         ]}
@@ -249,7 +274,12 @@ export default function WhatWeProvidePage() {
           "Printer setup, slicing and materials",
           "Make‑and‑take workshops for schools"
         ]}
-        img="/3d printing 2.png"
+        images={[
+          "/3DPRINTING (1).jpg",
+          "/3DPRINTING (2).jpg",
+          "/3DPRINTING (3).jpg",
+          "/3DPRINTING (4).jpg",
+        ]}
         ctas={[
           { label: "Learn More", href: "https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%203D%20Designing%20and%20Printing%20workshops.%20Could%20you%20please%20provide%20more%20details%3F", variant: "primary" },
           { label: "Enquire", onClick: handleBookCallClick, variant: "ghost" }
@@ -293,17 +323,17 @@ function Section({ index, title, description, bullets, img, images, galleryLink,
   const hasMultipleImages = images && images.length > 0;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  // Color schemes for different sections
+  // Color schemes for different sections - darker colors
   const colorSchemes = [
-    { bg: 'from-pink-200 to-rose-300', accent: 'from-pink-500 to-rose-600', dot: 'bg-pink-500' },
-    { bg: 'from-blue-200 to-indigo-300', accent: 'from-blue-500 to-indigo-600', dot: 'bg-blue-500' },
-    { bg: 'from-green-200 to-emerald-300', accent: 'from-green-500 to-emerald-600', dot: 'bg-green-500' },
-    { bg: 'from-purple-200 to-violet-300', accent: 'from-purple-500 to-violet-600', dot: 'bg-purple-500' },
-    { bg: 'from-orange-200 to-amber-300', accent: 'from-orange-500 to-amber-600', dot: 'bg-orange-500' },
-    { bg: 'from-cyan-200 to-teal-300', accent: 'from-cyan-500 to-teal-600', dot: 'bg-cyan-500' },
-    { bg: 'from-red-200 to-pink-300', accent: 'from-red-500 to-pink-600', dot: 'bg-red-500' },
-    { bg: 'from-yellow-200 to-orange-300', accent: 'from-yellow-500 to-orange-600', dot: 'bg-yellow-500' },
-    { bg: 'from-indigo-200 to-purple-300', accent: 'from-indigo-500 to-purple-600', dot: 'bg-indigo-500' }
+    { bg: 'from-pink-400 to-rose-500', accent: 'from-pink-600 to-rose-700', dot: 'bg-pink-600' },
+    { bg: 'from-blue-400 to-indigo-500', accent: 'from-blue-600 to-indigo-700', dot: 'bg-blue-600' },
+    { bg: 'from-green-400 to-emerald-500', accent: 'from-green-600 to-emerald-700', dot: 'bg-green-600' },
+    { bg: 'from-purple-400 to-violet-500', accent: 'from-purple-600 to-violet-700', dot: 'bg-purple-600' },
+    { bg: 'from-orange-400 to-amber-500', accent: 'from-orange-600 to-amber-700', dot: 'bg-orange-600' },
+    { bg: 'from-cyan-400 to-teal-500', accent: 'from-cyan-600 to-teal-700', dot: 'bg-cyan-600' },
+    { bg: 'from-red-400 to-pink-500', accent: 'from-red-600 to-pink-700', dot: 'bg-red-600' },
+    { bg: 'from-yellow-400 to-orange-500', accent: 'from-yellow-600 to-orange-700', dot: 'bg-yellow-600' },
+    { bg: 'from-indigo-400 to-purple-500', accent: 'from-indigo-600 to-purple-700', dot: 'bg-indigo-600' }
   ];
   
   const colors = colorSchemes[index % colorSchemes.length];

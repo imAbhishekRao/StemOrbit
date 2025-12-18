@@ -4,73 +4,73 @@ export default function OfferingsSection() {
   const services = [
     {
       id: 1,
-      title: "STEM Classes (Grade 1-12)",
-      description: "Comprehensive technology sessions covering robotics, 3D design, AI, IoT, coding, game development, and drone operation for all grade levels.",
-      emoji: "🔬",
+      title: "STEM Classes (Grade 1-5)",
+      description: "Fun and engaging foundational STEM activities for young learners. Simple robotics, basic coding, creative building, and hands-on science experiments designed for curious minds.",
+      emoji: "🧸",
       vector: "/stem-classes.svg",
-      gradient: "linear-gradient(to right, #ef4444, #dc2626)",
-      buttonColor: "#ef4444",
-      cardBackground: "#fef2f2"
+      gradient: "linear-gradient(to right, #dc2626, #b91c1c)",
+      buttonColor: "#dc2626",
+      cardBackground: "#fca5a5"
     },
     {
       id: 2,
+      title: "STEM Classes (Grade 6-12)",
+      description: "Advanced STEM programs covering robotics, 3D design, AI, IoT, coding, game development, and drone technology for middle and high school students.",
+      emoji: "🔬",
+      vector: "/grade-sessions.svg",
+      gradient: "linear-gradient(to right, #7c3aed, #6d28d9)",
+      buttonColor: "#7c3aed",
+      cardBackground: "#c4b5fd"
+    },
+    {
+      id: 3,
       title: "STEM/Atal Tinkering Lab Setup",
       description: "Complete support for schools setting up ATLs with effective operation aligned with NITI Aayog's innovation vision and national goals.",
       emoji: "🏗️",
       vector: "/atl-lab.svg",
-      gradient: "linear-gradient(to right, #ef4444, #dc2626)",
-      buttonColor: "#ef4444",
-      cardBackground: "#fef2f2"
+      gradient: "linear-gradient(to right, #059669, #047857)",
+      buttonColor: "#059669",
+      cardBackground: "#6ee7b7"
     },
     {
-      id: 3,
+      id: 4,
       title: "School Sessions",
       description: "Customized curriculum sessions with interactive STEM activities, hands-on demonstrations, and practical experiments for enhanced learning.",
       emoji: "🎓",
       vector: "/school-sessions.svg",
-      gradient: "linear-gradient(to right, #f97316, #ea580c)",
-      buttonColor: "#f97316",
-      cardBackground: "#fff7ed"
+      gradient: "linear-gradient(to right, #ea580c, #c2410c)",
+      buttonColor: "#ea580c",
+      cardBackground: "#fdba74"
     },
     {
-      id: 4,
+      id: 5,
       title: "Technical Event Support",
       description: "Complete end-to-end support for organizing technical events including planning, resource procurement, mentorship, and seamless coordination.",
       emoji: "🎪",
       vector: "/technical-events.svg",
-      gradient: "linear-gradient(to right, #06b6d4, #0891b2)",
-      buttonColor: "#06b6d4",
-      cardBackground: "#f0fdfa"
+      gradient: "linear-gradient(to right, #0891b2, #0e7490)",
+      buttonColor: "#0891b2",
+      cardBackground: "#67e8f9"
     },
     {
-      id: 5,
+      id: 6,
       title: "Teacher Training Program",
       description: "Comprehensive hands-on STEM modules covering 3D printing, Drones, IoT, and Robotics with design thinking and computational skills.",
       emoji: "👩‍🏫",
       vector: "/teacher-training.svg",
-      gradient: "linear-gradient(to right, #3b82f6, #2563eb)",
-      buttonColor: "#3b82f6",
-      cardBackground: "#eff6ff"
+      gradient: "linear-gradient(to right, #2563eb, #1d4ed8)",
+      buttonColor: "#2563eb",
+      cardBackground: "#93c5fd"
     },
     {
-      id: 6,
+      id: 7,
       title: "Skill Summer/Winter Camp",
       description: "Engaging camps featuring hands-on workshops, project-based learning, and team-building activities at our state-of-the-art lab facility.",
       emoji: "🏕️",
       vector: "/summer-camp.svg",
-      gradient: "linear-gradient(to right, #22c55e, #16a34a)",
-      buttonColor: "#22c55e",
-      cardBackground: "#f0fdf4"
-    },
-    {
-      id: 7,
-      title: "Technical Competition Support",
-      description: "Expert coaching and mentoring for technical competitions with advanced problem-solving strategies, teamwork skills, and innovation focus.",
-      emoji: "🏆",
-      vector: "/competition-support.svg",
-      gradient: "linear-gradient(to right, #a855f7, #9333ea)",
-      buttonColor: "#a855f7",
-      cardBackground: "#faf5ff"
+      gradient: "linear-gradient(to right, #16a34a, #15803d)",
+      buttonColor: "#16a34a",
+      cardBackground: "#86efac"
     },
     {
       id: 8,
@@ -78,9 +78,9 @@ export default function OfferingsSection() {
       description: "Comprehensive six-week internship program providing engineering students with practical industry experience and professional mentorship.",
       emoji: "🏭",
       vector: "/industrial-training.svg",
-      gradient: "linear-gradient(to right, #6366f1, #4f46e5)",
-      buttonColor: "#6366f1",
-      cardBackground: "#eef2ff"
+      gradient: "linear-gradient(to right, #4f46e5, #4338ca)",
+      buttonColor: "#4f46e5",
+      cardBackground: "#a5b4fc"
     }
   ];
 

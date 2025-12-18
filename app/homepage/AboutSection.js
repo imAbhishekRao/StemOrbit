@@ -37,10 +37,10 @@ export default function AboutSection() {
           <span className="text-pink-600 font-bold text-base sm:text-lg font-bubblegum">About Us</span>
         </div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 sm:mb-6 leading-tight font-fredoka max-w-lg lg:max-w-none">
-          We Nurture Curiosity & Essential Skills!
+          We Build Innovators!
         </h1>
         <p className="text-sm sm:text-base lg:text-lg text-gray-700 mb-6 sm:mb-8 max-w-lg lg:max-w-xl font-quicksand leading-relaxed">
-          At STEM Orbit, we spark curiosity and empower young minds through hands-on STEM learning. Our programs blend creativity, collaboration, and real-world problem-solving—preparing students for a future driven by innovation and technology.
+          At STEMorbit, we don't just teach STEM — we build innovators. From setting up STEM and ATL labs in schools to delivering hands-on sessions, camps, and competitions, we help students turn ideas into real-world solutions through learning by doing.
         </p>
         <a href="/about" className="px-6 sm:px-8 py-3 bg-pink-600 text-white font-semibold text-base sm:text-lg rounded-full shadow-soft hover:bg-sky-500 transition-all duration-300 font-fredoka hover:scale-105 transform">
           Read More
