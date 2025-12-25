@@ -37,9 +37,9 @@ const UpcomingEvents = () => {
           {/* Event Cards */}
           <div className="flex flex-col gap-3 sm:gap-4 lg:ml-4 w-full lg:w-auto">
             {[
-              { date: "25th December, 2025", title: "Winter Camp" },
-              { date: "23 January, 2025", title: "Tech Event" },
-              { date: "03 February, 2025", title: "Teachers Training Workshop" },
+              { date: "25th December, 2025 to 01st January, 2026", title: "Winter Camp Batch 1" },
+              { date: "2nd January, 2026 to 15 January 2026", title: "Winter Camp Batch 2" },
+              { date: "03 February, 2026", title: "Teachers Training Workshop" },
             ].map((event, index) => (
               <div
                 key={index}
@@ -47,7 +47,17 @@ const UpcomingEvents = () => {
               >
                 <CalendarDaysIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 flex-shrink-0 mt-1" />
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs sm:text-sm font-bold">{event.date}</p>
+                  <p className="text-xs sm:text-sm font-bold">
+                    {index === 0 || index === 1 ? (
+                      <>
+                        {event.date.split(' to ')[0]}
+                        <br />
+                        to {event.date.split(' to ')[1]}
+                      </>
+                    ) : (
+                      event.date
+                    )}
+                  </p>
                   <h3 className="text-sm sm:text-base md:text-lg font-semibold mt-1 break-words">{event.title}</h3>
                 </div>
               </div>
