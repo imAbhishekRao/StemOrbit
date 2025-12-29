@@ -39,6 +39,7 @@ const UpcomingEvents = () => {
             {[
               { date: "25th December, 2025 to 01st January, 2026", title: "Winter Camp Batch 1" },
               { date: "2nd January, 2026 to 15 January 2026", title: "Winter Camp Batch 2" },
+              
               { date: "03 February, 2026", title: "Teachers Training Workshop" },
             ].map((event, index) => (
               <div

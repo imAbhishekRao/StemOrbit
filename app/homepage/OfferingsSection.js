@@ -5,82 +5,164 @@ export default function OfferingsSection() {
     {
       id: 1,
       title: "STEM Classes (Grade 1-5)",
-      description: "Fun and engaging foundational STEM activities for young learners. Simple robotics, basic coding, creative building, and hands-on science experiments designed for curious minds.",
-      emoji: "🧸",
-      vector: "/stem-classes.svg",
-      gradient: "linear-gradient(to right, #dc2626, #b91c1c)",
-      buttonColor: "#dc2626",
-      cardBackground: "#fca5a5"
+      description: "Fun and engaging foundational STEM activities for young learners designed for curious minds.",
+      points: [
+        "Simple robotics and basic coding",
+        "Creative building activities",
+        "Hands-on science experiments",
+        "Age-appropriate learning modules"
+      ],
+      emoji: "📚",
+      cardColor: "bg-sky-300",
+      titleColor: "text-sky-800",
+      textColor: "text-sky-900",
+      borderColor: "border-white",
+      buttonColor: "bg-sky-600 hover:bg-sky-700",
+      buttonTextColor: "text-white"
     },
     {
       id: 2,
       title: "STEM Classes (Grade 6-12)",
-      description: "Advanced STEM programs covering robotics, 3D design, AI, IoT, coding, game development, and drone technology for middle and high school students.",
-      emoji: "🔬",
-      vector: "/grade-sessions.svg",
-      gradient: "linear-gradient(to right, #7c3aed, #6d28d9)",
-      buttonColor: "#7c3aed",
-      cardBackground: "#c4b5fd"
+      description: "Advanced STEM programs for middle and high school students covering cutting-edge technologies.",
+      points: [
+        "Robotics and 3D design",
+        "AI, IoT, and coding",
+        "Game development",
+        "Drone technology"
+      ],
+      emoji: "💻",
+      cardColor: "bg-pink-400",
+      titleColor: "text-white",
+      textColor: "text-pink-50",
+      borderColor: "border-pink-600",
+      buttonColor: "bg-pink-600 hover:bg-pink-700",
+      buttonTextColor: "text-white"
     },
     {
       id: 3,
       title: "STEM/Atal Tinkering Lab Setup",
-      description: "Complete support for schools setting up ATLs with effective operation aligned with NITI Aayog's innovation vision and national goals.",
-      emoji: "🏗️",
-      vector: "/atl-lab.svg",
-      gradient: "linear-gradient(to right, #059669, #047857)",
-      buttonColor: "#059669",
-      cardBackground: "#6ee7b7"
+      description: "Complete support for schools setting up ATLs aligned with NITI Aayog's innovation vision.",
+      points: [
+        "Complete lab setup support",
+        "Equipment procurement",
+        "Curriculum alignment",
+        "Teacher training included"
+      ],
+      emoji: "🧰",
+      cardColor: "bg-yellow-300",
+      titleColor: "text-yellow-800",
+      textColor: "text-yellow-900",
+      borderColor: "border-white",
+      buttonColor: "bg-yellow-500 hover:bg-yellow-600",
+      buttonTextColor: "text-yellow-900"
     },
     {
       id: 4,
       title: "School Sessions",
-      description: "Customized curriculum sessions with interactive STEM activities, hands-on demonstrations, and practical experiments for enhanced learning.",
-      emoji: "🎓",
-      vector: "/school-sessions.svg",
-      gradient: "linear-gradient(to right, #ea580c, #c2410c)",
-      buttonColor: "#ea580c",
-      cardBackground: "#fdba74"
+      description: "Customized curriculum sessions with interactive STEM activities for enhanced learning.",
+      points: [
+        "Interactive STEM activities",
+        "Hands-on demonstrations",
+        "Practical experiments",
+        "Customized curriculum"
+      ],
+      emoji: "🏫",
+      cardColor: "bg-sky-300",
+      titleColor: "text-sky-800",
+      textColor: "text-sky-900",
+      borderColor: "border-white",
+      buttonColor: "bg-sky-600 hover:bg-sky-700",
+      buttonTextColor: "text-white"
     },
     {
       id: 5,
       title: "Technical Event Support",
-      description: "Complete end-to-end support for organizing technical events including planning, resource procurement, mentorship, and seamless coordination.",
-      emoji: "🎪",
-      vector: "/technical-events.svg",
-      gradient: "linear-gradient(to right, #0891b2, #0e7490)",
-      buttonColor: "#0891b2",
-      cardBackground: "#67e8f9"
+      description: "Complete end-to-end support for organizing technical events with seamless coordination.",
+      points: [
+        "Event planning and coordination",
+        "Resource procurement",
+        "Expert mentorship",
+        "Seamless execution"
+      ],
+      emoji: "🎯",
+      cardColor: "bg-pink-400",
+      titleColor: "text-white",
+      textColor: "text-pink-50",
+      borderColor: "border-pink-600",
+      buttonColor: "bg-pink-600 hover:bg-pink-700",
+      buttonTextColor: "text-white"
     },
     {
       id: 6,
-      title: "Teacher Training Program",
-      description: "Comprehensive hands-on STEM modules covering 3D printing, Drones, IoT, and Robotics with design thinking and computational skills.",
-      emoji: "👩‍🏫",
-      vector: "/teacher-training.svg",
-      gradient: "linear-gradient(to right, #2563eb, #1d4ed8)",
-      buttonColor: "#2563eb",
-      cardBackground: "#93c5fd"
+      title: "Technical Competition Support",
+      description: "Complete support for technical competitions including training, resources, and mentorship.",
+      points: [
+        "Competition preparation training",
+        "Resource and equipment support",
+        "Expert mentorship and guidance",
+        "Competition day coordination"
+      ],
+      emoji: "🏆",
+      cardColor: "bg-sky-300",
+      titleColor: "text-sky-800",
+      textColor: "text-sky-900",
+      borderColor: "border-white",
+      buttonColor: "bg-sky-600 hover:bg-sky-700",
+      buttonTextColor: "text-white"
     },
     {
       id: 7,
-      title: "Skill Summer/Winter Camp",
-      description: "Engaging camps featuring hands-on workshops, project-based learning, and team-building activities at our state-of-the-art lab facility.",
-      emoji: "🏕️",
-      vector: "/summer-camp.svg",
-      gradient: "linear-gradient(to right, #16a34a, #15803d)",
-      buttonColor: "#16a34a",
-      cardBackground: "#86efac"
+      title: "Teacher Training Program",
+      description: "Comprehensive hands-on STEM modules with design thinking and computational skills.",
+      points: [
+        "3D printing and Drones",
+        "IoT and Robotics",
+        "Design thinking",
+        "Computational skills"
+      ],
+      emoji: "👩‍🏫",
+      cardColor: "bg-yellow-300",
+      titleColor: "text-yellow-800",
+      textColor: "text-yellow-900",
+      borderColor: "border-white",
+      buttonColor: "bg-yellow-500 hover:bg-yellow-600",
+      buttonTextColor: "text-yellow-900"
     },
     {
       id: 8,
+      title: "Skill Summer/Winter Camp",
+      description: "Engaging camps featuring hands-on workshops at our state-of-the-art lab facility.",
+      points: [
+        "Hands-on workshops",
+        "Project-based learning",
+        "Team-building activities",
+        "State-of-the-art facilities"
+      ],
+      emoji: "🏕️",
+      cardColor: "bg-sky-300",
+      titleColor: "text-sky-800",
+      textColor: "text-sky-900",
+      borderColor: "border-white",
+      buttonColor: "bg-sky-600 hover:bg-sky-700",
+      buttonTextColor: "text-white"
+    },
+    {
+      id: 9,
       title: "Industrial Training Program",
-      description: "Comprehensive six-week internship program providing engineering students with practical industry experience and professional mentorship.",
+      description: "Comprehensive six-week internship program with practical industry experience.",
+      points: [
+        "Six-week program",
+        "Practical industry experience",
+        "Professional mentorship",
+        "Career development"
+      ],
       emoji: "🏭",
-      vector: "/industrial-training.svg",
-      gradient: "linear-gradient(to right, #4f46e5, #4338ca)",
-      buttonColor: "#4f46e5",
-      cardBackground: "#a5b4fc"
+      cardColor: "bg-pink-400",
+      titleColor: "text-white",
+      textColor: "text-pink-50",
+      borderColor: "border-pink-600",
+      buttonColor: "bg-pink-600 hover:bg-pink-700",
+      buttonTextColor: "text-white"
     }
   ];
 
@@ -109,33 +191,30 @@ export default function OfferingsSection() {
 
            <div className="grid-container">
              {services.map((service) => (
-               <div key={service.id} className="service-item">
-                 {/* Normal Card with all content inside */}
-                 <div className="service-card" style={{ backgroundColor: service.cardBackground }}>
-                   {/* Icon inside card */}
-                   <div className="icon-circle" style={{ backgroundImage: service.gradient }}>
-                     <div className="emoji-icon">{service.emoji}</div>
-                   </div>
-                   
-                   <h3 className="card-title">
-                     {service.title}
-                   </h3>
-                   
-                   <p className="card-description">
-                     {service.description}
-                   </p>
-
-                   {/* Button inside card */}
-                   <a 
-                     href="https://wa.me/917009594410?text=Hi!%20I%27m%20interested%20in%20learning%20more%20about%20your%20STEM%20programs.%20Could%20you%20please%20provide%20more%20details%3F"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="more-info-btn" 
-                     style={{ backgroundColor: service.buttonColor, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
-                   >
-                     More Info
-                   </a>
+               <div 
+                 key={service.id} 
+                 className={`flex flex-col items-center ${service.cardColor} rounded-2xl sm:rounded-3xl shadow-xl p-4 sm:p-6 md:p-8 border-2 sm:border-4 ${service.borderColor} hover:scale-105 transition-transform duration-300`}
+               >
+                 <div className="mb-2 text-xl sm:text-2xl">{service.emoji}</div>
+                 <h3 className={`text-xl sm:text-2xl font-bold ${service.titleColor} mb-4`}>
+                   {service.title}
+                 </h3>
+                 <div className={`text-sm sm:text-base ${service.textColor} mb-3 sm:mb-4 text-center`}>
+                   {service.description}
                  </div>
+                 <ul className={`text-left text-xs sm:text-sm ${service.textColor} mb-4 sm:mb-6 space-y-1 sm:space-y-2 font-['Bubblegum Sans',cursive]`}>
+                   {service.points.map((point, index) => (
+                     <li key={index} className="flex items-center gap-2">✅ {point}</li>
+                   ))}
+                 </ul>
+                 <a
+                   href={`https://wa.me/917009594410?text=${encodeURIComponent(`Hi! I'm interested in learning more about ${service.title}. Could you please provide more details?`)}`}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className={`w-full ${service.buttonColor} ${service.buttonTextColor} font-bold py-2 sm:py-2.5 px-4 rounded-xl shadow-md transition text-sm sm:text-base text-center block`}
+                 >
+                   Get started
+                 </a>
                </div>
              ))}
         </div>
@@ -221,149 +300,29 @@ export default function OfferingsSection() {
          .grid-container {
            display: grid;
            grid-template-columns: repeat(1, minmax(0, 1fr));
-           gap: 2rem;
-         }
-         @media (min-width: 640px) {
-           .grid-container {
-             gap: 2.5rem;
-           }
-         }
-         @media (min-width: 1024px) {
-           .grid-container {
-             gap: 3rem;
-           }
-         }
-         .service-item {
-           display: flex;
-           flex-direction: column;
-           align-items: stretch;
-           position: relative;
-           height: 100%;
-         }
-         .service-card {
-           border: 2px solid #e5e7eb;
-           border-radius: 1rem;
-           padding: 1.5rem;
-           display: flex;
-           flex-direction: column;
-           align-items: center;
-           transition: all 0.3s ease;
+           gap: 1rem;
            width: 100%;
-           height: 100%;
-           justify-content: space-between;
-           box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-           min-height: 280px;
+           max-width: 80rem;
+           margin: 0 auto;
+           padding: 0 1rem;
          }
          @media (min-width: 640px) {
-           .service-card {
-             padding: 1.75rem;
-             min-height: 300px;
+           .grid-container {
+             grid-template-columns: repeat(2, minmax(0, 1fr));
+             gap: 1.5rem;
+           }
+         }
+         @media (min-width: 768px) {
+           .grid-container {
+             grid-template-columns: repeat(3, minmax(0, 1fr));
+             gap: 2rem;
            }
          }
          @media (min-width: 1024px) {
-           .service-card {
-             padding: 2rem;
-             min-height: 320px;
+           .grid-container {
+             gap: 2rem;
            }
          }
-         .service-card:hover {
-           border-color: #3b82f6;
-           transform: translateY(-0.25rem);
-           box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-         }
-        .icon-circle {
-          width: 4rem;
-          height: 4rem;
-          border-radius: 9999px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-          margin-bottom: 1rem;
-        }
-        @media (min-width: 640px) {
-          .icon-circle {
-            width: 5rem;
-            height: 5rem;
-            margin-bottom: 1.25rem;
-          }
-        }
-        .emoji-icon {
-          font-size: 2rem;
-          line-height: 1;
-        }
-        @media (min-width: 640px) {
-          .emoji-icon {
-            font-size: 2.5rem;
-          }
-        }
-        .vector-icon {
-          width: 1.5rem;
-          height: 1.5rem;
-          object-fit: contain;
-        }
-        .card-title {
-          font-size: 1rem;
-          font-weight: 700;
-          color: #1f2937;
-          text-align: center;
-          margin-bottom: 0.75rem;
-          line-height: 1.3;
-        }
-        @media (min-width: 640px) {
-          .card-title {
-            font-size: 1.125rem;
-            margin-bottom: 1rem;
-          }
-        }
-        @media (min-width: 1024px) {
-          .card-title {
-            font-size: 1.25rem;
-          }
-        }
-         .card-description {
-           color: #4b5563;
-           font-size: 0.875rem;
-           text-align: center;
-           line-height: 1.5;
-           margin-bottom: 1.5rem;
-           flex-grow: 1;
-         }
-         @media (min-width: 640px) {
-           .card-description {
-             font-size: 0.9375rem;
-             margin-bottom: 1.75rem;
-           }
-         }
-         @media (min-width: 1024px) {
-           .card-description {
-             font-size: 1rem;
-             margin-bottom: 2rem;
-           }
-         }
-        .more-info-btn {
-          padding: 0.625rem 1.5rem;
-          border-radius: 0.5rem;
-          color: #ffffff;
-          font-weight: 600;
-          font-size: 0.875rem;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-          width: 100%;
-          max-width: 200px;
-        }
-        @media (min-width: 640px) {
-          .more-info-btn {
-            padding: 0.75rem 2rem;
-            font-size: 1rem;
-          }
-        }
-        .more-info-btn:hover {
-          box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-          transform: translateY(-2px);
-        }
 
          /* Bubble Animations */
          .bubble {
@@ -445,26 +404,6 @@ export default function OfferingsSection() {
            75% {
              transform: translateY(-20px) rotate(270deg);
              opacity: 0.8;
-           }
-         }
-
-
-         /* Responsive Breakpoints */
-         @media (min-width: 640px) {
-           .grid-container {
-             grid-template-columns: repeat(2, minmax(0, 1fr));
-             gap: 1.5rem;
-           }
-         }
-         @media (min-width: 1024px) {
-           .grid-container {
-             grid-template-columns: repeat(4, minmax(0, 1fr));
-             gap: 1.5rem;
-           }
-         }
-         @media (min-width: 1280px) {
-           .grid-container {
-             gap: 2rem;
            }
          }
       `}</style>
