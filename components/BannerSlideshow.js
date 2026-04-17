@@ -10,18 +10,21 @@ const BannerSlideshow = () => {
   const banners = [
     {
       src: '/webbanner1.png',
+      moboSrc: '/mobo_banner(1).png',
       alt: 'STEMOrbit Banner 1 - Empowering Young Minds',
       title: 'EMPOWERING YOUNG MINDS',
       subtitle: 'Discover the future of education through cutting-edge technology'
     },
     {
       src: '/webbanner2.png',
+      moboSrc: '/mobo_banner_2.png',
       alt: 'STEMOrbit Banner 2 - Empowering Students with Next Gen Labs',
       title: 'EMPOWERING STUDENTS WITH NEXT GEN LABS',
       subtitle: 'Comprehensive lab setups with curriculum for hands-on learning'
     },
     {
       src: '/webbanner3.png',
+      moboSrc: '/mobo_banner_3.png',
       alt: 'STEMOrbit Banner 3 - Innovation Focus Area',
       title: 'INNOVATION FOCUS AREA',
       subtitle: 'Tech adventures tailored for young innovators'
@@ -61,7 +64,7 @@ const BannerSlideshow = () => {
   };
 
   return (
-    <section className="relative w-full h-[calc(100vh-4rem)] sm:h-[calc(100vh-4.5rem)] md:h-[calc(100vh-5rem)] lg:h-[calc(100vh-5.5rem)] xl:h-[calc(100vh-6rem)] bg-white overflow-hidden mt-16 sm:mt-18 md:mt-20 lg:mt-22 xl:mt-24">
+    <section className="relative w-full aspect-square sm:aspect-auto sm:h-[calc(100vh-4.5rem)] md:h-[calc(100vh-5rem)] lg:h-[calc(100vh-5.5rem)] xl:h-[calc(100vh-6rem)] bg-white overflow-hidden mt-16 sm:mt-18 md:mt-20 lg:mt-22 xl:mt-24">
       {/* Slideshow Container */}
       <div className="relative w-full h-full">
         {banners.map((banner, index) => (
@@ -71,11 +74,21 @@ const BannerSlideshow = () => {
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
+            {/* Desktop Image */}
             <Image
               src={banner.src}
               alt={banner.alt}
               fill
-              className="object-contain object-center"
+              className="hidden md:block object-contain object-center"
+              priority={index === 0}
+            />
+            
+            {/* Mobile Image */}
+            <Image
+              src={banner.moboSrc}
+              alt={banner.alt}
+              fill
+              className="md:hidden object-contain object-center"
               priority={index === 0}
             />
             

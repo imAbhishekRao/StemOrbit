@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { handleBookCallClick } from "../../lib/calendly";
 
@@ -8,9 +8,9 @@ export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const images = [
-    "/webbanner1.png",
-    "/webbanner2.png", 
-    "/webbanner3.png"
+    { desk: "/webbanner1.png", mob: "/mobo_banner(1).png" },
+    { desk: "/webbanner2.png", mob: "/mobo_banner_2.png" }, 
+    { desk: "/webbanner3.png", mob: "/mobo_banner_3.png" }
   ];
 
   useEffect(() => {
@@ -32,21 +32,32 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative w-screen h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)] md:h-[calc(100vh-6rem)] lg:h-[calc(100vh-7rem)] xl:h-[calc(100vh-8rem)] bg-white overflow-hidden left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+    <section className="relative w-screen aspect-square sm:aspect-auto sm:h-[calc(100vh-5rem)] md:h-[calc(100vh-6rem)] lg:h-[calc(100vh-7rem)] xl:h-[calc(100vh-8rem)] bg-white overflow-hidden left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
       {/* Image Carousel */}
       <div className="relative w-full h-full">
-        {images.map((image, index) => (
-          <Image
-            key={index}
-            src={image}
-            alt={`Website Banner ${index + 1}`}
-            fill
-            className={`object-cover object-center transition-opacity duration-1000 ${
-              index === currentImageIndex ? "opacity-100" : "opacity-0"
-            }`}
-            priority={index === 0}
-            sizes="100vw"
-          />
+        {images.map((item, index) => (
+          <React.Fragment key={index}>
+            <Image
+              src={item.desk}
+              alt={`Website Banner ${index + 1} Desktop`}
+              fill
+              className={`hidden md:block object-cover object-center transition-opacity duration-1000 ${
+                index === currentImageIndex ? "opacity-100" : "opacity-0"
+              }`}
+              priority={index === 0}
+              sizes="100vw"
+            />
+            <Image
+              src={item.mob}
+              alt={`Website Banner ${index + 1} Mobile`}
+              fill
+              className={`md:hidden object-cover object-center transition-opacity duration-1000 ${
+                index === currentImageIndex ? "opacity-100" : "opacity-0"
+              }`}
+              priority={index === 0}
+              sizes="100vw"
+            />
+          </React.Fragment>
         ))}
       </div>
 
