@@ -31,35 +31,26 @@ const UpcomingEvents = () => {
           <img
             src="https://cdn-icons-png.flaticon.com/512/3279/3279336.png"
             alt="Upcoming Events"
-            className="w-32 sm:w-48 md:w-60 lg:w-72 h-auto drop-shadow-xl"
+            className="hidden md:block w-32 sm:w-48 md:w-60 lg:w-72 h-auto drop-shadow-xl"
           />
 
           {/* Event Cards */}
           <div className="flex flex-col gap-3 sm:gap-4 lg:ml-4 w-full lg:w-auto">
             {[
-              { date: "25th December, 2025 to 01st January, 2026", title: "Winter Camp Batch 1" },
-              { date: "2nd January, 2026 to 15 January 2026", title: "Winter Camp Batch 2" },
-              
-              { date: "03 February, 2026", title: "Teachers Training Workshop" },
+              { date: "4:00 PM to 5:00 PM", title: "Daily STEM Classes" },
+              { date: "10:00 AM to 2:00 PM (Saturday only)", title: "Weekend STEM Classes" },
+              { date: "Starting from 1st June", title: "Summer Camp" },
             ].map((event, index) => (
               <div
                 key={index}
-                className="bg-[#0A6375] text-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 w-full sm:w-64 lg:w-72 flex items-start gap-2 sm:gap-3 md:gap-4"
+                className="bg-[#0A6375] text-white rounded-xl sm:rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 w-full sm:w-64 lg:w-72 flex items-center sm:items-start gap-2 sm:gap-3 md:gap-4"
               >
-                <CalendarDaysIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 flex-shrink-0 mt-1" />
+                <CalendarDaysIcon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 flex-shrink-0 mt-0 sm:mt-1" />
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs sm:text-sm font-bold">
-                    {index === 0 || index === 1 ? (
-                      <>
-                        {event.date.split(' to ')[0]}
-                        <br />
-                        to {event.date.split(' to ')[1]}
-                      </>
-                    ) : (
-                      event.date
-                    )}
+                  <p className="text-xs sm:text-sm font-bold opacity-90">
+                     {event.date}
                   </p>
-                  <h3 className="text-sm sm:text-base md:text-lg font-semibold mt-1 break-words">{event.title}</h3>
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold mt-0.5 break-words">{event.title}</h3>
                 </div>
               </div>
             ))}
