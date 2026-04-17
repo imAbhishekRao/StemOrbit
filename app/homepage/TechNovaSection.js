@@ -75,13 +75,13 @@ export default function TechNovaSection() {
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mb-8 sm:mb-12 lg:mb-16">
           {/* Left: Content */}
-          <div className="space-y-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 font-fredoka">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/20">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 font-fredoka">
                 The Ultimate Student Ideathon
               </h3>
               
-              <p className="text-lg text-gray-200 mb-6 font-quicksand leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-200 mb-6 font-quicksand leading-relaxed">
                 TechNova 2.0 is our flagship ideathon where students from Classes 6-10 collaborate to "Invent. Imagine. Inspire" - building innovative solutions from scratch in our exciting Maker's Arena format.
               </p>
               
@@ -118,7 +118,7 @@ export default function TechNovaSection() {
 
           {/* Right: Image Gallery */}
           <div className="relative">
-            <div className="relative w-full h-80 md:h-96 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20">
+            <div className="relative w-full aspect-video sm:h-96 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border-2 border-white/20">
               {/* Gradient overlay for better text visibility */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
               
@@ -181,7 +181,7 @@ export default function TechNovaSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                  className={`relative flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-md sm:rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                     index === currentIndex
                       ? "border-yellow-400 scale-110 shadow-lg shadow-yellow-400/50"
                       : "border-white/30 hover:border-white/60 opacity-70 hover:opacity-100"
@@ -201,51 +201,51 @@ export default function TechNovaSection() {
         </div>
 
         {/* Event Highlights */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition-all duration-300">
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-white/10 text-center hover:bg-white/10 transition-all duration-300">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white" className="w-5 h-5 sm:w-6 sm:h-6">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
               </svg>
             </div>
-            <h4 className="text-xl font-bold text-white mb-2 font-fredoka">Multiple Schools</h4>
-            <p className="text-gray-300 font-quicksand">Students from various schools collaborate and compete</p>
+            <h4 className="text-lg sm:text-xl font-bold text-white mb-2 font-fredoka">Multiple Schools</h4>
+            <p className="text-sm sm:text-base text-gray-300 font-quicksand">Students from various schools collaborate and compete</p>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition-all duration-300">
-            <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-white/10 text-center hover:bg-white/10 transition-all duration-300">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white" className="w-5 h-5 sm:w-6 sm:h-6">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
             </div>
-            <h4 className="text-xl font-bold text-white mb-2 font-fredoka">Ideathon Format</h4>
-            <p className="text-gray-300 font-quicksand">Intensive brainstorming and solution development</p>
+            <h4 className="text-lg sm:text-xl font-bold text-white mb-2 font-fredoka">Ideathon Format</h4>
+            <p className="text-sm sm:text-base text-gray-300 font-quicksand">Intensive brainstorming and solution development</p>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center hover:bg-white/10 transition-all duration-300">
-            <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-white/10 text-center hover:bg-white/10 transition-all duration-300 sm:col-span-2 md:col-span-1">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white" className="w-5 h-5 sm:w-6 sm:h-6">
                 <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
               </svg>
             </div>
-            <h4 className="text-xl font-bold text-white mb-2 font-fredoka">Saint Soldier's School</h4>
-            <p className="text-gray-300 font-quicksand">Prestigious venue in Panchkula, Haryana</p>
+            <h4 className="text-lg sm:text-xl font-bold text-white mb-2 font-fredoka">Saint Soldier's School</h4>
+            <p className="text-sm sm:text-base text-gray-300 font-quicksand">Prestigious venue in Panchkula, Haryana</p>
           </div>
         </div>
 
         {/* Call to Action */}
-        <div className="text-center">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 px-4 sm:px-0">
           <a 
             href="https://technovafest.in/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-block px-10 py-4 bg-gradient-to-r from-yellow-400 to-pink-500 text-black font-bold text-lg rounded-full shadow-2xl hover:from-yellow-500 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 font-fredoka mr-4"
+            className="w-full sm:w-auto text-center px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-yellow-400 to-pink-500 text-black font-bold text-base sm:text-lg rounded-full shadow-lg sm:shadow-2xl hover:from-yellow-500 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 font-fredoka"
           >
             Register Your School
           </a>
           <button 
             onClick={() => window.open('https://technovafest.in/', '_blank')}
-            className="inline-block px-10 py-4 bg-gradient-to-r from-yellow-400 to-pink-500 text-black font-bold text-lg rounded-full shadow-2xl hover:from-yellow-500 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 font-fredoka mr-4"
+            className="w-full sm:w-auto text-center px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-bold text-base sm:text-lg rounded-full shadow-lg sm:shadow-2xl hover:from-cyan-500 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 font-fredoka"
           >
             Visit TechNova 2.0
           </button>
