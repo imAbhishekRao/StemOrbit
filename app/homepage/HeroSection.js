@@ -8,7 +8,7 @@ export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const images = [
-    { desk: "/stemcampbannerrhoem.png", mob: "/stemcampbannerrhoem.png" },
+    { desk: "/stemcampbannerrhoem.png", mob: "/stemcampbannerhoemmobo.png" },
     { desk: "/webbanner1.png", mob: "/mobo_banner(1).png" },
     { desk: "/webbanner2.png", mob: "/mobo_banner_2.png" }, 
     { desk: "/webbanner3.png", mob: "/mobo_banner_3.png" }
