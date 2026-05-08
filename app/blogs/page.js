@@ -3,8 +3,73 @@ import { useState } from 'react';
 
 export default function BlogsPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedPost, setSelectedPost] = useState(null);
 
   const blogPosts = [
+    {
+      id: 7,
+      title: "Why STEM Education Matters More Than Ever in 2026",
+      excerpt: "In 2026, STEM education is no longer optional enrichment - it is a core foundation that helps students become confident problem-solvers, creators, and innovators.",
+      content: `Technology is no longer a separate industry - it has become part of almost every career, business, and daily activity around us. From artificial intelligence and robotics to healthcare and sustainable energy, the world is rapidly evolving through innovation. In this changing environment, STEM education has become more important than ever.
+
+STEM stands for Science, Technology, Engineering, and Mathematics, but today it represents much more than academic subjects. It represents curiosity, creativity, problem-solving, and the ability to build real-world solutions.
+
+The Shift From Memorization to Innovation
+Traditional education often focuses heavily on theory and memorization. While foundational knowledge remains important, modern industries now value people who can think critically, adapt quickly, and solve practical problems.
+
+STEM learning encourages students to:
+- Experiment and explore
+- Build and test ideas
+- Learn through hands-on experiences
+- Understand how technology works
+- Develop analytical thinking
+
+Instead of simply learning what something is, students begin understanding how and why it works.
+
+Technology Is Reshaping Every Industry
+A few years ago, coding, robotics, and automation were considered specialized skills. Today, they are becoming mainstream.
+
+Industries such as healthcare, automotive, agriculture, manufacturing, space technology, e-commerce, and content creation are all being transformed by technology-driven innovation.
+
+Students exposed to STEM early often develop confidence around technology rather than fear of it. They become creators instead of just consumers.
+
+Hands-On Learning Creates Real Understanding
+One of the biggest strengths of STEM education is practical learning.
+
+Building a small robot, programming an Arduino board, experimenting with circuits, or creating a 3D printed model helps students connect theory with real-world applications.
+
+This process improves creativity, logical thinking, patience, teamwork, and problem-solving abilities.
+
+Most importantly, it makes learning exciting.
+
+STEM Encourages Curiosity
+Children naturally ask questions:
+- How does this work?
+- Why does this happen?
+- Can I build this myself?
+
+STEM education transforms those questions into exploration.
+
+When students are given tools to experiment and create, they begin developing an innovation mindset from an early age.
+
+The Future Belongs to Builders
+The next generation will grow up in a world driven by AI, automation, robotics, and digital systems. The ability to understand technology - and build with it - will become one of the most valuable skills in the future.
+
+STEM education prepares students not only for careers, but for a future where adaptability and innovation matter more than ever.
+
+Final Thoughts
+STEM is not just about becoming an engineer or programmer. It is about learning how to think, create, experiment, and solve problems confidently.
+
+In 2026, STEM education is no longer optional enrichment - it is becoming an essential foundation for the future.
+
+The earlier students begin exploring science and technology through hands-on experiences, the more prepared they become to shape tomorrow's world instead of simply reacting to it.`,
+      author: "StemOrbit Team",
+      date: "2026-05-08",
+      category: "Education",
+      readTime: "8 min read",
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop",
+      featured: true
+    },
     {
       id: 1,
       title: "The Future of STEM Education: How Technology is Transforming Learning",
@@ -160,7 +225,10 @@ export default function BlogsPage() {
                         <p className="text-sm text-gray-500">{post.date}</p>
                       </div>
                     </div>
-                    <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
+                    <button
+                      onClick={() => setSelectedPost(post)}
+                      className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300"
+                    >
                       Read More
                     </button>
                   </div>
@@ -246,7 +314,10 @@ export default function BlogsPage() {
                           </div>
                           <span className="text-sm text-gray-600">{post.author}</span>
                         </div>
-                        <button className="text-purple-600 hover:text-purple-700 font-semibold text-sm">
+                        <button
+                          onClick={() => setSelectedPost(post)}
+                          className="text-purple-600 hover:text-purple-700 font-semibold text-sm"
+                        >
                           Read More →
                         </button>
                       </div>
@@ -278,6 +349,47 @@ export default function BlogsPage() {
           </div>
         </div>
       </section>
+
+      {selectedPost && (
+        <div
+          className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4"
+          onClick={() => setSelectedPost(null)}
+        >
+          <div
+            className="bg-white w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="p-6 border-b border-gray-200 flex items-start justify-between gap-4">
+              <div>
+                <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mb-3">
+                  {selectedPost.category}
+                </span>
+                <h3 className="text-2xl font-bold text-gray-900">{selectedPost.title}</h3>
+                <p className="text-sm text-gray-500 mt-2">
+                  {selectedPost.author} • {selectedPost.date} • {selectedPost.readTime}
+                </p>
+              </div>
+              <button
+                onClick={() => setSelectedPost(null)}
+                className="text-gray-500 hover:text-gray-700 text-2xl leading-none"
+                aria-label="Close article"
+              >
+                ×
+              </button>
+            </div>
+
+            <img
+              src={selectedPost.image}
+              alt={selectedPost.title}
+              className="w-full h-64 object-cover"
+            />
+
+            <div className="p-6">
+              <p className="text-gray-700 leading-8 whitespace-pre-line">{selectedPost.content}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
