@@ -79,7 +79,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:block">
-            <div className="ml-8 flex items-center space-x-6 bubblegum-sans">
+            <div className="ml-8 flex items-center space-x-6 font-dmsans">
               <a href="/whats-stem-lab" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">STEM Lab</a>
               <a href="/courses" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Courses</a>
               <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">For School</a>
@@ -169,46 +169,46 @@ export default function Navbar() {
               </div>
               
               {/* Main Navigation Links */}
-              <div className="px-4 space-y-1">
+              <div className="px-4 space-y-1 font-dmsans">
                 <a 
                   href="/whats-stem-lab" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md"
                 >
                   STEM Lab
                 </a>
                 <a 
                   href="/courses" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md"
                 >
                   Courses
                 </a>
                 <a 
                   href="/our-lab-offerings" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md"
                 >
                   For School
                 </a>
                 <a 
                   href="/3d-printing" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md"
                 >
                   3D Printing
                 </a>
                 <a 
                   href="/summercamp" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md"
                 >
                   STEM Camps
                 </a>
                 <a 
                   href="/what-we-provide" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md bubblegum-sans"
+                  className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md"
                 >
                   Programs and Services
                 </a>
