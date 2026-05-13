@@ -1,11 +1,26 @@
 
 "use client";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { handleBookCallClick } from "../../lib/calendly";
+
+const OFFER_SEGMENT = (
+  <>
+    <span className="mx-6 sm:mx-10 font-bold tracking-wide text-white drop-shadow-sm">
+      Summer Camp Offer — First 10 students get 10% OFF
+    </span>
+    <span className="text-sky-100/90" aria-hidden>
+      •
+    </span>
+  </>
+);
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [promoTopPx, setPromoTopPx] = useState(72);
+  const [isMd, setIsMd] = useState(false);
+  const navRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled((window.scrollY || 0) > 10);
@@ -13,6 +28,35 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useLayoutEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const apply = () => setIsMd(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav || !isMd) return;
+
+    const syncPromoTop = () => {
+      if ((window.scrollY || 0) > 10) return;
+      setPromoTopPx(Math.round(nav.getBoundingClientRect().bottom));
+    };
+
+    syncPromoTop();
+    const ro = new ResizeObserver(syncPromoTop);
+    ro.observe(nav);
+    window.addEventListener("resize", syncPromoTop, { passive: true });
+    window.addEventListener("scroll", syncPromoTop, { passive: true });
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", syncPromoTop);
+      window.removeEventListener("scroll", syncPromoTop);
+    };
+  }, [isMobileMenuOpen, isMd]);
 
   return (
     <>
@@ -59,9 +103,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navbar */}
+      {/* Main Navbar — mobile: below promo + safe area; md+: below top strip */}
       <nav
-        className={`w-full fixed z-40 transition-all duration-300 bg-white border-b border-gray-200 ${scrolled ? 'top-0' : 'md:top-10 top-0'}`}
+        ref={navRef}
+        className="fixed z-40 w-full border-b border-gray-200 bg-white transition-all duration-300 max-md:top-[calc(3rem+env(safe-area-inset-top,0px))] md:top-10"
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">
         <div className="flex items-center justify-between">
@@ -126,7 +171,7 @@ export default function Navbar() {
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden">
-            <div className="px-0 pt-2 pb-4 space-y-1 border-t border-gray-200 bg-white rounded-b-none overflow-y-auto max-h-[calc(100vh-80px)]">
+            <div className="px-0 pt-2 pb-4 space-y-1 border-t border-gray-200 bg-white rounded-b-none overflow-y-auto max-h-[calc(100vh-11rem)]">
               {/* Top Strip Links - Mobile Only */}
               <div className="border-b border-gray-200 pb-3 mb-3">
                 <div className="px-4 py-2 space-y-1">
@@ -238,6 +283,37 @@ export default function Navbar() {
         )}
       </div>
     </nav>
+
+      {/* Scrolling offer — mobile: pinned top-0 above header, no movement. md+: below nav until scroll, then top-0. */}
+      <Link
+        href="/summercamp-2026"
+        className={`fixed left-0 right-0 top-0 z-[60] flex cursor-pointer flex-col bg-gradient-to-r from-pink-500 via-sky-500 to-blue-600 text-white shadow-sm max-md:pt-[env(safe-area-inset-top,0px)] max-md:shadow-md max-md:shadow-pink-500/20 md:z-30 md:h-10 md:flex-row md:items-center md:overflow-hidden md:pt-0 md:transition-[top,box-shadow] md:duration-300 md:ease-out ${
+          scrolled ? "md:z-[60] md:shadow-md md:shadow-pink-500/25" : "md:shadow-none"
+        }`}
+        style={isMd && !scrolled ? { top: promoTopPx } : undefined}
+        aria-label="Summer Camp 2026 — First 10 students get 10 percent off. Open the Summer Camp 2026 page."
+      >
+        <div className="flex h-10 w-full flex-shrink-0 items-center overflow-hidden border-b border-pink-400/40 max-md:h-12 max-md:min-h-[3rem] max-md:py-1 md:border-b-0">
+          <div className="animate-stem-offer-marquee flex flex-row items-center whitespace-nowrap text-xs sm:text-sm">
+            <span className="inline-flex shrink-0 items-center">
+              {OFFER_SEGMENT}
+              {OFFER_SEGMENT}
+              {OFFER_SEGMENT}
+              {OFFER_SEGMENT}
+              {OFFER_SEGMENT}
+              {OFFER_SEGMENT}
+            </span>
+            <span className="inline-flex shrink-0 items-center" aria-hidden="true">
+              {OFFER_SEGMENT}
+              {OFFER_SEGMENT}
+              {OFFER_SEGMENT}
+              {OFFER_SEGMENT}
+              {OFFER_SEGMENT}
+              {OFFER_SEGMENT}
+            </span>
+          </div>
+        </div>
+      </Link>
     </>
   );
 }

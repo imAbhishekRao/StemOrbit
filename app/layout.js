@@ -21,6 +21,12 @@ export const metadata = {
   description: "Discover the future of education through cutting-edge technology, hands-on learning experiences, and innovative STEM solutions designed to inspire the next generation of innovators.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -29,7 +35,7 @@ export default function RootLayout({ children }) {
         style={{ fontFamily: 'var(--font-rubik), sans-serif' }}
       >
         <Navbar />
-        <main className="pt-20 sm:pt-24 md:pt-28 lg:pt-32">
+        <main className="max-md:pt-[calc(3rem+4rem+1rem+env(safe-area-inset-top,0px))] md:pt-36 lg:pt-40">
           {children}
         </main>
         <Footer />

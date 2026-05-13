@@ -7,6 +7,87 @@ export default function BlogsPage() {
 
   const blogPosts = [
     {
+      id: 8,
+      title: "Why India Needs STEM Learners Who Can Build, Not Just Code",
+      excerpt: "As India marks National Technology Day, the conversation around STEM education is moving beyond coding classes toward whether classrooms are preparing students to build technologies and participate in an AI-driven innovation economy by 2030.",
+      content: `As India marks National Technology Day, the conversation around STEM education is moving beyond coding classes and digital exposure. The larger question now is whether India's classrooms are preparing students to build technologies, solve real problems and participate meaningfully in an AI-driven innovation economy by 2030.
+
+The National Education Policy 2020 has pushed experiential learning, coding, multidisciplinary education and skill-based exposure. However, experts say the real test lies in how quickly schools, colleges and universities can move from theory-led learning to applied innovation. With artificial intelligence, robotics, data science, semiconductors and automation reshaping industries, India's STEM ecosystem must now produce creators of technology, not just users of technology.
+
+Beyond Theory-Led Learning
+Gaurav Bhagat, Founder, Gaurav Bhagat Academy, said India's STEM ecosystem is evolving faster than before, but its real test will be whether students are prepared not only for jobs, but for relevance in an AI-driven economy by 2030.
+
+He said NEP 2020 deserves credit for shifting the focus from rote learning to experiential education, coding, critical thinking and multidisciplinary exposure. However, he added that technical knowledge alone will not be enough in a world where AI can already write code, analyse data, create content and automate repetitive tasks.
+
+According to Bhagat, the future will belong to learners who can combine STEM with creativity, communication, adaptability and problem-solving. He said the major gap is that many students still learn coding theoretically without building products, solving real-world problems or developing entrepreneurial thinking.
+
+"We are producing degree holders at scale, but not enough innovators, researchers, or deep-tech problem-solvers," he said.
+
+His argument captures the central challenge before India's education system. A student may know how to write code, but may not know how to use it to solve a problem in agriculture, healthcare, climate, mobility or public services. That gap between knowing and building is what STEM education must now address.
+
+Machines In Classrooms
+At the school level, robotics, AI and coding are gradually moving from science fairs and annual exhibitions into regular classroom conversations. For some students, these tools are making science and mathematics less abstract.
+
+Anurag Gupta, Chief Executive Officer and Founder, STEMROBO Technologies, said machines are no longer being treated only as display models in schools. They are slowly becoming part of how children learn, think and solve problems.
+
+"A robot in a classroom is not just a machine. It becomes a way for a child to understand logic, movement, sensors, commands, failure, correction, and creativity — all in one activity," he said.
+
+Gupta said hands-on learning often helps children who may not be confident in theory-heavy classrooms. A quiet student may become more engaged when given a kit, a motor, a sensor or a small challenge to solve. When students build an automated system, programme a robot or train a simple AI model, concepts in science, mathematics, logic and creativity begin to connect.
+
+However, he cautioned that installing technology in schools is not enough. A lab can be created and equipment can be delivered, but if teachers are not trained and learning pathways are not structured, technology may remain locked inside a room.
+
+"The work does not end when a lab is set up. That is actually where the real work begins," Gupta said.
+
+Industry Wants Builders
+The higher education challenge is sharper because industry expectations are changing quickly. Companies are now looking for skills in AI, data science, cloud computing, automation, cybersecurity, robotics and semiconductor-related areas. Yet many students still graduate with limited exposure to live projects, real datasets and industry-style problem-solving.
+
+Abhijit Dasgupta, Director, Bachelor of Data Science, SP Jain School of Global Management, said India's STEM ecosystem is steadily evolving to support an AI-driven innovation economy, but the pace of transformation must accelerate significantly to meet the demands of 2030.
+
+He said the biggest gap in Indian STEM education is not merely technical knowledge, but industry readiness. Many students understand theoretical concepts but struggle when they have to work with fragmented, unstructured and incomplete datasets that are common in industry.
+
+Dasgupta also pointed to insufficient focus on data governance, ethics, bias management, privacy frameworks and business understanding. Employers, he said, are no longer looking only for coders or model builders; they want professionals who can connect technology outcomes to business impact and explain insights to non-technical stakeholders.
+
+This reflects a wider change in hiring. The question is no longer only what degree a student holds. It is also what the student can build, improve, deploy and communicate.
+
+Deep-Tech Readiness
+Ramakrishnan Raman, Vice Chancellor, Symbiosis International (Deemed University), said India's ambition to become a global AI and deep-tech powerhouse by 2030 will depend on how effectively STEM education moves from theory-led learning to innovation-led capability building.
+
+He said NEP 2020 has created a strong foundation by promoting multidisciplinary education, experiential learning, coding, vocational exposure, research orientation and flexibility across disciplines. However, he added that many institutions still rely heavily on theoretical instruction, with limited exposure to real-world problem-solving, prototyping, advanced labs and interdisciplinary collaboration.
+
+Raman said industry participation will be critical because India cannot build a globally competitive deep-tech ecosystem through academia alone. Industry, he said, must move beyond recruitment and actively co-create curricula, sponsor applied research, establish live laboratories, mentor faculty, support start-ups and provide students with hands-on exposure to emerging technologies.
+
+He cited initiatives such as the Bajaj Engineering Skills Training Centre and the Infosys Springboard Makerlab at Symbiosis Institute of Technology as examples of how experiential infrastructure can help students work with robotics, IoT systems, AR/VR, drones, electronics, microcontrollers and 3D printing technologies.
+
+Talent Readiness Bottleneck
+Suparna Dhar, Principal, Bhawanipur Global Campus, School of Advanced Computing, said India's STEM ecosystem is at a pivotal inflection point. While NEP 2020 has laid a foundation by embedding computational thinking, interdisciplinary learning and vocational exposure from the school level, she said the academic pipeline still lags behind what an AI-driven innovation economy will demand by 2030.
+
+According to Dhar, India is producing graduates who are theoretically competent but industry-unready. Curricula in several institutions have not kept pace with the rapid evolution of AI, robotics, semiconductor design and data science.
+
+She said students often graduate without hands-on exposure to real-world problem sets, without the ability to navigate ambiguity and without the cross-functional fluency that deep-tech roles require. The gap becomes wider when one moves beyond premier institutions into the broader university system.
+
+Dhar said India needs structural urgency, including live industry co-creation in curriculum design, AI and semiconductor research centres beyond top-tier institutions, industry mentors in classrooms and fast-track skilling pathways for students outside the IIT-IIM ecosystem.
+
+Innovation Beyond Metros
+Tarun Anand, Founder and Chancellor, Universal Ai University, said India's STEM ecosystem has evolved positively after NEP 2020, with greater focus on experiential learning, coding, innovation and multidisciplinary education. However, he said technology has moved well ahead of academic evolution.
+
+Anand said students need computational thinking, problem-solving ability and design thinking in addition to STEM knowledge. Faculty upskilling and industry-academia collaboration, he added, remain critical.
+
+He said initiatives such as Gramin AI Yojana and AI Sakhi are important because they take AI knowledge beyond urban centres and make technology learning more inclusive. For India to become a global centre for deep-tech innovation by 2030, STEM education must become innovation-focused rather than only degree-focused, he said.
+
+The access question is central to India's technology future. Some of the most curious students may be studying outside metro cities and elite institutions. If they receive the right tools, mentorship and exposure, they can work on problems in agriculture, water conservation, healthcare, waste management and local livelihoods.
+
+National Technology Day is therefore not only a celebration of India's scientific achievements. It is also a reminder that the next phase of innovation will be shaped inside classrooms, labs, maker spaces and campuses. If India wants to lead the AI and deep-tech decade, STEM education must become more practical, more inclusive and more connected to real-world problem-solving.
+
+About the Author
+Shriya Mishra is a Correspondent at BW Businessworld reporting on school and higher education, policy developments, and student innovation. Her work focuses on trends, institutions, and initiatives shaping the future of education in India.`,
+      author: "Shriya Mishra",
+      date: "2026-05-11",
+      category: "Education",
+      readTime: "12 min read",
+      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop",
+      featured: true
+    },
+    {
       id: 7,
       title: "Why STEM Education Matters More Than Ever in 2026",
       excerpt: "In 2026, STEM education is no longer optional enrichment - it is a core foundation that helps students become confident problem-solvers, creators, and innovators.",

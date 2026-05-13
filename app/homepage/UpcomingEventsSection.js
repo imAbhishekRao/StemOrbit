@@ -37,9 +37,9 @@ const UpcomingEvents = () => {
           {/* Event Cards */}
           <div className="flex flex-col gap-3 sm:gap-4 lg:ml-4 w-full lg:w-auto">
             {[
-              { date: "4:00 PM to 5:00 PM", title: "Daily STEM Classes" },
-              { date: "10:00 AM to 2:00 PM (Saturday only)", title: "Weekend STEM Classes" },
-              { date: "Starting from 1st June", title: "Summer Camp" },
+              { date: "1 June - 15 June", title: "Batch 1 Summer Camp" },
+              { date: "16 June - 30 June", title: "Batch 2 Summer Camp" },
+              { date: "1 July - 15 July", title: "Batch 3 Summer Camp" },
             ].map((event, index) => (
               <div
                 key={index}
