@@ -129,7 +129,7 @@ export default function Navbar() {
               <a href="/courses" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Courses</a>
               <a href="/our-lab-offerings" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">For School</a>
               <a href="/3d-printing" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">3D Printing</a>
-              <a href="/summercamp/summercamp-2026" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">STEM Camps</a>
+              <a href="/summercamp" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">STEM Camps</a>
               <a href="/what-we-provide" className="text-gray-700 hover:text-pink-500 px-2 py-1 text-base lg:text-lg font-bold transition-colors rounded-none">Programs and Services</a>
             </div>
           </div>
@@ -244,7 +244,7 @@ export default function Navbar() {
                   3D Printing
                 </a>
                 <a 
-                  href="/summercamp/summercamp-2026" 
+                  href="/summercamp" 
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-gray-700 hover:text-pink-500 hover:bg-pink-50 block px-4 py-2.5 text-base font-bold transition-colors rounded-md"
                 >
@@ -286,7 +286,7 @@ export default function Navbar() {
 
       {/* Scrolling offer — mobile: pinned top-0 above header, no movement. md+: below nav until scroll, then top-0. */}
       <Link
-        href="/summercamp/summercamp-2026"
+        href="/summercamp"
         className={`fixed left-0 right-0 top-0 z-[60] flex cursor-pointer flex-col bg-gradient-to-r from-pink-500 via-sky-500 to-blue-600 text-white shadow-sm max-md:pt-[env(safe-area-inset-top,0px)] max-md:shadow-md max-md:shadow-pink-500/20 md:z-30 md:h-10 md:flex-row md:items-center md:overflow-hidden md:pt-0 md:transition-[top,box-shadow] md:duration-300 md:ease-out ${
           scrolled ? "md:z-[60] md:shadow-md md:shadow-pink-500/25" : "md:shadow-none"
         }`}

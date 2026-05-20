@@ -1,49 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import WhyStemOrbitPillars from "@/components/WhyStemOrbitPillars";
 import LittleExplorers from "@/components/LittleExplorers";
 import ParentTestimonials from "@/components/ParentTestimonials";
+import SummerCampFAQ from "@/components/SummerCampFAQ";
 import SummerCampOffersCta from "@/components/SummerCampOffersCta";
 
-const MAGENTA = "#D4007A";
-const ORANGE = "#F7941D";
-const SKY = "#00A3E0";
-const YELLOW = "#FFC400";
-const PURPLE = "#6B2D8E";
-
-const PAGE_MAX = "max-w-[90rem]";
-const PAGE_X = "px-3 sm:px-4 md:px-5 lg:px-6";
-const PAGE_CONTAINER = `mx-auto w-full ${PAGE_MAX} ${PAGE_X}`;
-
-const THREE_COL = "grid gap-6 md:grid-cols-3";
-const ABOUT_CARD =
-  "flex min-h-[168px] flex-col items-start gap-4 rounded-3xl p-6 text-white shadow-lg sm:min-h-[180px] sm:flex-row sm:items-center sm:gap-5 sm:p-8";
-function CampStructureBlock({ item }) {
-  return (
-    <div
-      className="flex min-h-[140px] flex-col items-center justify-center px-6 py-10 text-center text-white md:min-h-[160px] lg:min-h-[180px]"
-      style={{ backgroundColor: item.bg }}
-    >
-      <p className="font-fredoka text-lg font-bold uppercase tracking-wide sm:text-xl md:text-2xl">{item.label}:</p>
-      {item.lines.map((line, i) => (
-        <p
-          key={line}
-          className={`font-fredoka font-normal ${
-            item.lines.length > 1 && i === 0
-              ? "mt-2 text-2xl sm:text-3xl md:text-4xl"
-              : item.lines.length > 1 && i === 1
-                ? "mt-1 text-base sm:text-lg md:text-xl"
-                : "mt-2 text-xl sm:text-2xl md:text-3xl"
-          }`}
-        >
-          {line}
-        </p>
-      ))}
-    </div>
-  );
-}
+const HERO_BANNER = "/Rectangle%2033.png";
+const HERO_PINK = "#E91E8C";
+const HERO_SKY = "#00A3E0";
+const WA_ENROLL =
+  "https://wa.me/917009594410?text=Hi!%20I%27d%20like%20to%20enroll%20in%20STEMOrbit%20Summer%20Camp%202026.%20Please%20share%20availability%20and%20fee%20options.";
 
 const LEARN_ITEMS = [
   { label: "Robotics", src: "/Clip%20path%20group.png", alt: "Robotics" },
@@ -53,10 +21,10 @@ const LEARN_ITEMS = [
   { label: "3D Printing", src: "/Layer_1.png", alt: "3D printing" },
 ];
 
-const BATCHES = [
-  { label: "Batch 1", range: "1 June – 15 June" },
-  { label: "Batch 2", range: "16 June – 30 June" },
-  { label: "Batch 3", range: "1 July – 15 July" },
+const AVAILABLE_BATCHES = [
+  { label: "Batch 1", range: "1 June - 15 June" },
+  { label: "Batch 2", range: "16 June - 30 June" },
+  { label: "Batch 3", range: "1 July - 16 July" },
 ];
 
 const ABOUT_CARDS = [
@@ -83,31 +51,41 @@ const CAMP_STRUCTURE = [
   { label: "GRADE", lines: ["1 - 10", "(Age group: 6–17years)"], bg: "#0EA5E9" },
 ];
 
-const FAQS = [
-  {
-    q: "What is the STEM course about?",
-    color: MAGENTA,
-    a: "Our Summer Camp is a hands-on STEM program where students explore robotics, coding, AI concepts, drones, and 3D printing through guided projects — building real skills while having fun.",
-  },
-  {
-    q: "Who can join this course?",
-    color: ORANGE,
-    a: "The camp is open to students in Grades 1–10. Activities are grouped by grade band so every child learns at the right pace.",
-  },
-  {
-    q: "What skills will students learn?",
-    color: SKY,
-    a: "Students develop critical thinking, creativity, collaboration, technical confidence, and an entrepreneurial mindset — along with practical skills in coding, robotics, and engineering.",
-  },
-  {
-    q: "What technologies or tools are covered?",
-    color: YELLOW,
-    a: "Campers work with Scratch coding, robotics kits & sensors, circuits and electronics, drone basics, and 3D design — all in a safe, supervised lab environment.",
-  },
-];
+/** Wide, consistent content width with minimal viewport gutters */
+const PAGE_MAX = "max-w-[90rem]";
+const PAGE_X = "px-3 sm:px-4 md:px-5 lg:px-6";
+const PAGE_CONTAINER = `mx-auto w-full ${PAGE_MAX} ${PAGE_X}`;
 
-const WA_ENROLL =
-  "https://wa.me/917009594410?text=Hi!%20I%20want%20to%20enroll%20my%20child%20in%20STEMOrbit%20Summer%20Camp%202026.";
+const SECTION_TITLE =
+  "mb-8 text-center text-2xl font-bold text-gray-900 sm:mb-10 sm:text-3xl md:mb-12 md:text-4xl";
+const SECTION_PAD = "py-10 sm:py-12 md:py-14";
+const THREE_COL = "grid gap-6 md:grid-cols-3";
+const ABOUT_CARD =
+  "flex min-h-[168px] flex-col items-start gap-4 rounded-3xl p-6 text-white shadow-lg sm:min-h-[180px] sm:flex-row sm:items-center sm:gap-5 sm:p-8";
+function CampStructureBlock({ item }) {
+  return (
+    <div
+      className="flex min-h-[140px] flex-col items-center justify-center px-6 py-10 text-center text-white md:min-h-[160px] lg:min-h-[180px]"
+      style={{ backgroundColor: item.bg }}
+    >
+      <p className="text-lg font-bold uppercase tracking-wide sm:text-xl md:text-2xl">{item.label}:</p>
+      {item.lines.map((line, i) => (
+        <p
+          key={line}
+          className={
+            item.lines.length > 1 && i === 0
+              ? "mt-2 text-2xl font-normal sm:text-3xl md:text-4xl"
+              : item.lines.length > 1 && i === 1
+                ? "mt-1 text-base font-normal sm:text-lg md:text-xl"
+                : "mt-2 text-xl font-normal sm:text-2xl md:text-3xl"
+          }
+        >
+          {line}
+        </p>
+      ))}
+    </div>
+  );
+}
 
 function AboutCardIcon({ type }) {
   const className = "h-9 w-9 sm:h-10 sm:w-10";
@@ -134,126 +112,170 @@ function AboutCardIcon({ type }) {
   );
 }
 
-function SectionTitle({ children }) {
-  return (
-    <h2 className="mb-8 text-center font-fredoka text-2xl font-bold uppercase tracking-wide text-gray-900 sm:mb-10 sm:text-3xl md:text-4xl">
-      {children}
-    </h2>
-  );
-}
-
-function EnrollButton({ className = "" }) {
-  return (
-    <a
-      href={WA_ENROLL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`inline-block rounded-full px-10 py-3.5 text-center text-lg font-bold uppercase tracking-wide text-white shadow-lg transition hover:scale-105 hover:brightness-110 sm:text-xl ${className}`}
-      style={{ backgroundColor: ORANGE }}
-    >
-      Enroll Now
-    </a>
-  );
-}
-
 export default function SummerCampPage() {
-  const [openFaq, setOpenFaq] = useState(0);
-
   return (
-    <main className="min-h-screen bg-white text-gray-900">
-      {/* Hero */}
-      <section className="relative -ml-[50vw] -mr-[50vw] left-1/2 right-1/2 w-screen min-h-[min(92vh,720px)]">
-        <Image
-          src="/stemcamps (1).jpg"
-          alt="STEMOrbit Summer Camp students"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-black/35" />
-        <div className={`relative z-10 mx-auto flex min-h-[min(92vh,720px)] w-full ${PAGE_MAX} flex-col items-center justify-center py-16 text-center text-white ${PAGE_X}`}>
-          <Image src="/logo.svg" alt="STEM Orbit" width={140} height={56} className="mb-6 h-12 w-auto sm:h-14" />
-          <h1
-            className="font-fredoka text-4xl font-extrabold uppercase leading-tight sm:text-5xl md:text-6xl lg:text-7xl"
-            style={{ color: MAGENTA, textShadow: "0 2px 24px rgba(0,0,0,0.45)" }}
-          >
-            Summer Camp 2026
-          </h1>
-          <p className="mt-3 font-fredoka text-xl font-semibold sm:text-2xl md:text-3xl" style={{ color: SKY }}>
-            Where Curiosity Meets Innovation
-          </p>
-          <p className="mt-6 max-w-2xl text-base font-semibold uppercase leading-relaxed sm:text-lg md:text-xl">
-            <span className="text-white/90">Starting from: </span>
-            <span style={{ color: MAGENTA }}>1st June – 15th July</span>
-            <span className="mt-1 block text-white/95">(Available in 3 batches)</span>
-          </p>
-          <div className="mt-8">
-            <EnrollButton />
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-white">
 
-      {/* What kids will learn */}
-      <section className="py-14 md:py-16">
-        <div className={PAGE_CONTAINER}>
-          <SectionTitle>What kids will learn</SectionTitle>
-          <div className="rounded-2xl p-4 sm:p-6" style={{ backgroundColor: SKY }}>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
-              {LEARN_ITEMS.map((item) => (
-                <div
-                  key={item.label}
-                  className="flex flex-col items-center justify-center px-3 py-6 text-center"
+
+      {/* Hero banner — full page width; height grows with copy so text is never clipped */}
+      <section className="relative w-full px-0">
+        <div className="relative -ml-[50vw] -mr-[50vw] left-1/2 right-1/2 w-screen overflow-x-hidden">
+          <div className="relative w-full">
+            <div className="absolute inset-0 z-0">
+              <Image
+                src={HERO_BANNER}
+                alt="Happy children at STEMOrbit Summer Camp 2026"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover object-[52%_22%] sm:object-[62%_30%] md:object-[70%_center] lg:object-[72%_center] xl:object-right"
+              />
+            </div>
+            <div
+              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-white from-[38%] via-white/92 via-[48%] to-transparent to-[68%] sm:from-[32%] sm:via-white/85 sm:to-[62%]"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-br from-sky-50/40 via-transparent to-transparent sm:from-sky-100/30"
+              aria-hidden
+            />
+
+            <div
+              className={`relative z-10 mx-auto flex w-full ${PAGE_MAX} flex-col justify-center py-10 sm:py-11 md:py-12 lg:py-14 ${PAGE_X} min-h-[300px] sm:min-h-[340px] md:min-h-[380px] lg:min-h-[400px]`}
+            >
+              <div className="w-full max-w-md text-left sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+                <h1 className="font-black uppercase leading-tight tracking-tight md:leading-[0.95]">
+                  <span
+                    className="block text-3xl [text-shadow:1.5px_1.5px_0_#000] sm:text-4xl sm:[text-shadow:2px_2px_0_#000] md:text-6xl md:[text-shadow:3px_3px_0_#000] lg:text-7xl xl:text-8xl"
+                    style={{ color: HERO_PINK }}
+                  >
+                    Summer Camp
+                  </span>
+                  <span
+                    className="mt-0.5 block text-3xl [text-shadow:1.5px_1.5px_0_#000] sm:text-4xl sm:[text-shadow:2px_2px_0_#000] md:text-6xl md:[text-shadow:3px_3px_0_#000] lg:text-7xl xl:text-8xl"
+                    style={{ color: HERO_PINK }}
+                  >
+                    2026
+                  </span>
+                </h1>
+
+                <p className="mt-3 text-sm font-bold uppercase tracking-wide text-gray-900 sm:mt-4 sm:text-base md:mt-5 md:text-xl lg:text-2xl">
+                  Turning curiosity into creation
+                </p>
+
+                <p className="mt-4 text-xs font-bold uppercase text-gray-900 sm:text-sm md:mt-5 md:text-base lg:text-lg">
+                  Starting from :-
+                </p>
+                <p className="text-lg font-black uppercase text-gray-900 sm:text-xl md:text-3xl lg:text-4xl">
+                  1st June – 16th July
+                </p>
+                <p
+                  className="mt-1 text-sm font-bold uppercase sm:text-base md:text-lg lg:text-xl"
+                  style={{ color: HERO_PINK }}
                 >
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    width={64}
-                    height={64}
-                    className="mb-3 h-14 w-14 object-contain sm:h-16 sm:w-16 md:h-20 md:w-20"
-                  />
-                  <span className="text-lg font-bold uppercase text-white sm:text-xl md:text-2xl">{item.label}</span>
-                </div>
-              ))}
+                  (Available in 3 batches)
+                </p>
+
+                <a
+                  href={WA_ENROLL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-block rounded-full bg-gradient-to-r from-rose-500 to-pink-600 px-8 py-3 text-sm font-bold text-white shadow-[0_6px_20px_rgba(233,30,140,0.4)] transition hover:scale-105 hover:from-rose-400 hover:to-pink-500 sm:mt-6 sm:px-10 sm:py-3.5 sm:text-base md:mt-8 md:px-12 md:py-4 md:text-lg lg:px-14 lg:py-4 lg:text-xl"
+                >
+                  Enroll Now
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Batches */}
-      <section className="bg-gray-50 py-14 md:py-16">
+      {/* What kids will learn (Figma) */}
+      <section className="bg-white pb-0 pt-8 sm:pt-10 md:pt-12">
         <div className={PAGE_CONTAINER}>
-          <SectionTitle>Available Batches</SectionTitle>
-          <div className="grid gap-8 sm:grid-cols-3">
-            {BATCHES.map((batch) => (
-              <div key={batch.label} className="flex flex-col items-center text-center">
-                <div
-                  className="mb-4 flex h-20 w-20 items-center justify-center rounded-2xl text-4xl text-white shadow-md sm:h-24 sm:w-24 sm:text-5xl"
-                  style={{ backgroundColor: MAGENTA }}
-                  aria-hidden
-                >
-                  📅
-                </div>
-                <h3 className="font-fredoka text-2xl font-bold text-gray-900 sm:text-3xl">{batch.label}</h3>
-                <p className="mt-2 text-xl font-medium text-gray-700 sm:text-2xl md:text-3xl">{batch.range}</p>
+          <h2 className="mb-6 text-center text-2xl font-bold text-gray-900 sm:mb-8 sm:text-3xl md:text-4xl">
+            What kids will learn
+          </h2>
+        </div>
+        <div
+          className="relative -ml-[50vw] -mr-[50vw] left-1/2 right-1/2 w-screen"
+          style={{ backgroundColor: HERO_SKY }}
+        >
+          <div className={`mx-auto grid w-full grid-cols-2 ${PAGE_MAX} ${PAGE_X} sm:flex sm:flex-row sm:divide-x sm:divide-white/70`}>
+            {LEARN_ITEMS.map((item, i) => (
+              <div
+                key={item.label}
+                className={`flex flex-col items-center justify-center px-4 py-8 text-center sm:flex-1 sm:px-3 sm:py-10 md:py-12 ${
+                  i === LEARN_ITEMS.length - 1 ? "col-span-2 sm:col-span-1" : ""
+                } ${
+                  i % 2 !== 0 && i !== LEARN_ITEMS.length - 1 ? "border-l border-white/70 sm:border-l-0" : ""
+                } ${
+                  i < 4 ? "border-b border-white/70 sm:border-b-0" : ""
+                }`}
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={64}
+                  height={64}
+                  className="mb-3 h-14 w-14 object-contain sm:mb-4 sm:h-16 sm:w-16 md:h-20 md:w-20"
+                />
+                <span className="text-lg font-bold uppercase tracking-wide text-white sm:text-xl md:text-2xl">{item.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About camp */}
-      <section className="bg-gray-50 py-10 sm:py-12 md:py-14">
+      {/* Available Batches (Figma) */}
+      <section className="bg-white py-10 sm:py-12 md:py-14">
         <div className={PAGE_CONTAINER}>
-          <SectionTitle>About Camp</SectionTitle>
-          <div className={THREE_COL}>
+          <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 sm:mb-10 sm:text-3xl md:mb-12 md:text-4xl">
+            Available Batches
+          </h2>
+          <div className="flex flex-col divide-y divide-gray-900 sm:flex-row sm:divide-x sm:divide-y-0">
+          {AVAILABLE_BATCHES.map((batch) => (
+            <div
+              key={batch.label}
+              className="flex flex-1 items-center justify-center gap-4 px-4 py-8 sm:gap-5 sm:px-6 sm:py-6 md:py-8"
+            >
+              <svg
+                className="h-12 w-12 flex-shrink-0 sm:h-14 sm:w-14 md:h-16 md:w-16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                aria-hidden
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+              </svg>
+              <div className="text-left">
+                <p className="text-base font-bold uppercase tracking-wider text-gray-900 sm:text-lg md:text-xl">
+                  {batch.label.toUpperCase()}
+                </p>
+                <p className="mt-1 text-2xl font-bold sm:text-3xl md:text-4xl" style={{ color: HERO_PINK }}>
+                  {batch.range}
+                </p>
+              </div>
+            </div>
+          ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Camp (Figma) */}
+      <section className={`bg-gray-50 ${SECTION_PAD}`}>
+        <div className={PAGE_CONTAINER}>
+          <h2 className={SECTION_TITLE}>About Camp</h2>
+          <div className="-mx-3 flex snap-x snap-mandatory gap-4 overflow-x-auto px-3 pb-6 sm:-mx-4 sm:gap-5 sm:px-4 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
             {ABOUT_CARDS.map((card) => (
-              <article key={card.title} className={ABOUT_CARD} style={{ backgroundColor: MAGENTA }}>
+              <article key={card.title} className={`w-[85vw] flex-shrink-0 snap-center sm:w-[60vw] md:w-auto ${ABOUT_CARD}`} style={{ backgroundColor: HERO_PINK }}>
                 <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-white/20 sm:h-[4.5rem] sm:w-[4.5rem]">
                   <AboutCardIcon type={card.icon} />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-fredoka text-lg font-bold uppercase tracking-wide sm:text-xl md:text-2xl">{card.title}</h3>
+                  <h3 className="text-lg font-bold uppercase tracking-wide sm:text-xl md:text-2xl">{card.title}</h3>
                   <p className="mt-2 text-lg leading-relaxed text-white/95 sm:text-xl md:text-2xl">{card.text}</p>
                 </div>
               </article>
@@ -262,10 +284,10 @@ export default function SummerCampPage() {
         </div>
       </section>
 
-      {/* Camp structure — full-width banner strip */}
+      {/* Camp Structure — full-width banner strip */}
       <section className="bg-white pb-8 pt-8 sm:pb-10 sm:pt-10 md:pb-12 md:pt-12">
         <div className={PAGE_CONTAINER}>
-          <SectionTitle>Camp Structure</SectionTitle>
+          <h2 className={SECTION_TITLE}>Camp Structure</h2>
         </div>
         <div className="relative -ml-[50vw] -mr-[50vw] left-1/2 right-1/2 w-screen">
           <div className="grid w-full grid-cols-1 md:grid-cols-3">
@@ -276,43 +298,19 @@ export default function SummerCampPage() {
         </div>
       </section>
 
-      <WhyStemOrbitPillars accentColor={MAGENTA} />
+      <WhyStemOrbitPillars accentColor={HERO_PINK} />
 
-      <LittleExplorers borderColor={MAGENTA} />
+      <LittleExplorers
+        borderColor={HERO_PINK}
+        bannerGradient="linear-gradient(90deg, #00A3E0 0%, #6B2D8E 50%, #E91E8C 100%)"
+      />
 
       <ParentTestimonials />
 
-      {/* FAQ */}
-      <section className="py-14 md:py-16">
-        <div className={PAGE_CONTAINER}>
-          <SectionTitle>FAQs</SectionTitle>
-          <div className="space-y-3">
-            {FAQS.map((faq, index) => {
-              const isOpen = openFaq === index;
-              return (
-                <div key={faq.q} className="overflow-hidden rounded-xl shadow-sm">
-                  <button
-                    type="button"
-                    onClick={() => setOpenFaq(isOpen ? -1 : index)}
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-bold uppercase text-white sm:text-lg"
-                    style={{ backgroundColor: faq.color }}
-                    aria-expanded={isOpen}
-                  >
-                    <span>{faq.q}</span>
-                    <span className="text-xl leading-none">{isOpen ? "▼" : "▶"}</span>
-                  </button>
-                  {isOpen && (
-                    <div className="bg-pink-50 px-5 py-4 text-base leading-relaxed text-gray-700 sm:text-lg">{faq.a}</div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <SummerCampFAQ />
 
-      <SummerCampOffersCta enrollColor={ORANGE} />
+      <SummerCampOffersCta enrollColor="#EF476F" />
 
-    </main>
+    </div>
   );
 }
