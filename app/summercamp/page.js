@@ -7,7 +7,7 @@ import ParentTestimonials from "@/components/ParentTestimonials";
 import SummerCampFAQ from "@/components/SummerCampFAQ";
 import SummerCampOffersCta from "@/components/SummerCampOffersCta";
 
-const HERO_BANNER = "/Rectangle%2033.png";
+const HERO_BANNER = "/summercampbanner.png";
 const HERO_PINK = "#E91E8C";
 const HERO_SKY = "#00A3E0";
 const WA_ENROLL =
@@ -128,15 +128,15 @@ export default function SummerCampPage() {
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover object-[52%_22%] sm:object-[62%_30%] md:object-[70%_center] lg:object-[72%_center] xl:object-right"
+                className="object-cover object-[78%_center] sm:object-[82%_center] md:object-right lg:object-right"
               />
             </div>
             <div
-              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-white from-[38%] via-white/92 via-[48%] to-transparent to-[68%] sm:from-[32%] sm:via-white/85 sm:to-[62%]"
+              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-white/30 via-white/10 to-transparent sm:from-white/20 sm:via-white/5"
               aria-hidden
             />
             <div
-              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-br from-sky-50/40 via-transparent to-transparent sm:from-sky-100/30"
+              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-br from-white/10 via-transparent to-transparent"
               aria-hidden
             />
 
