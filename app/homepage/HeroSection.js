@@ -63,16 +63,16 @@ export default function HeroSection() {
         ))}
       </div>
 
-      {/* First slide only: Summer Camp offer → Summer Camp 2026 page */}
+      {/* First slide only: Summer Camp offer → Summer Camp page */}
       {currentImageIndex === 0 && (
         <div className="pointer-events-none absolute inset-x-0 top-3 z-20 flex justify-center px-3 sm:top-5 sm:px-6 md:top-6">
           <Link
-            href="/summercamp-2026"
+            href="/summercamp"
             className="pointer-events-auto max-w-[95vw] rounded-full border border-white/40 bg-gradient-to-r from-pink-600/95 via-sky-600/95 to-blue-700/95 px-4 py-2 text-center text-[11px] font-bold text-white shadow-lg backdrop-blur-sm transition hover:scale-[1.02] hover:from-pink-500 hover:via-sky-500 hover:to-blue-600 sm:px-5 sm:text-sm md:text-base"
           >
             <span className="hidden sm:inline">Summer Camp Offer — First 10 students get 10% OFF — </span>
             <span className="sm:hidden">10% OFF first 10 students — </span>
-            <span className="whitespace-nowrap underline-offset-2 hover:underline">View Summer Camp 2026</span>
+            <span className="whitespace-nowrap underline-offset-2 hover:underline">View Summer Camp</span>
           </Link>
         </div>
       )}

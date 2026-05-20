@@ -286,7 +286,7 @@ export default function Navbar() {
 
       {/* Scrolling offer — mobile: pinned top-0 above header, no movement. md+: below nav until scroll, then top-0. */}
       <Link
-        href="/summercamp-2026"
+        href="/summercamp"
         className={`fixed left-0 right-0 top-0 z-[60] flex cursor-pointer flex-col bg-gradient-to-r from-pink-500 via-sky-500 to-blue-600 text-white shadow-sm max-md:pt-[env(safe-area-inset-top,0px)] max-md:shadow-md max-md:shadow-pink-500/20 md:z-30 md:h-10 md:flex-row md:items-center md:overflow-hidden md:pt-0 md:transition-[top,box-shadow] md:duration-300 md:ease-out ${
           scrolled ? "md:z-[60] md:shadow-md md:shadow-pink-500/25" : "md:shadow-none"
         }`}
