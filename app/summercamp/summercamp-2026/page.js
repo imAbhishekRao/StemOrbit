@@ -117,30 +117,34 @@ export default function SummerCamp2026Page() {
     <div className="min-h-screen bg-white">
 
 
-      {/* Hero banner — full page width */}
+      {/* Hero banner — full page width; height grows with copy so text is never clipped */}
       <section className="relative w-full px-0">
-        <div className="relative -ml-[50vw] -mr-[50vw] left-1/2 right-1/2 w-screen overflow-hidden">
-          <div className="relative aspect-[2.35/1] min-h-[300px] w-full sm:min-h-[360px] md:min-h-[400px] lg:min-h-[440px]">
-            <Image
-              src={HERO_BANNER}
-              alt="Happy children at STEMOrbit Summer Camp 2026"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-[72%_center] sm:object-right"
-            />
+        <div className="relative -ml-[50vw] -mr-[50vw] left-1/2 right-1/2 w-screen overflow-x-hidden">
+          <div className="relative w-full">
+            <div className="absolute inset-0 z-0">
+              <Image
+                src={HERO_BANNER}
+                alt="Happy children at STEMOrbit Summer Camp 2026"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover object-[52%_22%] sm:object-[62%_30%] md:object-[70%_center] lg:object-[72%_center] xl:object-right"
+              />
+            </div>
             <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white from-[38%] via-white/92 via-[48%] to-transparent to-[68%] sm:from-[32%] sm:via-white/85 sm:to-[62%]"
+              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-white from-[38%] via-white/92 via-[48%] to-transparent to-[68%] sm:from-[32%] sm:via-white/85 sm:to-[62%]"
               aria-hidden
             />
             <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-50/40 via-transparent to-transparent sm:from-sky-100/30"
+              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-br from-sky-50/40 via-transparent to-transparent sm:from-sky-100/30"
               aria-hidden
             />
 
-            <div className={`relative z-10 mx-auto flex h-full min-h-[300px] w-full ${PAGE_MAX} items-center py-8 sm:min-h-[360px] md:min-h-[400px] lg:min-h-[440px] ${PAGE_X}`}>
+            <div
+              className={`relative z-10 mx-auto flex w-full ${PAGE_MAX} flex-col justify-center py-10 sm:py-11 md:py-12 lg:py-14 ${PAGE_X} min-h-[300px] sm:min-h-[340px] md:min-h-[380px] lg:min-h-[400px]`}
+            >
               <div className="w-full max-w-md text-left sm:max-w-lg md:max-w-xl lg:max-w-2xl">
-                <h1 className="font-black uppercase leading-[0.95] tracking-tight">
+                <h1 className="font-black uppercase leading-tight tracking-tight md:leading-[0.95]">
                   <span
                     className="block text-3xl [text-shadow:1.5px_1.5px_0_#000] sm:text-4xl sm:[text-shadow:2px_2px_0_#000] md:text-6xl md:[text-shadow:3px_3px_0_#000] lg:text-7xl xl:text-8xl"
                     style={{ color: HERO_PINK }}
