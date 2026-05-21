@@ -5,13 +5,11 @@ import WhyStemOrbitPillars from "@/components/WhyStemOrbitPillars";
 import LittleExplorers from "@/components/LittleExplorers";
 import ParentTestimonials from "@/components/ParentTestimonials";
 import SummerCampFAQ from "@/components/SummerCampFAQ";
-import SummerCampOffersCta from "@/components/SummerCampOffersCta";
+import SummerCampOffersCta, { WA_ENROLL } from "@/components/SummerCampOffersCta";
 
-const HERO_BANNER = "/summercampbanner.png";
+const SUMMERCAMP_HERO_BANNER = "/Group%20105.png";
 const HERO_PINK = "#E91E8C";
 const HERO_SKY = "#00A3E0";
-const WA_ENROLL =
-  "https://wa.me/917009594410?text=Hi!%20I%27d%20like%20to%20enroll%20in%20STEMOrbit%20Summer%20Camp%202026.%20Please%20share%20availability%20and%20fee%20options.";
 
 const LEARN_ITEMS = [
   { label: "Robotics", src: "/Clip%20path%20group.png", alt: "Robotics" },
@@ -31,17 +29,18 @@ const ABOUT_CARDS = [
   {
     title: "Hands-on projects",
     text: "From idea to reality — kids don't just learn, they make it happen.",
-    icon: "puzzle",
+    image: "/aboutcamps1.png",
+    imageClass: "translate-x-1",
   },
   {
     title: "Real lab experience",
     text: "Every child gets hands-on access to the technology that is already shaping the world around them.",
-    icon: "lab",
+    image: "/aboutcamps2.png",
   },
   {
     title: "Future ready skills",
     text: "We prepare children not just for the next grade — but for the world that is waiting for them.",
-    icon: "skills",
+    image: "/aboutcamps3.png",
   },
 ];
 
@@ -52,8 +51,8 @@ const CAMP_STRUCTURE = [
 ];
 
 /** Wide, consistent content width with minimal viewport gutters */
-const PAGE_MAX = "max-w-[90rem]";
-const PAGE_X = "px-3 sm:px-4 md:px-5 lg:px-6";
+const PAGE_MAX = "max-w-[100rem]";
+const PAGE_X = "px-3 sm:px-4 md:px-6 lg:px-8";
 const PAGE_CONTAINER = `mx-auto w-full ${PAGE_MAX} ${PAGE_X}`;
 
 const SECTION_TITLE =
@@ -61,23 +60,23 @@ const SECTION_TITLE =
 const SECTION_PAD = "py-10 sm:py-12 md:py-14";
 const THREE_COL = "grid gap-6 md:grid-cols-3";
 const ABOUT_CARD =
-  "flex min-h-[168px] flex-col items-start gap-4 rounded-3xl p-6 text-white shadow-lg sm:min-h-[180px] sm:flex-row sm:items-center sm:gap-5 sm:p-8";
+  "flex min-h-[200px] flex-col items-start justify-center gap-5 p-6 text-white shadow-lg sm:min-h-[240px] sm:gap-6 sm:p-8 md:min-h-[280px] md:p-10";
 function CampStructureBlock({ item }) {
   return (
     <div
       className="flex min-h-[140px] flex-col items-center justify-center px-6 py-10 text-center text-white md:min-h-[160px] lg:min-h-[180px]"
       style={{ backgroundColor: item.bg }}
     >
-      <p className="text-lg font-bold uppercase tracking-wide sm:text-xl md:text-2xl">{item.label}:</p>
+      <p className="text-2xl font-bold uppercase tracking-wide sm:text-3xl md:text-4xl">{item.label}:</p>
       {item.lines.map((line, i) => (
         <p
           key={line}
           className={
             item.lines.length > 1 && i === 0
-              ? "mt-2 text-2xl font-normal sm:text-3xl md:text-4xl"
+              ? "mt-2 text-3xl font-normal sm:text-4xl md:text-5xl"
               : item.lines.length > 1 && i === 1
-                ? "mt-1 text-base font-normal sm:text-lg md:text-xl"
-                : "mt-2 text-xl font-normal sm:text-2xl md:text-3xl"
+                ? "mt-1 text-lg font-normal sm:text-xl md:text-2xl"
+                : "mt-2 text-2xl font-normal sm:text-3xl md:text-4xl"
           }
         >
           {line}
@@ -117,84 +116,33 @@ export default function SummerCampPage() {
     <div className="min-h-screen bg-white">
 
 
-      {/* Hero banner — full page width; height grows with copy so text is never clipped */}
-      <section className="relative w-full px-0">
-        <div className="relative -ml-[50vw] -mr-[50vw] left-1/2 right-1/2 w-screen overflow-x-hidden">
-          <div className="relative w-full">
-            <div className="absolute inset-0 z-0">
-              <Image
-                src={HERO_BANNER}
-                alt="Happy children at STEMOrbit Summer Camp 2026"
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover object-[78%_center] sm:object-[82%_center] md:object-right lg:object-right"
-              />
-            </div>
-            <div
-              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-white/30 via-white/10 to-transparent sm:from-white/20 sm:via-white/5"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-br from-white/10 via-transparent to-transparent"
-              aria-hidden
-            />
-
-            <div
-              className={`relative z-10 mx-auto flex w-full ${PAGE_MAX} flex-col justify-center py-10 sm:py-11 md:py-12 lg:py-14 ${PAGE_X} min-h-[300px] sm:min-h-[340px] md:min-h-[380px] lg:min-h-[400px]`}
-            >
-              <div className="w-full max-w-md text-left sm:max-w-lg md:max-w-xl lg:max-w-2xl">
-                <h1 className="font-black uppercase leading-tight tracking-tight md:leading-[0.95]">
-                  <span
-                    className="block text-3xl [text-shadow:1.5px_1.5px_0_#000] sm:text-4xl sm:[text-shadow:2px_2px_0_#000] md:text-6xl md:[text-shadow:3px_3px_0_#000] lg:text-7xl xl:text-8xl"
-                    style={{ color: HERO_PINK }}
-                  >
-                    Summer Camp
-                  </span>
-                  <span
-                    className="mt-0.5 block text-3xl [text-shadow:1.5px_1.5px_0_#000] sm:text-4xl sm:[text-shadow:2px_2px_0_#000] md:text-6xl md:[text-shadow:3px_3px_0_#000] lg:text-7xl xl:text-8xl"
-                    style={{ color: HERO_PINK }}
-                  >
-                    2026
-                  </span>
-                </h1>
-
-                <p className="mt-3 text-sm font-bold uppercase tracking-wide text-gray-900 sm:mt-4 sm:text-base md:mt-5 md:text-xl lg:text-2xl">
-                  Turning curiosity into creation
-                </p>
-
-                <p className="mt-4 text-xs font-bold uppercase text-gray-900 sm:text-sm md:mt-5 md:text-base lg:text-lg">
-                  Starting from :-
-                </p>
-                <p className="text-lg font-black uppercase text-gray-900 sm:text-xl md:text-3xl lg:text-4xl">
-                  1st June – 16th July
-                </p>
-                <p
-                  className="mt-1 text-sm font-bold uppercase sm:text-base md:text-lg lg:text-xl"
-                  style={{ color: HERO_PINK }}
-                >
-                  (Available in 3 batches)
-                </p>
-
-                <a
-                  href={WA_ENROLL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 inline-block rounded-full bg-gradient-to-r from-rose-500 to-pink-600 px-8 py-3 text-sm font-bold text-white shadow-[0_6px_20px_rgba(233,30,140,0.4)] transition hover:scale-105 hover:from-rose-400 hover:to-pink-500 sm:mt-6 sm:px-10 sm:py-3.5 sm:text-base md:mt-8 md:px-12 md:py-4 md:text-lg lg:px-14 lg:py-4 lg:text-xl"
-                >
-                  Enroll Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Hero — banner opens WhatsApp enroll (same as bottom CTA) */}
+      <section className="relative w-full overflow-hidden bg-white">
+        <h1 className="sr-only">STEM Orbit Summer Camp 2026 — 1 June through 16 July, three batches.</h1>
+        <a
+          href={WA_ENROLL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block cursor-pointer outline-none transition-opacity hover:opacity-[0.98] focus-visible:opacity-[0.98] focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          aria-label="Enroll in STEM Orbit Summer Camp 2026 — message us on WhatsApp"
+        >
+          <Image
+            src={SUMMERCAMP_HERO_BANNER}
+            alt=""
+            width={2017}
+            height={789}
+            priority
+            sizes="100vw"
+            className="pointer-events-none block h-auto w-full select-none"
+          />
+        </a>
       </section>
 
       {/* What kids will learn (Figma) */}
       <section className="bg-white pb-0 pt-8 sm:pt-10 md:pt-12">
         <div className={PAGE_CONTAINER}>
-          <h2 className="mb-6 text-center text-2xl font-bold text-gray-900 sm:mb-8 sm:text-3xl md:text-4xl">
-            What kids will learn
+          <h2 className="mb-6 text-center text-lg font-bold text-gray-900 sm:mb-8 sm:text-3xl md:text-4xl">
+            What Kids Will Learn
           </h2>
         </div>
         <div
@@ -205,13 +153,10 @@ export default function SummerCampPage() {
             {LEARN_ITEMS.map((item, i) => (
               <div
                 key={item.label}
-                className={`flex flex-col items-center justify-center px-4 py-8 text-center sm:flex-1 sm:px-3 sm:py-10 md:py-12 ${
-                  i === LEARN_ITEMS.length - 1 ? "col-span-2 sm:col-span-1" : ""
-                } ${
-                  i % 2 !== 0 && i !== LEARN_ITEMS.length - 1 ? "border-l border-white/70 sm:border-l-0" : ""
-                } ${
-                  i < 4 ? "border-b border-white/70 sm:border-b-0" : ""
-                }`}
+                className={`flex flex-col items-center justify-center px-4 py-8 text-center sm:flex-1 sm:px-3 sm:py-10 md:py-12 ${i === LEARN_ITEMS.length - 1 ? "col-span-2 sm:col-span-1" : ""
+                  } ${i % 2 !== 0 && i !== LEARN_ITEMS.length - 1 ? "border-l border-white/70 sm:border-l-0" : ""
+                  } ${i < 4 ? "border-b border-white/70 sm:border-b-0" : ""
+                  }`}
               >
                 <Image
                   src={item.src}
@@ -220,7 +165,7 @@ export default function SummerCampPage() {
                   height={64}
                   className="mb-3 h-14 w-14 object-contain sm:mb-4 sm:h-16 sm:w-16 md:h-20 md:w-20"
                 />
-                <span className="text-lg font-bold uppercase tracking-wide text-white sm:text-xl md:text-2xl">{item.label}</span>
+                <span className="font-semibold text-white text-2xl sm:text-3xl md:text-[40px] md:leading-[47px]">{item.label}</span>
               </div>
             ))}
           </div>
@@ -233,33 +178,37 @@ export default function SummerCampPage() {
           <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 sm:mb-10 sm:text-3xl md:mb-12 md:text-4xl">
             Available Batches
           </h2>
-          <div className="flex flex-col divide-y divide-gray-900 sm:flex-row sm:divide-x sm:divide-y-0">
-          {AVAILABLE_BATCHES.map((batch) => (
-            <div
-              key={batch.label}
-              className="flex flex-1 items-center justify-center gap-4 px-4 py-8 sm:gap-5 sm:px-6 sm:py-6 md:py-8"
-            >
-              <svg
-                className="h-12 w-12 flex-shrink-0 sm:h-14 sm:w-14 md:h-16 md:w-16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.75"
-                aria-hidden
+          <div className="flex flex-col divide-y divide-gray-900 lg:flex-row lg:divide-x lg:divide-y-0">
+            {AVAILABLE_BATCHES.map((batch) => (
+              <div
+                key={batch.label}
+                className="flex flex-1 items-center justify-start pl-10 xs:pl-16 sm:pl-24 md:pl-4 md:justify-center gap-4 px-4 py-8 sm:gap-5 sm:px-6 sm:py-6 md:py-8"
               >
-                <rect x="3" y="4" width="18" height="18" rx="2" />
-                <path d="M16 2v4M8 2v4M3 10h18" />
-              </svg>
-              <div className="text-left">
-                <p className="text-base font-bold uppercase tracking-wider text-gray-900 sm:text-lg md:text-xl">
-                  {batch.label.toUpperCase()}
+                <svg
+                  className="h-12 w-12 flex-shrink-0 sm:h-14 sm:w-14 md:h-16 md:w-16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" />
+                  <path d="M6 14h2 M11 14h2 M16 14h2" />
+                  <path d="M6 18h2 M11 18h2 M16 18h2" />
+                </svg>
+                <div className="text-left">
+                <p className="font-medium uppercase text-gray-900 text-xl sm:text-2xl md:text-[36px] md:leading-[42px] whitespace-nowrap">
+                  {batch.label}
                 </p>
-                <p className="mt-1 text-2xl font-bold sm:text-3xl md:text-4xl" style={{ color: HERO_PINK }}>
+                <p className="mt-1 font-black text-2xl sm:text-3xl md:text-[45px] md:leading-[42px] whitespace-nowrap" style={{ color: HERO_PINK }}>
                   {batch.range}
                 </p>
               </div>
-            </div>
-          ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -270,14 +219,14 @@ export default function SummerCampPage() {
           <h2 className={SECTION_TITLE}>About Camp</h2>
           <div className="-mx-3 flex snap-x snap-mandatory gap-4 overflow-x-auto px-3 pb-6 sm:-mx-4 sm:gap-5 sm:px-4 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0">
             {ABOUT_CARDS.map((card) => (
-              <article key={card.title} className={`w-[85vw] flex-shrink-0 snap-center sm:w-[60vw] md:w-auto ${ABOUT_CARD}`} style={{ backgroundColor: HERO_PINK }}>
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-white/20 sm:h-[4.5rem] sm:w-[4.5rem]">
-                  <AboutCardIcon type={card.icon} />
+              <article key={card.title} className={`w-[85vw] flex-shrink-0 snap-center sm:w-[60vw] md:w-auto ${ABOUT_CARD}`} style={{ backgroundColor: HERO_PINK, borderRadius: '40px' }}>
+                <div className="flex w-full items-center gap-4 sm:gap-5">
+                  <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center p-3 sm:h-[5.5rem] sm:w-[5.5rem] md:h-[6.5rem] md:w-[6.5rem]" style={{ border: '2px solid white', borderRadius: '50%' }}>
+                    <Image src={card.image} alt={card.title} width={72} height={72} className={`h-full w-full object-contain ${card.imageClass || ''}`} />
+                  </div>
+                  <h3 className="font-bold uppercase text-left text-white text-2xl sm:text-3xl md:text-[48px] md:leading-[1.05]">{card.title}</h3>
                 </div>
-                <div className="text-left">
-                  <h3 className="text-lg font-bold uppercase tracking-wide sm:text-xl md:text-2xl">{card.title}</h3>
-                  <p className="mt-2 text-lg leading-relaxed text-white/95 sm:text-xl md:text-2xl">{card.text}</p>
-                </div>
+                <p className="text-left text-lg font-semibold text-white sm:text-xl md:text-[26px] md:leading-[1.4]">{card.text}</p>
               </article>
             ))}
           </div>
@@ -302,7 +251,7 @@ export default function SummerCampPage() {
 
       <LittleExplorers
         borderColor={HERO_PINK}
-        bannerGradient="linear-gradient(90deg, #00A3E0 0%, #6B2D8E 50%, #E91E8C 100%)"
+        bannerGradient="linear-gradient(90deg, #26ABE2 0%, #716ABA 100%)"
       />
 
       <ParentTestimonials />

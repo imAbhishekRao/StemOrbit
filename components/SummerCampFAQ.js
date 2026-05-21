@@ -113,8 +113,8 @@ function FAQItem({ item, isOpen, onClick }) {
     <div className="mb-6 overflow-hidden rounded-xl bg-white shadow-md">
       <button
         onClick={onClick}
-        className={`flex w-full items-center justify-between px-6 py-5 text-left text-lg font-bold tracking-wide text-white transition-colors sm:px-8 sm:py-6 sm:text-xl md:text-2xl ${item.headerBg}`}
-        style={{ fontFamily: 'var(--font-rubik), sans-serif' }}
+        className={`flex w-full items-center justify-between px-6 py-5 text-left text-lg sm:text-2xl md:text-[40px] font-bold tracking-wide text-white transition-colors sm:px-8 sm:py-6 ${item.headerBg}`}
+        style={{ fontFamily: 'var(--font-roboto), sans-serif' }}
       >
         <span>{item.question}</span>
         <svg
@@ -134,7 +134,7 @@ function FAQItem({ item, isOpen, onClick }) {
         }`}
       >
         <div className="overflow-hidden">
-          <div className={`px-6 py-6 text-lg font-medium leading-relaxed sm:px-8 sm:text-xl ${item.bodyBg} ${item.textColor}`}>
+          <div className={`px-6 py-6 text-sm sm:text-lg md:text-[28px] font-bold leading-relaxed sm:px-8 ${item.bodyBg} ${item.textColor}`}>
             {item.content}
           </div>
         </div>
@@ -148,9 +148,9 @@ export default function SummerCampFAQ() {
 
   return (
     <section className="bg-white py-12 sm:py-16 md:py-20">
-      <div className="mx-auto w-full max-w-[90rem] px-3 sm:px-4 md:px-5 lg:px-6">
+      <div className="mx-auto w-full max-w-[100rem] px-3 sm:px-4 md:px-6 lg:px-8">
         <h2 className="mb-10 text-center text-4xl font-bold tracking-tight text-gray-900 sm:mb-14 sm:text-5xl md:text-6xl">
-          Frequently Asked Questions
+          FAQs
         </h2>
         
         <div className="mx-auto flex w-full flex-col">

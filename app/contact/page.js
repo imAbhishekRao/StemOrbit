@@ -320,7 +320,7 @@ export default function Contact() {
    
           <div className="text-center mb-6 sm:mb-8">
             <div className="text-xl sm:text-2xl md:text-3xl font-semibold mb-1 text-pink-500 mt-0.5" style={{ fontFamily: 'cursive' }}>You Ask We Answer</div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">FAQs</h2>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 max-w-2xl mx-auto mb-6 sm:mb-8">
             <button

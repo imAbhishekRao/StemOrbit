@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const PAGE_WRAP = "mx-auto w-full max-w-[90rem] px-3 sm:px-4 md:px-5 lg:px-6";
+const PAGE_WRAP = "mx-auto w-full max-w-[100rem] px-3 sm:px-4 md:px-6 lg:px-8";
 
 const SOCIAL = [
   { href: "https://instagram.com/stemorbit", icon: "/instagram.svg", alt: "Instagram" },
@@ -14,7 +14,7 @@ const PERKS = [
   "Students enrolling in the 1-Month Summer Camp will receive a STEMOrbit Credit Coupon worth ₹500, valid until August 2026",
 ];
 
-const WA_ENROLL =
+export const WA_ENROLL =
   "https://wa.me/917009594410?text=Hi!%20I%20want%20to%20enroll%20my%20child%20in%20STEMOrbit%20Summer%20Camp%202026.";
 
 const MISSION =
@@ -25,25 +25,25 @@ const MISSION =
  */
 export default function SummerCampOffersCta({
   enrollColor = "#EF476F",
-  offersGradient = "linear-gradient(90deg, #7EC8E8 0%, #B8A9E8 50%, #C9B8F0 100%)",
-  cardGradient = "linear-gradient(105deg, #00A3E0 0%, #5B6FD6 45%, #6B2D8E 100%)",
+  offersGradient = "linear-gradient(90deg, #26ABE2 0%, #716ABA 100%)",
+  cardGradient = "linear-gradient(105deg, #26ABE2 0%, #716ABA 100%)",
 }) {
   return (
     <section className="relative z-20 bg-white pt-0">
       {/* Special offers banner */}
       <div
         className="relative -ml-[50vw] -mr-[50vw] left-1/2 right-1/2 w-screen px-4 py-5 text-center text-white sm:py-6"
-        style={{ background: offersGradient }}
+        style={{ background: offersGradient, fontFamily: "var(--font-spline-sans), sans-serif" }}
       >
-        <p className="text-sm font-bold sm:text-base">Special Summer Camp Offers</p>
-        <p className="mt-1 text-base font-bold leading-snug sm:text-lg md:text-xl">
-          Get 10% OFF for the first 10 students who enrol | Enjoy a flat ₹500 sibling discount
+        <p className="text-lg sm:text-2xl md:text-[38px] font-bold leading-snug">Special Summer Camp Offers</p>
+        <p className="mt-2 text-sm sm:text-2xl md:text-[38px] font-bold leading-snug">
+          Get 10% OFF for the first 10 students who enroll | Enjoy a flat ₹500 sibling discount
         </p>
       </div>
 
       {/* Perks */}
       <div className={`${PAGE_WRAP} py-6 sm:py-8`}>
-        <ul className="mx-auto max-w-4xl space-y-3 text-center text-base font-bold text-gray-900 sm:text-lg">
+        <ul className="mx-auto max-w-[95rem] space-y-3 text-center text-base sm:text-xl md:text-[28px] font-bold text-gray-900">
           {PERKS.map((perk) => (
             <li key={perk} className="leading-relaxed">
               &bull; {perk}
@@ -60,7 +60,7 @@ export default function SummerCampOffersCta({
             style={{ background: cardGradient }}
           >
             <div className={PAGE_WRAP}>
-              <p className="mx-auto max-w-4xl text-center text-sm font-medium leading-relaxed text-white/95 sm:text-base md:text-lg">
+              <p className="mx-auto max-w-[95rem] text-center text-base sm:text-xl md:text-[28px] font-bold leading-relaxed text-white/95">
                 {MISSION}
               </p>
               <h2 className="mt-6 text-center text-3xl font-bold sm:mt-8 sm:text-4xl md:text-5xl lg:text-6xl">

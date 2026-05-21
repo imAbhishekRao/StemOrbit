@@ -373,7 +373,7 @@ export default function HopAndLearnPage() {
         {/* FAQ Section */}
         <section id="faqs" className={`py-16 bg-white ${activeSection === 'faqs' ? 'block' : 'hidden'}`}>
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">FAQs</h2>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
